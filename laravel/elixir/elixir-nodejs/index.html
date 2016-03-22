@@ -6,21 +6,21 @@
   <title>如何在OS X安裝Laravel前端開發環境? | 點燈坊</title>
   <meta name="author" content="真 OO無双">
   
-  <meta name="description" content="使用Laravel Elixir整合前端開發工具">
+  <meta name="description" content="使用Laravel Elixir自動化前端開發">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
- <meta name="description" content="使用Laravel Elixir整合前端開發工具">
+ <meta name="description" content="使用Laravel Elixir自動化前端開發">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何在OS X安裝Laravel前端開發環境?">
 <meta property="og:url" content="http://oomusou.io/laravel/elixir/elixir-nodejs/index.html">
 <meta property="og:site_name" content="點燈坊">
-<meta property="og:description" content="使用Laravel Elixir整合前端開發工具">
+<meta property="og:description" content="使用Laravel Elixir自動化前端開發">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-03-22T14:37:25.000Z">
+<meta property="og:updated_time" content="2016-03-22T23:00:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在OS X安裝Laravel前端開發環境?">
-<meta name="twitter:description" content="使用Laravel Elixir整合前端開發工具">
+<meta name="twitter:description" content="使用Laravel Elixir自動化前端開發">
  
 
   
@@ -95,7 +95,7 @@
 
 	
 		 <div class="alert alert-success description">
-			<i class="fa fa-info-circle"></i> 使用Laravel Elixir整合前端開發工具			
+			<i class="fa fa-info-circle"></i> 使用Laravel Elixir自動化前端開發			
 		</div> <!-- alert -->
 		
 
@@ -157,6 +157,7 @@
 <p><strong>確認Gulp版本</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ gulp -v</span><br></pre></td></tr></table></figure></p>
 <p><img src="/images/laravel/elixir/elixir-nodejs/node005.png" alt=""></p>
 <h2 id="安裝Laravel_Elixir">安裝Laravel Elixir</h2><hr>
+<p>Laravel Elixir整合了眾多前端工具，讓你不用自己寫Gulp就可達到前端自動化。</p>
 <p><strong>建立Laravel專案</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ composer create-project laravel/laravel Laravel52Elixir --prefer-dist</span><br></pre></td></tr></table></figure></p>
 <p><img src="/images/laravel/elixir/elixir-nodejs/node007.png" alt=""></p>
 <p>使用Composer建立Laravel專案。</p>
@@ -165,9 +166,9 @@
 <p>安裝Laravel Elixir與前端工具。</p>
 <p><strong>測試Laravel Elixir</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ gulp</span><br></pre></td></tr></table></figure></p>
 <p><img src="/images/laravel/elixir/elixir-nodejs/node011.png" alt=""></p>
-<p>右上角<code>Saas Compiled</code>，表示Node.js、NPM、Gulp與Laravel Elixir安裝成功。</p>
+<p>右上角顯示<code>Saas Compiled</code>，表示Node.js、NPM、Gulp與Laravel Elixir安裝成功。</p>
 <h2 id="Appendix">Appendix</h2><hr>
-<p>若將來需要切換Node.js版本，可參考以下介紹 :</p>
+<p>若將來需要切換Node.js版本，可參考以下方式 :</p>
 <h3 id="切換Node-js版本">切換Node.js版本</h3><p><strong>顯示Node.js所有版本</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ nvm list</span><br></pre></td></tr></table></figure></p>
 <p><img src="/images/laravel/elixir/elixir-nodejs/node006.png" alt=""></p>
 <p>目前顯示OS X除了剛裝的Node.js 5.7外，還有0.12版，且預設為0.12。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>新安裝Node.js不會有兩個版本，此為特別示範如何切換Node.js版本。</span></span></span></p>
@@ -180,6 +181,7 @@
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
 <li>Laravel Elixir提供了很多前端開發工具，本文只是Laravel Elixir的起手式，將難搞的Node.js、NPM與Gulp先在OS X搞定。</li>
+<li>當Laravel Elixir安裝失敗時，可以參考Homestead的Node.js、NPM與Gulp版本，就算不使用Homestead開發，也可以把Homestead當成golden sample參考。</li>
 <li>若遇到某些套件與工具只能搭配特定Node.js版本，別忘了使用NVM切換Node.js版本。</li>
 </ul>
 	  
