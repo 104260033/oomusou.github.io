@@ -1,0 +1,241 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何在PhpStorm打造Vue.js開發環境? | 點燈坊</title>
+  <meta name="author" content="真 OO無双">
+  
+  <meta name="description" content="在PhpStorm使用Vue.js的Auto Complete">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <meta name="description" content="在PhpStorm使用Vue.js的Auto Complete">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在PhpStorm打造Vue.js開發環境?">
+<meta property="og:url" content="http://oomusou.io/vuejs/vuejs-on-phpstorm/index.html">
+<meta property="og:site_name" content="點燈坊">
+<meta property="og:description" content="在PhpStorm使用Vue.js的Auto Complete">
+<meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
+<meta property="og:updated_time" content="2016-03-22T14:03:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何在PhpStorm打造Vue.js開發環境?">
+<meta name="twitter:description" content="在PhpStorm使用Vue.js的Auto Complete">
+ 
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">點燈坊</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+	
+		<div class="page-header">		
+			<h1> 如何在PhpStorm打造Vue.js開發環境?</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+	
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> 在PhpStorm使用Vue.js的Auto Complete			
+		</div> <!-- alert -->
+		
+
+	<!-- toc -->
+	<div id="postTOC">
+		<span class="tocHeading">Contents</span>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Vue-js_on_PhpStorm"><span class="toc-article-text">Vue.js on PhpStorm</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Directive"><span class="toc-article-text">Directive</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#下載Vue-js_Plugin"><span class="toc-article-text">下載Vue.js Plugin</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#安裝Vue-js_Plugin"><span class="toc-article-text">安裝Vue.js Plugin</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#自動顯示Directive"><span class="toc-article-text">自動顯示Directive</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#API"><span class="toc-article-text">API</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#下載External_Libraries"><span class="toc-article-text">下載External Libraries</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#確認安裝成功"><span class="toc-article-text">確認安裝成功</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#自動顯示API"><span class="toc-article-text">自動顯示API</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#如何自動顯示data？"><span class="toc-article-text">如何自動顯示data？</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li></ol>
+    </div>
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>我是一個很依賴auto complete才能寫程式的人，一來我記憶力很差，我記不了很多API，二來我很容易typo，所以只能依賴auto complete用選的，所以寫Vue.js的第一件事情，就是在PhpStorm先把auto complete環境弄好。</p>
+<a id="more"></a>
+<h2 id="Version">Version</h2><hr>
+<p>Vue.js 1.0.10<br>PhpStorm 10.0.1</p>
+<h2 id="Vue-js_on_PhpStorm">Vue.js on PhpStorm</h2><hr>
+<p>Vue.js分兩部分，一部分是directive，一部分是API，所以我們接下來要做的就是讓PhpStorm的auto complete能自動顯示directive與API。</p>
+<h2 id="Directive">Directive</h2><hr>
+<h3 id="下載Vue-js_Plugin">下載Vue.js Plugin</h3><p>到<a href="https://plugins.jetbrains.com/plugin/8057?pr" target="_blank" rel="external">Vue.js Plugin</a>下載，檔案為<code>vuejs-plugin.jar</code>，已經支援Vue.js 1.0新directive，如<code>v-for</code>。</p>
+<h3 id="安裝Vue-js_Plugin">安裝Vue.js Plugin</h3><p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin -&gt; Install plugin from disk… </em></strong><br><img src="/images/vuejs/vuejs-on-phpstorm/vue000.png" alt=""></p>
+<p>載入剛剛下載的<code>vuejs-plugin.jar</code>。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue001.png" alt=""></p>
+<p>安裝完會要求重新啟動PhpStorm。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue002.png" alt=""></p>
+<h3 id="自動顯示Directive">自動顯示Directive</h3><p>重新啟動後，只要輸入<code>v</code>，就會顯示Vue.js專屬的directive了。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue003.png" alt=""></p>
+<h2 id="API">API</h2><hr>
+<p>JavaScript與PHP一樣，所有的auto complete都必須亦賴註解完成，PHP靠的是<strong><em>PHPDoc</em></strong>，而JavaScript靠的是<strong><em>JSDoc</em></strong>。</p>
+<p>但若使用的是min版本的CDN link呢？這一定是沒有註解的版本。</p>
+<p>PhpStorm提供了<strong><em>External Libraries</em></strong>機制，會自動從CDN下載，並加上JSDoc，因而可以在PhpStorm使用auto complete。</p>
+<h3 id="下載External_Libraries">下載External Libraries</h3><p>CDN反白，表示PhpStorm在本機並沒有含JSDoc版本的library，因此無法使用auto complete。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue004.png" alt=""></p>
+<p>滑鼠指標放在反白上，按&#8997; + &#8617;，顯示Download library。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue005.png" alt=""></p>
+<p>PhpStorm會自動下載，並顯示訊息。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue006.png" alt=""></p>
+<h3 id="確認安裝成功">確認安裝成功</h3><p><strong><em>PhpStorm -&gt; Preferences -&gt; Languages &amp; Frameworks -&gt; JavaScript -&gt; Libraries</em></strong></p>
+<p>會出現<code>vue</code>，表示Vue.js的external library已經安裝成功。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue007.png" alt=""></p>
+<p>CDN也不再反白了。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue008.png" alt=""></p>
+<h3 id="自動顯示API">自動顯示API</h3><p>PhpStorm的auto complete可以自動顯示Vue.js的API了。</p>
+<p>若為Vue.js的API，會加上<code>(vue)</code>註解。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue009.png" alt=""></p>
+<h2 id="如何自動顯示data？">如何自動顯示data？</h2><hr>
+<figure class="highlight javascript"><figcaption><span>app.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: <span class="string">'Hello World'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        buttonClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.message = <span class="string">'Hi World'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> 
+<p>若依照以上這種常見的寫法，在第8行打<code>this</code>時，auto complete無法顯示<code>message</code>，目前root cause原因不明，猜測是PhpStorm對於JavaScript這種匿名物件的寫法，在解析時有所限制。</p>
+<figure class="highlight javascript"><figcaption><span>app.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vue = &#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: <span class="string">'Hello World'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        buttonClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.message = <span class="string">'Hi World'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(vue);</span><br></pre></td></tr></table></figure>
+<p>若改用這種寫法，在第8行打<code>this</code>時，auto complete就會自動顯示<code>message</code>。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue010.png" alt=""></p>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>PhpStorm包含WebStorm，所以也可以拿來開發JavaScript，並對JavaScript加以測試、重構與偵錯，在PhpStorm打造好Vue.js的開發環境後，就可以開心的學習Vue.js了。</li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/phpstorm/phpstorm-spellcheck/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/tdd/tdd-solid/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-11-28 
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/PhpStorm/">PhpStorm<span>15</span></a></li> <li><a href="/tags/Vue-js/">Vue.js<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer>  </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'hAXbiVYFC92XF16_EhCh','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

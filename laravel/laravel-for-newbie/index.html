@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>給Laravel初學者的幾點建議 | 點燈坊</title>
+  <meta name="author" content="真 OO無双">
+  
+  <meta name="description" content="尤其適合傳統PHP開發者學習Laravel的建議">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <meta name="description" content="尤其適合傳統PHP開發者學習Laravel的建議">
+<meta property="og:type" content="article">
+<meta property="og:title" content="給Laravel初學者的幾點建議">
+<meta property="og:url" content="http://oomusou.io/laravel/laravel-for-newbie/index.html">
+<meta property="og:site_name" content="點燈坊">
+<meta property="og:description" content="尤其適合傳統PHP開發者學習Laravel的建議">
+<meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
+<meta property="og:updated_time" content="2016-03-22T14:03:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="給Laravel初學者的幾點建議">
+<meta name="twitter:description" content="尤其適合傳統PHP開發者學習Laravel的建議">
+ 
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">點燈坊</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+	
+		<div class="page-header">		
+			<h1> 給Laravel初學者的幾點建議</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+	
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> 尤其適合傳統PHP開發者學習Laravel的建議			
+		</div> <!-- alert -->
+		
+
+	<!-- toc -->
+	<div id="postTOC">
+		<span class="tocHeading">Contents</span>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#FAQ"><span class="toc-article-text">FAQ</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li></ol>
+    </div>
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>假如你對PHP的印象還停留在PHP與HTML夾雜、沒有OOP、沒有package、沒有MVC、沒有framework、沒有測試的寫法，那你應該來學學Laravel，它是一個使用PHP最新OOP語法、以composer管理package、MVC架構、融合RoR與ASP.NET MVC、支援單元測試的framework，可以說與傳統PHP的寫法完全不同，是一個更優雅且生產力更高的全新PHP。</p>
+<a id="more"></a>
+<h2 id="FAQ">FAQ</h2><hr>
+<p><span class="label label-danger">Q</span> <strong>我真的需要Framework嗎?</strong></p>
+<p><span class="label label-success">A</span> 傳統PHP算是HTML的preprocessor，類似C語言的<code>#</code>開頭關鍵字，如<code>#if</code>夾雜在C語言裡，主要是在產生C語言，而不是產生執行檔；而PHP的目的就是為了產生HTML，所以自然也就夾雜在HTML裡。</p>
+<p>假如只是簡單的<code>顯示邏輯</code>，夾雜在HTML就還可以接受，但問題是實務上的PHP，是同時將<code>顯示邏輯</code>、<code>商業邏輯</code>與<code>資料庫邏輯</code>全部與HTML夾雜在一起，別忘了網頁前端還有JavaScript，這就造成了傳統PHP是一個<code>.php</code>檔內，同時有HTML、JavaScript、PHP與SQL <code>4種語言</code>並存，複雜度之高可以想像，所以傳統PHP一直被戲稱是<code>義大利麵</code>程式碼。</p>
+<p>之後PHP也曾做一些改革，避免HTML與PHP並存，如Smarty這些<code>樣版引擎</code>的出現，專門負責<code>顯示邏輯</code>，而將<code>商業邏輯</code>與<code>資料庫邏輯</code>另外獨立出來，這種寫法已經比之前進步許多，也比較容易維護。</p>
+<p>但PHP仍然有許多問題，如 :</p>
+<ol>
+<li>一個網頁一個<code>.php</code>，駭客很容易根據你的副檔名就得知你用什麼後端技術，而輕易使用PHP的漏洞攻擊你。</li>
+<li>PHP缺乏統一的寫法，所以只要接手前人的程式，就必須去熟悉他的寫法，維護成本很高。</li>
+<li>每個PHP網頁都要從頭開始打造，開發效率很低。</li>
+</ol>
+<p>相對於同期其他網頁技術，如RoR，ASP.NET，JSP等，均開始以framework的方式呈現 :</p>
+<ol>
+<li>不再一個網頁一個檔，而改以MVC的方式呈獻，駭客無法再以網頁副檔名得知我後端用什麼技術。</li>
+<li>以framework方式<code>強制規定</code>統一的寫法，如需要哪些目錄，需要哪些檔案，這樣使得大家的寫法都差不多，很容易接手前人的程式，可大幅降低維護成本。</li>
+<li>不再每個網頁都需要從頭開始打造，取而代之的是很多<code>程式產生器</code> (Generator) 與<code>套件</code> (package)，只要透過一些指令就能幫我們產生程式的框架或下載套件，再加以客製化修改即可，可大幅增加開發效率。</li>
+</ol>
+<p><span class="label label-danger">Q</span> <strong>Framework與Library有什麼不同？</strong></p>
+<p><span class="label label-success">A</span> Framework與Library有以下重要的差異 :</p>
+<ul>
+<li>Library會定義很多方便好用的<code>函式</code>供我們使用，而專案整體架構 (目錄、檔案) 則由開發者<code>自行決定</code>，開發者會去<code>呼叫</code>library所提供的函式。</li>
+<li>Framework則會<code>強勢定義</code>整個架構的寫法，我們必須遵守它所定義的架構，去將程式碼<code>填</code>進去，因此大家寫出來的程式碼都差不多，將來更容易維護。</li>
+<li>Framework不只提供好用的<code>函式</code>而已，還會提供更進階的<code>套件</code>，這是更接近實務結果的<code>半成品</code>，因此開發效率更高。</li>
+</ul>
+<p><span class="label label-danger">Q</span> <strong>使用Framework有什麼缺點？</strong></p>
+<p><span class="label label-success">A</span> Framework聽起來很棒，但天底下的事有優點就一定有缺點 :</p>
+<ol>
+<li>Framework的執行速度一定比傳統PHP<code>慢</code>，這也是為什麼當有人問PHP爸爸Rasmus Lerdorf對於PHP使用framework的看法時，他的回答是 :「<code>若你不在乎速度就用吧！</code>」，但目前半導體進步的速度很快，根據莫爾定律，半導體速度每兩年會增加一倍，且現在雲端技術進步，若速度不夠就<code>花錢</code>開更多的虛擬主機即可，所以速度問題已經不如以往那麼重要。</li>
+<li>Framework需要付出<code>學習代價</code>，因為它帶出很多傳統PHP沒有的觀念，如OOP、MVC、composer、package、ORM、migration….等，但只要能通過這些新的觀念的門檻，之後的維護成本會降低，開發效率會提高。</li>
+</ol>
+<p><span class="label label-danger">Q</span> <strong>我該怎麼挑選Framework？</strong></p>
+<p><span class="label label-success">A</span> PHP與JavaScript一樣，有眾多的framework可以挑選，大致上可分為4類 :</p>
+<ol>
+<li>強調支援PHP版本最廣 :CodeIgniter。</li>
+<li>強調全功能 :Symfony與Laravel。</li>
+<li>強調簡約 :Slim與Lumen。</li>
+<li>強調速度 :Falcon。 : </li>
+</ol>
+<p>簡單的介紹這些framework的特色 :</p>
+<ul>
+<li>CodeIgniter :最新的CodeIgniter 3.x版只需要PHP 5.2.4以上即可執行，很適合接案，且無法控制代管主機的PHP版本者使用。</li>
+<li>Symfony :優異的全功能framework，學習門檻較高，Laravel底層使用很多Symfony的套件。</li>
+<li>Laravel :簡單易學的全功能framework，架構優美，社群活躍。</li>
+<li>Slim :僅提供基本功能，執行速度較全功能的framework快，適合喜歡自己找套件兜出想要功能者使用。</li>
+<li>Lumen :Laravel的精簡版本。</li>
+<li>Falcon :整個framework不是以PHP寫的，而是以C開發，因此速度非常快。</li>
+</ul>
+<p>對於framework的挑選，我有幾個建議 :</p>
+<ol>
+<li>挑自己喜歡的架構 :每個framework都有它自己的特色，但它的架構可能不是自己喜歡的，畢竟要<code>Code Happy</code>，所以首先必須要挑一個自己喜歡的framework，這樣才能快快樂樂的一直用下去。</li>
+<li>用的人多 :假如你是初學者，根本不知道自己喜歡什麼，那另外一個指標就是看<code>佔有率</code>，根據2015年三月Sitepoint所做的調查，在PHP眾多framework當中，Laravel的佔有率第一。<br><img src="/images/laravel/laravel-for-newbie/faq000.png" alt=""><br>用的人越用，表示有問題越容易google，因為相同的問題全世界不會只有你遇到，因而越容易找得到解決的方法。</li>
+<li>社群活躍 :一個技術要普及，除了技術本身的優越外，還要靠眾多的<code>傳教士</code>傳遞福音，辦讀書會、辦seminar、寫tutorial、Facebook與Slack討論問題…等，這樣才會讓更多的初學者有管道可以學習討論，而<a href="https://www.facebook.com/groups/laravel.tw/" target="_blank" rel="external">Laravel台灣</a>是目前台灣PHP最活躍的社團，而且活動都是免費，連場地費都不用，這也是當初我選擇學習Laravel最大的原因。</li>
+</ol>
+<p><span class="label label-danger">Q</span> <strong>Laravel環境怎麼這麼難安裝？</strong></p>
+<p><span class="label label-success">A</span> Laravel的環境是有名的難安裝，主要有兩個原因 :</p>
+<ol>
+<li>Laravel對於PHP版本要求較高 :以Laravel 5.1而言，要求PHP 5.5.9以上，因為Laravel用到了PHP最新的OOP語法開發，也就是說，只要PHP一提供新的功能，Laravel就會想盡辦法用上，所以Laravel對PHP版本要求很高。</li>
+<li>Laravel使用了較罕用的PHP extension :在Windows平台，一般人都會使用類似<a href="http://www.wampserver.com/en/" target="_blank" rel="external">Wampserver</a>之類的懶人包開發PHP，不過這些懶人包預設並沒有安裝Laravel所需要的PHP extension，而這些extension又是C語言所開發，要求PHP開發者自己使用Visual C++去編譯這些PHP extension又有難度，這導致要Laravel要跑在Windows平台比較困難，不過這些PHP extension對於OS X或Ubuntu都不是問題，而且正式上線主機多半也都是Linux，所以不用擔心正式上線主機難安裝Laravel。</li>
+</ol>
+<p>因為太多初學者因為Laravel環境難安裝而卡關，導致還沒開始學習Laravel就放棄，Laravel官方因此提供<a href="http://laravel.com/docs/master/homestead" target="_blank" rel="external">Homestead</a>，這是一個基於VirtualBox的VM，使用的是Ubuntu，已經幫你安裝好Laravel所需要的環境與server，如Nginx、MySQL…等，讓你無論是在Windows、OS X或Linux上，都可以馬上安裝Homestead開始學習Laravel。</p>
+<p><span class="label label-danger">Q</span> <strong> 什麼是MVC架構？</strong></p>
+<p><span class="label label-success">A</span> 傳統PHP是將<code>顯示邏輯</code>、<code>商業邏輯</code>與<code>資料庫邏輯</code>全部寫在單一的<code>*.php</code>檔案中，因為同時包含HTML、JavaScript、PHP與SQL<code>4種語言</code>並存，所以很難維護。</p>
+<p>而MVC架構是將整個專案分成model、view、controller三層，對於中型專案，大體上可以將model放<code>資料庫邏輯</code>，view放<code>顯示邏輯</code>，而controller放<code>商業邏輯</code>。<br>不過補充一個很重要的概念，MVC架構並不是將專案<code>只</code>分成三層而已，而是將<code>分層</code>的概念放進專案中，在大型專案中，會使用以下方式 :</p>
+<ul>
+<li><code>資料庫邏輯</code>改放在repository中，以分擔model的負擔。</li>
+<li><code>顯示邏輯</code>依然放在view裡。</li>
+<li><code>商業邏輯</code>不會放在controller中，會自行依據domain與<code>SOLID</code>原則去分拆class，controller將擔任調用view與domain class的角色。</li>
+</ul>
+<p>之所以將model與controller分拆，主要是因為在大型專案上，<code>資料庫邏輯</code>與<code>商業邏輯</code>太過複雜，只靠model與controller分兩層還是不夠用，所以必須再切得更細。</p>
+<p><span class="label label-danger">Q</span> <strong>怎麼多了這麼多資料夾？</strong></p>
+<p><span class="label label-success">A</span> 傳統PHP開發，檔案與資料夾都是由開發者自行定義，所以當你接手別人留下來的專案時，假如有文件最好，首先必須先閱讀文件才知道每個檔案與資料夾的功用為何，否則就得慢慢的trace code；而Laravel一安裝完後，就會發現有預設有很多資料夾與檔案，初學者當然也是要看Laravel文件，但一旦學過一次之後，之後再接手其他人使用Laravel開發的專案時，你會發現因為Laravel已經將資料夾與檔案架構定好，所以每個人寫出來的架構都<code>一樣</code>，所以上手很快，降低了維護成本。</p>
+<p><span class="label label-danger">Q</span> <strong>怎麼這麼多指令？</strong></p>
+<p><span class="label label-success">A</span> Laravel之所以會多了這麼多指令，主要來自於兩項 :</p>
+<ol>
+<li>Composer :負責安裝套件。</li>
+<li>Artisan :Laravel的<code>程式產生器</code>，如負責產生model與controller…等程式框架，讓我們只需繼續客製化即可，不用從頭開始打造。</li>
+</ol>
+<p>這些都是Laravel提高生產力的關鍵，當然天下沒有白吃的午餐，你必須要熟悉composer與artisan兩個工具怎麼使用，他沒有GUI介面，是個CLI的程式，因此有很多參數要記。</p>
+<p><span class="label label-danger">Q</span> <strong>什麼是OOP？</strong></p>
+<p><span class="label label-success">A</span> OOP全名為 <strong><em>Object Oriented Programming</em></strong>，中文稱為<code>物件導向程式設計</code>，OOP主要是一種對大型程式<code>拆解</code>的技術，讓我們更容易去維護大型專案，從PHP 5之後陸續開始支援OOP，而Laravel更是依照OOP的SOLID精神所設計的framework，所以在寫Laravel時，會深深感受到濃濃的OOP味，這是寫傳統PHP無法感受的，而這也是我打從心裡喜歡Laravel的主要原因，除此之外，你也可以把Laravel的source code當成學習OOP的best practice，在trace其source code時，去體會SOLID的內涵，去看看高手如何實踐SOLID，這也是寫傳統PHP所學不到的。</p>
+<p><span class="label label-danger">Q</span> <strong>什麼是Composer與Package？</strong></p>
+<p><span class="label label-success">A</span> 當程式開始以OOP方式開發後，一些高手就會開始將與商業邏輯無關，卻又常常會用到的功能以<code>套件</code>的方式打包，讓我們開發程式時，不用每次都重新製造輪子，可以站在高手的肩膀上，使用他們開發的套件繼續開發。</p>
+<p>但問題來了，套件也可能是依賴其他套件所開發，所以安裝A套件時，必須先安裝B套件，而B套件又可能依賴C套件，所以在安裝套件時，就面臨了套件<code>相依性</code>的問題了。</p>
+<p>還記得我們在使用Ubuntu時，要安裝甚麼套件，只要下<code>apt-get install</code>即可嗎？剩下的<code>apt-get</code>都會幫你搞定，而composer就類似<code>apt-get</code>一樣，只是<code>apt-get</code>是管理<code>Linux套件</code>，而composer是管理<code>PHP套件</code>。</p>
+<p><span class="label label-danger">Q</span> <strong>什麼是Namespace？</strong></p>
+<p><span class="label label-success">A</span> 由於PHP從原本從頭到尾<code>自己打造</code>的開發方式，變成以<code>套件</code>為主的開發方式，面臨了一個很基本的問題 :若我的class名稱與套件內的class名稱相衝突怎麼辦？在沒有namespace的PHP時，只能去改變我們自己的class名稱，沒有別的辦法，本來使用套件是為了加速開發，結果卻因為class名稱相衝突而問題更大…。</p>
+<p>為了解決這個問題，PHP 5.3提出了namespace，也就是說，套件可以有自己的namespace，我們的專案可以有自己的namespace，只要在namespace不相衝突的情況下，class名稱相衝突是允許的。這就類似台北市可以有博愛路，高雄市也可以有博愛路，雖然都是博愛路 (<code>class名稱相同</code>)，但因為分別在台北市與高雄市 (<code>namespace不同</code>)，所以我們仍然可以分辨兩者的不同。</p>
+<p>所以建議從現在開始，寫PHP一定要搭配namespace，最少以公司名稱作為第一層namespace名稱，這樣才可以避免class名稱與套件的class名稱相衝突的問題。</p>
+<p><span class="label label-danger">Q</span> <strong>什麼是ORM？</strong></p>
+<p><span class="label label-success">A</span> ORM全名稱為 <strong><em>Object Relational Mapping</em></strong> ，Laravel提供的ORM稱為<a href="http://laravel.com/docs/master/eloquent" target="_blank" rel="external">Eloquent</a>。</p>
+<p>寫PHP一定要面臨資料庫，傳統PHP會使用SQL搭配PDO去存取資料庫，但這種寫法有一些問題 :</p>
+<ol>
+<li>寫PHP思考的是OOP，寫SQL卻要思考<code>JOIN</code>，這是兩個完全不同的思考方式。</li>
+<li>SQL的<code>JOIN</code>寫法較難理解，與PHP一行一行執行的方式不一樣。</li>
+<li>SQL的<code>JOIN</code>較難debug，常常必須在phpMyAdmin上一翻兩瞪眼看結果，而無法一行一行的debug。</li>
+<li>傳統會以湊SQL字串的方式寫SQL，一不小心很容易造成<code>SQL Injection</code>。</li>
+</ol>
+<p>而ORM就是將SQL加以OOP話，讓我們以習慣的<code>for</code>迴圈，一行一行的執行方式來存取資料庫，至於SQL呢，ORM會幫我們組出適當的SQL傳到資料庫。</p>
+<p>ORM並不是要取代SQL，一些較複雜的query可能還是需要直接下SQL，只是ORM讓我們有更多的武器，如單純的<code>新增</code> <code>修改</code> <code>刪除</code>就非常適合使用ORM的方式。</p>
+<p><span class="label label-danger">Q</span> <strong>什麼是Migration？</strong></p>
+<p><span class="label label-success">A</span> Git的出現讓我們可以對程式碼加以做版本控制，但資料庫欄位呢？如今天我們發現資料庫欄位開錯了，想回到幾天前的資料庫欄位狀態呢？</p>
+<p>簡單的說，migration就是幫我們對資料庫欄位做版本控制，由於migration是使用PHP開發，可以進git做版本控管，所以有了migration，我們也可以輕易的將資料庫欄位回復到某一天的狀態，相當於對資料庫欄位也做了版本管理。</p>
+<p><span class="label label-danger">Q</span> <strong>什麼是Blade？</strong></p>
+<p><span class="label label-success">A</span> 簡單的說，Blade就是Laravel所提供的樣版引擎，它有幾個特點 :</p>
+<ol>
+<li>如網頁有重複的地方，可以使用blade的<code>@extends</code>，類似PHP的繼承，將來要修改時就不用每個網頁都修改，只要修改一處即可。</li>
+<li>Blade提供<code>有限的</code>邏輯功能，讓我們可以實現<code>顯示邏輯</code>，而不會讓我們不自覺的<code>寫太多</code>PHP，而又回到傳統PHP的<code>PHP與HTML混在一起</code>的寫法。</li>
+</ol>
+<p><span class="label label-danger">Q</span> <strong>什麼是TDD？</strong></p>
+<p><span class="label label-success">A</span> TDD全名為 <strong><em> Test Driven Development </em></strong>，是一種<code>先寫測試，然後開發</code>的開發方式，這有幾項優點 :</p>
+<ol>
+<li>由於先寫測試，會使得我們對Spec更加了解。</li>
+<li>由於先寫測試，使得將來的重構更有屏障，不用擔心重構將程式改壞掉。</li>
+<li>由於先寫測試，使我們能提早發現程式架構問題，若自己寫的程式連測試都不好寫，表示架構一定不符合SOLID。</li>
+</ol>
+<p>Laravel是一個支援TDD的framework，當你安裝好Laravel，已經將PHPUnit、PHPSpec、Mockery…等會用到的套件裝好，且Laravel本身也提供很多的helper function讓我們更方便測試的model、view與controller。</p>
+<p><span class="label label-danger">Q</span> <strong>我該怎麼學習Laravel呢？</strong></p>
+<p><span class="label label-success">A</span> 由於Laravel是基於PHP，因此學習上要分成兩部分 :</p>
+<ul>
+<li><p>PHP部分 :不要再看坊間任何PHP + MySQL的書了，那種都是教傳統PHP的寫法，若真要看PHP的書，只推<a href="http://shop.oreilly.com/product/0636920033868.do" target="_blank" rel="external">Modern PHP</a>，作者是Slim framework的作者Josh Lockhart，這本書講的是全新的PHP，使用OOP、PSR、composer、package、framework、TDD的開發方式。<br><img src="/images/laravel/laravel-for-newbie/faq001.jpg" alt=""></p>
+</li>
+<li><p>Laravel部分 :</p>
+<ol>
+<li><a href="http://www.laravel-dojo.com/" target="_blank" rel="external">Laravel Dojo</a> :幫我們很豐富的Laravel學習資源，尤其<a href="http://www.laravel-dojo.com/workshops/201507-ntpc" target="_blank" rel="external">新北市樹林國小Laravel工作坊</a>的slide對初學者來說非常完整，當初我也是看這一份slide開始學Laravel。</li>
+<li><a href="https://laracasts.com/" target="_blank" rel="external">Laracast</a> :Laravel官方教學頻道，初級教學免費，一些中高級課程雖然要收費，但非常值得，尤其很多實戰的例子，可以讓你在最短時間掌握Laravel。</li>
+<li><a href="http://laravel.com/" target="_blank" rel="external">Laravel官網</a> :當你有基礎後，建議將官網資料全部看一遍，官網資料不算tutorial，但卻是最完整的參考資料。</li>
+<li>剩下就是多參加<a href="https://www.facebook.com/groups/laravel.tw/" target="_blank" rel="external">Laravel台灣</a>與<a href="https://www.facebook.com/groups/849639948396465/" target="_blank" rel="external">PHP也有Day</a>的社團活動，基本上每個月會有3個星期四有活動，兩天是LaraDiner讀書會，一天是PHP也有Day演講，每個月活動日期會在月初在Facebook公告，你可以將你的問題帶來發問，也可帶作品來這裡分享。</li>
+</ol>
+</li>
+</ul>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>為了寫出更好的PHP，一定得付出<code>學習代價</code>，所幸Laravel的學習曲線相當平緩，而且參考資料又多，社群非常熱心活躍，相當值得投資。</li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+				
+    	<li class="prev"><a href="/composer/composer-dev/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
+
+        <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/laravel/laravel-debugbar/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-10-03 
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Laravel/">Laravel<span>24</span></a></li> <li><a href="/tags/PHP/">PHP<span>13</span></a></li>
+    </ul>
+	</div>
+		
+
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer>  </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'hAXbiVYFC92XF16_EhCh','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>
