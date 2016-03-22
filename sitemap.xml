@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/laravel/elixir/elixir-nodejs/</loc>
+    <lastmod>2016-03-22T14:37:25.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-tdd-refactor/</loc>
+    <lastmod>2016-03-22T14:31:42.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/vuejs/vuejs-checkbox-button-disable/</loc>
     <lastmod>2016-03-22T14:26:08.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/elixir/elixir-nodejs/</loc>
-    <lastmod>2016-03-22T14:25:16.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://oomusou.io/tags/index.html</loc>
     <lastmod>2016-03-22T14:03:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/tdd/tdd-repository-testing/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-tdd-refactor/</loc>
+    <loc>http://oomusou.io/vuejs/vuejs-on-phpstorm/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -157,7 +157,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/vuejs/vuejs-on-phpstorm/</loc>
+    <loc>http://oomusou.io/tdd/tdd-solid/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -247,7 +247,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-solid/</loc>
+    <loc>http://oomusou.io/tdd/tdd-repository-testing/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   

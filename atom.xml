@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-03-22T14:25:16.000Z</updated>
+  <updated>2016-03-22T14:37:25.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/laravel/elixir/elixir-nodejs/"/>
     <id>http://oomusou.io/laravel/elixir/elixir-nodejs/</id>
     <published>2016-03-22T12:23:43.000Z</published>
-    <updated>2016-03-22T14:25:16.000Z</updated>
+    <updated>2016-03-22T14:37:25.000Z</updated>
     <content type="html"><![CDATA[<p>Laravel雖然為後端framework，但提供了Laravel Elixir整合了很多好用前端工具，其基於3個更基本的前端工具 : <strong>Node.js</strong>、<strong>NPM</strong>與<strong>Gulp</strong>，這三個必須先搞定後，才能享受Laravel Elixir所帶來的便利。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -97,7 +97,7 @@
 </ul>
 ]]></content>
     <summary type="html">
-    <![CDATA[安裝Laravel所需要的前端開發環境]]>
+    <![CDATA[使用Laravel Elixir整合前端開發工具]]>
     
     </summary>
     
@@ -1149,7 +1149,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-tdd-refactor/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-tdd-refactor/</id>
     <published>2016-01-14T12:23:43.000Z</published>
-    <updated>2016-03-22T14:03:51.000Z</updated>
+    <updated>2016-03-22T14:31:42.000Z</updated>
     <content type="html"><![CDATA[<p>TDD要求我們先寫測試，雖然會在專案一開始多花一點時間，但只要我們選對工具，就可將花在<strong>測試</strong>、<strong>重構</strong>與<strong>偵錯</strong>的時間再省回來，讓我們雖然輸在起跑點，卻可贏在決勝點。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -1218,7 +1218,7 @@
 <h3 id="安裝Laravel_Elixir">安裝Laravel Elixir</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ npm install</span><br></pre></td></tr></table></figure>
 <p>由於我們會使用Laravel Elixir在背後自動執行測試，因此要使用<code>npm install</code>。<span class="margin-note-marker"><sup>7</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">7</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel51Refactor_demo/commit/817a91c43ee3ee113dd5474fbed1995d25003de8" target="_blank" rel="external">npm install</a></span></span></span></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ gulp</span><br></pre></td></tr></table></figure>
-<p>執行<code>gulp</code>之後，若能出現如下圖的<code>Sass Compiled</code>，表示Laravel Elixir已經安裝成功。<span class="margin-note-marker"><sup>8</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">8</span>Laravel Elixir是否能安裝成功，取決幾個因素：Node.js、Gulp與Laravel Elixir之間的版本相依，若真的搞不定，可以參考Homestead內安裝的Node.js與Gulp的版本。</span></span></span><br><img src="/images/phpstorm/phpstorm-tdd-refactor/refactor011.png" alt=""></p>
+<p>執行<code>gulp</code>之後，若能出現如下圖的<code>Sass Compiled</code>，表示Laravel Elixir已經安裝成功。<span class="margin-note-marker"><sup>8</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">8</span>Laravel Elixir是否能安裝成功，取決幾個因素：Node.js、Gulp與Laravel Elixir之間的版本相依，詳細請參考<a href="/laravel/elixir/elixir-nodejs/">如何在OS X安裝Laravel前端開發環境?</a></span></span></span><br><img src="/images/phpstorm/phpstorm-tdd-refactor/refactor011.png" alt=""></p>
 <h3 id="使用PhpStorm開啟">使用PhpStorm開啟</h3><p><img src="/images/phpstorm/phpstorm-tdd-refactor/refactor000.png" alt=""></p>
 <p>啟動PhpStorm。</p>
 <p><img src="/images/phpstorm/phpstorm-tdd-refactor/refactor001.png" alt=""></p>
