@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="使用SQLite In-Memory與Test Factory Generator測試Repository">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-04-04T15:54:28.000Z">
+<meta property="og:updated_time" content="2016-04-04T16:02:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何測試Repository?">
 <meta name="twitter:description" content="使用SQLite In-Memory與Test Factory Generator測試Repository">
@@ -102,7 +102,7 @@
 	<!-- toc -->
 	<div id="postTOC">
 		<span class="tocHeading">Contents</span>
-		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Repository模式"><span class="toc-article-text">Repository模式</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Test_Factory_Generator"><span class="toc-article-text">Test Factory Generator</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立Model與Migration"><span class="toc-article-text">建立Model與Migration</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立Model_Factory"><span class="toc-article-text">建立Model Factory</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#新增SQLite_In-Memory連線"><span class="toc-article-text">新增SQLite In-Memory連線</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#測試SQLite_In-Memory連線"><span class="toc-article-text">測試SQLite In-Memory連線</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#測試Repository"><span class="toc-article-text">測試Repository</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Sample_Code"><span class="toc-article-text">Sample Code</span></a></li></ol>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Repository模式"><span class="toc-article-text">Repository模式</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Test_Factory_Generator"><span class="toc-article-text">Test Factory Generator</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立Model與Migration"><span class="toc-article-text">建立Model與Migration</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立Model_Factory"><span class="toc-article-text">建立Model Factory</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#新增SQLite_In-Memory連線"><span class="toc-article-text">新增SQLite In-Memory連線</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#測試SQLite_In-Memory連線"><span class="toc-article-text">測試SQLite In-Memory連線</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#TDD建立Repository"><span class="toc-article-text">TDD建立Repository</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Sample_Code"><span class="toc-article-text">Sample Code</span></a></li></ol>
     </div>
 
 	<!-- content -->
@@ -188,7 +188,7 @@
 <p>實際跑測試，<span class="label label-success">綠燈</span>表示連線成功。<span class="margin-note-marker"><sup>14</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">14</span>關於如何在PhpStorm跑單元測試，詳細請參考<a href="/phpstorm/phpstorm-debug-testing/">如何使用PhpStorm測試與除錯?</a></span></span></span></p>
 <div class="alert alert-info"><i class="fa fa-info"></i>  為什麼不需在tearDown()下Artisan::call('migrate:reset')?</div>
 <p>因為SQLite In-Memory，只要資料庫連線一斷，SQLite會自動釋放記憶體，也就是說，當每個測試案例執行結束時，因為資料庫連線斷線，SQLite就會自動釋放記憶體，因此不需再下migration reset。</p>
-<h2 id="測試Repository">測試Repository</h2><hr>
+<h2 id="TDD建立Repository">TDD建立Repository</h2><hr>
 <p>之前的所有動作都只是為了建立repository的測試環境，接下來將以TDD的方式建立<code>PostRepository</code>。</p>
 <p><strong>建立PostRepository的單元測試</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan make:test Unit/Repositories/PostRepositoryTest</span><br></pre></td></tr></table></figure></p>
 <p><img src="/images/tdd/tdd-repository-testing/repo008.png" alt=""></p>
