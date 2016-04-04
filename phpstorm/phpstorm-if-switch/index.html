@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="將if else重構成可讀性較高的switch case">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-03-23T23:28:39.000Z">
+<meta property="og:updated_time" content="2016-04-04T07:24:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在PhpStorm將if elseif重構成switch case?">
 <meta name="twitter:description" content="將if else重構成可讀性較高的switch case">
@@ -113,7 +113,7 @@
 <p>PhpStorm 2016.1</p>
 <h2 id="if_else">if else</h2><hr>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">calculateTotalPrice</span><span class="params">()</span> : <span class="title">int</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="variable">$totalPrice</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$this</span>-&gt;orders <span class="keyword">as</span> <span class="variable">$order</span>) &#123;</span><br><span class="line">        <span class="variable">$price</span> = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$order</span>-&gt;getMovie()-&gt;getType() == <span class="string">'Regular'</span>) &#123;</span><br><span class="line">            <span class="variable">$price</span> += <span class="number">100</span>;</span><br><span class="line">            <span class="variable">$price</span> += (<span class="variable">$order</span>-&gt;getDays() - <span class="number">7</span>) * <span class="number">10</span>;</span><br><span class="line">        &#125; <span class="keyword">elseif</span> (<span class="variable">$order</span>-&gt;getMovie()-&gt;getType() == <span class="string">'NewRelease'</span>) &#123;</span><br><span class="line">            <span class="variable">$price</span> += <span class="number">150</span>;</span><br><span class="line">            <span class="variable">$price</span> += (<span class="variable">$order</span>-&gt;getDays() - <span class="number">3</span>) * <span class="number">30</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">elseif</span> (<span class="variable">$order</span>-&gt;getMovie()-&gt;getType() == <span class="string">'Children'</span>) &#123;</span><br><span class="line">            <span class="variable">$price</span> += <span class="number">40</span>;</span><br><span class="line">            <span class="variable">$price</span> += (<span class="variable">$order</span>-&gt;getDays() - <span class="number">7</span>) * <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable">$totalPrice</span> += <span class="variable">$price</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$totalPrice</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如以上程式，<code>if elseif</code>是根據<code>$order-&gt;getMovie()-&gt;getType()</code>判斷，這個可以用<code>switch case</code>改寫，可讀性會更高。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>事實上這段程式是<a href="http://localhost:4000/phpstorm/phpstorm-tdd-refactor/#if_else改成switch" target="_blank" rel="external">如何使用PhpStorm實現TDD、重構與偵錯?</a>的範例，當時將<code>if elseif</code>轉成<code>switch case</code>是用手工做，因為當時的PhpStorm 10.0.3還沒有<code>if elseif</code>重構成<code>switch case</code>功能。</span></span></span></p>
+<p>如以上程式，<code>if elseif</code>是根據<code>$order-&gt;getMovie()-&gt;getType()</code>判斷，這個可以用<code>switch case</code>改寫，可讀性會更高。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>事實上這段程式是<a href="/phpstorm-tdd-refactor/#if_else改成switch">如何使用PhpStorm實現TDD、重構與偵錯?</a>的範例，當時將<code>if elseif</code>轉成<code>switch case</code>是用手工做，因為當時的PhpStorm 10.0.3還沒有<code>if elseif</code>重構成<code>switch case</code>功能。</span></span></span></p>
 <p><img src="/images/phpstorm/phpstorm-if-switch/switch000.png" alt=""></p>
 <p>將游標放在<code>if</code>前面，按熱鍵&#8997; + &#8617;    ，發現只有看到<code>Flip if-else</code>功能，不是可以轉成<code>switch case</code>嗎?</p>
 <h2 id="Extract_Variable">Extract Variable</h2><hr>
@@ -148,9 +148,9 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-		
-          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-        
+				
+    	<li class="prev"><a href="/tdd/tdd-repository-testing/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
 
         <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
 

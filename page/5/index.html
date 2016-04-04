@@ -99,7 +99,7 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			
-			<div class="article-title"><a href="/tdd/tdd-repository-testing/" title="使用SQLite In-Memory Database是又快又乾淨的方法">如何對Repository做測試?</a></div>						
+			<div class="article-title"><a href="/ci/travis-ci-setup/" title="每次對GitHub push之後，Travis CI就會自動執行unit test">如何使用Travis CI自動測試?</a></div>						
 		</h3>
 	
 
@@ -109,7 +109,7 @@
   
 	<div class="col-md-4">
 	  <div class="thumbnail">
-	    <a href="/tdd/tdd-repository-testing/"><img src="/images/feature/tdd.png" alt="如何對Repository做測試?"  class="nofancybox"></a>
+	    <a href="/ci/travis-ci-setup/"><img src="/images/feature/travis_ci.png" alt="如何使用Travis CI自動測試?"  class="nofancybox"></a>
 	  </div>
 	</div>
   
@@ -117,12 +117,12 @@
 	<div class="col-md-8">
   
   
-	<p>一般我們會把<code>資料庫邏輯</code>寫在repository，只要有<code>邏輯</code>，就需要去寫<code>測試</code>，畢竟我們寫的程式，可能跟我們想的不一樣。由於repository主要目的就是在<code>讀寫資料庫</code>，所以勢必要<code>真的</code>去讀寫資料庫，而不能靠<code>mock</code>，但若真的去讀寫MySQL，速度會比較慢，且可能本來就有一些測試資料，因此會違反<strong>FIRST</strong>原則的<strong>Fast</strong>與<strong>Independent</strong>，比較理想的方式是測試時改去讀寫<a href="https://www.sqlite.org/inmemorydb.html">SQLite In-Memory Database</a>。</p>
+	<p>若一個專案由多人共同開發，你可能相依到別人的class，自己在local本機unit test測試通過，並不代表上線之後沒問題，因為很可能別人class的修改導致你的class 執行失敗。<br>Travis CI與GitHub高度整合，只要你對GitHub push之後，Travis CI就能自動從GitHub抓最新版的code，並執行PHPUnit，最後將測試結果email給你。</p>
   	
     </div>
     <div class="col-md-10"></div>
     <div class="col-md-2">
-	  <a type="button" href="/tdd/tdd-repository-testing/#more" class="btn btn-default more">Read More</a>
+	  <a type="button" href="/ci/travis-ci-setup/#more" class="btn btn-default more">Read More</a>
     </div>
   </div>
 </div>
@@ -484,6 +484,10 @@
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/tdd/tdd-repository-testing/"  title="使用SQLite In-Memory與Test Factory Generator測試Repository" ><i class="fa fa-file-o"></i>如何測試Repository?</a>
+      </li>
+    
+      <li>
         <a href="/phpstorm/phpstorm-if-switch/"  title="將if else重構成可讀性較高的switch case" ><i class="fa fa-file-o"></i>如何在PhpStorm將if elseif重構成switch case?</a>
       </li>
     
@@ -497,10 +501,6 @@
     
       <li>
         <a href="/laravel/homestead/homestead-per-project/"  title="再也不用擔心專案A安裝的元件會影響到專案B了" ><i class="fa fa-file-o"></i>如何一個專案使用一個Homestead?</a>
-      </li>
-    
-      <li>
-        <a href="/laravel/homestead/homestead-osx/"  title="在OS X享受Homestead的便利" ><i class="fa fa-file-o"></i>如何在OS X安裝Homestead?</a>
       </li>
     
   </ul>
