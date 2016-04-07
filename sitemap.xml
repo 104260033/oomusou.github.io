@@ -2,8 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/tdd/tdd-isolated-test/</loc>
+    <lastmod>2016-04-07T16:46:11.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/tdd/tdd-repository-testing/</loc>
-    <lastmod>2016-04-04T23:50:44.000Z</lastmod>
+    <lastmod>2016-04-05T03:09:10.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-if-switch/</loc>
+    <lastmod>2016-04-05T01:27:30.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/laravel/laravel-repository/</loc>
+    <lastmod>2016-04-05T00:02:08.000Z</lastmod>
   </url>
   
   <url>
@@ -14,11 +29,6 @@
   <url>
     <loc>http://oomusou.io/laravel/elixir/elixir-nodejs/</loc>
     <lastmod>2016-04-04T07:24:43.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-if-switch/</loc>
-    <lastmod>2016-04-04T07:24:10.000Z</lastmod>
   </url>
   
   <url>
@@ -37,17 +47,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-91/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/refactor/refactor-remove-assignments-to-parameters/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/tdd/tdd-solid/</loc>
+    <loc>http://oomusou.io/vuejs/vuejs-on-phpstorm/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -77,12 +77,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/vuejs/vuejs-on-phpstorm/</loc>
+    <loc>http://oomusou.io/tdd/tdd-phpunit-native-function/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-phpunit-native-function/</loc>
+    <loc>http://oomusou.io/tdd/tdd-jaceju/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -157,7 +157,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-jaceju/</loc>
+    <loc>http://oomusou.io/tdd/tdd-solid/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -187,7 +187,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-repository/</loc>
+    <loc>http://oomusou.io/tdd/tdd-91/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -252,7 +252,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-isolated-test/</loc>
+    <loc>http://oomusou.io/refactor/refactor-remove-assignments-to-parameters/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   

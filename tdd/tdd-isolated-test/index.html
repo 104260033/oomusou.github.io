@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="幾個解決內含相依物件而無法隔離測試的方法">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-03-22T14:03:51.000Z">
+<meta property="og:updated_time" content="2016-04-07T16:46:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何測試內含相依物件的函式?">
 <meta name="twitter:description" content="幾個解決內含相依物件而無法隔離測試的方法">
@@ -121,7 +121,7 @@
 </li>
 </ol>
 <h2 id="為什麼要隔離？">為什麼要隔離？</h2><hr>
-<p>實際程式彼此之間一定都有關聯，所以一定會有相依物件，為了做unit test，我們需要將這些相依物件做隔離 : <span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>以下5點歸納來自於<a href="http://jaceju.net" target="_blank" rel="external">大澤木小鐵</a>的<a href="/tdd/tdd-jaceju/">在PHP上學會自動化測試與實戰TDD</a>與<a href="https://www.facebook.com/91agile/?fref=ts" target="_blank" rel="external">91哥陳仕傑</a>在<a href="https://skilltree.my" target="_blank" rel="external">SkillTree</a>開的<a href="https://skilltree.my/events/mbh" target="_blank" rel="external">自動測試與TDD開發實務(使用C#)第四梯</a>的講義內容。</span></span></span></p>
+<p>實際程式彼此之間一定都有關聯，所以一定會有相依物件，為了做unit test，我們需要將這些相依物件做隔離 : <span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>以下5點歸納來自於<a href="http://jaceju.net" target="_blank" rel="external">大澤木小鐵</a>的<a href="/tdd/tdd-jaceju/">在PHP上學會自動化測試與實戰TDD</a>與<a href="https://www.facebook.com/91agile/?fref=ts" target="_blank" rel="external">陳仕傑</a>在<a href="https://skilltree.my" target="_blank" rel="external">SkillTree</a>開的<a href="https://skilltree.my/events/mbh" target="_blank" rel="external">自動測試與TDD開發實務(使用C#)第四梯</a>的講義內容。</span></span></span></p>
 <ol>
 <li><p><strong>執行速度快</strong><br>unit test的執行速度就是要快，才能方便我們不斷的測試與重構，若程式中使用了<code>外部API</code>、<code>檔案存取</code>、<code>資料庫存取</code>這些，一定要想辦法隔離掉，才能加速測試速度，若測試包含了<code>外部API</code>、<code>檔案存取</code>、<code>資料庫存取</code>，就不算是unit test了，而是integration test。</p>
 </li>
