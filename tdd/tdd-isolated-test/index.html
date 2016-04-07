@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="幾個解決內含相依物件而無法隔離測試的方法">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-04-07T16:46:11.000Z">
+<meta property="og:updated_time" content="2016-04-07T16:48:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何測試內含相依物件的函式?">
 <meta name="twitter:description" content="幾個解決內含相依物件而無法隔離測試的方法">
@@ -137,7 +137,7 @@
 </ul>
 <p>若我們能將這些相依物件加以隔離，也就是說不用再依賴<code>某些前提下</code>才能做測試，我們就能單獨對每一個method做測試，也因為如此，我們會非常容易debug，若某個method的unit test出錯，就一定是該method的邏輯有問題，而不是<code>外部API</code>、<code>檔案</code>或<code>資料庫</code>有問題。</p>
 </li>
-<li><p><strong><em>測試程式的健壯性</em></strong><br>一個好的unit test，應該只在<code>需求異動</code>才需要修改，若沒有隔離掉相依物件，則可能相依物件修改，則unit test也要跟著修改。</p>
+<li><p><strong>測試程式的健壯性</strong><br>一個好的unit test，應該只在<code>需求異動</code>才需要修改，若沒有隔離掉相依物件，則可能相依物件修改，則unit test也要跟著修改。</p>
 </li>
 </ol>
 <h2 id="解決方法">解決方法</h2><hr>
