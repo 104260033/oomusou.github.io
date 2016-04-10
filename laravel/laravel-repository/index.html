@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="使用Repository輔助Model">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-04-05T00:02:08.000Z">
+<meta property="og:updated_time" content="2016-04-10T07:38:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用Repository模式?">
 <meta name="twitter:description" content="使用Repository輔助Model">
@@ -172,7 +172,7 @@
 <li>若資料庫邏輯很多，可以拆成多repository，可是卻很難拆成多model。</li>
 </ol>
 <h2 id="Unit_Test">Unit Test</h2><hr>
-<p>由於篇幅的關係，將repository的測試獨立成專文討論，請參考<a href="/tdd/tdd-repository-testing/">如何對Repository做測試？</a></p>
+<p>由於篇幅的關係，將repository的測試獨立成專文討論，請參考<a href="/tdd/tdd-repository-testing/">如何測試Repository模式？</a></p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
 <li>實務上可以一開始1個model對應1個repository即可，若日後資料庫邏輯過多，導致單一repository過大，可以在考慮拆開多個repository，只要秉持<code>高內聚，低耦合</code>的原則，將最相關的資料庫邏輯放在一個repository內，不用再侷限1個model只對應1個repository。</li>
