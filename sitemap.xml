@@ -2,6 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/laravel/laravel-sqlite/</loc>
+    <lastmod>2016-04-10T13:31:24.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-save-strip-whitespace/</loc>
+    <lastmod>2016-04-10T12:36:00.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/laravel/eloquent/laravel-model-factory-relation/</loc>
+    <lastmod>2016-04-10T08:22:32.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/tdd/tdd-repository-testing/</loc>
     <lastmod>2016-04-10T07:38:52.000Z</lastmod>
   </url>
@@ -9,11 +24,6 @@
   <url>
     <loc>http://oomusou.io/laravel/laravel-repository/</loc>
     <lastmod>2016-04-10T07:38:48.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-save-strip-whitespace/</loc>
-    <lastmod>2016-04-10T07:33:17.000Z</lastmod>
   </url>
   
   <url>
@@ -49,16 +59,6 @@
   <url>
     <loc>http://oomusou.io/tags/index.html</loc>
     <lastmod>2016-03-22T14:03:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-spellcheck/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/tdd/tdd-phpunit-native-function/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
@@ -182,6 +182,11 @@
   </url>
   
   <url>
+    <loc>http://oomusou.io/refactor/refactor-remove-assignments-to-parameters/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/laravel/laravel-service/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
@@ -192,7 +197,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/refactor/refactor-remove-assignments-to-parameters/</loc>
+    <loc>http://oomusou.io/vuejs/vuejs-on-phpstorm/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -247,7 +252,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/eloquent/laravel-model-factory-relation/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-spellcheck/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -257,7 +262,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/vuejs/vuejs-on-phpstorm/</loc>
+    <loc>http://oomusou.io/tdd/tdd-phpunit-native-function/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
