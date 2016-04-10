@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="SQLite不只可以用在測試，也可以用來開發專案">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-04-10T13:31:24.000Z">
+<meta property="og:updated_time" content="2016-04-10T13:46:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用SQLite建立最簡單的Laravel開發環境?">
 <meta name="twitter:description" content="SQLite不只可以用在測試，也可以用來開發專案">
@@ -102,7 +102,7 @@
 	<!-- toc -->
 	<div id="postTOC">
 		<span class="tocHeading">Contents</span>
-		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立Laravel專案"><span class="toc-article-text">建立Laravel專案</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立SQLite資料庫"><span class="toc-article-text">建立SQLite資料庫</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#修改-env"><span class="toc-article-text">修改.env</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#執行Migration"><span class="toc-article-text">執行Migration</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#使用PhpStorm連進SQLite"><span class="toc-article-text">使用PhpStorm連進SQLite</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#使用PHP內建的HTTP_Server"><span class="toc-article-text">使用PHP內建的HTTP Server</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Sample_Code"><span class="toc-article-text">Sample Code</span></a></li></ol>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立Laravel專案"><span class="toc-article-text">建立Laravel專案</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立SQLite資料庫"><span class="toc-article-text">建立SQLite資料庫</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#修改-env"><span class="toc-article-text">修改.env</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#執行Migration"><span class="toc-article-text">執行Migration</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#使用PhpStorm管理SQLite"><span class="toc-article-text">使用PhpStorm管理SQLite</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#使用PHP內建的HTTP_Server"><span class="toc-article-text">使用PHP內建的HTTP Server</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Sample_Code"><span class="toc-article-text">Sample Code</span></a></li></ol>
     </div>
 
 	<!-- content -->
@@ -110,7 +110,7 @@
 	    <p>有很多方式可以建立Laravel開發環境，如MAMP、Homestead，但事實上我最近最常使用的是PHP內建HTTP server與SQLite，這是最簡單，也是最省電的開發環境。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
-<p>Laravel 5.2.29</p>
+<p>Laravel 5.2.29<br>PhpStorm 2016.1</p>
 <h2 id="建立Laravel專案">建立Laravel專案</h2><hr>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ composer create-project laravel/laravel Laravel52SQLite_demo --prefer-dist</span><br></pre></td></tr></table></figure>
 <h2 id="建立SQLite資料庫">建立SQLite資料庫</h2><hr>
@@ -127,7 +127,7 @@
 <h2 id="執行Migration">執行Migration</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan migration</span><br></pre></td></tr></table></figure>
 <p><img src="/images/laravel/laravel-sqlite/sqlite002.png" alt=""></p>
 <p>若能成功migration，表示Laravel已經抓到SQLite，並將資料順利migrate進<code>database.sqlite</code>。</p>
-<h2 id="使用PhpStorm連進SQLite">使用PhpStorm連進SQLite</h2><hr>
+<h2 id="使用PhpStorm管理SQLite">使用PhpStorm管理SQLite</h2><hr>
 <p>很多人猶豫該用什麼GUI工具管理SQLite，其實PhpStorm已經內建SQLite的管理工具。</p>
 <p><strong> 新增Data Source </strong></p>
 <p><img src="/images/laravel/laravel-sqlite/sqlite003.png" alt=""></p>
