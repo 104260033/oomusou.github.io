@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/laravel/laravel-route-pass-parameter-to-controller/</loc>
+    <lastmod>2016-04-12T14:34:44.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/laravel/eloquent/laravel-where-and-or/</loc>
     <lastmod>2016-04-12T05:14:29.000Z</lastmod>
   </url>
@@ -64,11 +69,6 @@
   <url>
     <loc>http://oomusou.io/tags/index.html</loc>
     <lastmod>2016-03-22T14:03:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-new-laravel-project/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
@@ -202,6 +202,11 @@
   </url>
   
   <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-spellcheck/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/laravel/laravel-presenter/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
@@ -247,7 +252,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-spellcheck/</loc>
+    <loc>http://oomusou.io/tdd/tdd-phpunit-native-function/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -257,7 +262,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-phpunit-native-function/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-phpdoc/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -267,7 +272,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-phpdoc/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-new-laravel-project/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
