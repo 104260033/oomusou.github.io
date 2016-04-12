@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-04-12T15:04:20.000Z</updated>
+  <updated>2016-04-12T23:01:26.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/laravel/laravel-route-pass-parameter-to-controller/"/>
     <id>http://oomusou.io/laravel/laravel-route-pass-parameter-to-controller/</id>
     <published>2016-04-12T12:23:43.000Z</published>
-    <updated>2016-04-12T15:04:20.000Z</updated>
+    <updated>2016-04-12T23:01:26.000Z</updated>
     <content type="html"><![CDATA[<p>實務上我們可能會遇到資料庫邏輯與商業邏輯完全相同，只有顯示邏輯不同，也就是 controller、service、repository 完全相同，只有 route 與 view 不相同，我們該如何在使用同一個 controller 的前提下，實現此需求呢?</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -60,7 +60,7 @@
 <p><strong>HomeController.php</strong><span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52RoutePassParameterToController/commit/329a5de62f885e34d0f1fa256fd8a59ca172317f" target="_blank" rel="external">修改HomeController.php，新增$viewName參數</a></span></span></span><br><figure class="highlight php"><figcaption><span>app/Http/Controllers/HomeController.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Controllers</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Http</span>\<span class="title">Requests</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HomeController</span> <span class="keyword">extends</span> <span class="title">Controller</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">(<span class="variable">$viewName</span>)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> view(<span class="variable">$viewName</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>由於 <code>routes.php</code> 將 view的名稱傳入 <code>HomeController@index</code>，所以必須重構符合 <code>routes.php</code>的要求。</p>
 <p><img src="/images/laravel/laravel-route-pass-parameter-to-controller/route004.png" alt=""></p>
-<p>重構後 <code>HomeController.php</code>後，繼續跑測試。</p>
+<p>重構 <code>HomeController.php</code>後，繼續跑測試。</p>
 <p>我們得到第2個 <span class="label label-danger">紅燈</span>。</p>
 <p>錯誤訊息為 <code>View [HelloWorld] not found</code>。</p>
 <p>因為我們還沒建立 <code>helloworld.blade.php</code>。</p>
@@ -69,7 +69,7 @@
 <p>我們得到2個 <span class="label label-success">綠燈</span>，兩個測試都通過了。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
-<li>我們也可以自行由 <code>routes.php</code> 去建立 <code>controller</code> 物件，只是因為 Laravel 內部大量使用依賴注入，所以你無法自行使用 <code>new</code> 去建立 <code>controller</code> 物件，但透過 <code>App::make()</code> 與 service container 來幫你建立 <code>controller</code> 物件之後，我們就可以再次掌握 controller 物件，因此可以透過 route 對 controller傳參數。</li>
+<li>我們也可以自行由 <code>routes.php</code> 去建立 <code>controller</code> 物件，只是因為 Laravel 內部大量使用依賴注入，所以你無法自行使用 <code>new</code> 去建立，但透過 <code>App::make()</code> 與 service container，我們就可以再次掌握 controller 物件，因此可以透過 route 對 controller 傳參數。</li>
 </ul>
 <h2 id="Sample_Code">Sample Code</h2><hr>
 <p>完整的範例可以在我的<a href="https://github.com/oomusou/Laravel52RoutePassParameterToController" target="_blank" rel="external">GitHub</a>上找到。</p>
