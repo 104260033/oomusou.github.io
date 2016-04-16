@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/laravel/laravel-repository/</loc>
+    <lastmod>2016-04-16T07:44:44.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/tdd/tdd-repository-testing-sqlite/</loc>
+    <lastmod>2016-04-16T07:41:00.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/laravel/laravel-route-pass-parameter-to-controller/</loc>
     <lastmod>2016-04-12T23:02:29.000Z</lastmod>
   </url>
@@ -24,16 +34,6 @@
   <url>
     <loc>http://oomusou.io/laravel/eloquent/laravel-model-factory-relation/</loc>
     <lastmod>2016-04-10T08:22:32.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/tdd/tdd-repository-testing/</loc>
-    <lastmod>2016-04-10T07:38:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/laravel/laravel-repository/</loc>
-    <lastmod>2016-04-10T07:38:48.000Z</lastmod>
   </url>
   
   <url>
