@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="從測試角度探討依賴注入">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-04-17T13:44:52.000Z">
+<meta property="og:updated_time" content="2016-04-17T13:54:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入探討依賴注入">
 <meta name="twitter:description" content="從測試角度探討依賴注入">
@@ -209,14 +209,14 @@
 </ul>
 <p>若以本例而言 :</p>
 <img src="/images/tdd/tdd-di/di000.svg" width="550">
-<p>在沒有使用interface前 :</p>
+<p>在沒有使用 interface 前 :</p>
 <ul>
 <li><code>ShippingService</code> 直接 <code>new BlackCat()</code>。</li>
 <li><code>ShippingService</code> 直接相依於 <code>BlackCat</code>。</li>
 <li>也就是高階模組依賴低階模組。</li>
 </ul>
 <img src="/images/tdd/tdd-di/di001.svg" width="550">
-<p>使用了interface之後 : </p>
+<p>使用了 interface 之後 : </p>
 <ul>
 <li><code>ShippingService</code> 沒有相依於 <code>BlackCat</code>，也就是高階模組沒有依賴於低階模組。</li>
 <li><code>ShippingService</code> 改成相依於 <code>LogisticsInterface</code>，也就是高階模組依賴其抽象(因為 <code>new</code> 而相依)。</li>
