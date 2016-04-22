@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="從測試角度探討依賴注入">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-04-17T14:55:16.000Z">
+<meta property="og:updated_time" content="2016-04-22T02:17:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入探討依賴注入">
 <meta name="twitter:description" content="從測試角度探討依賴注入">
@@ -307,7 +307,7 @@
 <ul>
 <li>Interface + 工廠模式無法達成可測試性的要求，因此才有了依賴注入與 service container。</li>
 <li>若很多 method 都使用相同相依物件，可使用 constructor injection，若只有單一 method 使用的相依物件，建議改用 method injection。</li>
-<li>Method Inject 必須搭配 <code>App::call()</code>，除了自動依賴注入相依物件外，也可以自行傳入其他參數。</li>
+<li>Method Injection 必須搭配 <code>App::call()</code>，除了自動依賴注入相依物件外，也可以自行傳入其他參數。</li>
 <li>可測試性與物件導向是相通的，我們可以藉由程式的可測試性，當成是否為好程式的指標之一。</li>
 </ul>
 <h2 id="Sample_Code">Sample Code</h2><hr>
