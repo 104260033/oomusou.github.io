@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="直接使用 MySQL 與 Test Factory Generator 測試 Repository">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-04-21T09:02:06.000Z">
+<meta property="og:updated_time" content="2016-04-24T08:54:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何測試 Repository 模式 (使用 MySQL)?">
 <meta name="twitter:description" content="直接使用 MySQL 與 Test Factory Generator 測試 Repository">
@@ -175,8 +175,7 @@
 <p>先在 MySQL 建立 <code>homestead_testing</code> 資料庫，並在 <code>.env</code> 增加 <code>DB_DATABASE_TESTING</code>，設定為 <code>homestead_testing</code>。</p>
 <p>將 <code>DB_CONNECTION</code> 先改成 <code>mysql_testing</code>，稍後會建立此連線，目的在替測試資料庫跑 migration，跑完 migration 之後會再切回來。</p>
 <p><strong>database.php</strong><span class="margin-note-marker"><sup>10</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">10</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52RepositoryTestingMySQL_demo/commit/97cee476f2640ccb6d84d37be6e6e7ddd16ea28d" target="_blank" rel="external">新增 mysql_testing 連線</a></span></span></span></p>
-<figure class="highlight php"><figcaption><span>config/database.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">‘mysql_testing’</span> =&gt; [</span><br><span class="line">       <span class="string">‘driver’</span> =&gt; <span class="string">‘mysql’</span>,</span><br><span class="line">    <span class="string">‘host’</span> =&gt; env(<span class="string">‘DB_HOST’</span>, <span class="string">‘localhost’</span>),</span><br><span class="line">    <span class="string">‘port’</span> =&gt; env(<span class="string">‘DB_PORT’</span>, <span class="string">‘3306’</span>),</span><br><span class="line">    <span class="string">‘database’</span> =&gt; env(<span class="string">‘DB_DATABASE_TESTING’</span>, <span class="string">‘forge’</span>),</span><br><span class="line">    <span class="string">‘username’</span> =&gt; env(<span class="string">‘DB_USERNAME’</span>, <span class="string">‘forge’</span>),</span><br><span class="line">    <span class="string">‘password’</span> =&gt; env(<span class="string">‘DB_PASSWORD’</span>, <span class="string">‘’</span>),</span><br><span class="line">    <span class="string">‘charset’</span> =&gt; <span class="string">‘utf8’</span>,</span><br><span class="line">    <span class="string">‘collation’</span> =&gt; <span class="string">‘utf8_unicode_ci’</span>,</span><br><span class="line">    <span class="string">‘prefix’</span> =&gt; <span class="string">‘’</span>,</span><br><span class="line">    <span class="string">‘strict’</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line">    <span class="string">‘engine’</span> =&gt; <span class="keyword">null</span>,</span><br><span class="line">],</span><br></pre></td></tr></table></figure> 
-
+<figure class="highlight php"><figcaption><span>config/database.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'mysql_testing'</span> =&gt; [</span><br><span class="line">   	<span class="string">'driver'</span> =&gt; <span class="string">'mysql'</span>,</span><br><span class="line">    <span class="string">'host'</span> =&gt; env(<span class="string">'DB_HOST'</span>, <span class="string">'localhost'</span>),</span><br><span class="line">    <span class="string">'port'</span> =&gt; env(<span class="string">'DB_PORT'</span>, <span class="string">'3306'</span>),</span><br><span class="line">    <span class="string">'database'</span> =&gt; env(<span class="string">'DB_DATABASE_TESTING'</span>, <span class="string">'forge'</span>),</span><br><span class="line">    <span class="string">'username'</span> =&gt; env(<span class="string">'DB_USERNAME'</span>, <span class="string">'forge'</span>),</span><br><span class="line">    <span class="string">'password'</span> =&gt; env(<span class="string">'DB_PASSWORD'</span>, <span class="string">''</span>),</span><br><span class="line">    <span class="string">'charset'</span> =&gt; <span class="string">'utf8'</span>,</span><br><span class="line">    <span class="string">'collation'</span> =&gt; <span class="string">'utf8_unicode_ci'</span>,</span><br><span class="line">    <span class="string">'prefix'</span> =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'strict'</span> =&gt; <span class="keyword">false</span>,</span><br><span class="line">    <span class="string">'engine'</span> =&gt; <span class="keyword">null</span>,</span><br><span class="line">],</span><br></pre></td></tr></table></figure> 
 <p><img src="/images/tdd/tdd-repository-testing-mysql/repo006.png" alt=""></p>
 <p>在 <code>config/database.php</code> 新增 <code>mysql_testing</code> 連線。</p>
 <p>將 <code>database</code> key 的 value 改為 <code>env(&#39;DB_DATABASE_TESTING&#39;, &#39;forge&#39;)</code>。</p>
@@ -272,9 +271,9 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-		
-          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-        
+				
+    	<li class="prev"><a href="/angular2/angular2-laravel-setup/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
 
         <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
 
@@ -310,7 +309,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Laravel/">Laravel<span>30</span></a></li> <li><a href="/tags/PHPUnit/">PHPUnit<span>9</span></a></li> <li><a href="/tags/PhpStorm/">PhpStorm<span>19</span></a></li> <li><a href="/tags/SQLite/">SQLite<span>3</span></a></li> <li><a href="/tags/TDD/">TDD<span>12</span></a></li>
+  <li><a href="/tags/Laravel/">Laravel<span>31</span></a></li> <li><a href="/tags/PHPUnit/">PHPUnit<span>9</span></a></li> <li><a href="/tags/PhpStorm/">PhpStorm<span>19</span></a></li> <li><a href="/tags/SQLite/">SQLite<span>3</span></a></li> <li><a href="/tags/TDD/">TDD<span>12</span></a></li>
     </ul>
 	</div>
 		
