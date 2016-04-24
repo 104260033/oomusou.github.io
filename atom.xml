@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-04-24T14:49:31.000Z</updated>
+  <updated>2016-04-24T14:51:22.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <link href="http://oomusou.io/angular2/angular2-laravel-setup/"/>
     <id>http://oomusou.io/angular2/angular2-laravel-setup/</id>
     <published>2016-04-24T12:23:43.000Z</published>
-    <updated>2016-04-24T14:49:31.000Z</updated>
-    <content type="html"><![CDATA[<p>Angular 2 即將推出正式版，挾著一些特點，如使用 TypeScript，強烈物件導向風格，支援 component 開發方式，，與 PhpStorm 的完整支援，都讓人非常心動，但該如何與 Laravel 環境整合呢?</p>
+    <updated>2016-04-24T14:51:22.000Z</updated>
+    <content type="html"><![CDATA[<p>Angular 2 即將推出正式版，挾著一些特點，如使用 TypeScript，強烈物件導向風格，支援 component 開發方式，與 PhpStorm 的完整支援，都讓人非常心動，但該如何與 Laravel 環境整合呢?</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
 <p>Laravel 5.2.30<br>Angular 2.0.0-beta.15</p>
