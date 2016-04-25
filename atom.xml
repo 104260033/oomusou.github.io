@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-04-24T14:51:22.000Z</updated>
+  <updated>2016-04-25T08:00:03.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <link href="http://oomusou.io/angular2/angular2-laravel-setup/"/>
     <id>http://oomusou.io/angular2/angular2-laravel-setup/</id>
     <published>2016-04-24T12:23:43.000Z</published>
-    <updated>2016-04-24T14:51:22.000Z</updated>
-    <content type="html"><![CDATA[<p>Angular 2 即將推出正式版，挾著一些特點，如使用 TypeScript，強烈物件導向風格，支援 component 開發方式，與 PhpStorm 的完整支援，都讓人非常心動，但該如何與 Laravel 環境整合呢?</p>
+    <updated>2016-04-25T08:00:03.000Z</updated>
+    <content type="html"><![CDATA[<p>Angular 2 即將推出正式版，挾著一些特點：如使用 TypeScript，強烈物件導向風格，支援 component 開發方式，與 PhpStorm 的完整支援，都讓人非常心動，但該如何與 Laravel 環境整合呢?</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
 <p>Laravel 5.2.30<br>Angular 2.0.0-beta.15</p>
@@ -47,7 +47,7 @@
 <p>因為目前還沒有任何顯示邏輯，所以 <code>AppComponent</code> class 為空的。</p>
 <h2 id="建立_Angular_2_啟動檔">建立 Angular 2 啟動檔</h2><hr>
 <p>Angular 2 需要一個程式的起動點，就類似 C 語言的 <code>main()</code> 一樣，<code>main.ts</code> 就是扮演起動 Angular 2 的角色。</p>
-<p><strong> main.ts </strong> <span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Angular2Beta_demo/commit/304c201f1c268c0300d6990d858492ff2f2240c5" target="_blank" rel="external">建立 Angular 2 的啟動檔</a></span></span></span><br><figure class="highlight typescript"><figcaption><span>resources/assets/typescript/main.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///&lt;reference path="../../../node_modules/angular2/typings/browser.d.ts"/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;bootstrap&#125;    from <span class="string">'angular2/platform/browser'</span></span><br><span class="line"><span class="keyword">import</span> &#123;AppComponent&#125; from <span class="string">'./app.component'</span></span><br><span class="line"></span><br><span class="line">bootstrap(AppComponent);</span><br></pre></td></tr></table></figure> </p>
+<p><strong> main.ts </strong> <span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Angular2Beta_demo/commit/85e4d464db0af6b422639696c57d67ca0d0fd800" target="_blank" rel="external">建立 Angular 2 的啟動檔</a></span></span></span><br><figure class="highlight typescript"><figcaption><span>resources/assets/typescript/main.ts</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///&lt;reference path="../../../node_modules/angular2/typings/browser.d.ts"/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;bootstrap&#125;    from <span class="string">'angular2/platform/browser'</span></span><br><span class="line"><span class="keyword">import</span> &#123;AppComponent&#125; from <span class="string">'./app.component'</span></span><br><span class="line"></span><br><span class="line">bootstrap(AppComponent);</span><br></pre></td></tr></table></figure> </p>
 <p><img src="/images/angular2/angular2-laravel-setup/setup003.png" alt=""></p>
 <p>在 <code>resources/assets/typescript</code> 目錄下建立 <code>main.ts</code>。</p>
 <p>第 1 行<br><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///&lt;reference path="../../../node_modules/angular2/typings/browser.d.ts"/&gt;</span></span><br></pre></td></tr></table></figure></p>
