@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/tdd/tdd-repository-testing-mysql/</loc>
+    <lastmod>2016-04-26T04:08:53.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/laravel/elixir/elixir-browsersync/</loc>
     <lastmod>2016-04-26T03:58:44.000Z</lastmod>
   </url>
@@ -14,11 +19,6 @@
   <url>
     <loc>http://oomusou.io/tdd/tdd-di/</loc>
     <lastmod>2016-04-25T08:26:36.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/tdd/tdd-repository-testing-mysql/</loc>
-    <lastmod>2016-04-24T08:54:51.000Z</lastmod>
   </url>
   
   <url>
