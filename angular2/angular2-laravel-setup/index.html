@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="在 Laravel 環境使用 Laravel Elixir 執行 Angular 2">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-04-25T08:00:03.000Z">
+<meta property="og:updated_time" content="2016-04-26T03:47:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在 Laravel 執行 Angular 2?">
 <meta name="twitter:description" content="在 Laravel 環境使用 Laravel Elixir 執行 Angular 2">
@@ -166,10 +166,10 @@
 <p>14 行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mix.typescript([</span><br><span class="line">        <span class="string">'app.component.ts'</span>,</span><br><span class="line">        <span class="string">'main.ts'</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'public/'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
 <p>將 <code>app.component.ts</code> 與 <code>main.ts</code> 編譯後，複製到 <code>public</code> 目錄下。</p>
 <p>21 行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mix.browserSync(&#123;</span><br><span class="line">       files: [<span class="string">'app/**/*'</span>, <span class="string">'public/**/*'</span>, <span class="string">'resources/views/**/*'</span>],</span><br><span class="line">       port: <span class="number">5000</span>,</span><br><span class="line">       proxy: <span class="string">'localhost:8000'</span></span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>啟動 BrowserSync，若將來對 PHP、blade 或 TypeScript 有任何修改，只要存檔就會在瀏覽器自動更新。</p>
+<p>啟動 Browsersync，若將來對 PHP、blade 或 TypeScript 有任何修改，只要存檔就會在瀏覽器自動更新。</p>
 <ul>
-<li><strong> files </strong> : 設定監視哪些檔案一變更，就要啟動 BrowserSync。</li>
-<li><strong> port </strong> : 設定 BrowserSync 所使用的 port。</li>
+<li><strong> files </strong> : 設定監視哪些檔案一變更，就要啟動 Browsersync。</li>
+<li><strong> port </strong> : 設定 Browsersync 所使用的 port。</li>
 <li><strong> proxy </strong> : 指定到 8000，因為 PHP 內建 Http server 為 8000。</li>
 </ul>
 <h2 id="編譯_TypeScript">編譯 TypeScript</h2><hr>
@@ -179,6 +179,7 @@
 <h2 id="啟動_Http_Server">啟動 Http Server</h2><hr>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan serve --host 0.0.0.0</span><br></pre></td></tr></table></figure>
 <p><img src="/images/angular2/angular2-laravel-setup/setup006.png" alt=""></p>
+<p>使用 PHP 內建的 Http server。</p>
 <h2 id="啟動_Gulp_Watch">啟動 Gulp Watch</h2><hr>
 <p>Gulp 會在背景執行，持續監視檔案，只要一變更，就會重新執行 gulp。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ gulp watch</span><br></pre></td></tr></table></figure>
@@ -203,9 +204,9 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-		
-          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-        
+				
+    	<li class="prev"><a href="/laravel/elixir/elixir-browsersync/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
 
         <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
 
@@ -241,7 +242,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Angular/">Angular<span>1</span></a></li> <li><a href="/tags/BrowserSync/">BrowserSync<span>1</span></a></li> <li><a href="/tags/Elixir/">Elixir<span>4</span></a></li> <li><a href="/tags/Laravel/">Laravel<span>31</span></a></li>
+  <li><a href="/tags/Angular/">Angular<span>1</span></a></li> <li><a href="/tags/Browsersync/">Browsersync<span>2</span></a></li> <li><a href="/tags/Elixir/">Elixir<span>4</span></a></li> <li><a href="/tags/Laravel/">Laravel<span>31</span></a></li>
     </ul>
 	</div>
 		

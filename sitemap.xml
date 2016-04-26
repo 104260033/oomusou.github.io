@@ -2,18 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/laravel/elixir/elixir-browsersync/</loc>
+    <lastmod>2016-04-26T03:48:01.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/angular2/angular2-laravel-setup/</loc>
-    <lastmod>2016-04-25T08:00:03.000Z</lastmod>
+    <lastmod>2016-04-26T03:47:46.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/tdd/tdd-di/</loc>
+    <lastmod>2016-04-25T08:26:36.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://oomusou.io/tdd/tdd-repository-testing-mysql/</loc>
     <lastmod>2016-04-24T08:54:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/tdd/tdd-di/</loc>
-    <lastmod>2016-04-22T02:17:09.000Z</lastmod>
   </url>
   
   <url>
@@ -84,11 +89,6 @@
   <url>
     <loc>http://oomusou.io/tags/index.html</loc>
     <lastmod>2016-03-22T14:03:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-markdown/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
@@ -287,7 +287,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/elixir/elixir-browsersync/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-navigate-method/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -342,7 +342,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-navigate-method/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-markdown/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   

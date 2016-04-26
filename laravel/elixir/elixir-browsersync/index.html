@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>如何在Homestead使用Browsersync? | 點燈坊</title>
+  <title>如何使用 Elixir + Browsersync 自動刷新瀏覽器? | 點燈坊</title>
   <meta name="author" content="真 OO無双">
   
   <meta name="description" content="Laravel Elixir 3.3開始支援Browsersync">
@@ -12,14 +12,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
  <meta name="description" content="Laravel Elixir 3.3開始支援Browsersync">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何在Homestead使用Browsersync?">
+<meta property="og:title" content="如何使用 Elixir + Browsersync 自動刷新瀏覽器?">
 <meta property="og:url" content="http://oomusou.io/laravel/elixir/elixir-browsersync/index.html">
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="Laravel Elixir 3.3開始支援Browsersync">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-03-22T14:03:51.000Z">
+<meta property="og:updated_time" content="2016-04-26T03:48:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何在Homestead使用Browsersync?">
+<meta name="twitter:title" content="如何使用 Elixir + Browsersync 自動刷新瀏覽器?">
 <meta name="twitter:description" content="Laravel Elixir 3.3開始支援Browsersync">
  
 
@@ -81,7 +81,7 @@
     	 
 	
 		<div class="page-header">		
-			<h1> 如何在Homestead使用Browsersync?</h1>
+			<h1> 如何使用 Elixir + Browsersync 自動刷新瀏覽器?</h1>
 		</div>		
 	
 
@@ -102,47 +102,59 @@
 	<!-- toc -->
 	<div id="postTOC">
 		<span class="tocHeading">Contents</span>
-		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Prerequisite"><span class="toc-article-text">Prerequisite</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#安裝Laravel_Elixir"><span class="toc-article-text">安裝Laravel Elixir</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#新Laravel_5-1專案"><span class="toc-article-text">新Laravel 5.1專案</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#既有Laravel_5-1專案"><span class="toc-article-text">既有Laravel 5.1專案</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#測試Laravel_Elixir"><span class="toc-article-text">測試Laravel Elixir</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#修改gulpfile-js"><span class="toc-article-text">修改gulpfile.js</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#啟動gulp_watch"><span class="toc-article-text">啟動gulp watch</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#測試Browsersync"><span class="toc-article-text">測試Browsersync</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Sample_Code"><span class="toc-article-text">Sample Code</span></a></li></ol>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Prerequisite"><span class="toc-article-text">Prerequisite</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#安裝_Laravel_Elixir"><span class="toc-article-text">安裝 Laravel Elixir</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#測試_Laravel_Elixir"><span class="toc-article-text">測試 Laravel Elixir</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#修改_gulpfile-js"><span class="toc-article-text">修改 gulpfile.js</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#啟動_Http_Server"><span class="toc-article-text">啟動 Http Server</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#啟動_Gulp_Watch"><span class="toc-article-text">啟動 Gulp Watch</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#自動啟動瀏覽器"><span class="toc-article-text">自動啟動瀏覽器</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Sample_Code"><span class="toc-article-text">Sample Code</span></a></li></ol>
     </div>
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>由於HTML/CSS技術越來越複雜，如Dreamweaver那種<code>所見即所得</code>的工具已經很難全面支援HTML/CSS，所以前端開發取而代之的是使用如Sublime Text之類的<code>文字編輯器</code>，然後直接在<code>瀏覽器</code>預覽，此時如 <strong><em>Browsersync</em></strong> 之類的工具就非常方便，讓我們只要直接存檔就可以立即在瀏覽器看結果。<strong><em>Laravel Elixir 3.3</em></strong> 直接支援 <strong><em>Browsersync</em></strong>，讓前端開發更有效率。</p>
+	    <p>由於 HTML/CSS 技術越來越複雜，如 Dreamweaver 那種所見即所得的工具已經很難全面支援 HTML/CSS，所以前端開發取而代之的是文字編輯器配合 Emmet，然後直接在瀏覽器預覽，此時如 Browsersync 就非常方便。Laravel Elixir 3.3 之後直接支援 Browsersync，讓我們只要直接存檔就可以立即在瀏覽器看結果。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
-<p>OS X 10.11<br>Laravel 5.1.19<br>Homestead 0.3.0<br>Laravel Elixir 3.3<br>Node.js 0.12.7<br>npm 2.11.3<br>gulp 3.9.0</p>
+<p>Laravel 5.2.30<br>Laravel Elixir 5.0.0</p>
 <h2 id="Prerequisite">Prerequisite</h2><hr>
 <ul>
-<li>在Mac已經成功安裝好Homestead。</li>
-<li>在Mac已經成功安裝Node.js、nvm與gulp。</li>
+<li>在 OS X 已經成功安裝 Node.js、NPM 與 Gulp。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>詳細請參考<a href="/laravel/elixir/elixir-nodejs/">如何在 OS X 安裝 Laravel 前端開發環境?</a></span></span></span></li>
 </ul>
-<h2 id="安裝Laravel_Elixir">安裝Laravel Elixir</h2><hr>
-<p>Gulp可以幫我們做一些前端的自動化工作，如自動編譯Less與Saas，Babel自動編譯JavaScript ES6，自動執行PHPUnit…等。<br>Laravel Elixir是Laravel對gulp的再次封裝，讓我們可以更簡單地在Laravel使用gulp。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>詳細請參考<a href="http://laravel.com/docs/master/elixir" target="_blank" rel="external">Laravel Elixir</a></span></span></span><br>在使用Composer建立Laravel專案時，會自動安裝<code>後端</code>的<code>composer.json</code>內的PHP package，但卻沒有自動安裝<code>前端</code>的<code>package.json</code>內的Node package，需自行手動安裝。</p>
-<h3 id="新Laravel_5-1專案">新Laravel 5.1專案</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ npm install</span><br></pre></td></tr></table></figure>
-<p>使用composer建立Laravel專案後，在專案目錄下安裝Laravel Elixir。</p>
-<h3 id="既有Laravel_5-1專案">既有Laravel 5.1專案</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ npm update</span><br></pre></td></tr></table></figure>
-<p>因為Laravel Elixir 3.3才支援browsersync，所以必須先更新到3.3版。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>雖然也可以在Homestead內執行<code>npm install</code>或<code>npm update</code>，但由於npm很耗CPU，建議直接在Mac執行npm，但前提是必須先在Mac安裝好npm。</span></span></span></p>
-<h2 id="測試Laravel_Elixir">測試Laravel Elixir</h2><hr>
+<h2 id="安裝_Laravel_Elixir">安裝 Laravel Elixir</h2><hr>
+<p>Gulp 可以幫我們做一些前端的自動化工作，如自動編譯 Less 與 Saas，Babel 自動編譯 JavaScript ES6，自動執行 PHPUnit…等。</p>
+<p>Laravel Elixir 是 Laravel 對 Gulp 的再次封裝，讓我們可以更簡單地在 Laravel 使用 Gulp。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>詳細請參考<a href="http://laravel.com/docs/master/elixir" target="_blank" rel="external">Laravel Elixir</a></span></span></span></p>
+<p>在使用 Composer 建立 Laravel 專案時，會自動安裝後端的 <code>composer.json</code> 內的 PHP package，但卻沒有自動安裝前端的 <code>package.json</code> 內的 Node package，需自行手動安裝。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ npm install</span><br></pre></td></tr></table></figure>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync000.png" alt=""></p>
+<p>使用 NPM 安裝 Laravel elixir。</p>
+<h2 id="測試_Laravel_Elixir">測試 Laravel Elixir</h2><hr>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ gulp</span><br></pre></td></tr></table></figure>
-<p>若能看到以下畫面，表示Laravel Elixer已經正常執行，順利編譯Saas。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[12:54:34] Using gulpfile ~/MyProject/gulpfile.js&#10;[12:54:34] Starting &#39;default&#39;...&#10;[12:54:34] Starting &#39;sass&#39;...&#10;&#10;Fetching Sass Source Files...&#10;   - resources/assets/sass/app.scss&#10;&#10;&#10;Saving To...&#10;   - public/css/app.css&#10;&#10;[12:54:36] Finished &#39;default&#39; after 1.38 s&#10;[12:54:36] gulp-notify: [Laravel Elixir] Sass Compiled!&#10;[12:54:36] Finished &#39;sass&#39; after 1.45 s</span><br></pre></td></tr></table></figure></p>
-<h2 id="修改gulpfile-js">修改gulpfile.js</h2><hr>
-<figure class="highlight javascript"><figcaption><span>gulpfile.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elixir = <span class="built_in">require</span>(<span class="string">'laravel-elixir'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span><br><span class="line"> |--------------------------------------------------------------------------</span><br><span class="line"> | Elixir Asset Management</span><br><span class="line"> |--------------------------------------------------------------------------</span><br><span class="line"> |</span><br><span class="line"> | Elixir provides a clean, fluent API for defining some basic Gulp tasks</span><br><span class="line"> | for your Laravel application. By default, we are compiling the Sass</span><br><span class="line"> | file for our application, as well as publishing vendor resources.</span><br><span class="line"> |</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line">elixir(<span class="function"><span class="keyword">function</span>(<span class="params">mix</span>) </span>&#123;</span><br><span class="line">    mix.sass(<span class="string">'app.scss'</span>)</span><br><span class="line">        .browserSync();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> 
-<p>16行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.browserSync();</span><br></pre></td></tr></table></figure></p>
-<p>增加<code>.browserSync();</code>，表示gulp在執行時會自動啟動browsersync。</p>
-<h2 id="啟動gulp_watch">啟動gulp watch</h2><hr>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync001.png" alt=""></p>
+<p>若能看到以上畫面，表示 Laravel Elixer 已經正常執行，可順利編譯Saas。</p>
+<h2 id="修改_gulpfile-js">修改 gulpfile.js</h2><hr>
+<p><strong> gulpfile.js </strong> <span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52ElixirBrowserSync_demo/commit/87de4f3afcda27fd54b8b3fe3f3d38210c79ff92" target="_blank" rel="external">修改 gulpfile.js，啟動 Browsersync</a></span></span></span><br><figure class="highlight javascript"><figcaption><span>gulpfile.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elixir = <span class="built_in">require</span>(<span class="string">'laravel-elixir'</span>);</span><br><span class="line"></span><br><span class="line">elixir(<span class="function"><span class="keyword">function</span> (<span class="params">mix</span>) </span>&#123;</span><br><span class="line">    mix.sass(<span class="string">'app.scss'</span>);</span><br><span class="line"></span><br><span class="line">    mix.browserSync(&#123;</span><br><span class="line">        files: [<span class="string">'app/**/*'</span>, <span class="string">'public/**/*'</span>, <span class="string">'resources/views/**/*'</span>],</span><br><span class="line">        port: <span class="number">5000</span>,</span><br><span class="line">        proxy: <span class="string">'localhost:8000'</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> </p>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync002.png" alt=""></p>
+<p>啟動 Browsersync，若將來對 PHP、blade 或 JavaScript 有任何修改，只要存檔就會在瀏覽器自動更新。</p>
+<ul>
+<li><strong> files </strong> : 設定監視哪些檔案一變更，就要啟動 Browsersync。</li>
+<li><strong> port </strong> : 設定 Browsersync 所使用的 port。</li>
+<li><strong> proxy </strong> : 指定到 8000，因為 PHP 內建 Http server 為 8000。</li>
+</ul>
+<h2 id="啟動_Http_Server">啟動 Http Server</h2><hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan serve --host 0.0.0.0</span><br></pre></td></tr></table></figure>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync003.png" alt=""></p>
+<p>使用 PHP 內建的 Http server。</p>
+<h2 id="啟動_Gulp_Watch">啟動 Gulp Watch</h2><hr>
+<p>Gulp 會在背景執行，持續監視檔案，只要一變更，就會重新執行 gulp。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ gulp watch</span><br></pre></td></tr></table></figure>
-<p><code>gulp watch</code>會幫我們監視，若有任何檔案被修改，就自動執行browsersync更新瀏覽器。<br>當我們使用Homestead時，以前都是在瀏覽器打<code>http://homestead.app</code>，有了browsersync之後會稍微不一樣，我們必須改打<code>http://localhost:3000</code>，透過<code>proxy機制</code>導到<code>http://homestead.app</code>。<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>在此是將gulp執行在Mac，所以必須事先使用<code>npm install -g gulp</code>將gulp安裝在Mac上，當然也可以在Homestead內執行<code>gulp watch</code>，不過那還必須透過<code>vagrant-notify</code>通知Mac的browsersync，速度會慢很多，所以建議直接在Mac執行<code>gulp watch</code>。</span></span></span><br><img src="/images/laravel/elixir/elixir-browsersync/browsersync000.png" alt=""></p>
-<h2 id="測試Browsersync">測試Browsersync</h2><hr>
-<p>在網址列打<code>http://localhost:3000</code>，browsersync會自動透過proxy導到<code>http://homestead.app</code>。<br><img src="/images/laravel/elixir/elixir-browsersync/browsersync001.png" alt=""></p>
-<p>在網址列打<code>http://localhost:3001</code>，可進入browsersync的設定頁面。。<br><img src="/images/laravel/elixir/elixir-browsersync/browsersync002.png" alt=""></p>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync004.png" alt=""></p>
+<p>Gulp watch 必須在新的 process 執行，也就是必須有一個 process 執行 <code>php artisan serve</code>，一個 process 執行 <code>gulp watch</code>。</p>
+<h2 id="自動啟動瀏覽器">自動啟動瀏覽器</h2><hr>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync005.png" alt=""></p>
+<p>Larvel 將執行在 <code>localhost:5000</code>。</p>
+<p>將來修改 PHP、blade 或 JavaScript，只要存檔後，瀏覽器就會自動更新，不用再手動 refersh。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
-<li>有了 <strong>Laravel Elixir + browsersync </strong>，以後我們在修改blade時，就不用再一直手動refresh看結果了，若搭配<code>雙螢幕</code>，只要blade一存檔，browsersync就會自動更新瀏覽器，只要頭轉45度角就可以立即看到結果，非常方便。</li>
-<li>由於browsersync與gulp是執行在Mac，而不是執行在Homestead，所以沒有速度上的問題。</li>
-<li>這種方式在Windows也可以使用，不侷限在Mac，只要在Windows也裝好npm與gulp即可。</li>
+<li>有了 Laravel Elixir + Browsersync ，以後我們有任何修改，就不用再一直手動 refresh 看結果了，若搭配雙螢幕更為方便。</li>
+<li>這種方式在 Windows 也可以使用，不侷限在 OS X，只要在 Windows 也裝好 Node.js、NPM 與 Gulp 即可。</li>
 </ul>
 <h2 id="Sample_Code">Sample Code</h2><hr>
-<p>完整的範例可以在我的<a href="https://github.com/oomusou/ElixirBrowsersync_demo" target="_blank" rel="external">GitHub</a>上找到。</p>
+<p>完整的範例可以在我的<a href="https://github.com/oomusou/Laravel52ElixirBrowserSync_demo" target="_blank" rel="external">GitHub</a>上找到。</p>
 	  
 	</div>
 
@@ -151,14 +163,14 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/ci/travis-ci-setup/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
 
         <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/phpstorm/phpstorm-markdown/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/angular2/angular2-laravel-setup/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -179,7 +191,7 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2015-10-12 
+	2016-04-25 
 	</div>
 	
 
@@ -189,7 +201,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Browsersync/">Browsersync<span>1</span></a></li> <li><a href="/tags/Elixir/">Elixir<span>4</span></a></li> <li><a href="/tags/Homestead/">Homestead<span>5</span></a></li> <li><a href="/tags/Laravel/">Laravel<span>31</span></a></li>
+  <li><a href="/tags/Browsersync/">Browsersync<span>2</span></a></li> <li><a href="/tags/Elixir/">Elixir<span>4</span></a></li> <li><a href="/tags/Laravel/">Laravel<span>31</span></a></li>
     </ul>
 	</div>
 		

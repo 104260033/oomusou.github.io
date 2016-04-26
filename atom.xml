@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-04-25T08:00:03.000Z</updated>
+  <updated>2016-04-26T03:48:01.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -15,11 +15,79 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[如何使用 Elixir + Browsersync 自動刷新瀏覽器?]]></title>
+    <link href="http://oomusou.io/laravel/elixir/elixir-browsersync/"/>
+    <id>http://oomusou.io/laravel/elixir/elixir-browsersync/</id>
+    <published>2016-04-25T15:23:43.000Z</published>
+    <updated>2016-04-26T03:48:01.000Z</updated>
+    <content type="html"><![CDATA[<p>由於 HTML/CSS 技術越來越複雜，如 Dreamweaver 那種所見即所得的工具已經很難全面支援 HTML/CSS，所以前端開發取而代之的是文字編輯器配合 Emmet，然後直接在瀏覽器預覽，此時如 Browsersync 就非常方便。Laravel Elixir 3.3 之後直接支援 Browsersync，讓我們只要直接存檔就可以立即在瀏覽器看結果。</p>
+<a id="more"></a>
+<h2 id="Version">Version</h2><hr>
+<p>Laravel 5.2.30<br>Laravel Elixir 5.0.0</p>
+<h2 id="Prerequisite">Prerequisite</h2><hr>
+<ul>
+<li>在 OS X 已經成功安裝 Node.js、NPM 與 Gulp。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>詳細請參考<a href="/laravel/elixir/elixir-nodejs/">如何在 OS X 安裝 Laravel 前端開發環境?</a></span></span></span></li>
+</ul>
+<h2 id="安裝_Laravel_Elixir">安裝 Laravel Elixir</h2><hr>
+<p>Gulp 可以幫我們做一些前端的自動化工作，如自動編譯 Less 與 Saas，Babel 自動編譯 JavaScript ES6，自動執行 PHPUnit…等。</p>
+<p>Laravel Elixir 是 Laravel 對 Gulp 的再次封裝，讓我們可以更簡單地在 Laravel 使用 Gulp。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>詳細請參考<a href="http://laravel.com/docs/master/elixir" target="_blank" rel="external">Laravel Elixir</a></span></span></span></p>
+<p>在使用 Composer 建立 Laravel 專案時，會自動安裝後端的 <code>composer.json</code> 內的 PHP package，但卻沒有自動安裝前端的 <code>package.json</code> 內的 Node package，需自行手動安裝。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ npm install</span><br></pre></td></tr></table></figure>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync000.png" alt=""></p>
+<p>使用 NPM 安裝 Laravel elixir。</p>
+<h2 id="測試_Laravel_Elixir">測試 Laravel Elixir</h2><hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ gulp</span><br></pre></td></tr></table></figure>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync001.png" alt=""></p>
+<p>若能看到以上畫面，表示 Laravel Elixer 已經正常執行，可順利編譯Saas。</p>
+<h2 id="修改_gulpfile-js">修改 gulpfile.js</h2><hr>
+<p><strong> gulpfile.js </strong> <span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52ElixirBrowserSync_demo/commit/87de4f3afcda27fd54b8b3fe3f3d38210c79ff92" target="_blank" rel="external">修改 gulpfile.js，啟動 Browsersync</a></span></span></span><br><figure class="highlight javascript"><figcaption><span>gulpfile.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elixir = <span class="built_in">require</span>(<span class="string">'laravel-elixir'</span>);</span><br><span class="line"></span><br><span class="line">elixir(<span class="function"><span class="keyword">function</span> (<span class="params">mix</span>) </span>&#123;</span><br><span class="line">    mix.sass(<span class="string">'app.scss'</span>);</span><br><span class="line"></span><br><span class="line">    mix.browserSync(&#123;</span><br><span class="line">        files: [<span class="string">'app/**/*'</span>, <span class="string">'public/**/*'</span>, <span class="string">'resources/views/**/*'</span>],</span><br><span class="line">        port: <span class="number">5000</span>,</span><br><span class="line">        proxy: <span class="string">'localhost:8000'</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> </p>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync002.png" alt=""></p>
+<p>啟動 Browsersync，若將來對 PHP、blade 或 JavaScript 有任何修改，只要存檔就會在瀏覽器自動更新。</p>
+<ul>
+<li><strong> files </strong> : 設定監視哪些檔案一變更，就要啟動 Browsersync。</li>
+<li><strong> port </strong> : 設定 Browsersync 所使用的 port。</li>
+<li><strong> proxy </strong> : 指定到 8000，因為 PHP 內建 Http server 為 8000。</li>
+</ul>
+<h2 id="啟動_Http_Server">啟動 Http Server</h2><hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan serve --host 0.0.0.0</span><br></pre></td></tr></table></figure>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync003.png" alt=""></p>
+<p>使用 PHP 內建的 Http server。</p>
+<h2 id="啟動_Gulp_Watch">啟動 Gulp Watch</h2><hr>
+<p>Gulp 會在背景執行，持續監視檔案，只要一變更，就會重新執行 gulp。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ gulp watch</span><br></pre></td></tr></table></figure>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync004.png" alt=""></p>
+<p>Gulp watch 必須在新的 process 執行，也就是必須有一個 process 執行 <code>php artisan serve</code>，一個 process 執行 <code>gulp watch</code>。</p>
+<h2 id="自動啟動瀏覽器">自動啟動瀏覽器</h2><hr>
+<p><img src="/images/laravel/elixir/elixir-browsersync/browsersync005.png" alt=""></p>
+<p>Larvel 將執行在 <code>localhost:5000</code>。</p>
+<p>將來修改 PHP、blade 或 JavaScript，只要存檔後，瀏覽器就會自動更新，不用再手動 refersh。</p>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>有了 Laravel Elixir + Browsersync ，以後我們有任何修改，就不用再一直手動 refresh 看結果了，若搭配雙螢幕更為方便。</li>
+<li>這種方式在 Windows 也可以使用，不侷限在 OS X，只要在 Windows 也裝好 Node.js、NPM 與 Gulp 即可。</li>
+</ul>
+<h2 id="Sample_Code">Sample Code</h2><hr>
+<p>完整的範例可以在我的<a href="https://github.com/oomusou/Laravel52ElixirBrowserSync_demo" target="_blank" rel="external">GitHub</a>上找到。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[Laravel Elixir 3.3開始支援Browsersync]]>
+    
+    </summary>
+    
+      <category term="Browsersync" scheme="http://oomusou.io/tags/Browsersync/"/>
+    
+      <category term="Elixir" scheme="http://oomusou.io/tags/Elixir/"/>
+    
+      <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[如何在 Laravel 執行 Angular 2?]]></title>
     <link href="http://oomusou.io/angular2/angular2-laravel-setup/"/>
     <id>http://oomusou.io/angular2/angular2-laravel-setup/</id>
     <published>2016-04-24T12:23:43.000Z</published>
-    <updated>2016-04-25T08:00:03.000Z</updated>
+    <updated>2016-04-26T03:47:46.000Z</updated>
     <content type="html"><![CDATA[<p>Angular 2 即將推出正式版，挾著一些特點：如使用 TypeScript，強烈物件導向風格，支援 component 開發方式，與 PhpStorm 的完整支援，都讓人非常心動，但該如何與 Laravel 環境整合呢?</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -79,10 +147,10 @@
 <p>14 行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mix.typescript([</span><br><span class="line">        <span class="string">'app.component.ts'</span>,</span><br><span class="line">        <span class="string">'main.ts'</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="string">'public/'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
 <p>將 <code>app.component.ts</code> 與 <code>main.ts</code> 編譯後，複製到 <code>public</code> 目錄下。</p>
 <p>21 行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mix.browserSync(&#123;</span><br><span class="line">       files: [<span class="string">'app/**/*'</span>, <span class="string">'public/**/*'</span>, <span class="string">'resources/views/**/*'</span>],</span><br><span class="line">       port: <span class="number">5000</span>,</span><br><span class="line">       proxy: <span class="string">'localhost:8000'</span></span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>啟動 BrowserSync，若將來對 PHP、blade 或 TypeScript 有任何修改，只要存檔就會在瀏覽器自動更新。</p>
+<p>啟動 Browsersync，若將來對 PHP、blade 或 TypeScript 有任何修改，只要存檔就會在瀏覽器自動更新。</p>
 <ul>
-<li><strong> files </strong> : 設定監視哪些檔案一變更，就要啟動 BrowserSync。</li>
-<li><strong> port </strong> : 設定 BrowserSync 所使用的 port。</li>
+<li><strong> files </strong> : 設定監視哪些檔案一變更，就要啟動 Browsersync。</li>
+<li><strong> port </strong> : 設定 Browsersync 所使用的 port。</li>
 <li><strong> proxy </strong> : 指定到 8000，因為 PHP 內建 Http server 為 8000。</li>
 </ul>
 <h2 id="編譯_TypeScript">編譯 TypeScript</h2><hr>
@@ -92,6 +160,7 @@
 <h2 id="啟動_Http_Server">啟動 Http Server</h2><hr>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan serve --host 0.0.0.0</span><br></pre></td></tr></table></figure>
 <p><img src="/images/angular2/angular2-laravel-setup/setup006.png" alt=""></p>
+<p>使用 PHP 內建的 Http server。</p>
 <h2 id="啟動_Gulp_Watch">啟動 Gulp Watch</h2><hr>
 <p>Gulp 會在背景執行，持續監視檔案，只要一變更，就會重新執行 gulp。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ gulp watch</span><br></pre></td></tr></table></figure>
@@ -116,7 +185,7 @@
     
       <category term="Angular" scheme="http://oomusou.io/tags/Angular/"/>
     
-      <category term="BrowserSync" scheme="http://oomusou.io/tags/BrowserSync/"/>
+      <category term="Browsersync" scheme="http://oomusou.io/tags/Browsersync/"/>
     
       <category term="Elixir" scheme="http://oomusou.io/tags/Elixir/"/>
     
@@ -309,7 +378,7 @@
     <link href="http://oomusou.io/tdd/tdd-di/"/>
     <id>http://oomusou.io/tdd/tdd-di/</id>
     <published>2016-04-16T12:23:43.000Z</published>
-    <updated>2016-04-22T02:17:09.000Z</updated>
+    <updated>2016-04-25T08:26:36.000Z</updated>
     <content type="html"><![CDATA[<p>依賴反轉原則是 SOLID 中最難理解的原則，而依賴注入則是單元測試的基石，本文將從測試角度探討依賴反轉與依賴注入，並將 Laravel 的 service container、constructor injection 與 method injection 應用在實務上。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -520,6 +589,8 @@
     <![CDATA[從測試角度探討依賴注入]]>
     
     </summary>
+    
+      <category term="LaraDiner" scheme="http://oomusou.io/tags/LaraDiner/"/>
     
       <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
     
@@ -2812,99 +2883,6 @@
       <category term="Refactoring" scheme="http://oomusou.io/tags/Refactoring/"/>
     
       <category term="TDD" scheme="http://oomusou.io/tags/TDD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[如何使用Eloquent處理一對一的資料?]]></title>
-    <link href="http://oomusou.io/laravel/eloquent/laravel-relation-one-to-one/"/>
-    <id>http://oomusou.io/laravel/eloquent/laravel-relation-one-to-one/</id>
-    <published>2016-01-03T13:23:43.000Z</published>
-    <updated>2016-03-22T14:03:51.000Z</updated>
-    <content type="html"><![CDATA[<p>除了傳統<strong>關聯式資料</strong>的<strong>Join</strong>外，Laravel的<strong>Eloquent</strong>還提出了<strong>Relation</strong>，這兩個看似相同的東西，事實上還是有些差異，其相關的SQL與Blade寫法也不太一樣。</p>
-<a id="more"></a>
-<h2 id="Version">Version</h2><hr>
-<p>PHP 7.0.0<br>Laravel 5.2.6</p>
-<h2 id="關聯性資料">關聯性資料</h2><hr>
-<p>依然使用最經典的<code>users</code>與<code>posts</code> table，由於本文只討論<strong>一對一關係</strong>，也就是一個user只有一篇post，其中primary key為<code>users.id</code>，foreign key為<code>posts.user_id</code>。</p>
-<h2 id="條件在users">條件在users</h2><hr>
-<h3 id="使用Join">使用Join</h3><h4 id="Repository">Repository</h4><figure class="highlight php"><figcaption><span>app/Repositories/UserRepository.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Repositories</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">User</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Collection</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserRepository</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@return</span> Collection</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getUserPost</span><span class="params">()</span> : <span class="title">Collection</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> User::join(<span class="string">'posts'</span>, <span class="string">'users.id'</span>, <span class="string">'='</span>, <span class="string">'posts.user_id'</span>)</span><br><span class="line">            -&gt;where(<span class="string">'users.id'</span>, <span class="string">'&gt;'</span>, <span class="number">2</span>)</span><br><span class="line">            -&gt;where(<span class="string">'users.id'</span>, <span class="string">'&lt;'</span>, <span class="number">6</span>)</span><br><span class="line">            -&gt;get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用<code>join()</code>去描述<code>users</code>與<code>posts</code>的關係。</p>
-<p>使用<code>where()</code>去篩選條件，因為<code>users</code>與<code>posts</code>都有<code>id</code>欄位，所以在<code>where()</code>要明確指定哪一個table的<code>id</code>。</p>
-<h4 id="SQL">SQL</h4><p><img src="/images/laravel/eloquent/laravel-relation-one-to-one/one2one000.png" alt=""></p>
-<p>若使用<a href="https://github.com/barryvdh/laravel-debugbar" target="_blank" rel="external">Laravel Debugbar</a>去觀察，可以發現Eloquent產出的是一句SQL，如我們所預期。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>關於<a href="https://github.com/barryvdh/laravel-debugbar" target="_blank" rel="external">Laravel Debugbar</a>，詳細請參考<a href="/laravel/laravel-debugbar/">如何使用Laravel Debugbar?</a></span></span></span></p>
-<h4 id="Blade">Blade</h4><p><img src="/images/laravel/eloquent/laravel-relation-one-to-one/one2one001.png" alt=""></p>
-<p>由於Eloquent產出的是1句SQL，回傳的是一個collection，所以<code>title</code>雖然是在<code>posts</code> table，但經過join之後相當於在同一個table，因此在Blade中存取<code>title</code>如同存取<code>users</code>其他欄位一樣。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>完整程式碼在我的<a href="https://github.com/oomusou/Laravel52UsersJoinOneToOne_demo" target="_blank" rel="external">GitHub</a></span></span></span></p>
-<h3 id="使用Relation">使用Relation</h3><h4 id="Model">Model</h4><figure class="highlight php"><figcaption><span>app/User.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Relations</span>\<span class="title">HasOne</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Foundation</span>\<span class="title">Auth</span>\<span class="title">User</span> <span class="title">as</span> <span class="title">Authenticatable</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Authenticatable</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * The attributes that are mass assignable.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@var</span> array</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$fillable</span> = [</span><br><span class="line">        <span class="string">'name'</span>, <span class="string">'email'</span>, <span class="string">'password'</span>,</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * The attributes excluded from the model's JSON form.</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@var</span> array</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="variable">$hidden</span> = [</span><br><span class="line">        <span class="string">'password'</span>, <span class="string">'remember_token'</span>,</span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * users與posts為一對一關係</span><br><span class="line">     * </span><br><span class="line">     * <span class="doctag">@return</span> HasOne</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">post</span><span class="params">()</span> : <span class="title">HasOne</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$this</span>-&gt;hasOne(Post::class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>31行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * users與posts為一對一關係</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@return</span> HasOne</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">post</span><span class="params">()</span> : <span class="title">HasOne</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$this</span>-&gt;hasOne(Post::class);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>新增<code>post()</code>，描述<code>users</code>與<code>posts</code>的<strong>一對一關係</strong>，<code>hasOne()</code>的第一個參數傳入為<strong>一對一關係</strong>的class字串。<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>若foreign key的命名依照<code>pararent tabel單數名稱</code> + <code>id</code>的命名方式，Laravel將可自動抓到foreign key與primary key的對應關係，不用特別指定。</span></span></span></p>
-<h4 id="Repository-1">Repository</h4><figure class="highlight php"><figcaption><span>app/Repositories/UserRepository.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Repositories</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">User</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Collection</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserRepository</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@return</span> Collection</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getUserPost</span><span class="params">()</span> : <span class="title">Collection</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> User::where(<span class="string">'id'</span>, <span class="string">'&gt;'</span>, <span class="number">2</span>)</span><br><span class="line">            -&gt;where(<span class="string">'id'</span>, <span class="string">'&lt;'</span>, <span class="number">6</span>)</span><br><span class="line">            -&gt;get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>不指定任何relation。</p>
-<p>使用<code>where()</code>去篩選條件，雖然<code>users</code>與<code>posts</code>都有<code>id</code>欄位，但<code>where()</code>只作用在<code>users</code>，所以不用明確指定哪一個table的<code>id</code>。</p>
-<h4 id="SQL-1">SQL</h4><p><img src="/images/laravel/eloquent/laravel-relation-one-to-one/one2one008.png" alt=""></p>
-<p>雖然結果完全一樣，但產生的SQL卻不一樣。</p>
-<p>使用relation後，可以發現Eloquent產出了4句SQL，而<code>where()</code>全落在第1句SQL，這也是為什麼儘管<code>id</code>欄位重複，在<code>where()</code>卻不用特別指定table名稱。</p>
-<p>若結果<code>posts</code>有n筆資料，則會產生 (n + 1) 句SQL。</p>
-<h4 id="Repository-2">Repository</h4><figure class="highlight php"><figcaption><span>app/Repositories/UserRepository.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Repositories</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">User</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Collection</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserRepository</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@return</span> Collection</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getUserPost</span><span class="params">()</span> : <span class="title">Collection</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> User::with(<span class="string">'post'</span>)</span><br><span class="line">            -&gt;where(<span class="string">'id'</span>, <span class="string">'&gt;'</span>, <span class="number">2</span>)</span><br><span class="line">            -&gt;where(<span class="string">'id'</span>, <span class="string">'&lt;'</span>, <span class="number">6</span>)</span><br><span class="line">            -&gt;get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>使用<code>with()</code>指定要使用哪一個relation。</p>
-<p>使用<code>where()</code>去篩選條件，雖然<code>users</code>與<code>posts</code>都有<code>id</code>欄位，但<code>where()</code>只作用在<code>users</code>，所以不用明確指定哪一個table的<code>id</code>。</p>
-<h4 id="SQL-2">SQL</h4><p><img src="/images/laravel/eloquent/laravel-relation-one-to-one/one2one002.png" alt=""></p>
-<p>雖然結果完全一樣，但產生的SQL卻不一樣。</p>
-<p>使用<code>with()</code>後，可以發現Eloquent只產出了2句SQL，而<code>where()</code>全落在第1句SQL，這也是為什麼儘管<code>id</code>欄位重複，在<code>where()</code>卻不用特別指定table名稱。</p>
-<div class="alert alert-info"><i class="fa fa-info"></i>  使用<strong>Relation</strong>後，會有 (n + 1) query問題，若搭配<strong>with()</strong>，將只產生2句SQL。</div>
-<h4 id="Blade-1">Blade</h4><p><img src="/images/laravel/eloquent/laravel-relation-one-to-one/one2one003.png" alt=""></p>
-<p>由於Eloquent產出的是2句SQL，回傳的是兩個collection，因此Blade在存取<code>title</code>時，必須透過<code>post()</code>這個relation去存取。<span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>完整程式碼在我的<a href="https://github.com/oomusou/Laravel52UsersRelationOneToOne_demo" target="_blank" rel="external">GitHub</a></span></span></span></p>
-<div class="alert alert-info"><i class="fa fa-info"></i>  使用<strong>with()</strong>後，由於SQL已經改變，Blade必須靠relation才能存取其他table的欄位。</div>
-<h2 id="條件在posts">條件在posts</h2><hr>
-<p>前面的範例，<code>where()</code>條件都落在<code>users</code>，已經發現<strong>Join</strong>與<strong>Relation</strong>的寫法之差異，但實務上不可能條件都落在<code>users</code>，也會落在<code>posts</code>，這樣該怎麼寫呢?</p>
-<h3 id="使用Join-1">使用Join</h3><h4 id="Repository-3">Repository</h4><figure class="highlight php"><figcaption><span>app/Repositories/UserRepository.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Repositories</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">User</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Collection</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserRepository</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@return</span> Collection</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getUserPost</span><span class="params">()</span> : <span class="title">Collection</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> User::join(<span class="string">'posts'</span>, <span class="string">'users.id'</span>, <span class="string">'='</span>, <span class="string">'posts.user_id'</span>)</span><br><span class="line">            -&gt;where(<span class="string">'users.id'</span>, <span class="string">'&gt;'</span>, <span class="number">2</span>)</span><br><span class="line">            -&gt;where(<span class="string">'posts.id'</span>, <span class="string">'&lt;'</span>, <span class="number">6</span>)</span><br><span class="line">            -&gt;get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>15行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-&gt;where(<span class="string">'posts.id'</span>, <span class="string">'&lt;'</span>, <span class="number">6</span>)</span><br></pre></td></tr></table></figure></p>
-<p>將<code>where()</code>條件改到<code>posts</code>上。</p>
-<h4 id="SQL-3">SQL</h4><p><img src="/images/laravel/eloquent/laravel-relation-one-to-one/one2one004.png" alt=""></p>
-<p>執行結果一樣，但SQL的條件已經從<code>users.id</code>改成<code>posts.id</code>，符合我們預期。</p>
-<h4 id="Blade-2">Blade</h4><p><img src="/images/laravel/eloquent/laravel-relation-one-to-one/one2one001.png" alt=""></p>
-<p>Blade則完全一樣，不必修改。<span class="margin-note-marker"><sup>5</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">5</span>完整程式碼在我的<a href="https://github.com/oomusou/Laravel52PostsJoinOneToOne_demo" target="_blank" rel="external">GitHub</a></span></span></span></p>
-<h3 id="使用Relation-1">使用Relation</h3><h4 id="Repository-4">Repository</h4><figure class="highlight php"><figcaption><span>app/Repositories/UserRepository.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Repositories</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">User</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Collection</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserRepository</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@return</span> Collection</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getUserPost</span><span class="params">()</span> : <span class="title">Collection</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> User::with(<span class="string">'post'</span>)</span><br><span class="line">            -&gt;where(<span class="string">'users.id'</span>, <span class="string">'&gt;'</span>, <span class="number">2</span>)</span><br><span class="line">            -&gt;where(<span class="string">'posts.id'</span>, <span class="string">'&lt;'</span>, <span class="number">6</span>)</span><br><span class="line">            -&gt;get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因為<code>users</code>與<code>posts</code>都有<code>id</code>欄位，直覺只要在<code>id</code>前面加上table名稱即可。</p>
-<p>但一執行就會出現錯誤。</p>
-<p><img src="/images/laravel/eloquent/laravel-relation-one-to-one/one2one005.png" alt=""></p>
-<p>還記得之前在relation下<code>where()</code>條件時，所有的條件都會落在<code>users</code>嗎? 因為都落在<code>users</code>，所以自然找不到<code>posts.id</code>這個欄位。</p>
-<figure class="highlight php"><figcaption><span>app/Repositories/UserRepository.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Repositories</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">User</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Collection</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserRepository</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@return</span> Collection</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getUserPost</span><span class="params">()</span> : <span class="title">Collection</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> User::with([<span class="string">'post'</span> =&gt; <span class="function"><span class="keyword">function</span> <span class="params">(HasOne <span class="variable">$query</span>)</span> </span>&#123;</span><br><span class="line">                <span class="variable">$query</span>-&gt;where(<span class="string">'id'</span>, <span class="string">'&lt;'</span>, <span class="string">'6'</span>);</span><br><span class="line">            &#125;])</span><br><span class="line">            -&gt;where(<span class="string">'id'</span>, <span class="string">'&gt;'</span>, <span class="number">2</span>)</span><br><span class="line">            -&gt;get();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>若要將<code>where()</code>下在<code>posts</code>，必須改用這種寫法，在closure內下<code>where()</code>條件。</p>
-<h4 id="SQL-4">SQL</h4><p><img src="/images/laravel/eloquent/laravel-relation-one-to-one/one2one006.png" alt=""></p>
-<p><code>where()</code>條件雖然加到<code>posts</code>上了，但結果是錯的。</p>
-<div class="alert alert-info"><i class="fa fa-info"></i>  使用<strong>with()</strong>後，由於SQL已經改變，要小心結果是不是錯的。</div>
-<h4 id="Blade-3">Blade</h4><p><img src="/images/laravel/eloquent/laravel-relation-one-to-one/one2one007.png" alt=""></p>
-<p>加了<code>posts.id &lt; 6</code>的條件之後，其實7, 8, 9, 10都不成立，所以不一定有<code>post</code>物件，需要特別判斷是否為null。<span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>完整程式碼在我的<a href="https://github.com/oomusou/Laravel52PostsRelationOneToOne_demo" target="_blank" rel="external">GitHub</a></span></span></span></p>
-<div class="alert alert-info"><i class="fa fa-info"></i>  使用<strong>with()</strong>後，由於SQL已經改變，Blade要小心物件是否存在。</div>
-<h2 id="Conclusion">Conclusion</h2><hr>
-<ul>
-<li>使用relation寫法，看似只是將原本join的條件式改寫到model內，但事實上SQL與結果完全不一樣，還順便影響了Blade的寫法。</li>
-<li>Relation寫法並沒有辦法取代join，<strong>有些join用relation還是寫不出來</strong>，relation只能讓我們的工具箱多一種處理<strong>關聯式資料</strong>的工具，必須自己依照實務上的需求，決定該使用join還是relation。</li>
-</ul>
-<h2 id="Sample_Code">Sample Code</h2><hr>
-<p>完整的範例可以在我的<a href="https://github.com/oomusou/" target="_blank" rel="external">GitHub</a>上找到。</p>
-<ul>
-<li>條件在<code>users</code><ul>
-<li><a href="https://github.com/oomusou/Laravel52UsersJoinOneToOne_demo" target="_blank" rel="external">使用join</a></li>
-<li><a href="https://github.com/oomusou/Laravel52UsersRelationOneToOne_demo" target="_blank" rel="external">使用relation</a></li>
-</ul>
-</li>
-<li>條件在<code>posts</code><ul>
-<li><a href="https://github.com/oomusou/Laravel52PostsJoinOneToOne_demo" target="_blank" rel="external">使用join</a></li>
-<li><a href="https://github.com/oomusou/Laravel52PostsRelationOneToOne_demo" target="_blank" rel="external">使用relation</a></li>
-</ul>
-</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[比較使用Join與Relation寫法的差異]]>
-    
-    </summary>
-    
-      <category term="Eloquent" scheme="http://oomusou.io/tags/Eloquent/"/>
-    
-      <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
     
   </entry>
   
