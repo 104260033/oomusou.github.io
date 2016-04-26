@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="Laravel Elixir 3.3 開始支援 Browsersync">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-04-26T03:51:48.000Z">
+<meta property="og:updated_time" content="2016-04-26T03:53:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用 Elixir + Browsersync 自動刷新瀏覽器?">
 <meta name="twitter:description" content="Laravel Elixir 3.3 開始支援 Browsersync">
@@ -125,7 +125,7 @@
 <h2 id="測試_Laravel_Elixir">測試 Laravel Elixir</h2><hr>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ gulp</span><br></pre></td></tr></table></figure>
 <p><img src="/images/laravel/elixir/elixir-browsersync/browsersync001.png" alt=""></p>
-<p>若能看到以上畫面，表示 Laravel Elixer 已經正常執行，可順利編譯Saas。</p>
+<p>若能看到以上畫面，表示 Laravel Elixer 已經正常執行，可順利編譯 Saas。</p>
 <h2 id="修改_gulpfile-js">修改 gulpfile.js</h2><hr>
 <p><strong> gulpfile.js </strong> <span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52ElixirBrowserSync_demo/commit/87de4f3afcda27fd54b8b3fe3f3d38210c79ff92" target="_blank" rel="external">修改 gulpfile.js，啟動 Browsersync</a></span></span></span><br><figure class="highlight javascript"><figcaption><span>gulpfile.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elixir = <span class="built_in">require</span>(<span class="string">'laravel-elixir'</span>);</span><br><span class="line"></span><br><span class="line">elixir(<span class="function"><span class="keyword">function</span> (<span class="params">mix</span>) </span>&#123;</span><br><span class="line">    mix.sass(<span class="string">'app.scss'</span>);</span><br><span class="line"></span><br><span class="line">    mix.browserSync(&#123;</span><br><span class="line">        files: [<span class="string">'app/**/*'</span>, <span class="string">'public/**/*'</span>, <span class="string">'resources/views/**/*'</span>],</span><br><span class="line">        port: <span class="number">5000</span>,</span><br><span class="line">        proxy: <span class="string">'localhost:8000'</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> </p>
 <p><img src="/images/laravel/elixir/elixir-browsersync/browsersync002.png" alt=""></p>
@@ -140,7 +140,7 @@
 <p><img src="/images/laravel/elixir/elixir-browsersync/browsersync003.png" alt=""></p>
 <p>使用 PHP 內建的 Http server。</p>
 <h2 id="啟動_Gulp_Watch">啟動 Gulp Watch</h2><hr>
-<p>Gulp 會在背景執行，持續監視檔案，只要一變更，就會重新執行 gulp。</p>
+<p>Gulp 會在背景執行，持續監視檔案，只要一變更，就會重新執行 Gulp。</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ gulp watch</span><br></pre></td></tr></table></figure>
 <p><img src="/images/laravel/elixir/elixir-browsersync/browsersync004.png" alt=""></p>
 <p>Gulp watch 必須在新的 process 執行，也就是必須有一個 process 執行 <code>php artisan serve</code>，一個 process 執行 <code>gulp watch</code>。</p>
