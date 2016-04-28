@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-04-28T08:50:03.000Z</updated>
+  <updated>2016-04-28T08:54:34.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/angular2/angular2-phpstorm-setup/"/>
     <id>http://oomusou.io/angular2/angular2-phpstorm-setup/</id>
     <published>2016-04-28T12:23:43.000Z</published>
-    <updated>2016-04-28T08:50:03.000Z</updated>
+    <updated>2016-04-28T08:54:34.000Z</updated>
     <content type="html"><![CDATA[<p>PhpStorm 不僅能開發 PHP 與 Laravel 而已，還內建 TypeScript 編譯，掛上 JetBrains 的官方 Angular 外掛後，PhpStorm 就能完美支援 TypeScript 與 Angular 2。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -106,7 +106,7 @@
 <p>在 <code>app</code> 目錄下建立 <code>app.component.ts</code>。</p>
 <p>此為 TypeScript 語法，主要表示其 HTML tag 為 <code>my-app</code>，其所代表的 HTML 為 <code>&lt;h1&gt;My First Angular 2 App&lt;/h1&gt;</code>。</p>
 <p>因為目前還沒有任何顯示邏輯，所以 <code>AppComponent</code> class 為空的。</p>
-<p>特別注意左側 project 視窗，PhpStorm 已經在 <code>app.component.ts</code> 左側顯示 <code>TS</code> icon，表示 PhpStorm 已經認出副檔名為 <code>ts</code> 的 TypeScript。</p>
+<p>特別注意左側 project 視窗，PhpStorm 已經在 <code>app.component.ts</code> 左側顯示 <code>TS</code> 圖示，表示 PhpStorm 已經認出副檔名為 <code>ts</code> 的 TypeScript。</p>
 <p>此外，當存檔後，TypeScript 編譯器會自動編譯，並將相對應的 JavaScript 與 source map 產生在相同目錄下，不用擔心這樣會檔案很多很難管理，PhpStorm 很聰明的預設只會顯示 TypeScript 檔案，並不會顯示 JavaScript 與 source map 檔案，除非你去展開 TypeScript，才會出現 JavaScript 與 source map。</p>
 <p>因為實務上其實只會去修改 TypeScript，並不會去修改 JavaScript 與 source map，所以 PhpStorm 很貼心的在 project 視窗只顯示 TypeScript 檔案。</p>
 <p>下方 TypeScript 視窗會即時顯示出編譯結果。</p>
