@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/php/php-template-literals/</loc>
+    <lastmod>2016-04-29T07:39:24.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/angular2/angular2-phpstorm-setup/</loc>
     <lastmod>2016-04-28T08:57:04.000Z</lastmod>
   </url>
@@ -112,11 +117,6 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-exception-inspection/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-debug-testing/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
@@ -128,6 +128,11 @@
   
   <url>
     <loc>http://oomusou.io/php/php-trait/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/tdd/tdd-91/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -177,12 +182,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/mamp/mamp-setup/</loc>
+    <loc>http://oomusou.io/refactor/refactor-remove-assignments-to-parameters/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-91/</loc>
+    <loc>http://oomusou.io/laravel/laravel42/laravel-42-presenter/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -192,7 +197,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/refactor/refactor-remove-assignments-to-parameters/</loc>
+    <loc>http://oomusou.io/tdd/tdd-phpunit-native-function/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -207,12 +212,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-phpunit-native-function/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-spellcheck/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-spellcheck/</loc>
+    <loc>http://oomusou.io/tdd/tdd-jaceju/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -262,11 +267,6 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-jaceju/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-phpdoc/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
@@ -293,6 +293,11 @@
   
   <url>
     <loc>http://oomusou.io/tdd/tdd-solid/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-git-rm-idea/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -347,17 +352,17 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-git-rm-idea/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-file-header/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel42/laravel-42-presenter/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-exception-inspection/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/mamp/mamp-setup/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
