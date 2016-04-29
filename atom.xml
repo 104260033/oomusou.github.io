@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-04-29T07:39:24.000Z</updated>
+  <updated>2016-04-29T07:42:11.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,16 +19,16 @@
     <link href="http://oomusou.io/php/php-template-literals/"/>
     <id>http://oomusou.io/php/php-template-literals/</id>
     <published>2016-04-29T12:23:43.000Z</published>
-    <updated>2016-04-29T07:39:24.000Z</updated>
+    <updated>2016-04-29T07:42:11.000Z</updated>
     <content type="html"><![CDATA[<p>TypeScript 提供了 Template Literals，可以讓字串處理的可讀性更高，不再只是湊字串而已，事實上，PHP 也有這種機制。  </p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
 <p>PHP 7.0.0<br>TypeScript 1.8.9</p>
 <h2 id="TypeScript">TypeScript</h2><hr>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name:<span class="built_in">string</span> = <span class="string">'Sam'</span>;</span><br><span class="line"><span class="keyword">var</span> sentence:<span class="built_in">string</span> = `Hello $&#123;name&#125;`;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sentence);</span><br></pre></td></tr></table></figure>
+<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name:<span class="built_in">string</span> = <span class="string">'Sam'</span>;</span><br><span class="line"><span class="keyword">var</span> sentence:<span class="built_in">string</span> = `Hello $&#123;name&#125;`;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sentence);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Hello Sam</span></span><br></pre></td></tr></table></figure>
 <p>在 TypeScript，只要字串改用<code>反引號</code> ，再配合 <code>${}</code> 即可。</p>
 <h2 id="PHP">PHP</h2><hr>
-<figure class="highlight php"><figcaption><span>PHP</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$name</span> = <span class="string">'Sam'</span>;</span><br><span class="line"><span class="variable">$sentence</span> = <span class="string">"Hello &#123;$name&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span>(<span class="variable">$sentence</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><figcaption><span>PHP</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$name</span> = <span class="string">'Sam'</span>;</span><br><span class="line"><span class="variable">$sentence</span> = <span class="string">"Hello &#123;$name&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span>(<span class="variable">$sentence</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Hello Sam</span></span><br></pre></td></tr></table></figure>
 <p>在 PHP，只要字串改用<code>雙引號</code>，再配合<code>{$}</code>即可。</p>
 <p>剛好與 TypeScript 相反。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
