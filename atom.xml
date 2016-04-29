@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-04-29T07:42:11.000Z</updated>
+  <updated>2016-04-29T07:45:21.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/php/php-template-literals/"/>
     <id>http://oomusou.io/php/php-template-literals/</id>
     <published>2016-04-29T12:23:43.000Z</published>
-    <updated>2016-04-29T07:42:11.000Z</updated>
+    <updated>2016-04-29T07:45:21.000Z</updated>
     <content type="html"><![CDATA[<p>TypeScript 提供了 Template Literals，可以讓字串處理的可讀性更高，不再只是湊字串而已，事實上，PHP 也有這種機制。  </p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -43,7 +43,7 @@
     
       <category term="PHP" scheme="http://oomusou.io/tags/PHP/"/>
     
-      <category term="TypeScrpit" scheme="http://oomusou.io/tags/TypeScrpit/"/>
+      <category term="TypeScript" scheme="http://oomusou.io/tags/TypeScript/"/>
     
   </entry>
   
