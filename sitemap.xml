@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/laravel/laravel-for-newbie/</loc>
+    <lastmod>2016-05-04T09:20:59.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/tdd/tdd-repository-testing-sqlite/</loc>
     <lastmod>2016-05-04T03:26:46.000Z</lastmod>
   </url>
@@ -127,11 +132,6 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/php/php-trait/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://oomusou.io/tdd/tdd-91/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
@@ -242,7 +242,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-for-newbie/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-navigate-method/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -268,11 +268,6 @@
   
   <url>
     <loc>http://oomusou.io/laravel/homestead/homestead-osx/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-navigate-method/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -303,6 +298,11 @@
   
   <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-exception-inspection/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-debug-testing/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -357,12 +357,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-debug-testing/</loc>
+    <loc>http://oomusou.io/php/php-variable-object/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/php/php-variable-object/</loc>
+    <loc>http://oomusou.io/php/php-trait/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
