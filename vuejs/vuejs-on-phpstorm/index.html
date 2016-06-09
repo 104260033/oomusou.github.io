@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>如何在PhpStorm打造Vue.js開發環境? | 點燈坊</title>
+  <title>如何在 PhpStorm 打造 Vue.js 開發環境? | 點燈坊</title>
   <meta name="author" content="真 OO無双">
   
-  <meta name="description" content="在PhpStorm使用Vue.js的Auto Complete">
+  <meta name="description" content="在 PhpStorm 對 Vue.js 語法提示與語法變色">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
- <meta name="description" content="在PhpStorm使用Vue.js的Auto Complete">
+ <meta name="description" content="在 PhpStorm 對 Vue.js 語法提示與語法變色">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何在PhpStorm打造Vue.js開發環境?">
+<meta property="og:title" content="如何在 PhpStorm 打造 Vue.js 開發環境?">
 <meta property="og:url" content="http://oomusou.io/vuejs/vuejs-on-phpstorm/index.html">
 <meta property="og:site_name" content="點燈坊">
-<meta property="og:description" content="在PhpStorm使用Vue.js的Auto Complete">
+<meta property="og:description" content="在 PhpStorm 對 Vue.js 語法提示與語法變色">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-03-22T14:03:51.000Z">
+<meta property="og:updated_time" content="2016-06-09T13:23:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何在PhpStorm打造Vue.js開發環境?">
-<meta name="twitter:description" content="在PhpStorm使用Vue.js的Auto Complete">
+<meta name="twitter:title" content="如何在 PhpStorm 打造 Vue.js 開發環境?">
+<meta name="twitter:description" content="在 PhpStorm 對 Vue.js 語法提示與語法變色">
  
 
   
@@ -81,7 +81,7 @@
     	 
 	
 		<div class="page-header">		
-			<h1> 如何在PhpStorm打造Vue.js開發環境?</h1>
+			<h1> 如何在 PhpStorm 打造 Vue.js 開發環境?</h1>
 		</div>		
 	
 
@@ -95,50 +95,94 @@
 
 	
 		 <div class="alert alert-success description">
-			<i class="fa fa-info-circle"></i> 在PhpStorm使用Vue.js的Auto Complete			
+			<i class="fa fa-info-circle"></i> 在 PhpStorm 對 Vue.js 語法提示與語法變色			
 		</div> <!-- alert -->
 		
 
 	<!-- toc -->
 	<div id="postTOC">
 		<span class="tocHeading">Contents</span>
-		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Vue-js_on_PhpStorm"><span class="toc-article-text">Vue.js on PhpStorm</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Directive"><span class="toc-article-text">Directive</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#下載Vue-js_Plugin"><span class="toc-article-text">下載Vue.js Plugin</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#安裝Vue-js_Plugin"><span class="toc-article-text">安裝Vue.js Plugin</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#自動顯示Directive"><span class="toc-article-text">自動顯示Directive</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#API"><span class="toc-article-text">API</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#下載External_Libraries"><span class="toc-article-text">下載External Libraries</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#確認安裝成功"><span class="toc-article-text">確認安裝成功</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#自動顯示API"><span class="toc-article-text">自動顯示API</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#如何自動顯示data？"><span class="toc-article-text">如何自動顯示data？</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li></ol>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Vue-js_on_PhpStorm"><span class="toc-article-text">Vue.js on PhpStorm</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#安裝_Vue-js_外掛"><span class="toc-article-text">安裝 Vue.js 外掛</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#第一次執行_Vue-js"><span class="toc-article-text">第一次執行 Vue.js</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#安裝_Vue-js_Library"><span class="toc-article-text">安裝 Vue.js Library</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Directive"><span class="toc-article-text">Directive</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#API"><span class="toc-article-text">API</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Vue_元件"><span class="toc-article-text">Vue 元件</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li></ol>
     </div>
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>我是一個很依賴auto complete才能寫程式的人，一來我記憶力很差，我記不了很多API，二來我很容易typo，所以只能依賴auto complete用選的，所以寫Vue.js的第一件事情，就是在PhpStorm先把auto complete環境弄好。</p>
+	    <p>我是一個很依賴語法提示才能寫程式的人，一來我記憶力很差，我記不了很多API，二來我很容易 typo，所以只能依賴語法提示用選的，所以寫 Vue.js 的第一件事情，就是在 PhpStorm 先把開發環境弄好。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
-<p>Vue.js 1.0.10<br>PhpStorm 10.0.1</p>
+<p>Vue.js 1.0.24<br>PhpStorm 2016.1.2<br>Plugin : vue-for-idea 1.0.6<br>Plugin : Vue.js 1.1.0</p>
 <h2 id="Vue-js_on_PhpStorm">Vue.js on PhpStorm</h2><hr>
-<p>Vue.js分兩部分，一部分是directive，一部分是API，所以我們接下來要做的就是讓PhpStorm的auto complete能自動顯示directive與API。</p>
+<p>PhpStorm 要支援 Vue.js，主要有 3 個重點 :</p>
+<ol>
+<li><strong>Directive</strong> : 支援由 <code>v-</code> 開頭的 directive，如 <code>v-model</code>，以及其 shorthand，如 <code>@click</code>，<code>:href</code>。</li>
+<li><strong>API</strong> : 支援 Vue.js 的 API，如 <code>Vue.component()</code>。</li>
+<li><strong>vue 元件</strong> : 支援 Vue.js 自創的 component 格式，在 PhpStorm 正常顯示，沒有警告。</li>
+</ol>
+<h2 id="安裝_Vue-js_外掛">安裝 Vue.js 外掛</h2><hr>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps000.png" alt=""></p>
+<p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin </em></strong><br>輸入 <code>vue</code>，按 <code>Search in repositories</code>。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps001.png" alt=""></p>
+<p>會搜尋到 2 個 Vue.js 外掛 : <code>vue-for-idea</code> 與 <code>Vue.js</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>這兩個外掛並非 JetBrains 官方所出，而是由 open source 社群所維護，目前這兩個外掛仍在開發中，各自實現了一些功能，如 <code>Vue.js</code> 外掛支援 directive，卻不支援 shorthand，而 <code>vue-for-idea</code> 外掛支援 shorthand，卻不支援 directive，所以必須兩個外掛都裝，功能才會比較齊全。</span></span></span></p>
+<p>將這兩個外掛全部安裝。  </p>
+<p>先安裝 <code>vue-for-idea</code> 外掛。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps002.png" alt=""></p>
+<p>安裝完 <code>vue-for-idea</code> 外掛之後，需重新啟動 PhpStorm。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps003.png" alt=""></p>
+<p>安裝 <code>Vue.js</code> 外掛。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps004.png" alt=""></p>
+<p>安裝完 <code>Vue.js</code> 外掛之後，需重新啟動 PhpStorm。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps005.png" alt=""></p>
+<p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin </em></strong><br>重新啟動後，確認 <code>vue-for-idea</code> 與 <code>Vue.js</code> 兩個外掛都已經安裝成功。</p>
+<h2 id="第一次執行_Vue-js">第一次執行 Vue.js</h2><hr>
+<p>Vue.js 提供很多方式安裝</p>
+<ol>
+<li>直接下載</li>
+<li>CDN</li>
+<li>NPM</li>
+<li>Vue-CLI</li>
+</ol>
+<p>本文先以最簡單的 CDN 方式安裝 Vue.js。</p>
+<p><strong>welcome.blade.php</strong><span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Vue10_demo/commit/888b8d71bd9792e2447a7c750e1c1ce89b7b99f3" target="_blank" rel="external">在 blade 載入 Vue.js</a></span></span></span><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">title</span>&gt;</span>Laravel<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"https://fonts.googleapis.com/css?family=Lato:100"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">            <span class="tag">html</span>, <span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100%</span></span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">display</span>:<span class="value"> table</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> <span class="number">100</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">'Lato'</span></span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">display</span>:<span class="value"> table-cell</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> middle</span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="class">.content</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="class">.title</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">96px</span></span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line">        </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"app"</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"title"</span>&gt;</span>Laravel 5<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">div</span>&gt;</span>@&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>45 行<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>直接以 CND 載入 Vue.js。</p>
+<p>46 行<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>將 Vue.js 的程式碼寫在 <code>js/app.js</code>。</p>
+<p>42 行<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span>&gt;</span>@&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用 Vue.js 顯示 <code>message</code> 變數。</p>
+<p>加上 <code>@</code> 是為了告訴 Laravel 的 Blade 不要處理，交給 Vue.js 處理。</p>
+<p><strong>app.js</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Vue10_demo/commit/62fd031bf31125e1b7c9570c57017ab861b3c0fb" target="_blank" rel="external">新增 app.js</a></span></span></span><br><figure class="highlight php"><figcaption><span>public/js/app.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vue = &#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: <span class="string">'Vue.js 1'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(vue);</span><br></pre></td></tr></table></figure></p>
+<p>建立 <code>Vue</code> 物件，<code>vue</code> 為其 constructor，設定了 <code>el</code> 與 <code>data</code> 屬性。</p>
+<p>要將變數 <code>message</code> 為 <code>Vue.js 1</code> 的值，透過 data binding 顯示在 <code>welcome.blade.php</code>。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps010.png" alt=""></p>
+<p>若能看到 <code>Vue.js 1</code>，表示 Vue.js 已經正常啟動。</p>
+<h2 id="安裝_Vue-js_Library">安裝 Vue.js Library</h2><hr>
+<p>目前為止雖然可以正常執行 Vue.js，不過那僅代表瀏覽器執行正常，並不代表 PhpStorm 認識 Vue.js，PhpStorm 目前也還無法對 Vue.js 做語法提示。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps006.png" alt=""></p>
+<p>對於 Vue.js 的 CDN，PhpStorm 提出了警告，表示沒有本機版本，因此無法提供語法提示。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps007.png" alt=""></p>
+<p>將滑鼠放在反白的 CDN 上，按熱鍵 &#8997; + &#8617;，選擇 <code>Download library</code>。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps008.png" alt=""></p>
+<p>下載成功後，CDN 上的反白警告會消失。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps009.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Languages &amp; Frameworks -&gt; JavaScript -&gt; Libraries</em></strong></p>
+<p>會出現 <code>vue</code>，表示 Vue.js 的 external library 已經安裝成功，從此 PhpStorm 可以為 Vue.js 的 API 做語法提示。</p>
 <h2 id="Directive">Directive</h2><hr>
-<h3 id="下載Vue-js_Plugin">下載Vue.js Plugin</h3><p>到<a href="https://plugins.jetbrains.com/plugin/8057?pr" target="_blank" rel="external">Vue.js Plugin</a>下載，檔案為<code>vuejs-plugin.jar</code>，已經支援Vue.js 1.0新directive，如<code>v-for</code>。</p>
-<h3 id="安裝Vue-js_Plugin">安裝Vue.js Plugin</h3><p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin -&gt; Install plugin from disk… </em></strong><br><img src="/images/vuejs/vuejs-on-phpstorm/vue000.png" alt=""></p>
-<p>載入剛剛下載的<code>vuejs-plugin.jar</code>。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue001.png" alt=""></p>
-<p>安裝完會要求重新啟動PhpStorm。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue002.png" alt=""></p>
-<h3 id="自動顯示Directive">自動顯示Directive</h3><p>重新啟動後，只要輸入<code>v</code>，就會顯示Vue.js專屬的directive了。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue003.png" alt=""></p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps011.png" alt=""></p>
+<p>只要輸入 <code>v</code>，就會顯示 Vue.js 專屬的 directive 了。</p>
 <h2 id="API">API</h2><hr>
-<p>JavaScript與PHP一樣，所有的auto complete都必須亦賴註解完成，PHP靠的是<strong><em>PHPDoc</em></strong>，而JavaScript靠的是<strong><em>JSDoc</em></strong>。</p>
-<p>但若使用的是min版本的CDN link呢？這一定是沒有註解的版本。</p>
-<p>PhpStorm提供了<strong><em>External Libraries</em></strong>機制，會自動從CDN下載，並加上JSDoc，因而可以在PhpStorm使用auto complete。</p>
-<h3 id="下載External_Libraries">下載External Libraries</h3><p>CDN反白，表示PhpStorm在本機並沒有含JSDoc版本的library，因此無法使用auto complete。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue004.png" alt=""></p>
-<p>滑鼠指標放在反白上，按&#8997; + &#8617;，顯示Download library。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue005.png" alt=""></p>
-<p>PhpStorm會自動下載，並顯示訊息。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue006.png" alt=""></p>
-<h3 id="確認安裝成功">確認安裝成功</h3><p><strong><em>PhpStorm -&gt; Preferences -&gt; Languages &amp; Frameworks -&gt; JavaScript -&gt; Libraries</em></strong></p>
-<p>會出現<code>vue</code>，表示Vue.js的external library已經安裝成功。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue007.png" alt=""></p>
-<p>CDN也不再反白了。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue008.png" alt=""></p>
-<h3 id="自動顯示API">自動顯示API</h3><p>PhpStorm的auto complete可以自動顯示Vue.js的API了。</p>
-<p>若為Vue.js的API，會加上<code>(vue)</code>註解。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue009.png" alt=""></p>
-<h2 id="如何自動顯示data？">如何自動顯示data？</h2><hr>
-<figure class="highlight javascript"><figcaption><span>app.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: <span class="string">'Hello World'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        buttonClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.message = <span class="string">'Hi World'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure> 
-<p>若依照以上這種常見的寫法，在第8行打<code>this</code>時，auto complete無法顯示<code>message</code>，目前root cause原因不明，猜測是PhpStorm對於JavaScript這種匿名物件的寫法，在解析時有所限制。</p>
-<figure class="highlight javascript"><figcaption><span>app.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vue = &#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: <span class="string">'Hello World'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        buttonClick: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.message = <span class="string">'Hi World'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(vue);</span><br></pre></td></tr></table></figure>
-<p>若改用這種寫法，在第8行打<code>this</code>時，auto complete就會自動顯示<code>message</code>。<br><img src="/images/vuejs/vuejs-on-phpstorm/vue010.png" alt=""></p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps012.png" alt=""></p>
+<p>PhpStorm 的語法提示可以自動顯示 Vue.js 的 API 了。</p>
+<p>若為 Vue.js 的 API，會加上 <code>(vue)</code>。</p>
+<h2 id="Vue_元件">Vue 元件</h2><hr>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps013.png" alt=""></p>
+<p>按熱鍵 &#8963; + N 時，會出現 <code>Vue File</code>，可以讓我們直接新增 Vue 元件。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps014.png" alt=""></p>
+<p>自動產生預設的 Vue 元件框架。</p>
+<p>PhpStorm 可以認出 Vue 元件，且程式碼也不再出現任何錯誤警告。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
-<li>PhpStorm包含WebStorm，所以也可以拿來開發JavaScript，並對JavaScript加以測試、重構與偵錯，在PhpStorm打造好Vue.js的開發環境後，就可以開心的學習Vue.js了。</li>
+<li>PhpStorm 包含 WebStorm，所以也可以拿來開發 JavaScript，並對 JavaScript 加以測試、重構與偵錯，在 PhpStorm 打造好 Vue.js 的開發環境後，就可以開心的學習 Vue.js 了。</li>
+<li>目前 <code>vue-for-idea</code> 與 <code>Vue.js</code> 這兩個外掛都還在持續開發中，功能還不夠完整，希望 JetBrains 能趕快針對 Vue.js 開發出專屬套件，讓 PhpStorm 開發 Vue.js 更有效率。</li>
 </ul>
 	  
 	</div>
@@ -148,14 +192,14 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/phpstorm/phpstorm-spellcheck/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
 
         <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/tdd/tdd-solid/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/javascript/javascript-variable-property/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -176,7 +220,7 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2015-11-28 
+	2016-06-08 
 	</div>
 	
 
