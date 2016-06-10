@@ -112,7 +112,7 @@
     <link href="http://oomusou.io/vuejs/vuejs-on-phpstorm/"/>
     <id>http://oomusou.io/vuejs/vuejs-on-phpstorm/</id>
     <published>2016-06-08T15:33:02.000Z</published>
-    <updated>2016-06-10T13:06:52.000Z</updated>
+    <updated>2016-06-10T13:14:20.000Z</updated>
     <content type="html"><![CDATA[<p>我是一個很依賴語法提示才能寫程式的人，一來我記憶力很差，我記不了很多API，二來我很容易 typo，所以只能依賴語法提示用選的，所以寫 Vue.js 的第一件事情，就是在 PhpStorm 先把開發環境弄好。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
