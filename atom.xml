@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-06-10T00:32:04.000Z</updated>
+  <updated>2016-06-10T13:12:44.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -15,11 +15,104 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[如何設定 PhpStorm 的 Directories?]]></title>
+    <link href="http://oomusou.io/phpstorm/phpstorm-directories/"/>
+    <id>http://oomusou.io/phpstorm/phpstorm-directories/</id>
+    <published>2016-06-10T12:23:43.000Z</published>
+    <updated>2016-06-10T13:12:44.000Z</updated>
+    <content type="html"><![CDATA[<p>PhpStorm 最強的三個功能為 : Refactoring、Debugging、與 Inspection，但由於 PHP 生態是眾多 framework，而每個 framework 的目錄架構也不太一樣，因此必須先在 PhpStorm 設定 directories，才能發揮 PhpStorm 的強悍功能，而不只是文字編輯器而已。</p>
+<a id="more"></a>
+<h2 id="Version">Version</h2><hr>
+<p>Laravel 5.2.36</p>
+<h2 id="提示設定_Directories">提示設定 Directories</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-directories/dir000.png" alt=""></p>
+<p>當使用 PhpStorm 開啟 Laravel 專案時，一開始會對專案做 indexing，之後就會出現 <code>Detect PSR-0 namespace roots</code> 的提示，要求你設定 Directories。</p>
+<p>很多初學者因為不知道設定 Directories 的重要性，就直接將對話框關閉，這是非常可惜的，這將喪失很多 PhpStorm 重要的功能。</p>
+<h2 id="手動設定_Directories">手動設定 Directories</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-directories/dir001.png" alt=""></p>
+<p>按 <code>Settings | Directories</code> 手動設定 <code>Directories</code>。</p>
+<div class="alert alert-info"><i class="fa fa-info"></i>  不建議使用 <strong>automatically</strong> 由 PhpStorm 自動設定 directories，這將導致 <strong>vendor</strong> 目錄被設定在 <strong>Excluded</strong> 下，導致 Laravel 與其他 package 的語法提示不正常。</div>
+<p><img src="/images/phpstorm/phpstorm-directories/dir002.png" alt=""></p>
+<p>進入設定 Directories 視窗，若第一次沒由 <code>Detect PSR-0 namespaces roots</code> 設定也沒關係，日後只要在此設定即可。</p>
+<p><strong><em> PhpStorm -&gt; Preferences -&gt; Directories </em></strong></p>
+<p>接下來要設定 <code>Tests</code>、<code>Sources</code>、<code>Excluded</code> 與 <code>Resource Root</code> 4 個目錄。</p>
+<h2 id="Sources">Sources</h2><hr>
+<p>設定 <code>PSR-0 namespace roots</code> 的主目錄，也就是 Laravel 的 <code>app</code> 目錄。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir003.png" alt=""></p>
+<p>選擇 <code>app</code> 目錄，按上方的 <code>Sources</code>，會在右側出現 <code>Source Folders app</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir004.png" alt=""></p>
+<p>按 <code>P</code> 設定該目錄的 property。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir005.png" alt=""></p>
+<p>在 <code>Package prefix</code> 輸入 <code>App</code>，因為 <code>app</code> 目錄對應的正是 Laravel 的 namespace <code>App</code>。</p>
+<p>這是所有 directories 設定中最重要的一個，在 Laravel 5 之後，全面使用 namespace，管理 namespace 成為很多人的惡夢，但只要設定了 <code>Sources</code> 之後，將來 PhpStorm 會幫我們管理 namespace。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir006.png" alt=""></p>
+<p>設定了 <code>Sources</code> 之後，在 project windows 的 <code>app</code> 會顯示藍色。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir007.png" alt=""></p>
+<p>假如我們想在自己建立的 <code>Services</code> 目錄下，建立其他 class 寫商業邏輯。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>關於 Service 模式，詳細請參考<a href="/laravel/laravel-service/">如何使用 Service 模式?</a></span></span></span></p>
+<p>選擇 <code>Services</code> 目錄，按熱鍵 &#8984; + N，顯示 <code>New</code> 視窗，選擇 <code>PHP Class</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir008.png" alt=""></p>
+<p>自行輸入 class 名稱，值得注意的是，PhpStorm 已經自動幫我們準備好 namespace，不必我們操心。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir009.png" alt=""></p>
+<p>程式碼也幫我們管理好 namespace 了。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Directories_demo/commit/81257eedf3819dd685911dd90f04ce7207b3ea34" target="_blank" rel="external">建立 OrderService</a></span></span></span></p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir010.png" alt=""></p>
+<p>若想要注入其他物件，可在 constructor 的參數以 type hint 方式注入。<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>關於依賴注入，詳細請參考<a href="/tdd/tdd-di/">深入探討依賴注入</a></span></span></span></p>
+<p>如我們想注入 <code>User</code>，但 PhpStorm 已經反白警告找不到 <code>User</code> class。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir011.png" alt=""></p>
+<p>選擇反白的 <code>User</code>，按熱鍵 &#8997; + &#8617;，選擇 <code>Import class</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir012.png" alt=""></p>
+<p>若整個專案只有一個同名的 class，PhpStorm 會自動 import，否則會出現視窗讓你決定要 import 哪一個 lass。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir013.png" alt=""></p>
+<p>PhpStorm 自動幫我們 use 了 <code>App\User</code>。<span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Directories_demo/commit/8a4d3267723e5b9d3be63767503d1f399a85c6a9" target="_blank" rel="external">注入 User</a></span></span></span></p>
+<div class="alert alert-info"><i class="fa fa-info"></i>  無論是建立 namespace，或者引用 namespace，完全由 PhpStorm 自動幫我們處理，不用擔心 namespace 大小寫寫錯，也不用擔心 namespace 的完整路徑為何。</div>
+<h2 id="Tests">Tests</h2><hr>
+<p>設定測試程式的主目錄，也就是 Laravel 的 <code>tests</code> 目錄。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir014.png" alt=""></p>
+<p>選擇 <code>tests</code> 目錄，按上方的 <code>Tests</code>，會在右側出現 <code>Test Source Folders tests</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir015.png" alt=""></p>
+<p>設定了 <code>Tests</code> 之後，在 project windows 的 <code>tests</code> 會顯示綠色。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir016.png" alt=""></p>
+<p>可在 project windows 選擇 <code>Tests</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir017.png" alt=""></p>
+<p>將只顯示所有測試程式，方便測試時使用。</p>
+<h2 id="Resource_Root">Resource Root</h2><hr>
+<p>設定前端資源的主目錄，也就是 Laravel 的 <code>public</code> 目錄。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir018.png" alt=""></p>
+<p>選擇 <code>public</code> 目錄，按上方的 <code>Resource Root</code>，會在右側出現 <code>Resource roots public</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir019.png" alt=""></p>
+<p>設定了 <code>Resource roots</code> 之後，在 project windows 的 <code>public</code> 會顯示紫色。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir020.png" alt=""></p>
+<p>在 <code>resources/views/welcome.blade.php</code> 加上 Vue.js 後，在 <code>js/app.js</code> 出現反白。<span class="margin-note-marker"><sup>5</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">5</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Directories_demo/commit/b5e0b68d2677e96e77117eb1d9f17ea316af7d1f" target="_blank" rel="external">修改 welcome.blade.php</a></span></span></span></p>
+<p>PhpStorm 抱怨找不到 <code>js/app.js</code>，的確我們在 <code>public</code> 目錄下還沒有建立 <code>js/app.js</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-directories/dir021.png" alt=""></p>
+<p>在 <code>public</code> 目錄下新增 <code>js/app.js</code> 之後，PhpStorm 就不在警告了。<span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Directories_demo/commit/4418c29aa7d0913388911dee8ad5411414adbb25" target="_blank" rel="external">新增 js/app.js</a></span></span></span></p>
+<div class="alert alert-info"><i class="fa fa-info"></i>  <strong>Resource roots</strong> 不是設定在 Laravel 的 <strong>resources</strong> 目錄，而是設定在 <strong>public</strong> 目錄。藉由此設定，PhpStorm 可以幫你檢查 Blade 或 HTML 的 JavaScript 與 CSS 路徑是否合法。</div>
+<h2 id="Excluded">Excluded</h2><hr>
+<p>不由 PhpStorm 管理，或不想由 PhpStorm 建立 index 的目錄。</p>
+<p>實務上若你在專案目錄下，會自己建立一個目錄放 Spec 或相關文件，如 pdf, docx, xlsx 格式，這個目錄交給 PhpStorm 管理並沒有任何意義，只會增加建立 index 時間而已，就可以將該目錄設定為 <code>Excluded</code>。</p>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>這些都是很重要的設定，可惜 PhpStorm 文件並沒有仔細介紹，以上都是實際使用 PhpStorm 一段時間之後摸索出來的心得，將這些目錄設定之後，才能發揮 PhpStorm 強悍功能。</li>
+</ul>
+<h2 id="Sample_Code">Sample Code</h2><hr>
+<p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52Directories_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[正確設定 Directories 才能發揮 PhpStorm 的威力]]>
+    
+    </summary>
+    
+      <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
+    
+      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[如何在 PhpStorm 打造 Vue.js 開發環境?]]></title>
     <link href="http://oomusou.io/vuejs/vuejs-on-phpstorm/"/>
     <id>http://oomusou.io/vuejs/vuejs-on-phpstorm/</id>
     <published>2016-06-08T15:33:02.000Z</published>
-    <updated>2016-06-10T00:32:04.000Z</updated>
+    <updated>2016-06-10T13:06:52.000Z</updated>
     <content type="html"><![CDATA[<p>我是一個很依賴語法提示才能寫程式的人，一來我記憶力很差，我記不了很多API，二來我很容易 typo，所以只能依賴語法提示用選的，所以寫 Vue.js 的第一件事情，就是在 PhpStorm 先把開發環境弄好。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -99,6 +192,8 @@
 <li>PhpStorm 包含 WebStorm，所以也可以拿來開發 JavaScript，並對 JavaScript 加以測試、重構與偵錯，在 PhpStorm 打造好 Vue.js 的開發環境後，就可以開心的學習 Vue.js 了。</li>
 <li>目前 <code>vue-for-idea</code> 與 <code>Vue.js</code> 這兩個外掛仍在持續開發中，功能還不夠完整，希望 JetBrains 能趕快針對 Vue.js 開發出專屬套件，讓 PhpStorm 開發 Vue.js 更有效率。</li>
 </ul>
+<h2 id="Sample_Code">Sample Code</h2><hr>
+<p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52Vue10_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[在 PhpStorm 對 Vue.js 語法提示與語法變色]]>
@@ -1843,76 +1938,6 @@
       <category term="Node.js" scheme="http://oomusou.io/tags/Node-js/"/>
     
       <category term="OS X" scheme="http://oomusou.io/tags/OS-X/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[如何根據Checkbox選取與否決定Button的Enable?]]></title>
-    <link href="http://oomusou.io/vuejs/vuejs-checkbox-button-disable/"/>
-    <id>http://oomusou.io/vuejs/vuejs-checkbox-button-disable/</id>
-    <published>2016-03-21T12:23:43.000Z</published>
-    <updated>2016-03-22T14:26:08.000Z</updated>
-    <content type="html"><![CDATA[<p>實務上GUI常需要做一些防呆，如勾選了<strong>I agree</strong>的之後，button才能enable，否則為disable；又如若完全沒有選擇任何產品時，button為disable，只要選擇了一個以上的產品，button為enable，這在Vue.js是否有不同的作法呢?</p>
-<a id="more"></a>
-<h2 id="Version">Version</h2><hr>
-<p>Vue.js 1.0.18</p>
-<h2 id="單一Checkbox">單一Checkbox</h2><hr>
-<p></p><p data-height="120" data-theme-id="0" data-slug-hash="mVNVrL" data-default-tab="result" data-user="oomusou" class="codepen">See the Pen <a href="http://codepen.io/oomusou/pen/mVNVrL/" target="_blank" rel="external">Vue.js Checkbox and Enable Button</a> by oomusou (<a href="http://codepen.io/oomusou" target="_blank" rel="external">@oomusou</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-
-<p>預設button為disable，當勾選了<code>I Agree</code>之後，button變成enable。</p>
-<p></p><p data-height="200" data-theme-id="0" data-slug-hash="mVNVrL" data-default-tab="html" data-user="oomusou" class="codepen">See the Pen <a href="http://codepen.io/oomusou/pen/mVNVrL/" target="_blank" rel="external">Vue.js Checkbox and Enable Button</a> by oomusou (<a href="http://codepen.io/oomusou" target="_blank" rel="external">@oomusou</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-
-<p>HTML很簡單，只有checkbox與button。</p>
-<p>要給Vue.js管理的<code>&lt;div&gt;</code>，要加上<code>id</code>。</p>
-<p>checkbox使用了<code>v-model</code>與<code>checked</code>做data binding，<code>v-model</code>為Vue.js自己的directive。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>凡<code>v-</code>開頭的屬性皆為Vue.js所提供的directive。</span></span></span></p>
-<p>button直接將<code>disable</code>屬性與<code>checked</code>做data binding，<code>:</code>為Vue.js所擴充的符號，表示將HTML屬性做data binding。</p>
-<ul>
-<li>當勾選了checkbox時，checked為1，也就是true，加了<code>!</code>為false，為<code>disabled=false</code>，也就是enable。</li>
-<li>當不勾選checkbox時，checked為0，也就是false，加了<code>!</code>為true，為<code>disabled=true</code>，也就是disable。</li>
-</ul>
-<p></p><p data-height="200" data-theme-id="0" data-slug-hash="mVNVrL" data-default-tab="js" data-user="oomusou" class="codepen">See the Pen <a href="http://codepen.io/oomusou/pen/mVNVrL/" target="_blank" rel="external">Vue.js Checkbox and Enable Button</a> by oomusou (<a href="http://codepen.io/oomusou" target="_blank" rel="external">@oomusou</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-
-<p><code>el</code>指定Vue.js所掌管的<code>&lt;div&gt;</code>區塊的<code>id</code>。</p>
-<p><code>data</code>列出了<code>checked</code>變數，也就是要做data binding的變數。</p>
-<h2 id="多個Checkbox">多個Checkbox</h2><hr>
-<p></p><p data-height="180" data-theme-id="0" data-slug-hash="LNWOmq" data-default-tab="result" data-user="oomusou" class="codepen">See the Pen <a href="http://codepen.io/oomusou/pen/LNWOmq/" target="_blank" rel="external">Vue.js Checkboxs and Enable Button</a> by oomusou (<a href="http://codepen.io/oomusou" target="_blank" rel="external">@oomusou</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-
-<p>預設button為disable，當勾選任意checkbox後，button變成enable，若沒勾選任checkbox，則button又變為disable。</p>
-<p></p><p data-height="310" data-theme-id="0" data-slug-hash="LNWOmq" data-default-tab="html" data-user="oomusou" class="codepen">See the Pen <a href="http://codepen.io/oomusou/pen/LNWOmq/" target="_blank" rel="external">Vue.js Checkboxs and Enable Button</a> by oomusou (<a href="http://codepen.io/oomusou" target="_blank" rel="external">@oomusou</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-
-<p>HTML很簡單，只有多個checkbox與button。</p>
-<p>3個checkbox的<code>v-model</code>都與相同的<code>checked</code>做data binding，不過此時<code>checked</code>為陣列。</p>
-<p>button直接將<code>disable</code>屬性與<code>checked</code>做data binding。</p>
-<ul>
-<li>當勾選了多個checkbox時，checked陣列的length大於0，為true，加了<code>!</code>為false，為<code>disabled=false</code>，也就是enable。</li>
-<li>當沒勾選任何checkbox時，checked陣列的length等於0，為false，加了<code>!</code>為true，為<code>disabled=true</code>，也就是disable。</li>
-</ul>
-<p></p><p data-height="200" data-theme-id="0" data-slug-hash="LNWOmq" data-default-tab="js" data-user="oomusou" class="codepen">See the Pen <a href="http://codepen.io/oomusou/pen/LNWOmq/" target="_blank" rel="external">Vue.js Checkboxs and Enable Button</a> by oomusou (<a href="http://codepen.io/oomusou" target="_blank" rel="external">@oomusou</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p><p></p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-
-<p>JavaScript非常精簡，與單一checkbox的差別只有<code>false</code>改成<code>[]</code>，完全不用寫任何邏輯判斷，也不用處理任何event。</p>
-<h2 id="Conclusion">Conclusion</h2><hr>
-<ul>
-<li>Vue.js的思維與jQuery不同，寫jQuery需要思考的是<strong>event</strong>，但寫Vue.js需思考的是<strong>data</strong>，透過data binding，我們可以將邏輯放在處理data，而不是如jQuery是在處理DOM，因此Vue.js的程式非常精簡。</li>
-</ul>
-<h2 id="Sample_Code">Sample Code</h2><hr>
-<p>完整的範例可以在我的<a href="http://codepen.io/oomusou/" target="_blank" rel="external">CodePen</a>上找到。</p>
-<ul>
-<li><a href="http://codepen.io/oomusou/pen/mVNVrL" target="_blank" rel="external">單一Checkbox</a></li>
-<li><a href="http://codepen.io/oomusou/pen/LNWOmq" target="_blank" rel="external">多個Checkbox</a></li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[以Data Driven的方式使用Vue.js]]>
-    
-    </summary>
-    
-      <category term="Vue.js" scheme="http://oomusou.io/tags/Vue-js/"/>
     
   </entry>
   

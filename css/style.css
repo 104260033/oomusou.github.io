@@ -640,6 +640,7 @@ div#postTOC{
   font-weight:bold;
 }
 
-#st-search-input {
-  width:80%;
-}
+#st-search-input {width:auto;}
+
+
+
