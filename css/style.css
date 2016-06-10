@@ -646,7 +646,7 @@ div#postTOC{
 
 @media only screen and (min-device-width:768px) and (max-device-width:991px) {
   .page span.margin-note-marker {
-   display:inline-block; overflow: hidden; width: 0; height: 0; 
+   display:block; overflow: hidden; width: 0; height: 0; 
   }
 }
 
