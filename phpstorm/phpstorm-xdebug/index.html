@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="以中斷點方式替 Laravel 除錯">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-06-11T13:09:36.000Z">
+<meta property="og:updated_time" content="2016-06-11T13:14:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用 PhpStorm 對 Laravel 除錯?">
 <meta name="twitter:description" content="以中斷點方式替 Laravel 除錯">
@@ -118,7 +118,7 @@
 <p>其中 <code>[xdebug]</code> 位於 <code>php.ini</code> 的最後一行，預設使用 <code>;</code> 註解，將 <code>;</code> 拿掉，並加上以上的 Xdebug 設定。</p>
 <p>存檔後須重新啟動MAMP。</p>
 <h2 id="設定_Hosts">設定 Hosts</h2><hr>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug007.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug007.png" alt=""></p>
 <p>在 MAMP PRO 設定新 host。</p>
 <ul>
 <li><strong>PHP version</strong> : 7.0.0。</li>
@@ -126,28 +126,28 @@
 </ul>
 <p>存檔後須重新啟動MAMP。</p>
 <h2 id="啟動_PHP_外掛">啟動 PHP 外掛</h2><hr>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug000.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug000.png" alt=""></p>
 <p><strong><em>PhpStorm -&gt; Preferences -&gt; Plugins</em></strong></p>
 <p>PhpStorm 預設已經安裝並啟動 PHP 外掛，確認此外掛已經啟動。</p>
 <h2 id="設定_Interpreter">設定 Interpreter</h2><hr>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug001.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug001.png" alt=""></p>
 <p><strong><em>PhpStorm -&gt; Preferences -&gt; Language &amp; Frameworks -&gt; PHP</em></strong></p>
 <ul>
 <li><strong>PHP language level</strong> : <code>7</code>。</li>
 <li><strong>Interpreter</strong> : 按 <code>...</code> 設定PHP interpreter。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>PHP Interpreter 每個專案都要重新設定一遍。</span></span></span></li>
 </ul>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug002.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug002.png" alt=""></p>
 <p>選擇 <code>PHP 7.0.0</code> 的路徑 : <code>/Applications/MAMP/bin/php/php7.0.0/bin/php</code>。</p>
 <p>若路徑正確，PhpStorm 會抓到 PHP 與 Xdebug 的版本。</p>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug003.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug003.png" alt=""></p>
 <p>從原本的 <code>&lt;no interpreter&gt;</code> 變成明確的 <code>PHP7 (7.0.0)</code>。</p>
 <h2 id="產生_Bookmarklets">產生 Bookmarklets</h2><hr>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug004.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug004.png" alt=""></p>
 <p><strong><em>PhpStorm -&gt; Preferences -&gt; Language &amp; Frameworks -&gt; PHP -&gt; Debug</em></strong></p>
 <p>按下 <code>Use debugger bookmarklets to initiate debugging form your favorite browser</code>，將會使用你預設的瀏覽器開啟 <code>https://www.jetbrains.com/phpstorm/marklets/</code>。</p>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug005.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug005.png" alt=""></p>
 <p>在左側的 Xdebug 部分，按下 <code>Generate</code>。</p>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug006.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug006.png" alt=""></p>
 <p>將產生 <code>Start debugger</code>，<code>Stop Debugger</code> 與 <code>Debug this page</code>。</p>
 <p>將這 3 個連結拖拉到上方的 Bookmarks Bar。</p>
 <ul>
@@ -156,17 +156,17 @@
 <li><strong>Debug this page</strong> : 啟動 Xdebug，並重新載入目前網頁。</li>
 </ul>
 <h2 id="設定中斷點">設定中斷點</h2><hr>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug008.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug008.png" alt=""></p>
 <p>在 <code>app/Http/routes.php</code> 的 14 行的最左側點一下，設定中斷點。<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>實務上你可以在任何你想要除錯的 PHP 程式碼中設定中斷點，本範例是以 Laravel 預設專案的 <code>routes.php</code> 為例。</span></span></span></p>
 <h2 id="傾聽_Xdebug">傾聽 Xdebug</h2><hr>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug009.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug009.png" alt=""></p>
 <p>按下上方的 <code>電話筒</code> 圖示，綠色表示開始傾聽 Xdebug，可在所設定的中斷點停止。</p>
 <h2 id="啟動_Xdebug">啟動 Xdebug</h2><hr>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug010.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug010.png" alt=""></p>
 <p>開啟瀏覽器，按下 <code>Start debugger</code>，在網址列輸入 <code>http://laravel52xdebug:8888</code>。</p>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug011.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug011.png" alt=""></p>
 <p>PhpStorm 會跳出 <code>Incoming Connection From Xdebug</code> 視窗，按 <code>Accept</code> 繼續。</p>
-<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug012.png" alt=""></p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug012.png" alt=""></p>
 <p>程式執行將停在剛剛設定的中斷點。</p>
 <p>下方會出現 Debugger 視窗，提供除錯的詳細資訊。</p>
 <ul>
@@ -192,9 +192,9 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/phpstorm/phpstrom-xdebug/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
 
         <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
 
@@ -230,7 +230,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Laravel/">Laravel<span>38</span></a></li> <li><a href="/tags/MAMP/">MAMP<span>4</span></a></li> <li><a href="/tags/PhpStorm/">PhpStorm<span>23</span></a></li> <li><a href="/tags/Xdebug/">Xdebug<span>3</span></a></li>
+  <li><a href="/tags/Laravel/">Laravel<span>37</span></a></li> <li><a href="/tags/MAMP/">MAMP<span>3</span></a></li> <li><a href="/tags/PhpStorm/">PhpStorm<span>22</span></a></li> <li><a href="/tags/Xdebug/">Xdebug<span>2</span></a></li>
     </ul>
 	</div>
 		
