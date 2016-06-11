@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-06-10T13:12:44.000Z</updated>
+  <updated>2016-06-11T13:09:36.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -13,6 +13,105 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[如何使用 PhpStorm 對 Laravel 除錯?]]></title>
+    <link href="http://oomusou.io/phpstorm/phpstrom-xdebug/"/>
+    <id>http://oomusou.io/phpstorm/phpstrom-xdebug/</id>
+    <published>2016-06-11T12:23:43.000Z</published>
+    <updated>2016-06-11T13:09:36.000Z</updated>
+    <content type="html"><![CDATA[<p>傳統 PHP 大都使用 <code>echo()</code>、<code>var_dump()</code> 或 <code>dd()</code> 除錯，此種方式必須破壞原本程式碼，而且所能觀察的變數有限，也無法明確得知程式執行的流程。PhpStorm 支援 Xdebug，允許我們設定中斷點，程式將停在中斷點設定之處，讓我們透過 Step Into、Step Over、Step Out 的方式除錯，非常方便。</p>
+<a id="more"></a>
+<h2 id="Version">Version</h2><hr>
+<p>PHP 7.0.0<br>Laravel 5.2.37<br>MAMP PRO 3.5<br>PhpStorm 2016.1.2</p>
+<h2 id="設定_Xdebug">設定 Xdebug</h2><hr>
+<p>MAMP PRO 預設已經有安裝 Xdebug，只是在 <code>php.ini</code> 並沒有啟動，必須手動啟動後，再加上一些設定。</p>
+<figure class="highlight php"><figcaption><span>/Applications/MAMP/bin/php/php7.0.0/conf/php.ini</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[xdebug]</span><br><span class="line">zend_extension=<span class="string">"/Applications/MAMP/bin/php/php7.0.0/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so"</span></span><br><span class="line">xdebug.remote_enable=<span class="number">1</span></span><br><span class="line">xdebug.remote_port=<span class="number">9000</span></span><br><span class="line">xdebug.profiler_enable=<span class="number">1</span></span><br><span class="line">xdebug.profiler_output_dir=<span class="string">"/Applications/MAMP/tmp"</span></span><br></pre></td></tr></table></figure>
+<p>MAMP PRO 預設將 PHP 安裝在<code>/Applications/MAMP/bin/php/phpX.X.XX/conf/php.ini</code>，選擇版本加以修改<code>php.ini</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>若不知道該改哪一個<code>php.ini</code>，可下<code>php --ini</code>指令，看看目前系統正在使用哪一個<code>php.ini</code>。</span></span></span></p>
+<p>其中 <code>[xdebug]</code> 位於 <code>php.ini</code> 的最後一行，預設使用 <code>;</code> 註解，將 <code>;</code> 拿掉，並加上以上的 Xdebug 設定。</p>
+<p>存檔後須重新啟動MAMP。</p>
+<h2 id="設定_Hosts">設定 Hosts</h2><hr>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug007.png" alt=""></p>
+<p>在 MAMP PRO 設定新 host。</p>
+<ul>
+<li><strong>PHP version</strong> : 7.0.0。</li>
+<li><strong>Document root</strong> : <code>/Users/oomusou/Code/Demo/Laravel52Xdebug_demo/public</code>。</li>
+</ul>
+<p>存檔後須重新啟動MAMP。</p>
+<h2 id="啟動_PHP_外掛">啟動 PHP 外掛</h2><hr>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug000.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Plugins</em></strong></p>
+<p>PhpStorm 預設已經安裝並啟動 PHP 外掛，確認此外掛已經啟動。</p>
+<h2 id="設定_Interpreter">設定 Interpreter</h2><hr>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug001.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Language &amp; Frameworks -&gt; PHP</em></strong></p>
+<ul>
+<li><strong>PHP language level</strong> : <code>7</code>。</li>
+<li><strong>Interpreter</strong> : 按 <code>...</code> 設定PHP interpreter。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>PHP Interpreter 每個專案都要重新設定一遍。</span></span></span></li>
+</ul>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug002.png" alt=""></p>
+<p>選擇 <code>PHP 7.0.0</code> 的路徑 : <code>/Applications/MAMP/bin/php/php7.0.0/bin/php</code>。</p>
+<p>若路徑正確，PhpStorm 會抓到 PHP 與 Xdebug 的版本。</p>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug003.png" alt=""></p>
+<p>從原本的 <code>&lt;no interpreter&gt;</code> 變成明確的 <code>PHP7 (7.0.0)</code>。</p>
+<h2 id="產生_Bookmarklets">產生 Bookmarklets</h2><hr>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug004.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Language &amp; Frameworks -&gt; PHP -&gt; Debug</em></strong></p>
+<p>按下 <code>Use debugger bookmarklets to initiate debugging form your favorite browser</code>，將會使用你預設的瀏覽器開啟 <code>https://www.jetbrains.com/phpstorm/marklets/</code>。</p>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug005.png" alt=""></p>
+<p>在左側的 Xdebug 部分，按下 <code>Generate</code>。</p>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug006.png" alt=""></p>
+<p>將產生 <code>Start debugger</code>，<code>Stop Debugger</code> 與 <code>Debug this page</code>。</p>
+<p>將這 3 個連結拖拉到上方的 Bookmarks Bar。</p>
+<ul>
+<li><strong>Start debugger</strong> : 啟動 Xdebug 除錯。</li>
+<li><strong>Stop debugger</strong> : 停止 Xdebug 除錯。</li>
+<li><strong>Debug this page</strong> : 啟動 Xdebug，並重新載入目前網頁。</li>
+</ul>
+<h2 id="設定中斷點">設定中斷點</h2><hr>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug008.png" alt=""></p>
+<p>在 <code>app/Http/routes.php</code> 的 14 行的最左側點一下，設定中斷點。<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>實務上你可以在任何你想要除錯的 PHP 程式碼中設定中斷點，本範例是以 Laravel 預設專案的 <code>routes.php</code> 為例。</span></span></span></p>
+<h2 id="傾聽_Xdebug">傾聽 Xdebug</h2><hr>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug009.png" alt=""></p>
+<p>按下上方的 <code>電話筒</code> 圖示，綠色表示開始傾聽 Xdebug，可在所設定的中斷點停止。</p>
+<h2 id="啟動_Xdebug">啟動 Xdebug</h2><hr>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug010.png" alt=""></p>
+<p>開啟瀏覽器，按下 <code>Start debugger</code>，在網址列輸入 <code>http://laravel52xdebug:8888</code>。</p>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug011.png" alt=""></p>
+<p>PhpStorm 會跳出 <code>Incoming Connection From Xdebug</code> 視窗，按 <code>Accept</code> 繼續。</p>
+<p><img src="/images/phpstorm/phpstrom-xdebug/xdebug012.png" alt=""></p>
+<p>程式執行將停在剛剛設定的中斷點。</p>
+<p>下方會出現 Debugger 視窗，提供除錯的詳細資訊。</p>
+<ul>
+<li>左側綠色三角形為 <code>Resume Program</code>，表示將繼續執行，直到下一個中斷點停止。</li>
+<li>左側紅色方形為 <code>Stop</code>，表示停止目前程式執行。</li>
+<li>上方第一個圖示為 <code>Step Over</code>，表示將跳過目前函式。</li>
+<li>上方第二個圖示為 <code>Step Into</code>，表示將執行目前函式內部的程式碼。</li>
+<li>上方第三個圖示為 <code>Force Step Into</code>，表示將強制執行目前函式內部的程式碼。</li>
+<li>上方第四個圖示為 <code>Step Out</code>，表示將跳出目前函式內部的程式碼。</li>
+<li>上方第五個圖示為 <code>Run to Cursor</code>，表示將快速執行到目前游標處停止。</li>
+<li><code>Variables</code> 為目前 scope 所有的變數值。</li>
+<li><code>Watches</code> 可自行新增想觀察的變數。</li>
+</ul>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>使用這種方式之後，我再也沒用過 <code>echo()</code>、<code>var_dump()</code> 或 <code>dd()</code> 來除錯，只要在認為有問題的程式碼之處，設定中斷點，就可以觀察當時所有變數的值，並且觀察程式實際執行的流程。</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[以中斷點方式替 Laravel 除錯]]>
+    
+    </summary>
+    
+      <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
+    
+      <category term="MAMP" scheme="http://oomusou.io/tags/MAMP/"/>
+    
+      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
+    
+      <category term="Xdebug" scheme="http://oomusou.io/tags/Xdebug/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[如何設定 PhpStorm 的 Directories?]]></title>
@@ -1837,107 +1936,6 @@
       <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
     
       <category term="Refactoring" scheme="http://oomusou.io/tags/Refactoring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[如何在OS X安裝Laravel前端開發環境?]]></title>
-    <link href="http://oomusou.io/laravel/elixir/elixir-nodejs/"/>
-    <id>http://oomusou.io/laravel/elixir/elixir-nodejs/</id>
-    <published>2016-03-22T12:23:43.000Z</published>
-    <updated>2016-04-28T01:26:05.000Z</updated>
-    <content type="html"><![CDATA[<p>Laravel雖然為後端framework，但提供了Laravel Elixir整合了很多好用前端工具，其基於3個更基本的前端工具 : <strong>Node.js</strong>、<strong>NPM</strong>與<strong>Gulp</strong>，這三個必須先搞定後，才能享受Laravel Elixir所帶來的便利。</p>
-<a id="more"></a>
-<h2 id="Version">Version</h2><hr>
-<p>Laravel 5.2.23<br>Homestead 0.4.2<br>Node.js 5.7<br>NPM 3.6<br>Gulp 3.9.1</p>
-<h2 id="版本考量">版本考量</h2><hr>
-<p>Node.js版本更新迅速，裝最新版Node.js不見得是好事，因為 :</p>
-<ol>
-<li>我們主要目的是使用Laravel Elixir，而不是開發Node.js應用程式。</li>
-<li>Laravel Elixir整合了很多Node.js套件，這些套件或工具的更新速度不見得跟得上最新版的Node.js更新速度。</li>
-</ol>
-<p>因此Laravel Elixir穩定最重要，一味著更新Node.js，反而會造成Laravel Elixir出現未知的問題。</p>
-<p>實務上有2種使用Laravel Elixir方式 :</p>
-<ol>
-<li><strong>直接使用Homestead</strong> : Homestead已經幫你裝好Node.js、NPM與Gulp，不用擔心版本問題。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>若想直接在Homestead內使用前端工具，詳細請參考<a href="/laravel/homestead/homestead-osx/">如何在OS X安裝Homestead?</a></span></span></span></li>
-<li><strong>參考Homestead的版本</strong> : 參考Homestead的Node.js、NPM與Gulp版本，將相同的版本安裝在OS X。</li>
-</ol>
-<p>本文參考的是Homestead 0.4.2，其版本為 :</p>
-<ol>
-<li>Node.js 5.7</li>
-<li>NPM 3.6</li>
-<li>Gulp 3.9.1</li>
-</ol>
-<h2 id="安裝Homebrew">安裝Homebrew</h2><hr>
-<p>Homebrew為OS X最流行的套件管理工具，我們將使用Homebrew安裝NVM。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ /usr/bin/ruby -e &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&#34;</span><br></pre></td></tr></table></figure>
-<h2 id="安裝NVM">安裝NVM</h2><hr>
-<p>NVM全名為Node Version Manager，我們將使用NVM安裝Node.js，並使用NVM切換Node.js版本。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ brew install nvm</span><br></pre></td></tr></table></figure>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node000.png" alt=""></p>
-<div class="alert alert-info"><i class="fa fa-info"></i>  為什麼需要切換Node.js版本呢?</div>
-<p>因為Node.js版本更新快速，你用的套件或工具可能來不及支援新版Node.js，因此實務上有可能必須切換到舊版本的Node.js，才能使用該套件或工具。</p>
-<h2 id="安裝Node-js與NPM">安裝Node.js與NPM</h2><hr>
-<p>目前前端工具大部分都基於Node.js，其優點是執行速度快，又有跨平台的優勢。</p>
-<p>NPM全名為Node Package Manager，為Node.js的套件管理工具，類似PHP的Composer角色。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ nvm install 5.7</span><br></pre></td></tr></table></figure>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node001.png" alt=""></p>
-<p>安裝Node.js 5.7。</p>
-<p><strong>確認Node.js版本</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ node -v</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node002.png" alt=""></p>
-<p><strong>確認NPM版本</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ npm -v</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node003.png" alt=""></p>
-<h2 id="安裝Gulp">安裝Gulp</h2><hr>
-<p>Gulp為前端自動化管理工具，Laravel Elixir就是Gulp的再次封裝。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ npm install -g gulp@3.9.1</span><br></pre></td></tr></table></figure>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node004.png" alt=""></p>
-<p>安裝Gulp 3.9.1。</p>
-<p><strong>-g</strong> : 因為每個專案都會用到Gulp，因此將Gulp安裝在global區。</p>
-<p><strong>確認Gulp版本</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ gulp -v</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node005.png" alt=""></p>
-<h2 id="安裝Laravel_Elixir">安裝Laravel Elixir</h2><hr>
-<p>Laravel Elixir整合了眾多前端工具，讓你不用自己寫Gulp就可達到前端自動化。</p>
-<p><strong>建立Laravel專案</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ composer create-project laravel/laravel Laravel52Elixir --prefer-dist</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node007.png" alt=""></p>
-<p>使用Composer建立Laravel專案。</p>
-<p><strong>安裝Laravel Elixir</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ npm install</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node008.png" alt=""></p>
-<p>安裝Laravel Elixir與前端工具。</p>
-<p><strong>測試Laravel Elixir</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ gulp</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node011.png" alt=""></p>
-<p>右上角顯示<code>Saas Compiled</code>，表示Node.js、NPM、Gulp與Laravel Elixir安裝成功。</p>
-<h2 id="Appendix">Appendix</h2><hr>
-<p>若將來需要切換Node.js版本，可參考以下方式 :</p>
-<h3 id="切換Node-js版本">切換Node.js版本</h3><p><strong>顯示Node.js所有版本</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ nvm list</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node006.png" alt=""></p>
-<p>目前顯示OS X除了剛裝的Node.js 5.7外，還有0.12版，且預設為0.12。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>新安裝Node.js不會有兩個版本，此為特別示範如何切換Node.js版本。</span></span></span></p>
-<p><strong>切換目前Node.js版本</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ nvm use 5.7</span><br></pre></td></tr></table></figure></p>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node009.png" alt=""></p>
-<p>將目前Node.js切換到5.7。</p>
-<h3 id="設定Node-js預設版本">設定Node.js預設版本</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ nvm alias default 5.7</span><br></pre></td></tr></table></figure>
-<p><img src="/images/laravel/elixir/elixir-nodejs/node010.png" alt=""></p>
-<p>以後整個OS X的Node.js預設版本就是5.7。</p>
-<h2 id="Conclusion">Conclusion</h2><hr>
-<ul>
-<li>Laravel Elixir提供了很多前端開發工具，本文只是Laravel Elixir的起手式，將難搞的Node.js、NPM與Gulp先在OS X搞定。</li>
-<li>當Laravel Elixir安裝失敗時，可以參考Homestead的Node.js、NPM與Gulp版本，就算不使用Homestead開發，也可以把Homestead當成golden sample參考。</li>
-<li>若遇到某些套件與工具只能搭配特定Node.js版本，別忘了使用NVM切換Node.js版本。</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[使用Laravel Elixir自動化前端開發]]>
-    
-    </summary>
-    
-      <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
-    
-      <category term="Laravel Elixir" scheme="http://oomusou.io/tags/Laravel-Elixir/"/>
-    
-      <category term="NPM" scheme="http://oomusou.io/tags/NPM/"/>
-    
-      <category term="Node.js" scheme="http://oomusou.io/tags/Node-js/"/>
-    
-      <category term="OS X" scheme="http://oomusou.io/tags/OS-X/"/>
     
   </entry>
   

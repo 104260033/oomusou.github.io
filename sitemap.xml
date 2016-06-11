@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/phpstorm/phpstrom-xdebug/</loc>
+    <lastmod>2016-06-11T13:09:36.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-debug-testing/</loc>
+    <lastmod>2016-06-11T11:56:22.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/vuejs/vuejs-on-phpstorm/</loc>
     <lastmod>2016-06-10T13:14:20.000Z</lastmod>
   </url>
@@ -167,17 +177,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/homestead/homestead-osx/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-file-header/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://oomusou.io/php/php-cs/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/php/php-bindTo/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -192,12 +197,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/mamp/mamp-setup/</loc>
+    <loc>http://oomusou.io/php/php-generator/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/php/php-interface/</loc>
+    <loc>http://oomusou.io/laravel/laravel42/laravel-42-presenter/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -207,7 +212,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/php/php-namespace/</loc>
+    <loc>http://oomusou.io/php/php-interface/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -222,17 +227,17 @@
   </url>
   
   <url>
+    <loc>http://oomusou.io/php/php-namespace/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/php/php-psr2/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://oomusou.io/php/php-trait/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-debug-testing/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -277,12 +282,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/php/php-generator/</loc>
+    <loc>http://oomusou.io/laravel/homestead/homestead-osx/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-file-header/</loc>
+    <loc>http://oomusou.io/php/php-bindTo/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -387,7 +392,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel42/laravel-42-presenter/</loc>
+    <loc>http://oomusou.io/mamp/mamp-setup/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
