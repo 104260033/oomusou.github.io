@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-06-11T13:09:36.000Z</updated>
+  <updated>2016-06-11T13:14:45.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -18,6 +18,105 @@
     <title><![CDATA[如何使用 PhpStorm 對 Laravel 除錯?]]></title>
     <link href="http://oomusou.io/phpstorm/phpstrom-xdebug/"/>
     <id>http://oomusou.io/phpstorm/phpstrom-xdebug/</id>
+    <published>2016-06-11T12:23:43.000Z</published>
+    <updated>2016-06-11T13:14:45.000Z</updated>
+    <content type="html"><![CDATA[<p>傳統 PHP 大都使用 <code>echo()</code>、<code>var_dump()</code> 或 <code>dd()</code> 除錯，此種方式必須破壞原本程式碼，而且所能觀察的變數有限，也無法明確得知程式執行的流程。PhpStorm 支援 Xdebug，允許我們設定中斷點，程式將停在中斷點設定之處，讓我們透過 Step Into、Step Over、Step Out 的方式除錯，非常方便。</p>
+<a id="more"></a>
+<h2 id="Version">Version</h2><hr>
+<p>PHP 7.0.0<br>Laravel 5.2.37<br>MAMP PRO 3.5<br>PhpStorm 2016.1.2</p>
+<h2 id="設定_Xdebug">設定 Xdebug</h2><hr>
+<p>MAMP PRO 預設已經有安裝 Xdebug，只是在 <code>php.ini</code> 並沒有啟動，必須手動啟動後，再加上一些設定。</p>
+<figure class="highlight php"><figcaption><span>/Applications/MAMP/bin/php/php7.0.0/conf/php.ini</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[xdebug]</span><br><span class="line">zend_extension=<span class="string">"/Applications/MAMP/bin/php/php7.0.0/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so"</span></span><br><span class="line">xdebug.remote_enable=<span class="number">1</span></span><br><span class="line">xdebug.remote_port=<span class="number">9000</span></span><br><span class="line">xdebug.profiler_enable=<span class="number">1</span></span><br><span class="line">xdebug.profiler_output_dir=<span class="string">"/Applications/MAMP/tmp"</span></span><br></pre></td></tr></table></figure>
+<p>MAMP PRO 預設將 PHP 安裝在<code>/Applications/MAMP/bin/php/phpX.X.XX/conf/php.ini</code>，選擇版本加以修改<code>php.ini</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>若不知道該改哪一個<code>php.ini</code>，可下<code>php --ini</code>指令，看看目前系統正在使用哪一個<code>php.ini</code>。</span></span></span></p>
+<p>其中 <code>[xdebug]</code> 位於 <code>php.ini</code> 的最後一行，預設使用 <code>;</code> 註解，將 <code>;</code> 拿掉，並加上以上的 Xdebug 設定。</p>
+<p>存檔後須重新啟動MAMP。</p>
+<h2 id="設定_Hosts">設定 Hosts</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug007.png" alt=""></p>
+<p>在 MAMP PRO 設定新 host。</p>
+<ul>
+<li><strong>PHP version</strong> : 7.0.0。</li>
+<li><strong>Document root</strong> : <code>/Users/oomusou/Code/Demo/Laravel52Xdebug_demo/public</code>。</li>
+</ul>
+<p>存檔後須重新啟動MAMP。</p>
+<h2 id="啟動_PHP_外掛">啟動 PHP 外掛</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug000.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Plugins</em></strong></p>
+<p>PhpStorm 預設已經安裝並啟動 PHP 外掛，確認此外掛已經啟動。</p>
+<h2 id="設定_Interpreter">設定 Interpreter</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug001.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Language &amp; Frameworks -&gt; PHP</em></strong></p>
+<ul>
+<li><strong>PHP language level</strong> : <code>7</code>。</li>
+<li><strong>Interpreter</strong> : 按 <code>...</code> 設定PHP interpreter。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>PHP Interpreter 每個專案都要重新設定一遍。</span></span></span></li>
+</ul>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug002.png" alt=""></p>
+<p>選擇 <code>PHP 7.0.0</code> 的路徑 : <code>/Applications/MAMP/bin/php/php7.0.0/bin/php</code>。</p>
+<p>若路徑正確，PhpStorm 會抓到 PHP 與 Xdebug 的版本。</p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug003.png" alt=""></p>
+<p>從原本的 <code>&lt;no interpreter&gt;</code> 變成明確的 <code>PHP7 (7.0.0)</code>。</p>
+<h2 id="產生_Bookmarklets">產生 Bookmarklets</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug004.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Language &amp; Frameworks -&gt; PHP -&gt; Debug</em></strong></p>
+<p>按下 <code>Use debugger bookmarklets to initiate debugging form your favorite browser</code>，將會使用你預設的瀏覽器開啟 <code>https://www.jetbrains.com/phpstorm/marklets/</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug005.png" alt=""></p>
+<p>在左側的 Xdebug 部分，按下 <code>Generate</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug006.png" alt=""></p>
+<p>將產生 <code>Start debugger</code>，<code>Stop Debugger</code> 與 <code>Debug this page</code>。</p>
+<p>將這 3 個連結拖拉到上方的 Bookmarks Bar。</p>
+<ul>
+<li><strong>Start debugger</strong> : 啟動 Xdebug 除錯。</li>
+<li><strong>Stop debugger</strong> : 停止 Xdebug 除錯。</li>
+<li><strong>Debug this page</strong> : 啟動 Xdebug，並重新載入目前網頁。</li>
+</ul>
+<h2 id="設定中斷點">設定中斷點</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug008.png" alt=""></p>
+<p>在 <code>app/Http/routes.php</code> 的 14 行的最左側點一下，設定中斷點。<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>實務上你可以在任何你想要除錯的 PHP 程式碼中設定中斷點，本範例是以 Laravel 預設專案的 <code>routes.php</code> 為例。</span></span></span></p>
+<h2 id="傾聽_Xdebug">傾聽 Xdebug</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug009.png" alt=""></p>
+<p>按下上方的 <code>電話筒</code> 圖示，綠色表示開始傾聽 Xdebug，可在所設定的中斷點停止。</p>
+<h2 id="啟動_Xdebug">啟動 Xdebug</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug010.png" alt=""></p>
+<p>開啟瀏覽器，按下 <code>Start debugger</code>，在網址列輸入 <code>http://laravel52xdebug:8888</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug011.png" alt=""></p>
+<p>PhpStorm 會跳出 <code>Incoming Connection From Xdebug</code> 視窗，按 <code>Accept</code> 繼續。</p>
+<p><img src="/images/phpstorm/phpstorm-xdebug/xdebug012.png" alt=""></p>
+<p>程式執行將停在剛剛設定的中斷點。</p>
+<p>下方會出現 Debugger 視窗，提供除錯的詳細資訊。</p>
+<ul>
+<li>左側綠色三角形為 <code>Resume Program</code>，表示將繼續執行，直到下一個中斷點停止。</li>
+<li>左側紅色方形為 <code>Stop</code>，表示停止目前程式執行。</li>
+<li>上方第一個圖示為 <code>Step Over</code>，表示將跳過目前函式。</li>
+<li>上方第二個圖示為 <code>Step Into</code>，表示將執行目前函式內部的程式碼。</li>
+<li>上方第三個圖示為 <code>Force Step Into</code>，表示將強制執行目前函式內部的程式碼。</li>
+<li>上方第四個圖示為 <code>Step Out</code>，表示將跳出目前函式內部的程式碼。</li>
+<li>上方第五個圖示為 <code>Run to Cursor</code>，表示將快速執行到目前游標處停止。</li>
+<li><code>Variables</code> 為目前 scope 所有的變數值。</li>
+<li><code>Watches</code> 可自行新增想觀察的變數。</li>
+</ul>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>使用這種方式之後，我再也沒用過 <code>echo()</code>、<code>var_dump()</code> 或 <code>dd()</code> 來除錯，只要在認為有問題的程式碼之處，設定中斷點，就可以觀察當時所有變數的值，並且觀察程式實際執行的流程。</li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[以中斷點方式替 Laravel 除錯]]>
+    
+    </summary>
+    
+      <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
+    
+      <category term="MAMP" scheme="http://oomusou.io/tags/MAMP/"/>
+    
+      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
+    
+      <category term="Xdebug" scheme="http://oomusou.io/tags/Xdebug/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[如何使用 PhpStorm 對 Laravel 除錯?]]></title>
+    <link href="http://oomusou.io/phpstorm/phpstorm-xdebug/"/>
+    <id>http://oomusou.io/phpstorm/phpstorm-xdebug/</id>
     <published>2016-06-11T12:23:43.000Z</published>
     <updated>2016-06-11T13:09:36.000Z</updated>
     <content type="html"><![CDATA[<p>傳統 PHP 大都使用 <code>echo()</code>、<code>var_dump()</code> 或 <code>dd()</code> 除錯，此種方式必須破壞原本程式碼，而且所能觀察的變數有限，也無法明確得知程式執行的流程。PhpStorm 支援 Xdebug，允許我們設定中斷點，程式將停在中斷點設定之處，讓我們透過 Step Into、Step Over、Step Out 的方式除錯，非常方便。</p>
@@ -1885,57 +1984,6 @@
       <category term="SQLite" scheme="http://oomusou.io/tags/SQLite/"/>
     
       <category term="TDD" scheme="http://oomusou.io/tags/TDD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[如何在PhpStorm將if else重構成switch case?]]></title>
-    <link href="http://oomusou.io/phpstorm/phpstorm-if-switch/"/>
-    <id>http://oomusou.io/phpstorm/phpstorm-if-switch/</id>
-    <published>2016-03-23T12:23:43.000Z</published>
-    <updated>2016-04-05T01:27:30.000Z</updated>
-    <content type="html"><![CDATA[<p>將<code>if else</code>轉成<code>switch case</code>雖然不算重構，但轉成<code>switch case</code>之後，程式可讀性較高，且通常可以讓人聯想到下一步重構技巧，如Replace Type with State/Strategy，在PhpStorm 2016.1版中，新增了此項重構，非常實用。</p>
-<a id="more"></a>
-<h2 id="Version">Version</h2><hr>
-<p>PhpStorm 2016.1</p>
-<h2 id="if_else">if else</h2><hr>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">calculateTotalPrice</span><span class="params">()</span> : <span class="title">int</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="variable">$totalPrice</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$this</span>-&gt;orders <span class="keyword">as</span> <span class="variable">$order</span>) &#123;</span><br><span class="line">        <span class="variable">$price</span> = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$order</span>-&gt;getMovie()-&gt;getType() == <span class="string">'Regular'</span>) &#123;</span><br><span class="line">            <span class="variable">$price</span> += <span class="number">100</span>;</span><br><span class="line">            <span class="variable">$price</span> += (<span class="variable">$order</span>-&gt;getDays() - <span class="number">7</span>) * <span class="number">10</span>;</span><br><span class="line">        &#125; <span class="keyword">elseif</span> (<span class="variable">$order</span>-&gt;getMovie()-&gt;getType() == <span class="string">'NewRelease'</span>) &#123;</span><br><span class="line">            <span class="variable">$price</span> += <span class="number">150</span>;</span><br><span class="line">            <span class="variable">$price</span> += (<span class="variable">$order</span>-&gt;getDays() - <span class="number">3</span>) * <span class="number">30</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">elseif</span> (<span class="variable">$order</span>-&gt;getMovie()-&gt;getType() == <span class="string">'Children'</span>) &#123;</span><br><span class="line">            <span class="variable">$price</span> += <span class="number">40</span>;</span><br><span class="line">            <span class="variable">$price</span> += (<span class="variable">$order</span>-&gt;getDays() - <span class="number">7</span>) * <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable">$totalPrice</span> += <span class="variable">$price</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$totalPrice</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如以上程式，<code>if else</code>是根據<code>$order-&gt;getMovie()-&gt;getType()</code>判斷，這個可以用<code>switch case</code>改寫，可讀性會更高。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>事實上這段程式是<a href="/phpstorm-tdd-refactor/#if_else改成switch">如何使用PhpStorm實現TDD、重構與偵錯?</a>的範例，當時將<code>if else</code>轉成<code>switch case</code>是用手工做，因為當時的PhpStorm 10.0.3還沒有<code>if else</code>重構成<code>switch case</code>功能。</span></span></span></p>
-<p><img src="/images/phpstorm/phpstorm-if-switch/switch000.png" alt=""></p>
-<p>將游標放在<code>if</code>前面，按熱鍵&#8997; + &#8617;    ，發現只有看到<code>Flip if-else</code>功能，不是可以轉成<code>switch case</code>嗎?</p>
-<h2 id="Extract_Variable">Extract Variable</h2><hr>
-<p><img src="/images/phpstorm/phpstorm-if-switch/switch001.png" alt=""></p>
-<p>因為<code>if()</code>內目前為method，目前PhpStorm還無法對此種寫法重構成<code>switch case</code>。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>理論上應該要可以，或許未來PhpStorm版本會支援。</span></span></span></p>
-<p>必須先將此method使用Extract Variable提煉成變數。</p>
-<p>選擇<code>$order-&gt;getMovie()-&gt;getType()</code>，按熱鍵&#8963; + T，出現Refactor This選單，選擇Variable。</p>
-<p><img src="/images/phpstorm/phpstorm-if-switch/switch002.png" alt=""></p>
-<p>PhpStorm自動幫我們將變數取名為<code>type</code>，可自行修改。</p>
-<p>將<code>Replace all occurences</code>打勾，因為我們要將全部<code>if()</code>與<code>elseif()</code>都使用變數取代。</p>
-<p><img src="/images/phpstorm/phpstorm-if-switch/switch003.png" alt=""></p>
-<p><code>if()</code>與<code>elseif()</code>都使用<code>$type</code>取代了。</p>
-<h2 id="switch_case">switch case</h2><hr>
-<p><img src="/images/phpstorm/phpstorm-if-switch/switch004.png" alt=""></p>
-<p>在將游標放在<code>if</code>之前，按熱鍵&#8997; + &#8617;，出現了<code>Replace if with switch</code>。</p>
-<p><img src="/images/phpstorm/phpstorm-if-switch/switch005.png" alt=""></p>
-<p>程式從原本的<code>if else</code>重構成<code>switch case</code>了。</p>
-<h2 id="Conclusion">Conclusion</h2><hr>
-<ul>
-<li>目前PhpStorm要將<code>if else</code>重構成<code>switch case</code>時，有2個限制 :<ul>
-<li><code>if ()</code>內必須為變數，所以可能需要先搭配Extract Variable。</li>
-<li>判斷式必須為<code>==</code>，不可以是<code>===</code>。</li>
-</ul>
-</li>
-<li>也可以將<code>switch case</code>轉成<code>if else</code>，方法完全一樣。</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[將if else重構成可讀性較高的switch case]]>
-    
-    </summary>
-    
-      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
-    
-      <category term="Refactoring" scheme="http://oomusou.io/tags/Refactoring/"/>
     
   </entry>
   
