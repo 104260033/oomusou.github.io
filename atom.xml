@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-06-12T14:04:27.000Z</updated>
+  <updated>2016-06-12T14:56:44.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-refactor-namespace/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-refactor-namespace/</id>
     <published>2016-06-12T12:23:43.000Z</published>
-    <updated>2016-06-12T14:04:27.000Z</updated>
+    <updated>2016-06-12T14:56:44.000Z</updated>
     <content type="html"><![CDATA[<p>在 TDD 開發流程，為了第一個 <span class="label label-success">綠燈</span>，一開始可能在同一個 namespace 下只有一個 class，但隨著重構的進行，可能重構出更多的 class 與 interface，為了更加的<strong>高內聚，低耦合</strong>，我們可能會將更相關的 class 與 interface 重構到其他 namespace，導致相依的 class 也必須修改，在重構 namepsace 時，PhpStorm 可以幫我們將相依的 class 一併修改，非常方便。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -132,6 +132,8 @@
 <p>重構完趕快跑單元測試與整合測試，確認 PhpStorm 沒有改壞。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
+<li>重構單一 class，是將游標放在 class 名稱上。</li>
+<li>重構一目錄下所有 class，是將游標放在 namespace 名稱上。</li>
 <li>Laravel 5 大量使用 namespace 後，只要改 namespace 就是大家永遠的痛，透過 PhpStorm 的重構，與自己寫的單元測試與整合測試保護後，再也不用害怕改 namespace 了。</li>
 </ul>
 <h2 id="Sample_Code">Sample Code</h2><hr>
