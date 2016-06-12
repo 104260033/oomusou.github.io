@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="在 PhpStorm 對 Vue.js 語法提示與語法變色">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-06-10T13:14:20.000Z">
+<meta property="og:updated_time" content="2016-06-12T10:58:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在 PhpStorm 打造 Vue.js 開發環境?">
 <meta name="twitter:description" content="在 PhpStorm 對 Vue.js 語法提示與語法變色">
@@ -120,7 +120,10 @@
 </ol>
 <h2 id="安裝_Vue-js_外掛">安裝 Vue.js 外掛</h2><hr>
 <p><img src="/images/vuejs/vuejs-on-phpstorm/vueps000.png" alt=""></p>
-<p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin </em></strong><br>輸入 <code>vue</code>，按 <code>Search in repositories</code>。</p>
+<p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin </em></strong></p>
+<ul>
+<li>輸入 <code>vue</code>，按 <code>Search in repositories</code>。</li>
+</ul>
 <p><img src="/images/vuejs/vuejs-on-phpstorm/vueps001.png" alt=""></p>
 <p>會搜尋到 2 個 Vue.js 外掛 : <code>vue-for-idea</code> 與 <code>Vue.js</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>這兩個外掛並非 JetBrains 官方所出，而是由 open source 社群所維護，目前這兩個外掛仍在開發中，各自實現了一些功能，如 <code>Vue.js</code> 外掛支援 directive，卻不支援 shorthand，而 <code>vue-for-idea</code> 外掛支援 shorthand，卻不支援 directive，所以必須兩個外掛都裝，功能才會比較齊全。</span></span></span></p>
 <p>將這兩個外掛全部安裝。  </p>
@@ -132,7 +135,10 @@
 <p><img src="/images/vuejs/vuejs-on-phpstorm/vueps004.png" alt=""></p>
 <p>安裝完 <code>Vue.js</code> 外掛之後，需重新啟動 PhpStorm。</p>
 <p><img src="/images/vuejs/vuejs-on-phpstorm/vueps005.png" alt=""></p>
-<p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin </em></strong><br>重新啟動後，確認 <code>vue-for-idea</code> 與 <code>Vue.js</code> 兩個外掛都已經安裝成功。</p>
+<p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin </em></strong></p>
+<ul>
+<li>重新啟動後，確認 <code>vue-for-idea</code> 與 <code>Vue.js</code> 兩個外掛都已經安裝成功。</li>
+</ul>
 <h2 id="第一次執行_Vue-js">第一次執行 Vue.js</h2><hr>
 <p>Vue.js 提供很多方式安裝</p>
 <ol>
@@ -150,7 +156,7 @@
 <p>42 行<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span>&gt;</span>@&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>使用 Vue.js 顯示 <code>message</code> 變數。</p>
 <p>加上 <code>@</code> 是為了告訴 Laravel 的 Blade 不要處理，交給 Vue.js 處理。</p>
-<p><strong>app.js</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Vue10_demo/commit/62fd031bf31125e1b7c9570c57017ab861b3c0fb" target="_blank" rel="external">新增 app.js</a></span></span></span><br><figure class="highlight php"><figcaption><span>public/js/app.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vue = &#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: <span class="string">'Vue.js 1'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(vue);</span><br></pre></td></tr></table></figure></p>
+<p><strong>app.js</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Vue10_demo/commit/62fd031bf31125e1b7c9570c57017ab861b3c0fb" target="_blank" rel="external">新增 app.js</a></span></span></span><br><figure class="highlight javascript"><figcaption><span>public/js/app.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vue = &#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: <span class="string">'Vue.js 1'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(vue);</span><br></pre></td></tr></table></figure></p>
 <p>建立 <code>Vue</code> 物件，<code>vue</code> 為其 constructor，設定了 <code>el</code> 與 <code>data</code> 屬性。</p>
 <p>要將變數 <code>message</code> 為 <code>Vue.js 1</code> 的值，透過 data binding 顯示在 <code>welcome.blade.php</code>。</p>
 <p><img src="/images/vuejs/vuejs-on-phpstorm/vueps010.png" alt=""></p>
@@ -165,7 +171,9 @@
 <p>下載成功後，CDN 上的反白警告會消失。</p>
 <p><img src="/images/vuejs/vuejs-on-phpstorm/vueps009.png" alt=""></p>
 <p><strong><em>PhpStorm -&gt; Preferences -&gt; Languages &amp; Frameworks -&gt; JavaScript -&gt; Libraries</em></strong></p>
-<p>會出現 <code>vue</code>，表示 Vue.js 的 external library 已經安裝成功，從此 PhpStorm 可以為 Vue.js 的 API 做語法提示。</p>
+<ul>
+<li>會出現 <code>vue</code>，表示 Vue.js 的 external library 已經安裝成功，從此 PhpStorm 可以為 Vue.js 的 API 做語法提示。</li>
+</ul>
 <h2 id="Directive">Directive</h2><hr>
 <p><img src="/images/vuejs/vuejs-on-phpstorm/vueps011.png" alt=""></p>
 <p>只要輸入 <code>v</code>，就會顯示 Vue.js 專屬的 directive 了。</p>
@@ -234,7 +242,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/PhpStorm/">PhpStorm<span>22</span></a></li> <li><a href="/tags/Vue-js/">Vue.js<span>2</span></a></li>
+  <li><a href="/tags/PhpStorm/">PhpStorm<span>23</span></a></li> <li><a href="/tags/Vue-js/">Vue.js<span>2</span></a></li>
     </ul>
 	</div>
 		

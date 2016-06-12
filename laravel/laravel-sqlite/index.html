@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>如何使用SQLite建立最簡單的Laravel開發環境? | 點燈坊</title>
+  <title>如何使用 SQLite 建立最簡單的 Laravel 開發環境? | 點燈坊</title>
   <meta name="author" content="真 OO無双">
   
-  <meta name="description" content="SQLite不只可以用在測試，也可以用來開發專案">
+  <meta name="description" content="SQLite 不只可以用在測試，也可以用來開發專案">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
- <meta name="description" content="SQLite不只可以用在測試，也可以用來開發專案">
+ <meta name="description" content="SQLite 不只可以用在測試，也可以用來開發專案">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何使用SQLite建立最簡單的Laravel開發環境?">
+<meta property="og:title" content="如何使用 SQLite 建立最簡單的 Laravel 開發環境?">
 <meta property="og:url" content="http://oomusou.io/laravel/laravel-sqlite/index.html">
 <meta property="og:site_name" content="點燈坊">
-<meta property="og:description" content="SQLite不只可以用在測試，也可以用來開發專案">
+<meta property="og:description" content="SQLite 不只可以用在測試，也可以用來開發專案">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-05-25T14:09:55.000Z">
+<meta property="og:updated_time" content="2016-06-12T02:37:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何使用SQLite建立最簡單的Laravel開發環境?">
-<meta name="twitter:description" content="SQLite不只可以用在測試，也可以用來開發專案">
+<meta name="twitter:title" content="如何使用 SQLite 建立最簡單的 Laravel 開發環境?">
+<meta name="twitter:description" content="SQLite 不只可以用在測試，也可以用來開發專案">
  
 
   
@@ -81,7 +81,7 @@
     	 
 	
 		<div class="page-header">		
-			<h1> 如何使用SQLite建立最簡單的Laravel開發環境?</h1>
+			<h1> 如何使用 SQLite 建立最簡單的 Laravel 開發環境?</h1>
 		</div>		
 	
 
@@ -95,73 +95,68 @@
 
 	
 		 <div class="alert alert-success description">
-			<i class="fa fa-info-circle"></i> SQLite不只可以用在測試，也可以用來開發專案			
+			<i class="fa fa-info-circle"></i> SQLite 不只可以用在測試，也可以用來開發專案			
 		</div> <!-- alert -->
 		
 
 	<!-- toc -->
 	<div id="postTOC">
 		<span class="tocHeading">Contents</span>
-		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立Laravel專案"><span class="toc-article-text">建立Laravel專案</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立SQLite資料庫"><span class="toc-article-text">建立SQLite資料庫</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#修改-env"><span class="toc-article-text">修改.env</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#執行Migration"><span class="toc-article-text">執行Migration</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#使用PhpStorm管理SQLite"><span class="toc-article-text">使用PhpStorm管理SQLite</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#使用PHP內建的HTTP_Server"><span class="toc-article-text">使用PHP內建的HTTP Server</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Sample_Code"><span class="toc-article-text">Sample Code</span></a></li></ol>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立_Laravel_專案"><span class="toc-article-text">建立 Laravel 專案</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#建立_SQLite_資料庫"><span class="toc-article-text">建立 SQLite 資料庫</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#修改_-env"><span class="toc-article-text">修改 .env</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#執行_Migration"><span class="toc-article-text">執行 Migration</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#使用_PhpStorm_管理_SQLite"><span class="toc-article-text">使用 PhpStorm 管理 SQLite</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#使用_PHP_內建的_HTTP_Server"><span class="toc-article-text">使用 PHP 內建的 HTTP Server</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Sample_Code"><span class="toc-article-text">Sample Code</span></a></li></ol>
     </div>
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>有很多方式可以建立Laravel開發環境，如MAMP、Homestead，但事實上我最近最常使用的是PHP內建HTTP server與SQLite，這是最簡單，也是最省電的開發環境。</p>
+	    <p>有很多方式可以建立 Laravel 開發環境，如 MAMP、Homestead，但事實上我最近最常使用的是 PHP 內建 HTTP server 與 SQLite，這是最簡單，也是最省電的開發環境。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
 <p>Laravel 5.2.29<br>PhpStorm 2016.1</p>
-<h2 id="建立Laravel專案">建立Laravel專案</h2><hr>
+<h2 id="建立_Laravel_專案">建立 Laravel 專案</h2><hr>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~$ composer create-project laravel/laravel Laravel52SQLite_demo --prefer-dist</span><br></pre></td></tr></table></figure>
-<h2 id="建立SQLite資料庫">建立SQLite資料庫</h2><hr>
+<h2 id="建立_SQLite_資料庫">建立 SQLite 資料庫</h2><hr>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ cd database&#10;oomusou@mac:~/MyProject/database$ touch database.sqlite</span><br></pre></td></tr></table></figure>
 <p><img src="/images/laravel/laravel-sqlite/sqlite000.png" alt=""></p>
-<p>在<code>database</code>目錄下，建立空的<code>database.sqlite</code>資料庫。</p>
-<h2 id="修改-env">修改.env</h2><hr>
-<p><strong>.env</strong><span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52SQLite_demo/commit/657be187128dd469887385d48d2706bd957fc8b2" target="_blank" rel="external">修改.env</a></span></span></span><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">APP_ENV=local</span><br><span class="line">APP_DEBUG=<span class="keyword">true</span></span><br><span class="line">APP_KEY=base64:Hv/GYT3Mz3PFWgj4cDnhGhHnkByhuNKUT9NKbGRIfu4=</span><br><span class="line">APP_URL=http:<span class="comment">//localhost</span></span><br><span class="line"></span><br><span class="line">DB_CONNECTION=sqlite</span><br><span class="line">DB_HOST=<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">DB_PORT=<span class="number">3306</span></span><br><span class="line"><span class="comment">#DB_DATABASE=homestead</span></span><br><span class="line">DB_USERNAME=homestead</span><br><span class="line">DB_PASSWORD=secret</span><br><span class="line"></span><br><span class="line">CACHE_DRIVER=file</span><br><span class="line">SESSION_DRIVER=file</span><br><span class="line">QUEUE_DRIVER=sync</span><br><span class="line"></span><br><span class="line">REDIS_HOST=<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">REDIS_PASSWORD=<span class="keyword">null</span></span><br><span class="line">REDIS_PORT=<span class="number">6379</span></span><br><span class="line"></span><br><span class="line">MAIL_DRIVER=smtp</span><br><span class="line">MAIL_HOST=mailtrap.io</span><br><span class="line">MAIL_PORT=<span class="number">2525</span></span><br><span class="line">MAIL_USERNAME=<span class="keyword">null</span></span><br><span class="line">MAIL_PASSWORD=<span class="keyword">null</span></span><br><span class="line">MAIL_ENCRYPTION=<span class="keyword">null</span></span><br></pre></td></tr></table></figure></p>
+<p>在 <code>database</code> 目錄下，建立空的 <code>database.sqlite</code> 資料庫。</p>
+<h2 id="修改_-env">修改 .env</h2><hr>
+<p><strong>.env</strong><span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52SQLite_demo/commit/657be187128dd469887385d48d2706bd957fc8b2" target="_blank" rel="external">修改 .env</a></span></span></span><br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">APP_ENV=local</span><br><span class="line">APP_DEBUG=<span class="keyword">true</span></span><br><span class="line">APP_KEY=base64:Hv/GYT3Mz3PFWgj4cDnhGhHnkByhuNKUT9NKbGRIfu4=</span><br><span class="line">APP_URL=http:<span class="comment">//localhost</span></span><br><span class="line"></span><br><span class="line">DB_CONNECTION=sqlite</span><br><span class="line">DB_HOST=<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">DB_PORT=<span class="number">3306</span></span><br><span class="line"><span class="comment">#DB_DATABASE=homestead</span></span><br><span class="line">DB_USERNAME=homestead</span><br><span class="line">DB_PASSWORD=secret</span><br><span class="line"></span><br><span class="line">CACHE_DRIVER=file</span><br><span class="line">SESSION_DRIVER=file</span><br><span class="line">QUEUE_DRIVER=sync</span><br><span class="line"></span><br><span class="line">REDIS_HOST=<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">REDIS_PASSWORD=<span class="keyword">null</span></span><br><span class="line">REDIS_PORT=<span class="number">6379</span></span><br><span class="line"></span><br><span class="line">MAIL_DRIVER=smtp</span><br><span class="line">MAIL_HOST=mailtrap.io</span><br><span class="line">MAIL_PORT=<span class="number">2525</span></span><br><span class="line">MAIL_USERNAME=<span class="keyword">null</span></span><br><span class="line">MAIL_PASSWORD=<span class="keyword">null</span></span><br><span class="line">MAIL_ENCRYPTION=<span class="keyword">null</span></span><br></pre></td></tr></table></figure></p>
 <p><img src="/images/laravel/laravel-sqlite/sqlite001.png" alt=""></p>
-<p>第6行<br><figure class="highlight fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">DB_CONNECTION</span>=<span class="string">sqlite</span></span><br></pre></td></tr></table></figure></p>
-<p>將資料庫連線改成<code>sqlite</code>。</p>
-<p>第9行<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#DB_DATABASE=homestead</span></span><br></pre></td></tr></table></figure></p>
-<p>將<code>DB_DATABASE</code>前面加加上<code>#</code>，將這行註解掉。</p>
-<h2 id="執行Migration">執行Migration</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan migrate</span><br></pre></td></tr></table></figure>
+<p>第 6 行<br><figure class="highlight fix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">DB_CONNECTION</span>=<span class="string">sqlite</span></span><br></pre></td></tr></table></figure></p>
+<p>將資料庫連線改成 <code>sqlite</code>。</p>
+<p>第 9 行<br><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#DB_DATABASE=homestead</span></span><br></pre></td></tr></table></figure></p>
+<p>將 <code>DB_DATABASE</code> 前面加加上 <code>#</code>，將這行註解掉。</p>
+<h2 id="執行_Migration">執行 Migration</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan migrate</span><br></pre></td></tr></table></figure>
 <p><img src="/images/laravel/laravel-sqlite/sqlite002.png" alt=""></p>
-<p>若能成功migration，表示Laravel已經抓到SQLite，並將資料順利migrate進<code>database.sqlite</code>。</p>
-<h2 id="使用PhpStorm管理SQLite">使用PhpStorm管理SQLite</h2><hr>
-<p>很多人猶豫該用什麼GUI工具管理SQLite，其實PhpStorm已經內建SQLite的管理工具。</p>
-<p><strong> 新增Data Source </strong></p>
+<p>若能成功 migration，表示 Laravel 已經抓到 SQLite，並將資料順利 migrate 進 <code>database.sqlite</code>。</p>
+<h2 id="使用_PhpStorm_管理_SQLite">使用 PhpStorm 管理 SQLite</h2><hr>
+<p>很多人猶豫該用什麼 GUI 工具管理 SQLite，其實 PhpStorm 已經內建 SQLite 管理工具。</p>
 <p><img src="/images/laravel/laravel-sqlite/sqlite003.png" alt=""></p>
-<p>按下右側的<code>Database</code>，再按下上方的<code>+</code>，選擇<code>Data Source form Path</code>。</p>
-<p><strong> 選擇SQLite檔案 </strong></p>
+<p>按下右側的 <code>Database</code>，再按下上方的 <code>+</code>，選擇 <code>Data Source form Path</code>。</p>
 <p><img src="/images/laravel/laravel-sqlite/sqlite004.png" alt=""></p>
-<p>選擇剛剛建立的<code>database.sqlite</code>。</p>
-<p><strong> 設定資料庫Driver </strong></p>
+<p>選擇剛剛建立的 <code>database.sqlite</code>。</p>
 <p><img src="/images/laravel/laravel-sqlite/sqlite005.png" alt=""></p>
-<p>選擇<code>Sqlite (Xerial)</code>。</p>
-<p><strong> 下載SQLite Driver </strong></p>
+<p>選擇 <code>Sqlite (Xerial)</code>。</p>
 <p><img src="/images/laravel/laravel-sqlite/sqlite006.png" alt=""></p>
-<p>若PhpStorm還沒安裝過SQLite driver，會顯示<code>Download missing files</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>SQLite driver只要安裝一次即可，以後其他專案都不需再安裝。</span></span></span></p>
-<p>按<code>Download</code>下載SQLite driver。</p>
-<p><strong> 測試SQLite連線 </strong></p>
+<p>若 PhpStorm 還沒安裝過 SQLite driver，會顯示 <code>Download missing files</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>SQLite driver 只要安裝一次即可，以後其他專案都不需再安裝。</span></span></span></p>
+<p>按 <code>Download</code> 下載 SQLite driver。</p>
 <p><img src="/images/laravel/laravel-sqlite/sqlite007.png" alt=""></p>
-<p>按<code>Test Connection</code>測試SQLite連線。</p>
+<p>按 <code>Test Connection</code> 測試 SQLite 連線。</p>
 <p><img src="/images/laravel/laravel-sqlite/sqlite008.png" alt=""></p>
 <p>連線成功。</p>
 <p><img src="/images/laravel/laravel-sqlite/sqlite009.png" alt=""></p>
-<p>PhpStorm的Database可以順利顯示預設的<code>users</code> table。</p>
-<h2 id="使用PHP內建的HTTP_Server">使用PHP內建的HTTP Server</h2><hr>
+<p>PhpStorm 的 Database 可以順利顯示預設的 <code>users</code> table。</p>
+<h2 id="使用_PHP_內建的_HTTP_Server">使用 PHP 內建的 HTTP Server</h2><hr>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan serve</span><br></pre></td></tr></table></figure>
 <p><img src="/images/laravel/laravel-sqlite/sqlite010.png" alt=""></p>
-<p>執行PHP內建的Http server。</p>
+<p>執行 PHP 內建的 Http server。</p>
 <p><img src="/images/laravel/laravel-sqlite/sqlite011.png" alt=""></p>
-<p>成功執行Laravel在<code>http://localhost:8000/</code></p>
+<p>成功執行 Laravel 在 <code>http://localhost:8000/</code></p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
-<li>PhpStorm內建支援SQLite，要管理SQLite不用再找其他GUI管理工具。</li>
-<li>使用SQLite + <code>php artisan serve</code>方式，不需安裝MAMP或Homestead，只要有安裝PHP即可開發Laravel。</li>
+<li>PhpStorm 內建支援 SQLite，要管理 SQLite 不用再找其他 GUI 管理工具。</li>
+<li>使用 SQLite + <code>php artisan serve</code>方式，不需安裝 MAMP 或 Homestead，只要有安裝 PHP 即可開發 Laravel。</li>
 </ul>
 <h2 id="Sample_Code">Sample Code</h2><hr>
-<p>完整的範例可以在我的<a href="https://github.com/oomusou/Laravel52SQLite_demo" target="_blank" rel="external">GitHub</a>上找到。</p>
+<p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52SQLite_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
 	  
 	</div>
 
@@ -208,7 +203,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Laravel/">Laravel<span>37</span></a></li> <li><a href="/tags/PhpStorm/">PhpStorm<span>22</span></a></li> <li><a href="/tags/SQLite/">SQLite<span>2</span></a></li>
+  <li><a href="/tags/Laravel/">Laravel<span>37</span></a></li> <li><a href="/tags/PhpStorm/">PhpStorm<span>23</span></a></li> <li><a href="/tags/SQLite/">SQLite<span>2</span></a></li>
     </ul>
 	</div>
 		
