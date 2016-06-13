@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何對 Collection 做 assertion? | 點燈坊</title>
+  <meta name="author" content="真 OO無双">
+  
+  <meta name="description" content="使用 assertArrayXXX() 替 Collection 做 assertion">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <meta name="description" content="使用 assertArrayXXX() 替 Collection 做 assertion">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何對 Collection 做 assertion?">
+<meta property="og:url" content="http://oomusou.io/tdd/tdd-collection-assertion/index.html">
+<meta property="og:site_name" content="點燈坊">
+<meta property="og:description" content="使用 assertArrayXXX() 替 Collection 做 assertion">
+<meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
+<meta property="og:updated_time" content="2016-06-13T02:16:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何對 Collection 做 assertion?">
+<meta name="twitter:description" content="使用 assertArrayXXX() 替 Collection 做 assertion">
+ 
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+     <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		<li><a  href="/">點燈坊</a></li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+	
+		<div class="page-header">		
+			<h1> 如何對 Collection 做 assertion?</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+	
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> 使用 assertArrayXXX() 替 Collection 做 assertion			
+		</div> <!-- alert -->
+		
+
+	<!-- toc -->
+	<div id="postTOC">
+		<span class="tocHeading">Contents</span>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#單元測試"><span class="toc-article-text">單元測試</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Sample_Code"><span class="toc-article-text">Sample Code</span></a></li></ol>
+    </div>
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p><code>Collection</code> 並非 PHP 原生的型別，是 Laravel 所擴充，因此 PHPUnit 並無法直接對其做 assertion，但是 Laravel 的 <code>Collection</code> 又非常好用，除了 Eloquent 直接回傳 <code>Collection</code> 外，還擴充了很多 method，讓我們可以使用 higher order function 與 fluent 的風格開發。</p>
+<p>目前 Laravel 並沒有提供 <code>Collection</code> 的 assertion，必須先透過 <code>toArray()</code> 轉成陣列，再透過 PHPUnit 的 <code>assertArrayXXX()</code> 系列做 assertion。</p>
+<a id="more"></a>
+<h2 id="Version">Version</h2><hr>
+<p>PHP 7.0.0<br>Laravel 5.2.37</p>
+<h2 id="單元測試">單元測試</h2><hr>
+<p>無論是對 repository 或 service 做單元測試，當其 field 或 method 回傳值為 <code>Collection</code>時，就必須面對如何 assertion 的問題。</p>
+<p><strong>PostServiceTest.php</strong><span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52RefactorNamespace_demo/commit/9f422f2f9a376f0d9e3aea11ae3f7bbde6f3b741" target="_blank" rel="external">單元測試 : 建立 PostServiceTest.php</a></span></span></span><br><figure class="highlight php"><figcaption><span>tests/Unit/PostServiceTest.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Post</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Services</span>\<span class="title">PostService</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Foundation</span>\<span class="title">Testing</span>\<span class="title">DatabaseMigrations</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostServiceTest</span> <span class="keyword">extends</span> <span class="title">TestCase</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">DatabaseMigrations</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** <span class="doctag">@test</span> */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> 顯示所有文章<span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">/** arrange */</span></span><br><span class="line">        <span class="variable">$expected</span> = [</span><br><span class="line">            [<span class="string">'title'</span> =&gt; <span class="string">'title1'</span>, <span class="string">'description'</span> =&gt; <span class="string">'desc1'</span>, <span class="string">'content'</span> =&gt; <span class="string">'content1'</span>],</span><br><span class="line">            [<span class="string">'title'</span> =&gt; <span class="string">'title2'</span>, <span class="string">'description'</span> =&gt; <span class="string">'desc2'</span>, <span class="string">'content'</span> =&gt; <span class="string">'content2'</span>],</span><br><span class="line">            [<span class="string">'title'</span> =&gt; <span class="string">'title3'</span>, <span class="string">'description'</span> =&gt; <span class="string">'desc3'</span>, <span class="string">'content'</span> =&gt; <span class="string">'content3'</span>],</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        collect(<span class="variable">$expected</span>)-&gt;each(<span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$value</span>)</span> </span>&#123;</span><br><span class="line">            Post::create(<span class="variable">$value</span>);</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** act */</span></span><br><span class="line">        <span class="variable">$actual</span> = app(PostService::class)-&gt;displayAllPosts()-&gt;toArray();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/** assert */</span></span><br><span class="line">        <span class="variable">$this</span>-&gt;assertArraySubset(<span class="variable">$expected</span>, <span class="variable">$actual</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>13 行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** arrange */</span></span><br><span class="line"><span class="variable">$expected</span> = [</span><br><span class="line">   [<span class="string">'title'</span> =&gt; <span class="string">'title1'</span>, <span class="string">'description'</span> =&gt; <span class="string">'desc1'</span>, <span class="string">'content'</span> =&gt; <span class="string">'content1'</span>],</span><br><span class="line">   [<span class="string">'title'</span> =&gt; <span class="string">'title2'</span>, <span class="string">'description'</span> =&gt; <span class="string">'desc2'</span>, <span class="string">'content'</span> =&gt; <span class="string">'content2'</span>],</span><br><span class="line">   [<span class="string">'title'</span> =&gt; <span class="string">'title3'</span>, <span class="string">'description'</span> =&gt; <span class="string">'desc3'</span>, <span class="string">'content'</span> =&gt; <span class="string">'content3'</span>],</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">collect(<span class="variable">$expected</span>)-&gt;each(<span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$value</span>)</span> </span>&#123;</span><br><span class="line">    Post::create(<span class="variable">$value</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>由於單元測試是使用 SQLite in Memory 為資料庫，只要測試一結束，記憶體就會釋放，因此每次測試都要重新新增資料。</p>
+<p>使用 <code>Collection-&gt;each()</code> 將 <code>$expected</code> 中的資料透過 <code>Post::create()</code> 新增。</p>
+<p>23 行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** act */</span></span><br><span class="line"><span class="variable">$actual</span> = app(PostService::class)-&gt;displayAllPosts()-&gt;toArray();</span><br></pre></td></tr></table></figure></p>
+<p>測試 <code>PostService-&gt;displayAllPosts()</code>。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>此時 <code>PostService</code> 與 <code>displayAllPost()</code> 都還沒建立，TDD 會等待測試亮 <span class="label label-danger">紅燈</span> 時，才去新增 <code>PostService</code> 與 <code>displayAllPost()</code>。</span></span></span></p>
+<p><code>displayAllPosts()</code> 回傳的是 <code>Collection</code>，但 PHPUnit 無法對 <code>Collection</code> 做 assertion，必須先轉成 array。</p>
+<p>26 行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** assert */</span></span><br><span class="line"><span class="variable">$this</span>-&gt;assertArraySubset(<span class="variable">$expected</span>, <span class="variable">$actual</span>);</span><br></pre></td></tr></table></figure></p>
+<p>這裡不能使用 <code>assertEquals()</code>，因為 <code>posts</code> table 還包含 <code>created_at</code> 與 <code>updated_at</code> 兩個欄位，若使用 <code>assertEquals()</code> 一定失敗，必須改用 <code>assertArraySubset()</code>。</p>
+<p>也就是說，<code>$expected</code> 並不用包含 <code>Collection</code> 的所有欄位，只要包含你想測試的欄位即可。</p>
+<p>剩下的 <code>PostService</code> 與 <code>PostRepository</code> 就以 TDD 的方式建立，在此不再贅述。<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>若對剩下的步驟有興趣，詳細請參考 <a href="/phpstorm/phpstorm-refactor-namespace/">如何使用 PhpStorm 重構 Namespace?</a></span></span></span></p>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>PHPUnit 無法直接對 <code>Collection</code> 做 assertion，需先使用 <code>toArray()</code> 轉成陣列。</li>
+<li><code>Collection</code> 最典型的測試方式，就是在 <code>$expected</code> 準備好想測試的欄位與資料，最後使用 PHPUnit 的 <code>assertArraySubset()</code> 做 assertion。 </li>
+</ul>
+<h2 id="Sample_Code">Sample Code</h2><hr>
+<p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52RefactorNamespace_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/phpstorm/phpstorm-refactor-namespace/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2016-06-13 
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Laravel/">Laravel<span>38</span></a></li> <li><a href="/tags/PHPUnit/">PHPUnit<span>11</span></a></li> <li><a href="/tags/TDD/">TDD<span>15</span></a></li>
+    </ul>
+	</div>
+		
+
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer>  </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'hAXbiVYFC92XF16_EhCh','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

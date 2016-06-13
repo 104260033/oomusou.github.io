@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/tdd/tdd-collection-assertion/</loc>
+    <lastmod>2016-06-13T02:16:48.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-refactor-namespace/</loc>
     <lastmod>2016-06-12T14:56:44.000Z</lastmod>
   </url>
@@ -197,12 +202,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/osx/iterm2-setup/</loc>
+    <loc>http://oomusou.io/php/php-generator/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/php/php-generator/</loc>
+    <loc>http://oomusou.io/mamp/mamp-setup/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -397,7 +402,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/mamp/mamp-setup/</loc>
+    <loc>http://oomusou.io/osx/iterm2-setup/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
