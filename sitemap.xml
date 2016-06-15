@@ -2,13 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-collection-assertion/</loc>
-    <lastmod>2016-06-13T02:16:48.000Z</lastmod>
+    <loc>http://oomusou.io/tdd/tdd-factory-ocp/</loc>
+    <lastmod>2016-06-15T01:15:46.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-refactor-namespace/</loc>
-    <lastmod>2016-06-12T14:56:44.000Z</lastmod>
+    <lastmod>2016-06-15T01:15:28.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/tdd/tdd-collection-assertion/</loc>
+    <lastmod>2016-06-13T02:16:48.000Z</lastmod>
   </url>
   
   <url>
@@ -64,11 +69,6 @@
   <url>
     <loc>http://oomusou.io/laravel/laravel-repository-fk/</loc>
     <lastmod>2016-06-06T05:06:39.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/tdd/tdd-factory-ocp/</loc>
-    <lastmod>2016-05-09T08:37:12.000Z</lastmod>
   </url>
   
   <url>

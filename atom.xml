@@ -64,7 +64,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-refactor-namespace/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-refactor-namespace/</id>
     <published>2016-06-12T12:23:43.000Z</published>
-    <updated>2016-06-12T14:56:44.000Z</updated>
+    <updated>2016-06-15T01:15:28.000Z</updated>
     <content type="html"><![CDATA[<p>在 TDD 開發流程，為了第一個 <span class="label label-success">綠燈</span>，一開始可能在同一個 namespace 下只有一個 class，但隨著重構的進行，可能重構出更多的 class 與 interface，為了更加的<strong>高內聚，低耦合</strong>，我們可能會將更相關的 class 與 interface 重構到其他 namespace，導致相依的 class 也必須修改，在重構 namepsace 時，PhpStorm 可以幫我們將相依的 class 一併修改，非常方便。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -190,6 +190,8 @@
     </summary>
     
       <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
+    
+      <category term="Refactoring" scheme="http://oomusou.io/tags/Refactoring/"/>
     
       <category term="TDD" scheme="http://oomusou.io/tags/TDD/"/>
     
@@ -636,7 +638,7 @@
     <link href="http://oomusou.io/tdd/tdd-factory-ocp/"/>
     <id>http://oomusou.io/tdd/tdd-factory-ocp/</id>
     <published>2016-05-08T12:23:43.000Z</published>
-    <updated>2016-05-09T08:37:12.000Z</updated>
+    <updated>2016-06-15T01:15:46.000Z</updated>
     <content type="html"><![CDATA[<p>將建構物件的邏輯封裝在工廠模式，已經達到 90% 的開放封閉，最少其他 class 都已經開放封閉，將來所有的邏輯修改只剩下工廠模式，若能將工廠模式也開放封閉，那就太好了。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -703,6 +705,8 @@
     <![CDATA[將邏輯改用 LUT 表示，可將 LUT 改放到 app.php 設定檔]]>
     
     </summary>
+    
+      <category term="Design Pattern" scheme="http://oomusou.io/tags/Design-Pattern/"/>
     
       <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
     
