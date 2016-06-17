@@ -64,7 +64,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-refactor-namespace/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-refactor-namespace/</id>
     <published>2016-06-12T12:23:43.000Z</published>
-    <updated>2016-06-15T01:15:28.000Z</updated>
+    <updated>2016-06-15T01:20:01.000Z</updated>
     <content type="html"><![CDATA[<p>在 TDD 開發流程，為了第一個 <span class="label label-success">綠燈</span>，一開始可能在同一個 namespace 下只有一個 class，但隨著重構的進行，可能重構出更多的 class 與 interface，為了更加的<strong>高內聚，低耦合</strong>，我們可能會將更相關的 class 與 interface 重構到其他 namespace，導致相依的 class 也必須修改，在重構 namepsace 時，PhpStorm 可以幫我們將相依的 class 一併修改，非常方便。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -305,7 +305,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-directories/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-directories/</id>
     <published>2016-06-10T12:23:43.000Z</published>
-    <updated>2016-06-10T13:12:44.000Z</updated>
+    <updated>2016-06-17T07:30:40.000Z</updated>
     <content type="html"><![CDATA[<p>PhpStorm 最強的三個功能為 : Refactoring、Debugging、與 Inspection，但由於 PHP 生態是眾多 framework，而每個 framework 的目錄架構也不太一樣，因此必須先在 PhpStorm 設定 directories，才能發揮 PhpStorm 的強悍功能，而不只是文字編輯器而已。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -346,7 +346,7 @@
 <p><img src="/images/phpstorm/phpstorm-directories/dir011.png" alt=""></p>
 <p>選擇反白的 <code>User</code>，按熱鍵 &#8997; + &#8617;，選擇 <code>Import class</code>。</p>
 <p><img src="/images/phpstorm/phpstorm-directories/dir012.png" alt=""></p>
-<p>若整個專案只有一個同名的 class，PhpStorm 會自動 import，否則會出現視窗讓你決定要 import 哪一個 lass。</p>
+<p>若整個專案只有一個同名的 class，PhpStorm 會自動 import，否則會出現視窗讓你決定要 import 哪一個 class。</p>
 <p><img src="/images/phpstorm/phpstorm-directories/dir013.png" alt=""></p>
 <p>PhpStorm 自動幫我們 use 了 <code>App\User</code>。<span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Directories_demo/commit/8a4d3267723e5b9d3be63767503d1f399a85c6a9" target="_blank" rel="external">注入 User</a></span></span></span></p>
 <div class="alert alert-info"><i class="fa fa-info"></i>  無論是建立 namespace，或者引用 namespace，完全由 PhpStorm 自動幫我們處理，不用擔心 namespace 大小寫寫錯，也不用擔心 namespace 的完整路徑為何。</div>
