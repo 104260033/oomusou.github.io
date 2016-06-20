@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-06-19T13:54:57.000Z</updated>
+  <updated>2016-06-20T03:12:52.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-collection-debug/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-collection-debug/</id>
     <published>2016-06-19T12:23:43.000Z</published>
-    <updated>2016-06-19T13:54:57.000Z</updated>
+    <updated>2016-06-20T03:12:52.000Z</updated>
     <content type="html"><![CDATA[<p>Laravel 的 <code>Collection</code> 在實務上非常好用，除了 Eloquent 直接回傳 <code>Collection</code> 外，還擴充了很多 method，讓我們可以使用 higher order function 與 fluent 風格開發，讓程式可讀性更高。不過 <code>Collection</code> 的除錯就比較麻煩，本文使用 PhpStorm 內建的 <strong>Watches</strong>，讓我們可以在不用修改程式碼的前提下，快速對 <code>Collection</code> 除錯。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -87,7 +87,7 @@
 <p><img src="/images/phpstorm/phpstorm-collection-debug/debug001.png" alt=""></p>
 <p>得到第 2 個 <span class="label label-success">綠燈</span>，使用 <code>Collection</code> 重構 <code>OrderService</code>。</p>
 <h2 id="將_Closure_加以重構">將 Closure 加以重構</h2><hr>
-<p>使用 <code>filter()</code>、<code>map()</code> 與 <code>reduce()</code> 搭配 closure 的寫法，已經比 <strong>Imperative Programming</strong> 寫法精簡，但 closure 部分可讀性還不是很高，需要進一步重構。</p>
+<p>使用 <code>filter()</code>、<code>map()</code> 與 <code>reduce()</code> 搭配 closure 的寫法，已經比 Imperative Programming 寫法精簡，但 closure 部分可讀性還不是很高，需要進一步重構。</p>
 <p><img src="/images/phpstorm/phpstorm-collection-debug/debug002.png" alt=""></p>
 <p>選擇 <code>filter()</code> 內部的 closure，按熱鍵 &#8963; + T，出現 <code>Refactor This</code> 選單，選擇 <code>7.Method</code>。</p>
 <p><img src="/images/phpstorm/phpstorm-collection-debug/debug003.png" alt=""></p>
@@ -106,7 +106,7 @@
 <li>再透過 <code>map()</code> 計算出<code>金額</code>。</li>
 <li>最後由 <code>reduce()</code> 計算出<code>總金額</code>。</li>
 </ol>
-<p>至於怎麼<code>過濾</code>、<code>計算</code>，那是 closure 的事情，若有必要再繼續 trace 下去，不需一開始就面臨一堆變數、迴圈與判斷，這就是所謂的 <strong>Declarative Programming</strong>，只重視 <code>我們要做什麼，而不是要如何做</code>。</p>
+<p>至於怎麼<code>過濾</code>、<code>計算</code>，那是 closure 的事情，若有必要再繼續 trace 下去，不需一開始就面臨一堆變數、迴圈與判斷，這就是所謂的 Declarative Programming 只重視 <code>我們要做什麼，而不是要如何做</code>。</p>
 <p>44 行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 換算成金額</span><br><span class="line"> * <span class="doctag">@return</span> Closure</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">mapToAmount</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$value</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$value</span>-&gt;quantity * <span class="variable">$value</span>-&gt;price;</span><br><span class="line">   &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>由 closure 所重構出來的 method，也都符合 SOLID 的單一職責原則，將來若有需要，可以再進一步的重構成 interface 與 trait。</p>
 <p><img src="/images/phpstorm/phpstorm-collection-debug/debug006.png" alt=""></p>
