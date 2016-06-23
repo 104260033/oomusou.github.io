@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="幾個解決內含相依物件而無法隔離測試的方法">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-04-07T16:48:32.000Z">
+<meta property="og:updated_time" content="2016-06-23T00:39:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何測試內含相依物件的函式?">
 <meta name="twitter:description" content="幾個解決內含相依物件而無法隔離測試的方法">
@@ -234,7 +234,7 @@
 <p>待測物件<code>$target</code>直接new <code>UserController</code>，而不使用stub class。</p>
 <p>重點在這裡，定義<code>$closure</code>，其目的就是去修改<code>getAll</code> closure，將其<code>return User::all()</code>改成<code>return $expected</code>，但問題來了，<code>$expected</code>是<code>外部資料</code>，PHP並無法如JavaScript一樣可以直接取用<code>外部資料</code>，所以必須使用use，一層一層將<code>$expected</code>傳進去。</p>
 <p>另一個問題，closure內的<code>$this</code>是什麼？我們希望的是<code>$this</code>就是<code>UserController</code>，沒問題，我們使用<code>bindTo()</code>將<code>UserController</code>直接取代掉<code>$this</code>。</p>
-<p>最後使用<code>$closure()</code>自己執行自己，執行完之後，<code>UserController</code>的<code>getAll()</code>就被我們取代掉了。<span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>關於bindTo()的玄妙，詳細請參考<a href="/ph/php-bindTo/">深入探討bindTo()</a></span></span></span></p>
+<p>最後使用<code>$closure()</code>自己執行自己，執行完之後，<code>UserController</code>的<code>getAll()</code>就被我們取代掉了。<span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>關於bindTo()的玄妙，詳細請參考<a href="/php/php-bindTo/">深入探討bindTo()</a></span></span></span></p>
 <p>之後的<code>act</code>與<code>assert</code>都完全不變。<br><div class="alert alert-info"><i class="fa fa-info"></i>  PHP的<b>bindTo()</b>，最<b>邪惡</b>的地方在於它可以打破物件的封裝，直接去改變內部的private與protected變數，所以我稱為『PHP邪惡方法』，不過它的限制就是只能改變property，不能改變method，所以特別將method改成closure，讓bindTo()可以將手伸進來去改變<b>$this</b>，進而改變其closure，這樣就可以不用透過繼承與virtual/override，直接將getAll()改掉。</div></p>
 <p><img src="/images/tdd/tdd-isolated-test/iso004.png" alt=""></p>
 <h2 id="Conclusion">Conclusion</h2><hr>
