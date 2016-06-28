@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/azure/azure_phpstorm_deploy/</loc>
+    <lastmod>2016-06-28T14:37:26.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/tdd/tdd-isolated-test/</loc>
     <lastmod>2016-06-23T00:39:41.000Z</lastmod>
   </url>
@@ -197,17 +202,12 @@
   </url>
   
   <url>
+    <loc>http://oomusou.io/php/php-bindTo/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/php/php-cs/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/osx/osx-symbol-html/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/php/php-generator/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -227,7 +227,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/php/php-interface/</loc>
+    <loc>http://oomusou.io/php/php-generator/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -242,17 +242,17 @@
   </url>
   
   <url>
+    <loc>http://oomusou.io/php/php-interface/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/php/php-namespace/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://oomusou.io/php/php-psr2/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/php/php-trait/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -272,7 +272,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-exception-inspection/</loc>
+    <loc>http://oomusou.io/php/php-trait/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -302,7 +302,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/php/php-bindTo/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-exception-inspection/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/osx/osx-symbol-html/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -343,11 +348,6 @@
   
   <url>
     <loc>http://oomusou.io/tdd/tdd-91/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/tdd/tdd-jaceju/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -393,6 +393,11 @@
   
   <url>
     <loc>http://oomusou.io/ci/travis-ci-setup/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/tdd/tdd-jaceju/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
