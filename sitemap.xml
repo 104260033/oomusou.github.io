@@ -2,8 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-github/</loc>
+    <lastmod>2016-06-29T04:09:48.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/azure/azure_phpstorm_deploy/</loc>
-    <lastmod>2016-06-29T03:08:06.000Z</lastmod>
+    <lastmod>2016-06-29T04:01:38.000Z</lastmod>
   </url>
   
   <url>
