@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-06-29T09:16:18.000Z</updated>
+  <updated>2016-06-29T09:19:19.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/ip/ip-intro/"/>
     <id>http://oomusou.io/ip/ip-intro/</id>
     <published>2016-06-29T12:23:43.000Z</published>
-    <updated>2016-06-29T09:16:18.000Z</updated>
+    <updated>2016-06-29T09:19:19.000Z</updated>
     <content type="html"><![CDATA[<p>介紹本書主要的目標、章節安排。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -43,7 +43,7 @@
 <blockquote><p>The first step towards communicating was slowing down long enough to become aware of what I was thinking, to stop pretending that I coded by instinct.</p>
 <p>寫出<code>容易閱讀</code>的程式碼的第一步，就是將腳步慢下來，搞清楚自己在寫什麼，而不是一切都是理所當然。</p>
 </blockquote>
-<p>寫程式並不是快就是好，Kent Beck 教我們將腳步放慢，細細去品味其他 class 為什麼要這樣設計。</p>
+<p>寫程式並不是寫的快就是好，Kent Beck 教我們將腳步放慢，細細去品味其他 class 為什麼要這樣設計。</p>
 <h3 id="程式碼是要給其他人閱讀的">程式碼是要給其他人閱讀的</h3><blockquote><p>Before I could write communicative code I needed to believe that other people was as important as I was. Programming is hardly ever a solitary communication between one man and one machine.</p>
 <p>程式並不是只寫給電腦看而已，你必須先相信程式碼是用來給其他人閱讀的。</p>
 </blockquote>
