@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>實作模式筆記 (Introduction) | 點燈坊</title>
+  <meta name="author" content="真 OO無双">
+  
+  <meta name="description" content="Ch.1 Introduction">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <meta name="description" content="Ch.1 Introduction">
+<meta property="og:type" content="article">
+<meta property="og:title" content="實作模式筆記 (Introduction)">
+<meta property="og:url" content="http://oomusou.io/ip/ip-intro/index.html">
+<meta property="og:site_name" content="點燈坊">
+<meta property="og:description" content="Ch.1 Introduction">
+<meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
+<meta property="og:updated_time" content="2016-06-29T09:16:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="實作模式筆記 (Introduction)">
+<meta name="twitter:description" content="Ch.1 Introduction">
+ 
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+     <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		<li><a  href="/">點燈坊</a></li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+	
+		<div class="page-header">		
+			<h1> 實作模式筆記 (Introduction)</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+	
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> Ch.1 Introduction			
+		</div> <!-- alert -->
+		
+
+	<!-- toc -->
+	<div id="postTOC">
+		<span class="tocHeading">Contents</span>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Motivation"><span class="toc-article-text">Motivation</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#本書目標"><span class="toc-article-text">本書目標</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#本書架構"><span class="toc-article-text">本書架構</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#如何寫出容易閱讀的程式碼?"><span class="toc-article-text">如何寫出容易閱讀的程式碼?</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#保持頭腦清醒並放慢腳步"><span class="toc-article-text">保持頭腦清醒並放慢腳步</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#程式碼是要給其他人閱讀的"><span class="toc-article-text">程式碼是要給其他人閱讀的</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#使用實作模式"><span class="toc-article-text">使用實作模式</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Sample_Code"><span class="toc-article-text">Sample Code</span></a></li></ol>
+    </div>
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>介紹本書主要的目標、章節安排。</p>
+<a id="more"></a>
+<h2 id="Motivation">Motivation</h2><hr>
+<p>本文為 Kent Beck 的 <a href="https://www.amazon.com/Implementation-Patterns-Kent-Beck/dp/0321413091" target="_blank" rel="external">Implementation Patters</a> 一書的讀書筆記，主要是整理給自己複習用，並加上自己的腦補。</p>
+<h2 id="本書目標">本書目標</h2><blockquote><p>The goal of the book is to help you communicate your intentions through your code.</p>
+<p>本書是教你寫容易閱讀、容易維護的程式碼。</p>
+</blockquote>
+<h2 id="本書架構">本書架構</h2><hr>
+<ul>
+<li><strong>程式設計與模式概論</strong> : Ch.2 ~ Ch.4。</li>
+<li><strong>實作模式</strong> : Ch.5 ~ Ch.8</li>
+<li><strong>Collection</strong> : Ch.9</li>
+<li><strong>Framework</strong> : Ch.10</li>
+</ul>
+<p>整本書以 <strong>Communication</strong> 貫穿，也就是寫出<code>容易閱讀</code>、<code>容易維護</code>的程式碼。</p>
+<h2 id="如何寫出容易閱讀的程式碼?">如何寫出容易閱讀的程式碼?</h2><hr>
+<h3 id="保持頭腦清醒並放慢腳步">保持頭腦清醒並放慢腳步</h3><blockquote><p>Even though programming decisions came smoothly and quickly to me, I couldn’t explain why I was so sure a method should be called such-and-so, or that a bit of logic belonged in this object over here.</p>
+<p>儘管我能在各種程式設計中快速的做決定，但我仍無法解釋一些我很確定的東西，如「這個 method 為什麼該這樣被呼叫?」或 「這段邏輯為什麼屬於這個物件?」這種基本問題。</p>
+</blockquote>
+<p>這是連 Kent Beck 也會犯的錯，也是我們常常忽略的點，只求會用其他 class，卻沒認真去想過為什麼要這樣設計。</p>
+<blockquote><p>The first step towards communicating was slowing down long enough to become aware of what I was thinking, to stop pretending that I coded by instinct.</p>
+<p>寫出<code>容易閱讀</code>的程式碼的第一步，就是將腳步慢下來，搞清楚自己在寫什麼，而不是一切都是理所當然。</p>
+</blockquote>
+<p>寫程式並不是快就是好，Kent Beck 教我們將腳步放慢，細細去品味其他 class 為什麼要這樣設計。</p>
+<h3 id="程式碼是要給其他人閱讀的">程式碼是要給其他人閱讀的</h3><blockquote><p>Before I could write communicative code I needed to believe that other people was as important as I was. Programming is hardly ever a solitary communication between one man and one machine.</p>
+<p>程式並不是只寫給電腦看而已，你必須先相信程式碼是用來給其他人閱讀的。</p>
+</blockquote>
+<p>程式並不是讓電腦看得懂會動就好，重點是要讓自己與其他人看得懂，寫出<code>容易閱讀</code>的程式碼，才能進一步<code>容易維護</code>。</p>
+<h3 id="使用實作模式">使用實作模式</h3><blockquote><p>I use the implementation patterns here to program consciously and for others as well as myself.</p>
+<p>在此我介紹實作模式，寫出更<code>容易閱讀</code>的程式碼，不只是給其他人閱讀，也是給自己閱讀。</p>
+</blockquote>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<h2 id="Sample_Code">Sample Code</h2><hr>
+<p>完整的範例可以在我的 <a href="https://github.com/oomusou/" target="_blank" rel="external">GitHub</a> 上找到。</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/phpstorm/phpstorm-github/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2016-06-29 
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Implementation-Pattern/">Implementation Pattern<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer>  </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'hAXbiVYFC92XF16_EhCh','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>
