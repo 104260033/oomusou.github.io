@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="Ch.3 A Theory of Programming">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-07-04T06:46:05.000Z">
+<meta property="og:updated_time" content="2016-07-04T14:27:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="實作模式讀書會 (A Theory of Programming)">
 <meta name="twitter:description" content="Ch.3 A Theory of Programming">
@@ -107,13 +107,13 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>此章討論<code>程式設計理論</code>，提出了 3 條<code>程式設計價值觀</code>與 6 條<code>程式設計原則</code>，這些都是所有程式語言都能使用的普世價值觀與原則，當我們遇到一個全新的問題，沒有模式可以使用時，可以轉而思考這些價值觀與原則；當我們學習新的程式語言時，也可以由這些價值與原則為起點，一樣寫出優秀的程式碼。</p>
+	    <p>此章討論<code>程式設計理論</code>，提出了 3 條<code>程式設計價值觀</code>與 6 條<code>程式設計原則</code>，這些都是所有程式語言都能使用的普世價值觀與原則，當我們遇到一個全新的問題，沒有模式可以使用時，可以轉而思考這些價值觀與原則；當我們學習新的程式語言時，也可以藉由這些價值觀與原則為起點，一樣可以寫出優秀的程式碼。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
 <p>本文為 Kent Beck 的 <a href="https://www.amazon.com/Implementation-Patterns-Kent-Beck/dp/0321413091" target="_blank" rel="external">Implementation Patterns</a> 一書的讀書筆記，主要是整理給自己複習用，並加上自己的腦補。</p>
 <h2 id="程式設計理論">程式設計理論</h2><hr>
 <blockquote><p>No lists of patterns, no matter how exhaustive, can cover every situation that comes up while programming. Eventually (or even frequently) you’ll come upon a situation where none of the cookie cutters fits. This need for general approaches to unique problems is one reason to study the theory of programming. Another is the sense of mastery that comes of knowing both what to do and why.</p>
-<p>無論多麼完整的模式列表，也無法涵蓋所有的需求。最終你會遇到沒有任何模式適用的情況，因此你需要解決問題的方法，這也是我們為什麼要學習<code>程式設計理論</code>的原因，其次是「知其然，亦知其所以然」所帶來的成就感。</p>
+<p>無論蒐集多麼完整的模式，也無法涵蓋所有的需求。最終你會遇到沒有任何模式適用的情況，因此你需要通用的解決問題方法，這也是我們為什麼要學習程式設計理論的原因，其次是「知其然，亦知其所以然」所帶來的成就感。</p>
 </blockquote>
 <blockquote><p>Each pattern carries with it a little bit of theory. There are larger and more pervasive forces at work in programming than covered in individual patterns. They are divided into two types : values and principles.</p>
 <p>每個模式都有一些理論基礎，在程式設計中有一些更基礎的理論，不是單一模式可以涵蓋的，那就是<code>程式設計價值觀</code>與<code>程式設計原則</code>。</p>
@@ -122,10 +122,10 @@
 <blockquote><p>Three values that are consistent with excellence in programming are communication, simplicity, and flexibility. While these three sometimes conflict, more often they are complement each other. The best programs offer many options for future extension, contain no extraneous elements, and are easy to read and understand.</p>
 <p>有三種價值觀與優秀程式設計是一脈相承的，他們分別是<code>程式可讀性</code>、<code>程式簡潔性</code>、<code>程式靈活性</code>，雖然他們有時候會有所衝突，但更多時候，他們是互補的。好的程式是容易閱讀與理解，不包含多餘的元素，且為將來擴充提供眾多選項。</p>
 </blockquote>
-<p>通常<code>程式靈活性</code>與<code>程式簡潔性</code>會有所衝突，這也是為什麼在設計模式中，常會發現很多 interface 存在，雖然成就了靈活性，卻讓架構比較複雜，所以才有 TDD 讓我們不 over design。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>稍後將以 AWS 與阿里雲的雲端服務為例解釋。</span></span></span></p>
+<p>通常程式靈活性與程式簡潔性會有所衝突，這也是為什麼在設計模式中，常會發現很多 interface 存在，雖然成就了靈活性，卻讓架構比較複雜，所以才有 TDD 讓我們不 over design。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>稍後將以 AWS 與阿里雲的雲端服務為例解釋。</span></span></span></p>
 <h3 id="程式可讀性">程式可讀性</h3><hr>
 <blockquote><p>Code communicates well when a reader can understand it, modify it, or use it.</p>
-<p>當閱讀者能理解某段程式碼，並進一步修改它或使用它，那麼這段程式碼就是可讀性高的程式碼</p>
+<p>當閱讀者能理解某段程式碼，並進一步修改它或使用它，那麼這段程式碼就是可讀性高的程式碼。</p>
 </blockquote>
 <p>程式的可讀性是可維護性的首要條件，要修改或新增功能，首先必須要讀懂原來的程式碼，才能在適當的地方修改或增加程式。</p>
 <blockquote><p>While programming it’s tempting to think only of the computer. However, good things happen when I think of others while I program. I get cleaner code that is easier to read, it is more cost-effective, my thinking is clearer, I give myself a fresh perspective, my stress level drops, and I meet some of my social needs.</p>
@@ -158,11 +158,11 @@
 <blockquote><p>Every time a bit of logic was a little hard to explain, it was easier to rewrite the code than explain why the code was hard to understand.</p>
 <p>每次遇到難以解釋的邏輯，將程式重新改寫，會比去理解它容易。</p>
 </blockquote>
-<p>其實遇到難以解釋的邏輯，只要<code>重構</code>即可，不需重寫，只要我們有測試做保障，就能將原來難以解釋的邏輯重構成<code>容易閱讀</code>的程式碼。</p>
+<p>其實遇到難以解釋的邏輯，只要<code>重構</code>即可，不需重寫，只要我們有測試做保障，就能將原來難以解釋的邏輯重構成容易閱讀的程式碼。</p>
 <blockquote><p>The majority of the cost of software is incurred after the software has been first deployed.</p>
 <p>絕大部分的軟體成本，都是在軟體第一次部署後才產生。</p>
 </blockquote>
-<p>Kent Beck 在書中的<code>程式可讀性</code>與<code>程式靈活性</code>都提到這句話。</p>
+<p>Kent Beck 在書中的程式可讀性與程式靈活性都提到這句話。</p>
 <p>軟體第一次部署後，使用者才開始使用，有使用才會有新的需求，才需要去維護程式。</p>
 <ul>
 <li>必須先閱讀程式</li>
@@ -170,7 +170,7 @@
 <li>最後確保是否會改A壞B</li>
 </ul>
 <p>這才是軟體絕大部分的成本。</p>
-<p>若<code>程式可讀性</code>不高，維護程式的第一步就卡關了。</p>
+<p>若程式可讀性不高，維護程式的第一步就卡關了，這也是最大的維護成本。</p>
 <h3 id="程式簡潔性">程式簡潔性</h3><hr>
 <blockquote><p>Eliminating excess complexity enables those reading, using, and modifying programs to understand them more quickly. It is this excess complexity that removes value from software, both by making the software less likely to run correctly and more difficult to change sucessfully in the future.</p>
 <p>去除多餘的複雜性可以讓那些閱讀、使用與修改程式碼的人更容易理解。多餘的複雜性降低了軟體的價值，一方面<br>降低了軟體正確執行的可能性，另一方面也增加了將來維護程式碼的難度。</p>
@@ -180,7 +180,7 @@
 <li>有些程式碼永遠跑不到，也就是沒有任何需求，卻有這些程式碼，這就增加了複雜性。</li>
 <li>也有可能是測試案例不完全，導致程式碼沒有執行到。</li>
 </ol>
-<p>不論是哪一種，寫測試都可以幫著我們達成<code>程式簡潔性</code>。</p>
+<p>不論是哪一種，寫測試都可以幫著我們達成程式簡潔性。</p>
 <blockquote><p>Apply simplicity at all level.</p>
 <ul>
 <li>Format code so no code can be deleted without losing information.</li>
@@ -188,34 +188,33 @@
 <li>Challenge requirements to find those that are essential.</li>
 </ul>
 <p>Eliminating excess complexity illuminates the remaining code.</p>
-<p>在程式碼的各個層次都要達到<code>程式簡潔性</code>。</p>
+<p>在程式碼的各個層次都要達到程式簡潔性。</p>
 <ul>
 <li>對程式碼重新排版與重構，刪除沒有必要的程式碼。</li>
 <li>不要沒有需求的部分做 over design。</li>
-<li>對需求題除質疑，找出真正不可或缺的需求。</li>
+<li>對需求提出質疑，找出真正不可或缺的需求。</li>
 </ul>
 <p>將程式碼中多餘的複雜度去除後，你的程式碼將會<code>閃亮亮</code>。</p>
 </blockquote>
 <blockquote><p>However, I find a simplication that would make a program harder to understand. I choose communication over simplicity in these case.</p>
-<p>有時候，當我發現<code>程式簡潔性</code>會造成程式碼難以理解時，我會選擇<code>程式可讀性</code>。</p>
+<p>有時候，當我發現程式簡潔性會造成程式碼難以理解時，我會選擇程式可讀性。</p>
 </blockquote>
-<p>重構的 <code>Inline Temp</code> 與 <code>Replace Temp with Query</code>，雖然會讓程式碼行數變少，但有時候用過頭，會讓程式過長，導致橫向發展，程式碼雖然看起來簡潔了，但卻變得難以閱讀，應以<code>程式可讀性</code>為優先考量。</p>
+<p>重構的 <code>Inline Temp</code> 與 <code>Replace Temp with Query</code>，雖然會讓程式碼行數變少，但有時候用過頭，會讓程式過長，導致橫向發展，程式碼雖然看起來簡潔了，但卻變得難以閱讀，應以程式可讀性為優先考量。</p>
 <p><code>eval()</code> 的使用也要小心，有時雖然程式碼簡潔了，但卻很容易喪失可讀性。</p>
 <h3 id="程式靈活性">程式靈活性</h3><hr>
 <blockquote><p>Of the three values listed here, flexibility is the justification used for the most ineffective coding and design practices</p>
-<p>三種價值觀中，<code>程式靈活性</code>是最常用來判斷程式碼與設計好壞的指標。</p>
+<p>三種價值觀中，程式靈活性是最常用來判斷程式碼與設計好壞的指標。</p>
 </blockquote>
-<p>無論是<code>設計模式</code>或<code>實作模式</code>，大都以<code>程式靈活性</code>的角度設計。</p>
 <blockquote><p>Why all the complexibility? Flexibility. Programs should be flexible, but only in ways the change. If the constant never changes, all the complexibility is cost without benefit.</p>
-<p>為什麼要將程式變得這麼複雜呢? 常常是為了<code>程式靈活性</code>，但某些<code>需求</code>常常改變時，程式碼才需要這樣寫；假如某些<code>需求</code>從來沒改變過，為了<code>程式靈活性</code>而犧牲<code>程式簡潔性</code>，將沒有任何意義。</p>
+<p>為什麼要將程式變得這麼複雜呢? 常常是為了程式靈活性，但某些需求常常改變時，程式碼才需要這樣寫；假如某些需求從來沒改變過，為了程式靈活性而犧牲程式簡潔性，將沒有任何意義。</p>
 </blockquote>
-<p>如使用雲端服務，若需求只有 AWS，其實直接使用 AWS 亦未嘗不可，雖然耦合性較高，但畢竟<code>需求</code>就是這樣，若需求可能同一個網站會放在 AWS 與阿里雲，且分別使用各自的雲端服務，則應該使用 interface 切開，由使用者的需求觀點定義 interface，再以實踐該 interface 的 class 去使用 AWS 與 阿里雲的 API，而不是在 controller內直接使用 AWS 或 阿里雲的雲端服務，如此 controller 會使用相同的一份 code 去使用雲端服務，只要 service provider 一開使去 <code>app::bind()</code> AWS 或 阿里雲的 class 即可。</p>
-<p>這種方式的<code>程式靈活性</code>雖高，但缺犧牲了<code>程式簡潔性</code>，多了 interface，還多了 service provider，因此物件導向才要搭配 TDD 與重構，一開始需求很單純時，只求 <span class="label label-success">綠燈</span> 即可，儘管耦合性較高，但符合<code>程式簡潔性</code>，將來需求出現，再重構成 interface，也要繼續 <span class="label label-success">綠燈</span>，達成<code>程式靈活性</code>，TDD與重構使得程式在<code>程式靈活性</code>與<code>程式簡潔性</code>取得一個平衡點，而不必一開始就 over design 使用 interface，在沒有需求的前提提早放棄<code>程式簡潔性</code>。</p>
-<p><code>程式靈活性</code>與<code>程式簡潔性</code>雖然衝突，寫程式應該先考慮<code>程式簡潔性</code>，除非是有<code>需求</code>，才會考慮<code>程式靈活性</code>。</p>
+<p>如使用雲端服務，若需求只有 AWS，其實直接使用 AWS 亦未嘗不可，雖然耦合性較高，但畢竟<code>需求</code>就是這樣，若需求可能同一個網站會放在 AWS 與阿里雲，且分別使用各自的雲端服務，則應該使用 interface 切開，由使用者的需求觀點定義 interface，再以實踐該 interface 的 class 去使用 AWS 與 阿里雲的 API，而不是在 controller 內直接使用 AWS 或阿里雲的雲端服務，如此 controller 會使用相同的一份 code 去使用雲端服務，只要 service provider 一開使去 <code>app::bind()</code> AWS 或阿里雲的 class 即可。</p>
+<p>這種方式的程式靈活性雖高，但缺犧牲了程式簡潔性，多了 interface，還多了 service provider，因此物件導向才要搭配 TDD 與重構，一開始需求很單純時，只求 <span class="label label-success">綠燈</span> 即可，儘管耦合性較高，但符合程式簡潔性，將來需求出現，再重構成 interface，也要繼續 <span class="label label-success">綠燈</span>，達成程式靈活性，TDD與重構使得程式在程式靈活性與程式簡潔性取得一個平衡點，而不必一開始就 over design 使用 interface，在沒有需求的前提下提早放棄<code>程式簡潔性</code>。</p>
+<p>程式靈活性與程式簡潔性雖然衝突，寫程式應該先考慮程式簡潔性，除非是有<code>需求</code>，才會考慮程式靈活性。</p>
 <blockquote><p>The majority of the cost of software is incurred after the software has been first deployed, programs should be easy to change.</p>
 <p>絕大部分的軟體成本，都是在軟體第一次部署後才產生。程式碼必須能容易被修改。</p>
 </blockquote>
-<p>除了在<code>程式可讀性</code>提到這句話外，在<code>程式靈活性</code>又再次提到這句話。</p>
+<p>除了在程式可讀性提到這句話外，在程式靈活性又再次提到這句話。</p>
 <p>軟體第一次部署後，使用者才開始使用，有使用才會有新的需求，才需要去維護程式。</p>
 <ul>
 <li>必須先閱讀程式</li>
@@ -227,7 +226,7 @@
 <p>但有於設計的耦合度太高，可能造成程式碼很難修改，或者只要修改就要改很多地方，而造成到處改A壞B，這就會造成很嚴重的維護成本。</p>
 <p>所以程式碼必須要設計的容易被修改來降低維護成本。</p>
 <blockquote><p>The flexibility I imagine will be needed tomorrow, though, is likely to be not what I need when I change the code. That’s why the flexibility of simplicity and extensive tests is more effective than the flexibility offered by speculative design. </p>
-<p>「憑空想像而非真正需求」的 over design，與「為了程式好修改」的 <code>程式靈活性</code> 是兩碼子事。這也就是為什麼「程式簡潔導致程式好修改與完整的測試」比「為了憑空想像的需求所設計的靈活性」更為有效的原因。</p>
+<p>「憑空想像而非真正需求」的 over design，與「為了程式好修改」的程式靈活性是兩碼子事。這也就是為什麼「程式簡潔導致程式好修改與完整的測試」比「為了憑空想像的需求所設計的靈活性」更為有效的原因。</p>
 </blockquote>
 <p>很多人會以「若將來有這個需求」為前提，提早使用某個模式，開始大量使用 interface，問題連<code>需求</code>都沒有，也無從寫測試案例作測試，這種就是 over design，提早增加複雜度，這就是「憑空想像的需求所設計的靈活性」。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>中譯本是翻譯成 : 這就是「簡單性和大規模測試所帶來的靈活性」比「專門設計出來的靈活性」更為有效的原因。我個人認為 flexibility of simplicity 是由<code>簡單所導致的靈活</code>，而非由<code>測試所帶來的靈活</code>。</span></span></span></p>
 <blockquote><p>Choose patterns that encourage flexibility and bring immediate benefites. For patterns with immediate costs and only deferred benefits, often patience is the best strategy. Put theme back in the bag until they are needed. Then you can apply them in precisely the way they are needed.</p>
@@ -236,25 +235,25 @@
 <div class="alert alert-info"><i class="fa fa-info"></i>  程式可讀性 > 程式簡潔性 > 程式靈活性</div>
 <p>若三個價值觀相衝突 :</p>
 <ul>
-<li>優先考慮<code>程式可讀性</code>，不能因為<code>程式簡潔性</code>而喪失<code>程式可讀性</code>。</li>
-<li>若無<code>需求</code>，優先考慮<code>程式簡潔性</code>，若有<code>需求</code>，則允許喪失些<code>程式簡潔性</code>換取<code>程式靈活性</code>，但<code>程式可讀性</code>則無從妥協。</li>
+<li>優先考慮程式可讀性，不能因為程式簡潔性而喪失程式可讀性。</li>
+<li>若無<code>需求</code>，優先考慮程式簡潔性，若有<code>需求</code>，則允許喪失些程式簡潔性換取程式靈活性，但程式可讀性則無從妥協。</li>
 </ul>
 <h2 id="程式設計原則">程式設計原則</h2><hr>
 <blockquote><p>The principles described here aren’t as far-reaching or pervasive as the values, but each one is expressed by many of the patterns. The principles bridged the values, which are universal but often difficult to apply directly, and the patterns, which are clear to apply but specific.</p>
-<p><code>程式設計原則</code>不像<code>程式設計價值觀</code>那般意義深遠與遙不可及，但每個原則都在許多模式中得以展現。<code>程式價值觀</code>具有普世價值，但卻往往難以實現；模式雖然可以直接應用，但卻是只能針對某些需求。<code>程式設計原則</code>剛好介於價值觀與模式之間，扮演橋樑的角色。</p>
+<p><code>程式設計原則</code>不像<code>程式設計價值觀</code>那般意義深遠與遙不可及，但每個原則都在許多模式中都可以看得到。程式價值觀具有普世價值，但卻往往難以實現；模式雖然可以直接應用，但卻是只能針對某些需求。程式設計原則剛好介於價值觀與模式之間，扮演橋樑的角色。</p>
 </blockquote>
-<p> 每一個模式都在某種程度實現了<code>程式可讀性</code>、<code>程式簡潔性</code>與<code>程式靈活性</code>的價值觀，但價值觀較偏人的角度思考，但<code>程式設計原則</code>則是以程式碼的角度思考。</p>
+<p> 每一個模式都在某種程度實現了程式可讀性、程式簡潔性與程式靈活性的價值觀，但價值觀較偏人的角度思考，但程式設計原則則是以程式碼的角度思考。</p>
 <blockquote><p>I have found it valuable to make the principles explicit for those situations where no patterns applies, or when two mutually exclusive patterns apply equally.</p>
-<p>我發現<code>程式設計原則</code>的可貴之處在於那些「沒有模式可用」或「模式之間互相矛盾」的場合，如果把<code>程式設計原則</code>弄清楚，對解決疑難雜症很有幫助。</p>
+<p>我發現程式設計原則的可貴之處在於那些「沒有模式可用」或「模式之間互相矛盾」的場合，如果把程式設計原則弄清楚，對解決疑難雜症很有幫助。</p>
 </blockquote>
-<p>當模式之間互相矛盾時，最好的方式就是讓<code>程式設計原則</code>說話，而不是讓模式之間爭來爭去。</p>
-<p>如果遇到獨一無二的新需求，因而沒有模式可用時，可以轉而思考<code>程式設計原則</code>，甚至可以因此想出新的模式。</p>
-<blockquote><p>When I encounter a new programming language I use my understanding of principles to develop an effective style of programming. I don’t have to ap existing style of, worse, cling to my style in some other programming language. Understanding principles give me a chance to learn quickly and act with integrity in novel situations.</p>
-<p>當我使用新的程式語言時，我可以根據自己對<code>程式設計原則</code>的理解發展出有效的程式設計風格，不必盲目模仿現有的程式語言風格，更不用拘泥於將其他語言風格帶入新的程式語言，對於<code>程式設計原則</code>的徹底理解，能快速地學習新語言，即時在全新的語言也能寫出符合<code>程式設計原則</code>的好程式。</p>
+<p>當模式之間互相矛盾時，最好的方式就是讓程式設計原則說話，而不是讓模式之間爭來爭去。</p>
+<p>如果遇到獨一無二的新需求，因而沒有模式可用時，可以轉而思考程式設計原則，甚至可以因此想出新的模式。</p>
+<blockquote><p>When I encounter a new programming language I use my understanding of principles to develop an effective style of programming. I don’t have to ap existing style or, worse, cling to my style in some other programming language. Understanding principles give me a chance to learn quickly and act with integrity in novel situations.</p>
+<p>當我使用新的程式語言時，我可以根據自己對程式設計原則的理解發展出有效的程式設計風格，不必盲目模仿現有的程式語言風格，更不用拘泥於將其他語言風格帶入新的程式語言，對於程式設計原則的徹底理解，能快速地學習新語言，即時在全新的語言也能寫出符合程式設計原則的好程式。</p>
 </blockquote>
 <p><img src="/images/ip/ip-theory/theory001.png" alt=""></p>
 <p><img src="/images/ip/ip-theory/theory002.png" alt=""></p>
-<p><code>程式設計原則</code>講的是程式設計中，普世的原則，一個程式語言可能有盛有衰，你也可能因為換了工作而換了其他程式語言，無論你使用任何程式語言，最後都會用到這些原則。</p>
+<p>程式設計原則講的是程式設計中，普世的原則，一個程式語言可能有盛有衰，你也可能因為換了工作而換了其他程式語言，無論你使用任何程式語言，最後都會用到這些原則。</p>
 <h3 id="避免_Side_Effect">避免 Side Effect</h3><blockquote><p>Structure the code so changes have local consequences. If a change here can cause a problem there, then the cost of the changes rises dramatically.</p>
 <p>設計程式架構時，要使得修改程式碼所產生的影響不至於改A壞B。如果這裡修改，會造其他地方出問題，如此將造成巨大的維護成本。</p>
 </blockquote>
@@ -306,7 +305,7 @@
 <h3 id="將資料與邏輯封裝在一起">將資料與邏輯封裝在一起</h3><blockquote><p>Another principle corollary to the principle of local consequence is keeping logic and data together. Put logic and the data it operates on near each other, in the same method if posible, or the same object, or at least the same package.</p>
 <p>為了避免 Side Effect 的另一個方法就是將資料與邏輯封裝在一起，盡量放在同一個 method 中，或者退而求其次，在同一物件內，最少也要是同一 package 裡。</p>
 </blockquote>
-<p>將資料與行為封裝在一起，也是物件導向的<code>繼承</code>、 <code>封裝</code>、<code>多型</code>中最基本的特性之一，通常需求發生變化時，資料與邏輯行為都是一起變化，將其封裝在一起，可將程式碼修改所產生的副作用侷限在 method 中，或者在同一個物件內。<span class="margin-note-marker"><sup>7</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">7</span>這裡的 package，並不是 PHP 所認知的 package，而是如 C# 的 Dll 與 Assembly，有特別提供 <code>internal</code> 作用域，其 scope 只侷限在此 Dll 與 Assembly，只有該 Dll 與 Assembly 可以存取。</span></span></span></p>
+<p>將資料與行為封裝在一起，也是物件導向的<code>繼承</code>、 <code>封裝</code>、<code>多型</code>中最基本的特性之一的<code>封裝</code>，通常需求發生變化時，資料與邏輯行為都是一起變化，將其封裝在一起，可將程式碼修改所產生的副作用侷限在 method 中，或者在同一個物件內。<span class="margin-note-marker"><sup>7</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">7</span>這裡的 package，並不是 PHP 所認知的 package，而是如 C# 的 Dll 與 Assembly，有特別提供 <code>internal</code> 作用域，其 scope 只侷限在此 Dll 與 Assembly，只有該 Dll 與 Assembly 可以存取。</span></span></span></p>
 <blockquote><p>It’s not always obvious at first where logic or data should go to satisfy this principle. I may be writing code in A and realize I need data from B. It’s only after I have the code working that I notice that it is too far from the data.</p>
 <p>在一開始寫程式時，我們往往不太清楚資料與邏輯該放在哪裡。我可能在 A 寫邏輯，才意識到需要 B 的資料。直到程式碼真正執行一段時間之後，我才意識到資料與邏輯太遠了，應該將他們封裝在一起。</p>
 </blockquote>
@@ -326,33 +325,33 @@
 <p>但有些卻是 <code>$key</code>, <code>$value</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$collection</span>-&gt;contains(<span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$key</span>, <span class="variable">$value</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$value</span> &gt; <span class="number">5</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$collection</span>-&gt;first(<span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$key</span>, <span class="variable">$value</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$value</span> &gt; <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>這種 API 設計就違反了<code>一致性</code>。</p>
+<p>這種 API 設計就違反了程式碼一致性。</p>
 <ul>
 <li><strong>以一致性的觀點替方法命名</strong></li>
 </ul>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">process</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    input();</span><br><span class="line">    count++;</span><br><span class="line">    output();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>input()</code> 與 <code>output()</code> 都是以<code>需求</code>角度命名，但 <code>count++</code> 卻是實作，<code>程式可讀性</code> 也不高，需加以重構。</p>
+<p><code>input()</code> 與 <code>output()</code> 都是以<code>需求</code>角度命名，但 <code>count++</code> 卻是實作，程式可讀性也不高，需加以重構。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">process</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    input();</span><br><span class="line">    incrementCount();</span><br><span class="line">    output();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>將 <code>count++</code> 重構成 <code>incrementCount()</code> 之後，<code>程式可讀性</code> 提高，但卻是以<code>實作</code>角度命名，與 <code>input()</code> 與 <code>output()</code> 以<code>需求</code>角度命名不一樣，違反<code>一致性</code>。</p>
+<p>將 <code>count++</code> 重構成 <code>incrementCount()</code> 之後，程式可讀性提高，但卻是以<code>實作</code>角度命名，與 <code>input()</code> 與 <code>output()</code> 以<code>需求</code>角度命名不一樣，違反程式碼一致性。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">process</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    input();</span><br><span class="line">    tally();</span><br><span class="line">    output();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>tally()</code> 為計算，是以<code>需求</code>角度命名，<code>程式可讀性</code>更高，且符合<code>一致性</code>需求。</p>
+<p><code>tally()</code> 為計算，是以<code>需求</code>角度命名，程式可讀性更高，且符合程式碼一致性要求。</p>
 <h3 id="使用宣告式編程">使用宣告式編程</h3><blockquote><p>Express as much of my intention as possible declaratively. Imperative programming is powerful and flexible, but to read it requires that you follow the thread of execution. For those parts of a program that are more like simple facts, without sequence or conditionals, it is easier to read code that is simply declarative.</p>
-<p>盡可能以<code>宣告式編程</code>方式表達你的需求，<code>命令式編程</code>功能強大且靈活，但是閱讀時你必須以電腦的思維，跟著執行的流程去思考，程式碼較不易閱讀；<code>宣告式編程</code>只是陳述簡單的需求，並沒有考慮程式流程與程式判斷，完全是以需求的角度去思考，程式碼就容易閱讀。</p>
+<p>盡可能以<code>宣告式編程</code>方式表達你的需求，<code>命令式編程</code>功能強大且靈活，但是閱讀時你必須以電腦的思維，跟著執行的流程去思考，程式碼較不易閱讀；宣告式編程只是陳述簡單的需求，並沒有考慮程式流程與程式判斷，完全是以需求的角度去思考，程式碼就容易閱讀。</p>
 </blockquote>
 <p>假如我們的需求是 : <code>計算今天全部訂單金額</code>。</p>
-<p>若使用傳統<code>命令式編程</code> (Imperative Programming)，我們會這樣寫 :</p>
+<p>若使用傳統命令式編程 (Imperative Programming)，我們會這樣寫 :</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$totalAmount</span> = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">foreach</span>(<span class="variable">$orders</span> <span class="keyword">as</span> <span class="variable">$order</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$order</span>-&gt;order_date == Carbon::now()) &#123;</span><br><span class="line">        <span class="variable">$totalAmount</span> = <span class="variable">$totalAmount</span> + <span class="variable">$order</span>-&gt;quantity * <span class="variable">$order</span>-&gt;price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="variable">$totalAmount</span>;</span><br></pre></td></tr></table></figure>
 <p>我們會使用 <code>foreach</code> 繞迴圈，使用 <code>if</code> 做判斷，使用暫存變數 <code>$totalAmount</code>，這種是典型以電腦思考為角度去寫程式，而不是以<code>需求</code>的角度去寫程式。</p>
-<p>若以<code>宣告式編程</code> (Declarative Programming) 方式思考 :</p>
+<p>若以宣告式編程 (Declarative Programming) 方式思考 :</p>
 <ul>
 <li><strong>找出今天的訂單</strong> : <code>filter()</code>。</li>
 <li><strong>計算每一筆訂單金額</strong> : <code>map()</code>。</li>
 <li><strong>加總訂單金額</strong> : <code>sum()</code>。</li>
 </ul>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="variable">$orders</span>-&gt;filter(<span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$value</span>)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="variable">$value</span>-&gt;order_date == Carbon::now();</span><br><span class="line">            &#125;)-&gt;map(<span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$value</span>)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="variable">$value</span>-&gt;quantity * <span class="variable">$value</span>-&gt;price;</span><br><span class="line">            &#125;)-&gt;sum();</span><br></pre></td></tr></table></figure>
-<p><code>宣告式編程</code>將不再以電腦思考角度使用 <code>foreach</code>、<code>if</code> 與暫存變數，完全以<code>需求</code>的角度去寫程式，程式碼的可讀性更高。<span class="margin-note-marker"><sup>9</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">9</span>關於<code>宣告式編程</code>，請參考 <a href="http://adamwathan.me/refactoring-to-collections/" target="_blank" rel="external">Refactoring to Collections</a></span></span></span></p>
+<p>宣告式編程將不再以電腦思考角度使用 <code>foreach</code>、<code>if</code> 與暫存變數，完全以<code>需求</code>的角度去寫程式，程式碼的可讀性更高。<span class="margin-note-marker"><sup>9</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">9</span>關於宣告式編程，請參考 <a href="http://adamwathan.me/refactoring-to-collections/" target="_blank" rel="external">Refactoring to Collections</a></span></span></span></p>
 <h3 id="將相同變化頻率的資料與邏輯封裝在一起">將相同變化頻率的資料與邏輯封裝在一起</h3><blockquote><p>Put logic or data that changes at the same rate together and seperate logic or data that changes at difference rate. These rates of change are a form of temporal symmetry.</p>
-<p>將具有相同變化頻率的資料與邏輯封裝在同一個 class 或 method，將不同變化頻率的資料與邏輯抽離出不同 class 或 method。這符合相同變化頻率的<code>一致性</code>。</p>
+<p>將具有相同變化頻率的資料與邏輯封裝在同一個 class 或 method，將不同變化頻率的資料與邏輯抽離出不同 class 或 method。這符合相同變化頻率的程式碼一致性。</p>
 </blockquote>
 <ul>
 <li><strong>分離不同變化頻率的邏輯</strong></li>
@@ -367,10 +366,10 @@
 <p>建議將 <code>$price</code> 與 <code>$currency</code> 封裝成 <code>Money</code> class。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/** <span class="doctag">@var</span> Money */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$money</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setAmount</span><span class="params">(Money <span class="variable">$money</span>)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">    	<span class="variable">$this</span>-&gt;money = <span class="variable">$money</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>也可以進一步重構成直接以 <code>$money</code> 物件傳入。</p>
-<p>如此相同變化頻率的 <code>$price</code> 與 <code>$currency</code> 都會被封裝在 <code>Money</code>，而不是在 <code>Order</code>，符合<code>一致性</code>的要求。</p>
+<p>如此相同變化頻率的 <code>$price</code> 與 <code>$currency</code> 都會被封裝在 <code>Money</code>，而不是在 <code>Order</code>，符合程式碼一致性的要求。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
-<li><code>程式設計理論</code>是所有程式語言都成立的，只要能打通此任督二脈，將來學什麼新程式語言都很快。</li>
+<li>程式設計價值觀與程式設計理論是所有程式語言都成立的，只要能打通此任督二脈，將來學什麼新程式語言都很快。</li>
 </ul>
 <h2 id="Reference">Reference</h2><hr>
 <p>Kent Beck, <a href="https://www.amazon.com/Implementation-Patterns-Kent-Beck/dp/0321413091" target="_blank" rel="external">Implementation Patterns</a></p>
