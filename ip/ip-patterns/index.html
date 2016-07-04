@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="Ch.2 Patterns">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-07-01T06:47:23.000Z">
+<meta property="og:updated_time" content="2016-07-03T15:26:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="實作模式讀書會 (Patterns)">
 <meta name="twitter:description" content="Ch.2 Patterns">
@@ -102,7 +102,7 @@
 	<!-- toc -->
 	<div id="postTOC">
 		<span class="tocHeading">Contents</span>
-		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Motivation"><span class="toc-article-text">Motivation</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#模式的起源"><span class="toc-article-text">模式的起源</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#模式的特性"><span class="toc-article-text">模式的特性</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#模式可彼此合作"><span class="toc-article-text">模式可彼此合作</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#實作抽象化"><span class="toc-article-text">實作抽象化</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#沒有萬能模式"><span class="toc-article-text">沒有萬能模式</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#協助人做決定"><span class="toc-article-text">協助人做決定</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#有些模式會成為語言新功能"><span class="toc-article-text">有些模式會成為語言新功能</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#模式的影響"><span class="toc-article-text">模式的影響</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Motivation"><span class="toc-article-text">Motivation</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#模式的起源"><span class="toc-article-text">模式的起源</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#模式的特性"><span class="toc-article-text">模式的特性</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#模式可彼此合作"><span class="toc-article-text">模式可彼此合作</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#實作抽象化"><span class="toc-article-text">實作抽象化</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#沒有萬能模式"><span class="toc-article-text">沒有萬能模式</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#協助人們做決定"><span class="toc-article-text">協助人們做決定</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#模式可能成為語言新功能"><span class="toc-article-text">模式可能成為語言新功能</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#模式的影響"><span class="toc-article-text">模式的影響</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Reference"><span class="toc-article-text">Reference</span></a></li></ol>
     </div>
 
 	<!-- content -->
@@ -113,7 +113,7 @@
 <p>本文為 Kent Beck 的 <a href="https://www.amazon.com/Implementation-Patterns-Kent-Beck/dp/0321413091" target="_blank" rel="external">Implementation Patterns</a> 一書的讀書筆記，主要是整理給自己複習用，並加上自己的腦補。</p>
 <h2 id="模式的起源">模式的起源</h2><hr>
 <blockquote><p>Many decisions in programming are unique. However, as the decisions become more and more purely technical, a sense of familiarity sets in.</p>
-<p>程式設計中，有許多決策事獨一無二而無法被複製。然而，當決策內容越接近技術層面，其相似性會越多。</p>
+<p>程式設計中，有許多決策是獨一無二而無法被複製。然而，當決策內容越接近技術層面，其相似性會越多。</p>
 </blockquote>
 <p>以程式設計師天天要面對的<code>迴圈</code>為例，天天都要思考該用 <code>for</code>寫呢? 還是該用 <code>while</code> 寫呢？或者該用多執行緒的 <code>foreach</code>? 還是該使用 <code>collection</code>呢? 當思考寫迴圈時，大部分與 domain knowledge 有關的東西都已經拋諸腦後，只留下純粹技術問題。</p>
 <blockquote><p>Each pattern illustrates a point of view about the relative priorities of the forces.</p>
@@ -129,7 +129,7 @@
 <p>若需求是<code>效能優先</code>，則可使用多執行緒的<code>Parallel.Foreach()</code> 的模式，每個 closure 都會有在自己的執行緒執行，可充分發揮多核心硬體威力。</p>
 <p>若需求是<code>容易閱讀</code>，則可使用 <code>Collection</code> 的模式，使用 <code>map().filter().reduce()</code> 寫法可讀性較佳。</p>
 <blockquote><p>Most patterns come with a little essay about the alternatives for solving the problem and why the recommended solution is superior. Revealing the reasoning behind the advice in a pattern invites readers to decide for themselves how they want to approach a recurring problem.</p>
-<p>大部分模式都由會有一小段敘述，描述解決問題的各種方法，以及解釋此模式的優點在哪裡。探討模式背後的理論，有助於幫助讀者自行判斷應該如何解決這類一再出現的問題。</p>
+<p>大部分模式都會有一小段敘述，描述解決問題的各種方法，以及解釋此模式的優點在哪裡。探討模式背後的理論，有助於幫助讀者自行判斷應該如何解決這類一再出現的問題。</p>
 </blockquote>
 <p>以設計模式這本書為例 :</p>
 <ul>
@@ -157,11 +157,11 @@
 <p>沒有任何一個模式可以適用於所有的需求。</p>
 </blockquote>
 <p>模式是解決特定問題的方法，只有在某些特定需求下適用，因此慎選模式很重要，沒有一個模式能解決所有需求，也不要為了要為了使用模式而硬套模式。</p>
-<h3 id="協助人做決定">協助人做決定</h3><blockquote><p>Patterns work best as aids to human decision making.</p>
+<h3 id="協助人們做決定">協助人們做決定</h3><blockquote><p>Patterns work best as aids to human decision making.</p>
 <p>模式最大的作用是幫助人們做決定。</p>
 </blockquote>
 <p>模式是前人與大師們經驗與智慧的結晶，因此很多時候我們不必每次都重新思考與踩雷，可以站在巨人的肩膀上。</p>
-<h3 id="有些模式會成為語言新功能">有些模式會成為語言新功能</h3><blockquote><p>Some of the implementation patterns will eventually make their way into programming languages.</p>
+<h3 id="模式可能成為語言新功能">模式可能成為語言新功能</h3><blockquote><p>Some of the implementation patterns will eventually make their way into programming languages.</p>
 <p>有些實作模式最後可能成為語言的一部份。</p>
 </blockquote>
 <p>有人說模式就是幫程式語言擦屁股用，就是因為程式語言沒有這些機制，因此我們必須使用模式來彌補，若最終成為程式語言或 framework 的一部份，就該改用程式語言或 framework 的新功能，不必太執著於一定要使用模式，因為通常程式語言或 framework 的方法都比模式更漂亮更乾淨。</p>
@@ -183,9 +183,9 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-		
-          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-        
+				
+    	<li class="prev"><a href="/ip/ip-theory/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
 
         <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
 
@@ -221,7 +221,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Implementation-Pattern/">Implementation Pattern<span>2</span></a></li>
+  <li><a href="/tags/Implementation-Pattern/">Implementation Pattern<span>3</span></a></li>
     </ul>
 	</div>
 		
