@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-07T10:05:20.000Z</updated>
+  <updated>2016-07-07T10:05:48.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-refactor-closure/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-refactor-closure/</id>
     <published>2016-07-07T12:23:43.000Z</published>
-    <updated>2016-07-07T10:05:20.000Z</updated>
+    <updated>2016-07-07T10:05:48.000Z</updated>
     <content type="html"><![CDATA[<p>在實務上，我們也會常常遇到將原有的程式碼重構成 closure 的需求，PhpStorm 沒辦法直接重構，需透過一些技巧。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -80,7 +80,7 @@
 <p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52LearnClosureByLaravel_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[透過輔助線重構 Closure]]>
+    <![CDATA[透過輔助線重構成 Closure]]>
     
     </summary>
     
