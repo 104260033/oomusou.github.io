@@ -70,7 +70,7 @@
     <link href="http://oomusou.io/ip/ip-theory/"/>
     <id>http://oomusou.io/ip/ip-theory/</id>
     <published>2016-07-01T12:23:43.000Z</published>
-    <updated>2016-07-04T14:27:47.000Z</updated>
+    <updated>2016-07-07T03:23:09.000Z</updated>
     <content type="html"><![CDATA[<p>此章討論<code>程式設計理論</code>，提出了 3 條<code>程式設計價值觀</code>與 6 條<code>程式設計原則</code>，這些都是所有程式語言都能使用的普世價值觀與原則，當我們遇到一個全新的問題，沒有模式可以使用時，可以轉而思考這些價值觀與原則；當我們學習新的程式語言時，也可以藉由這些價值觀與原則為起點，一樣可以寫出優秀的程式碼。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -173,7 +173,7 @@
 <p>為什麼要將程式變得這麼複雜呢? 常常是為了程式靈活性，但某些需求常常改變時，程式碼才需要這樣寫；假如某些需求從來沒改變過，為了程式靈活性而犧牲程式簡潔性，將沒有任何意義。</p>
 </blockquote>
 <p>如使用雲端服務，若需求只有 AWS，其實直接使用 AWS 亦未嘗不可，雖然耦合性較高，但畢竟<code>需求</code>就是這樣，若需求可能同一個網站會放在 AWS 與阿里雲，且分別使用各自的雲端服務，則應該使用 interface 切開，由使用者的需求觀點定義 interface，再以實踐該 interface 的 class 去使用 AWS 與 阿里雲的 API，而不是在 controller 內直接使用 AWS 或阿里雲的雲端服務，如此 controller 會使用相同的一份 code 去使用雲端服務，只要 service provider 一開使去 <code>app::bind()</code> AWS 或阿里雲的 class 即可。</p>
-<p>這種方式的程式靈活性雖高，但缺犧牲了程式簡潔性，多了 interface，還多了 service provider，因此物件導向才要搭配 TDD 與重構，一開始需求很單純時，只求 <span class="label label-success">綠燈</span> 即可，儘管耦合性較高，但符合程式簡潔性，將來需求出現，再重構成 interface，也要繼續 <span class="label label-success">綠燈</span>，達成程式靈活性，TDD與重構使得程式在程式靈活性與程式簡潔性取得一個平衡點，而不必一開始就 over design 使用 interface，在沒有需求的前提下提早放棄<code>程式簡潔性</code>。</p>
+<p>這種方式的程式靈活性雖高，但缺犧牲了程式簡潔性，多了 interface，還多了 service provider，因此物件導向才要搭配 TDD 與重構，一開始需求很單純時，只求 <span class="label label-success">綠燈</span> 即可，儘管耦合性較高，但符合程式簡潔性，將來需求出現，再重構成 interface，也要繼續 <span class="label label-success">綠燈</span>，達成程式靈活性，TDD 與重構使得程式在程式靈活性與程式簡潔性取得一個平衡點，而不必一開始就 over design 使用 interface，在沒有需求的前提下提早放棄<code>程式簡潔性</code>。</p>
 <p>程式靈活性與程式簡潔性雖然衝突，寫程式應該先考慮程式簡潔性，除非是有<code>需求</code>，才會考慮程式靈活性。</p>
 <blockquote><p>The majority of the cost of software is incurred after the software has been first deployed, programs should be easy to change.</p>
 <p>絕大部分的軟體成本，都是在軟體第一次部署後才產生。程式碼必須能容易被修改。</p>
@@ -240,12 +240,11 @@
 </blockquote>
 <p><img src="/images/ip/ip-theory/theory004.png" alt=""></p>
 <p>當你在某一個 class 繼承架構下新增 class 時，你發現還必須手動在另外一個 class 繼承架構下新增 class，但問題維護的人可能並不知道，因此而造成修改後的程式錯誤。</p>
-<p>由於這兩個 class 繼承架構的相似度很高，才會導致平行 class 架構，應該使用重構的 <code>Move Field</code> 與 <code>Move Method</code> 整合成一個 class 繼承架構。</p>
+<p>由於這兩個 class 繼承架構的相似度很高，才會導致平行 class 架構，應該使用重構的 <code>Move Field</code> 與 <code>Move Method</code> 整合成一個 class 繼承架構，或使用設計模式的 <code>Bridge</code> 模式，讓實作與抽象可以各自擴展。</p>
 <blockquote><p>Duplication is not always abvious until after it has been created, and sometimes not for a while even then. Having seen it I can’t always think of a good way to eliminate it. Dupilcation isn’t evil, it just raises the cost of making changes.</p>
 <p>程式碼重複在開發時不太容易被發現，有時候要在一段時間後才會被察覺。即使發現了程式碼有重複之處，我也不見得每次都能將重複程式碼拿掉。程式碼重複並不是罪過，只是會增加程式碼維護時的成本。</p>
 </blockquote>
-<p>對於程式碼重複，可使用重構的 <code>Extract Method</code> 與 <code>Extract Class</code>，將相同的程式碼抽取出來。</p>
-<p>對於平行 class 架構，可使用重構的 <code>Move Field</code> 與 <code>Move Method</code> 整合成單一 class。<span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>中譯本並沒有將 <code>Having seen it I can&#39;t always think of a good way to eliminate it.</code> 這句加以翻譯。</span></span></span></p>
+<p>儘管使用了 TDD 開發方式，有時可能還是會遇到程式碼重複，此時只要使用<code>重構</code>將重複的程式碼萃取出來即可。<span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>中譯本並沒有將 <code>Having seen it I can&#39;t always think of a good way to eliminate it.</code> 這句加以翻譯。</span></span></span></p>
 <blockquote><p>One of the ways to remove duplication is to break programs up into many small pieces – small statements, small methods, small objects, small packages. Large peices of logic tend to duplicate parts of other large pieces of logic.</p>
 <p>其中一個避免程式碼重複的手段，就是將程式拆成更多更小部分 : <code>更短的敘述、更小的方法、更小的物件、更小的套件</code>，一大段的程式碼邏輯很容易與其他程式碼邏輯重複。</p>
 </blockquote>
@@ -274,7 +273,7 @@
 <p>在一開始寫程式時，我們往往不太清楚資料與邏輯該放在哪裡。我可能在 A 寫邏輯，才意識到需要 B 的資料。直到程式碼真正執行一段時間之後，我才意識到資料與邏輯太遠了，應該將他們封裝在一起。</p>
 </blockquote>
 <p>連 Kent Beck 都不太確定資料與邏輯一開始要寫在哪裡，所以一開始寫程式時，不用太拘泥於資料與邏輯該放在哪個 class 才適當，只要當下思考過放在哪個 class 最適合、TDD 能 <span class="label label-success">綠燈</span> 即可，之後再不斷的重構，靠 <code>Move Field</code> 與  <code>Move Method</code> 將資料與邏輯慢慢的搬到最適合的 class 即可。</p>
-<p>此外，原來資料與邏輯放在 A class 適合，也可能隨著<code>需求</code>的改變，變成放在 B class 更適合，此時只要繼續地靠 <code>Move Field</code> 與 <code>Move Method</code> 將資料與邏輯從 A class 重構到 B class即可，也就是<code>持續重構</code>的概念。</p>
+<p>此外，原來資料與邏輯放在 A class 適合，也可能隨著<code>需求</code>的改變，變成放在 B class 更適合，此時只要繼續地靠 <code>Move Field</code> 與 <code>Move Method</code> 將資料與邏輯從 A class 重構到 B class 即可，也就是<code>持續重構</code>的概念。</p>
 <h3 id="程式碼一致性">程式碼一致性</h3><blockquote><p>Symmetry in code is where the same idea is expressed the same way everywhere it appears in the code.</p>
 <p>無論在什麼地方，相同的概念都應該以相同的形式呈現。</p>
 </blockquote>
@@ -289,7 +288,7 @@
 <p>但有些卻是 <code>$key</code>, <code>$value</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$collection</span>-&gt;contains(<span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$key</span>, <span class="variable">$value</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$value</span> &gt; <span class="number">5</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$collection</span>-&gt;first(<span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$key</span>, <span class="variable">$value</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$value</span> &gt; <span class="number">2</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>這種 API 設計就違反了程式碼一致性。</p>
+<p>這種 API 設計就違反了程式碼一致性。<span class="margin-note-marker"><sup>9</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">9</span>關於 Laravel 的 Collection 問題，我私下已經透過 Twitter 與 Taylor Otwell 確認，Taylor 說 Laravel 5.3 將會統一 Collection 的 API，不再有 <code>$value</code> 與 <code>$key</code> 不一致的問題。</span></span></span></p>
 <ul>
 <li><strong>以一致性的觀點替方法命名</strong></li>
 </ul>
@@ -299,6 +298,9 @@
 <p>將 <code>count++</code> 重構成 <code>incrementCount()</code> 之後，程式可讀性提高，但卻是以<code>實作</code>角度命名，與 <code>input()</code> 與 <code>output()</code> 以<code>需求</code>角度命名不一樣，違反程式碼一致性。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">process</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    input();</span><br><span class="line">    tally();</span><br><span class="line">    output();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>tally()</code> 為計算，是以<code>需求</code>角度命名，程式可讀性更高，且符合程式碼一致性要求。</p>
+<p>此外，這個範例還告訴我們另外一個重要的觀念 :</p>
+<div class="alert alert-info"><i class="fa fa-info"></i>  把抽象出來的方法放在一起，而不要把底層程式碼和抽象出來的方法放在一起</div>
+<p>所謂<code>抽象出來的方法</code>是指 <code>extract method</code> 後的產物，它代表著這段程式碼的意圖。<br>每一階都有它放在這裡的意義，千萬不要將高階和低階的方法混雜在一起，這樣讀 code 時會很突兀。<span class="margin-note-marker"><sup>10</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">10</span>謝謝大澤木小鐵幫我們補充這個重要的觀念。</span></span></span></p>
 <h3 id="使用宣告式編程">使用宣告式編程</h3><blockquote><p>Express as much of my intention as possible declaratively. Imperative programming is powerful and flexible, but to read it requires that you follow the thread of execution. For those parts of a program that are more like simple facts, without sequence or conditionals, it is easier to read code that is simply declarative.</p>
 <p>盡可能以<code>宣告式編程</code>方式表達你的需求，<code>命令式編程</code>功能強大且靈活，但是閱讀時你必須以電腦的思維，跟著執行的流程去思考，程式碼較不易閱讀；宣告式編程只是陳述簡單的需求，並沒有考慮程式流程與程式判斷，完全是以需求的角度去思考，程式碼就容易閱讀。</p>
 </blockquote>
@@ -313,7 +315,7 @@
 <li><strong>加總訂單金額</strong> : <code>sum()</code>。</li>
 </ul>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="variable">$orders</span>-&gt;filter(<span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$value</span>)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="variable">$value</span>-&gt;order_date == Carbon::now();</span><br><span class="line">            &#125;)-&gt;map(<span class="function"><span class="keyword">function</span> <span class="params">(<span class="variable">$value</span>)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="variable">$value</span>-&gt;quantity * <span class="variable">$value</span>-&gt;price;</span><br><span class="line">            &#125;)-&gt;sum();</span><br></pre></td></tr></table></figure>
-<p>宣告式編程將不再以電腦思考角度使用 <code>foreach</code>、<code>if</code> 與暫存變數，完全以<code>需求</code>的角度去寫程式，程式碼的可讀性更高。<span class="margin-note-marker"><sup>9</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">9</span>關於宣告式編程，請參考 <a href="http://adamwathan.me/refactoring-to-collections/" target="_blank" rel="external">Refactoring to Collections</a></span></span></span></p>
+<p>宣告式編程將不再以電腦思考角度使用 <code>foreach</code>、<code>if</code> 與暫存變數，完全以<code>需求</code>的角度去寫程式，程式碼的可讀性更高。<span class="margin-note-marker"><sup>11</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">11</span>關於宣告式編程，請參考 <a href="http://adamwathan.me/refactoring-to-collections/" target="_blank" rel="external">Refactoring to Collections</a></span></span></span></p>
 <h3 id="將相同變化頻率的資料與邏輯封裝在一起">將相同變化頻率的資料與邏輯封裝在一起</h3><blockquote><p>Put logic or data that changes at the same rate together and seperate logic or data that changes at difference rate. These rates of change are a form of temporal symmetry.</p>
 <p>將具有相同變化頻率的資料與邏輯封裝在同一個 class 或 method，將不同變化頻率的資料與邏輯抽離出不同 class 或 method。這符合相同變化頻率的程式碼一致性。</p>
 </blockquote>
