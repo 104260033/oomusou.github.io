@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-07T10:01:24.000Z</updated>
+  <updated>2016-07-07T10:05:20.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -15,11 +15,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[如何使用 PhpStorm 重構 Closure?]]></title>
+    <title><![CDATA[如何使用 PhpStorm 重構成 Closure?]]></title>
     <link href="http://oomusou.io/phpstorm/phpstorm-refactor-closure/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-refactor-closure/</id>
     <published>2016-07-07T12:23:43.000Z</published>
-    <updated>2016-07-07T10:01:24.000Z</updated>
+    <updated>2016-07-07T10:05:20.000Z</updated>
     <content type="html"><![CDATA[<p>在實務上，我們也會常常遇到將原有的程式碼重構成 closure 的需求，PhpStorm 沒辦法直接重構，需透過一些技巧。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -84,7 +84,9 @@
     
     </summary>
     
-      <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
+      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
+    
+      <category term="Refactoring" scheme="http://oomusou.io/tags/Refactoring/"/>
     
   </entry>
   
