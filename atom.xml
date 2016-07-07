@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-07T10:05:48.000Z</updated>
+  <updated>2016-07-07T10:10:19.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-refactor-closure/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-refactor-closure/</id>
     <published>2016-07-07T12:23:43.000Z</published>
-    <updated>2016-07-07T10:05:48.000Z</updated>
+    <updated>2016-07-07T10:10:19.000Z</updated>
     <content type="html"><![CDATA[<p>在實務上，我們也會常常遇到將原有的程式碼重構成 closure 的需求，PhpStorm 沒辦法直接重構，需透過一些技巧。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -67,7 +67,7 @@
 <h2 id="Summary">Summary</h2><hr>
 <ol>
 <li>將全部程式碼以 <code>Extract Method</code> 提煉成新的 method。</li>
-<li>將不同的部分加上單引號變成字串，使用 <code>Extract Parameter</code> 提煉參數。</li>
+<li>將不同的程式碼加上單引號變成字串，使用 <code>Extract Parameter</code> 提煉參數。</li>
 <li>將<code>假字串</code>使用 <code>Surround With</code> 變成 closure。</li>
 <li>將<code>輔助線</code>刪除。</li>
 <li>跑單元測試確認重構成功。</li>
