@@ -2,13 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-refactor-closure/</loc>
-    <lastmod>2016-07-08T12:42:54.000Z</lastmod>
+    <loc>http://oomusou.io/tdd/tdd-collection-assertion/</loc>
+    <lastmod>2016-07-08T15:45:41.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-refactor-di/</loc>
-    <lastmod>2016-07-08T11:54:35.000Z</lastmod>
+    <lastmod>2016-07-08T14:46:38.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-refactor-closure/</loc>
+    <lastmod>2016-07-08T12:42:54.000Z</lastmod>
   </url>
   
   <url>
@@ -54,11 +59,6 @@
   <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-collection-debug/</loc>
     <lastmod>2016-06-20T03:12:52.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/tdd/tdd-collection-assertion/</loc>
-    <lastmod>2016-06-19T07:07:34.000Z</lastmod>
   </url>
   
   <url>
