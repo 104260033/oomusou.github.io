@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="透過輔助線重構成 Closure">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-07-08T01:01:41.000Z">
+<meta property="og:updated_time" content="2016-07-08T01:34:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用 PhpStorm 重構成 Closure?">
 <meta name="twitter:description" content="透過輔助線重構成 Closure">
@@ -107,12 +107,12 @@
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>在實務上，我們也會常常遇到將原有的程式碼重構成 closure 的需求，PhpStorm 沒辦法直接重構，需透過一些技巧。</p>
+	    <p>在實務上，我們常常會遇到將重複程式碼重構成 closure 的需求，PhpStorm 沒辦法直接重構，需透過一些技巧。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
 <p>以前一直不知道如何將 closure 用在自己的程式上，一直到看了 <a href="https://adamwathan.me/refactoring-to-collections/" target="_blank" rel="external">Refactoring to Collection</a> 之後，整理了一篇<a href="/php/php-closure-practice/">實務上如何活用 Closure?</a>，不過當時仍然不知道要如何在 PhpStorm 完成，都是手動複製貼上，本文以 PhpStorm 的 <code>Extract Method</code>、<code>Extract Parameter</code> 與 <code>Surround With</code> ，將重複的程式碼重構成 closure。</p>
 <h2 id="Version">Version</h2><hr>
-<p>PHP 7.0.0<br>Laravel 5.2.39</p>
+<p>PHP 7.0.0<br>Laravel 5.2.39<br>PhpStorm 2016.1.2</p>
 <h2 id="實際案例">實際案例</h2><hr>
 <p><strong> PostService.php </strong><span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52LearnClosureByLaravel_demo/commit/e27a224d1a15054f53965d73b8e3b690d0958caf" target="_blank" rel="external">新增 displayAllPost()</a></span></span></span><br><figure class="highlight php"><figcaption><span>app/Services/PostService.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Services</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Repositories</span>\<span class="title">PostRepository</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PostService</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@var</span> PostRepository</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$postRepository</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * PostService constructor.</span><br><span class="line">     * <span class="doctag">@param</span> PostRepository $postRepository</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(PostRepository <span class="variable">$postRepository</span>)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;postRepository = <span class="variable">$postRepository</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@return</span> int</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">displayAllPosts</span><span class="params">()</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="variable">$posts</span> = <span class="variable">$this</span>-&gt;postRepository-&gt;getAllPosts();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable">$posts</span> <span class="keyword">as</span> <span class="variable">$post</span>) &#123;</span><br><span class="line">            <span class="variable">$txt</span> = <span class="string">"&#123;$post-&gt;id&#125; : &#123;$post-&gt;title&#125;"</span> . PHP_EOL;</span><br><span class="line">            <span class="keyword">echo</span>(<span class="variable">$txt</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="variable">$posts</span>-&gt;count();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>21 行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * <span class="doctag">@return</span> int</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">displayAllPosts</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="variable">$posts</span> = <span class="variable">$this</span>-&gt;postRepository-&gt;getAllPosts();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$posts</span> <span class="keyword">as</span> <span class="variable">$post</span>) &#123;</span><br><span class="line">        <span class="variable">$txt</span> = <span class="string">"&#123;$post-&gt;id&#125; : &#123;$post-&gt;title&#125;"</span> . PHP_EOL;</span><br><span class="line">        <span class="keyword">echo</span>(<span class="variable">$txt</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$posts</span>-&gt;count();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -175,9 +175,9 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-		
-          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
-        
+				
+    	<li class="prev"><a href="/phpstorm/phpstorm-refactor-di/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+  		
 
         <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
 
@@ -213,7 +213,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/PhpStorm/">PhpStorm<span>27</span></a></li> <li><a href="/tags/Refactoring/">Refactoring<span>6</span></a></li>
+  <li><a href="/tags/PhpStorm/">PhpStorm<span>28</span></a></li> <li><a href="/tags/Refactoring/">Refactoring<span>7</span></a></li>
     </ul>
 	</div>
 		
