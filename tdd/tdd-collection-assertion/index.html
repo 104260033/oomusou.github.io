@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="介紹兩種方法對 Collection 做 Assertion">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-07-08T15:55:38.000Z">
+<meta property="og:updated_time" content="2016-07-09T00:57:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何對 Collection 做 Assertion?">
 <meta name="twitter:description" content="介紹兩種方法對 Collection 做 Assertion">
@@ -110,7 +110,7 @@
 	    <p><code>Collection</code> 並非 PHP 原生的型別，是 Laravel 所擴充，因此 PHPUnit 並無法直接對其做 assertion，本文介紹兩種方式，一種是使用 PHPUnit 的 <code>assertArraySubset()</code>，一種是自己寫 Collection Macro，各有其優缺點，可視需求決定要使用哪種方法。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
-<p>由於 PHPUnit 無法直接對 collection 做 assertion，而 collection 又天天要用到，當然最好是 Laravel 自己提供對 collection 的 assertion 方式，但在 Laravel 正式提供之前，只好自己想 workaround。</p>
+<p>實務上天天都有驗證 collection 的需求，在<a href="/tdd/tdd-repository-testing-mysql/">如何測試 Repository 模式(使用 MySQL)?</a>與<a href="/tdd/tdd-repository-testing-sqlite/">如何測試 Repository 模式(使用 SQLite)?</a> 一文中，對 collection 都沒有提出系統化的 assertion 方式，本文整理出實務上我最常用的兩種測試手法。</p>
 <h2 id="Version">Version</h2><hr>
 <p>PHP 7.0.0<br>Laravel 5.2.37</p>
 <h2 id="實際案例">實際案例</h2><hr>
