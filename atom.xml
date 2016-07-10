@@ -241,11 +241,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[實作模式讀書會 (Motivation)]]></title>
+    <title><![CDATA[實作模式筆記 (Motivation)]]></title>
     <link href="http://oomusou.io/ip/ip-motivation/"/>
     <id>http://oomusou.io/ip/ip-motivation/</id>
     <published>2016-07-04T12:23:43.000Z</published>
-    <updated>2016-07-04T14:30:32.000Z</updated>
+    <updated>2016-07-10T03:17:31.000Z</updated>
     <content type="html"><![CDATA[<p>以軟體成本的角度，闡明使用模式除了可以增加程式可讀性，還可大幅降低維護成本。<br><a id="more"></a></p>
 <h2 id="Motivation">Motivation</h2><hr>
 <p>本文為 Kent Beck 的 <a href="https://www.amazon.com/Implementation-Patterns-Kent-Beck/dp/0321413091" target="_blank" rel="external">Implementation Patterns</a> 一書的讀書筆記，主要是整理給自己複習用，並加上自己的腦補。</p>
@@ -292,11 +292,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[實作模式讀書會 (A Theory of Programming)]]></title>
+    <title><![CDATA[實作模式讀筆記 (A Theory of Programming)]]></title>
     <link href="http://oomusou.io/ip/ip-theory/"/>
     <id>http://oomusou.io/ip/ip-theory/</id>
     <published>2016-07-01T12:23:43.000Z</published>
-    <updated>2016-07-07T03:23:09.000Z</updated>
+    <updated>2016-07-10T03:17:58.000Z</updated>
     <content type="html"><![CDATA[<p>此章討論<code>程式設計理論</code>，提出了 3 條<code>程式設計價值觀</code>與 6 條<code>程式設計原則</code>，這些都是所有程式語言都能使用的普世價值觀與原則，當我們遇到一個全新的問題，沒有模式可以使用時，可以轉而思考這些價值觀與原則；當我們學習新的程式語言時，也可以藉由這些價值觀與原則為起點，一樣可以寫出優秀的程式碼。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -576,11 +576,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[實作模式讀書會 (Patterns)]]></title>
+    <title><![CDATA[實作模式筆記 (Patterns)]]></title>
     <link href="http://oomusou.io/ip/ip-patterns/"/>
     <id>http://oomusou.io/ip/ip-patterns/</id>
     <published>2016-06-30T12:23:43.000Z</published>
-    <updated>2016-07-04T13:44:00.000Z</updated>
+    <updated>2016-07-10T03:17:43.000Z</updated>
     <content type="html"><![CDATA[<p>將<strong>模式</strong>做更深入的探討，包含其起源、特性與影響，讓我們更能接受模式這個概念。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -660,11 +660,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[實作模式讀書會 (Introduction)]]></title>
+    <title><![CDATA[實作模式筆記 (Introduction)]]></title>
     <link href="http://oomusou.io/ip/ip-intro/"/>
     <id>http://oomusou.io/ip/ip-intro/</id>
     <published>2016-06-29T12:23:43.000Z</published>
-    <updated>2016-07-04T13:20:01.000Z</updated>
+    <updated>2016-07-10T03:16:51.000Z</updated>
     <content type="html"><![CDATA[<p>介紹本書主要的目標、章節安排，心法與學習方式，並對<strong>模式</strong>一詞下了定義，也針對實作模式與設計模式的差異加以討論。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
