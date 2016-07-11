@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-09T00:57:54.000Z</updated>
+  <updated>2016-07-11T01:34:38.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/tdd/tdd-collection-assertion/"/>
     <id>http://oomusou.io/tdd/tdd-collection-assertion/</id>
     <published>2016-07-09T12:23:43.000Z</published>
-    <updated>2016-07-09T00:57:54.000Z</updated>
+    <updated>2016-07-11T01:34:38.000Z</updated>
     <content type="html"><![CDATA[<p><code>Collection</code> 並非 PHP 原生的型別，是 Laravel 所擴充，因此 PHPUnit 並無法直接對其做 assertion，本文介紹兩種方式，一種是使用 PHPUnit 的 <code>assertArraySubset()</code>，一種是自己寫 Collection Macro，各有其優缺點，可視需求決定要使用哪種方法。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -76,6 +76,8 @@
     </summary>
     
       <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
+    
+      <category term="Laravel Collection" scheme="http://oomusou.io/tags/Laravel-Collection/"/>
     
       <category term="PHPUnit" scheme="http://oomusou.io/tags/PHPUnit/"/>
     
@@ -1105,7 +1107,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-collection-debug/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-collection-debug/</id>
     <published>2016-06-19T12:23:43.000Z</published>
-    <updated>2016-06-20T03:12:52.000Z</updated>
+    <updated>2016-07-11T01:34:20.000Z</updated>
     <content type="html"><![CDATA[<p>Laravel 的 <code>Collection</code> 在實務上非常好用，除了 Eloquent 直接回傳 <code>Collection</code> 外，還擴充了很多 method，讓我們可以使用 higher order function 與 fluent 風格開發，讓程式可讀性更高。不過 <code>Collection</code> 的除錯就比較麻煩，本文使用 PhpStorm 內建的 <strong>Watches</strong>，讓我們可以在不用修改程式碼的前提下，快速對 <code>Collection</code> 除錯。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -1232,6 +1234,8 @@
     </summary>
     
       <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
+    
+      <category term="Laravel Collection" scheme="http://oomusou.io/tags/Laravel-Collection/"/>
     
       <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
     
