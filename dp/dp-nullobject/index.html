@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="使用 Null Object 模式將符合 Tell, don&apos;t Ask 原則">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-07-13T14:46:17.000Z">
+<meta property="og:updated_time" content="2016-07-13T14:51:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用 Null Object 模式?">
 <meta name="twitter:description" content="使用 Null Object 模式將符合 Tell, don&apos;t Ask 原則">
@@ -108,6 +108,7 @@
 	<!-- content -->
 	<div class="mypage">		
 	    <p>當我們透過 Eloquent 對資料庫抓資料時，由於 <code>where()</code> 的條件可能撈不到資料，導致 <code>first()</code> 傳會 <code>null</code>，若再對 <code>null</code> 物件的欄位屬性做存取，會出現 <code>Trying to get property of non-object</code> 的錯誤訊息，當然有各種方法避開這個錯誤，但比較理想的方式是引入 <code>Null Object</code> 模式。</p>
+<a id="more"></a>
 <h2 id="Version">Version</h2><hr>
 <p>PHP 7.0.0<br>Laravel 5.2.39</p>
 <h2 id="實際案例">實際案例</h2><hr>
