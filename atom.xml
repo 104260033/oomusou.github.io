@@ -294,11 +294,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[實作模式讀筆記 (A Theory of Programming)]]></title>
+    <title><![CDATA[實作模式筆記 (A Theory of Programming)]]></title>
     <link href="http://oomusou.io/ip/ip-theory/"/>
     <id>http://oomusou.io/ip/ip-theory/</id>
     <published>2016-07-01T12:23:43.000Z</published>
-    <updated>2016-07-10T03:17:58.000Z</updated>
+    <updated>2016-07-13T00:59:21.000Z</updated>
     <content type="html"><![CDATA[<p>此章討論<code>程式設計理論</code>，提出了 3 條<code>程式設計價值觀</code>與 6 條<code>程式設計原則</code>，這些都是所有程式語言都能使用的普世價值觀與原則，當我們遇到一個全新的問題，沒有模式可以使用時，可以轉而思考這些價值觀與原則；當我們學習新的程式語言時，也可以藉由這些價值觀與原則為起點，一樣可以寫出優秀的程式碼。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>

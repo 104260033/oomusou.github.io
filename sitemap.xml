@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/ip/ip-theory/</loc>
+    <lastmod>2016-07-13T00:59:21.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/tdd/tdd-collection-assertion/</loc>
     <lastmod>2016-07-11T01:34:38.000Z</lastmod>
   </url>
@@ -14,11 +19,6 @@
   <url>
     <loc>http://oomusou.io/laravel/collection/collection-duplicated/</loc>
     <lastmod>2016-07-11T01:33:53.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/ip/ip-theory/</loc>
-    <lastmod>2016-07-10T03:17:58.000Z</lastmod>
   </url>
   
   <url>
