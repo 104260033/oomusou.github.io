@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-13T15:41:34.000Z</updated>
+  <updated>2016-07-14T01:43:26.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/dp/dp-nullobject/"/>
     <id>http://oomusou.io/dp/dp-nullobject/</id>
     <published>2016-12-05T12:23:43.000Z</published>
-    <updated>2016-07-13T15:41:34.000Z</updated>
+    <updated>2016-07-14T01:43:26.000Z</updated>
     <content type="html"><![CDATA[<p>當我們透過 Eloquent 對資料庫抓資料時，由於 <code>where()</code> 的條件可能撈不到資料，導致 <code>first()</code> 傳會 <code>null</code>，若再對 <code>null</code> 物件的欄位屬性做存取，會出現 <code>Trying to get property of non-object</code> 的錯誤訊息，當然有各種方法避開這個錯誤，但比較理想的方式是引入 <code>Null Object</code> 模式。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -43,7 +43,7 @@
 <h2 id="Null_Object_模式">Null Object 模式</h2><hr>
 <blockquote><p>Replace the null value with the null object.</p>
 <p>將 null 值替換成 null 物件。</p>
-<footer><strong>Refactoring Ch 9.7 Introduce Null Object</strong></footer></blockquote>
+<footer><strong>Martin Fowler</strong><cite>Refactoring Ch 9.7 Introduce Null Object</cite></footer></blockquote>
 <p>Null Object 模式並非出自<a href="http://www.tenlong.com.tw/items/9572054112?item_id=997944" target="_blank" rel="external">設計模式</a>一書，而是出現在<a href="http://www.tenlong.com.tw/items/7115369097?item_id=1009173" target="_blank" rel="external">重構</a>的 Ch 9.7，教大家將 <code>null</code> 值重構成 <code>null</code> 物件，因為只要有 <code>null</code> 值，就必須去 <code>if</code> 判斷是否 <code>null</code>，甚至於去 <code>try catch</code>，這樣的 API 並不好用，而且只要忘記判斷就可能出錯。</p>
 <p>什麼是 Null Object 呢? 剛剛會出錯，就是因為我們期望是一個 <code>Post</code> 物件，也有 <code>title</code> 屬性，但因為回傳 <code>null</code> 值，沒有 <code>title</code> 屬性才出錯，既然如此，假如我們也能傳回一個 <code>Post</code> 物件，也有 <code>title</code> 屬性，這樣就不會錯了，這就是 Null Object 概念。</p>
 <p>至於 Null Object 的 <code>title</code> 屬性該存放什麼值呢? 這沒有一定的答案，完全看需求端定義，可能需求端認為若找不到資料，傳回空字串即可，也可能傳回<code>no title</code>即可，這些值就是 Null Object 的 <code>title</code> 屬性的值。</p>
@@ -72,6 +72,10 @@
 </ul>
 <h2 id="Sample_Code">Sample Code</h2><hr>
 <p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52FirstNullObject_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
+<h2 id="Reference">Reference</h2><hr>
+<ul>
+<li>Martin Fowler, <a href="https://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672" target="_blank" rel="external">Refactoring : Improving the Design of Existing Code</a></li>
+</ul>
 ]]></content>
     <summary type="html">
     <![CDATA[使用 Null Object 模式將符合 Tell, don't Ask 原則]]>
