@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-14T01:46:14.000Z</updated>
+  <updated>2016-07-18T14:06:35.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -13,6 +13,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[如何在 PhpStorm 使用 Xdebug On Demand?]]></title>
+    <link href="http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/"/>
+    <id>http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/</id>
+    <published>2016-12-05T12:23:43.000Z</published>
+    <updated>2016-07-18T14:06:35.000Z</updated>
+    <content type="html"><![CDATA[<p>Xdebug 是 PhpStorm debug 的必備工具，但是啟動 Xdebug 又會使 Composer 變慢，實務上很兩難，這個問題在 PhpStorm 2016.2 得到完美解決，平時不用開啟 Xdebug，PhpStorm 會在需要 debug 時才自動 Xdebug，不會影響 Composer 執行速度。</p>
+<a id="more"></a>
+<h2 id="Motivation">Motivation</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-xdebug-on-demand/demand000.png" alt=""></p>
+<p>Composer 在某一個版本以後，只要在 <code>php.ini</code> 有啟動 Xdebug，就會出現以上黃色警告訊息。</p>
+<p>主要是 Xdebug 會大幅影響 Composer 解析套件相依時的執行速度，因此不建議你開啟 Xdebug。</p>
+<p>在之前並沒好的解法，除非你不使用 Xdebug，但 Xdebug 又是 PhpStorm 的大絕，也只好犧牲 Composer 了。</p>
+<h2 id="Version">Version</h2><hr>
+<p>PHP 7.0.8<br>MAMP PRO 3.5.2<br>PhpStorm 2016.2</p>
+<h2 id="設定_Xdebug_On_Demand">設定 Xdebug On Demand</h2><hr>
+<p>本文以 MAMP PRO 為例，在 PhpStorm 設定 Xdebug on Demand。</p>
+<p><img src="/images/phpstorm/phpstorm-xdebug-on-demand/demand001.png" alt=""></p>
+<p><strong><em> PhpStorm -&gt; Preferences -&gt; Languages &amp; Frameworks -&gt; PHP </em></strong></p>
+<ul>
+<li><strong>PHP Language level</strong> : 選擇 <code>7</code>。</li>
+<li><strong>Interpreter</strong> : 按 <code>...</code> 設定 PHP interpreter。</li>
+</ul>
+<p><img src="/images/phpstorm/phpstorm-xdebug-on-demand/demand002.png" alt=""></p>
+<p>按 <code>+</code> 新增 PHP interpreter，因為以 MAMP PRO 為例，選擇 <code>Other Local...</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-xdebug-on-demand/demand003.png" alt=""></p>
+<ul>
+<li><strong>Name</strong> : 輸入 <code>PHP 7</code>。</li>
+<li><strong>PHP executable</strong> : 選擇 PHP interpreter 所在路徑，以 MAMP PRO 為例，其路徑為 <code>/Applications/MAMP/bin/php/php7.0.8/bin/php</code>。注意此時 <code>php.ini</code> 並沒有啟動 <code>xdebug.so</code>，所以顯示 <code>Debugger: Not installed</code>。</li>
+<li><strong>Debugger extension</strong> : 選擇 <code>xdebug.so</code> 所在路徑，以 MAMP PRO 為例，其路徑為 <code>/Applications/MAMP/bin/php/php7.0.8/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so</code>。</li>
+</ul>
+<p><img src="/images/phpstorm/phpstorm-xdebug-on-demand/demand004.png" alt=""></p>
+<p>設定好了之後，就可以選擇剛剛設定的 <code>PHP7</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-xdebug-on-demand/demand005.png" alt=""></p>
+<p>在單元測試中設定中斷點，按熱鍵 &#8963; + &#8679; + D，程式碼依舊會在中斷點停止，所有變數也可以正常顯示。</p>
+<p><img src="/images/phpstorm/phpstorm-xdebug-on-demand/demand006.png" alt=""></p>
+<p>由於沒有在 <code>php.ini</code> 啟動 <code>xdebug.so</code>，composer 再也不會抱怨 Xdebug 已經啟動，可以全速執行。</p>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>Xdebug 與 Composer 一直是無解的問題，透過 PhpStorm 2016.2，我們終於可以兼顧 Xdebug 的便利與 Composer 的速度。</li>
+</ul>
+<h2 id="Reference">Reference</h2><hr>
+<ul>
+<li>Gary Hockin, <a href="https://blog.jetbrains.com/phpstorm/2016/06/xdebug-on-demand-for-cli-php-scripts-in-phpstorm-2016-2-eap/" target="_blank" rel="external">Xdebug On Demand for CLI PHP Scripts in PhpStorm 2016.2</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[關閉 Xdebug 加速 Composer]]>
+    
+    </summary>
+    
+      <category term="MAMP" scheme="http://oomusou.io/tags/MAMP/"/>
+    
+      <category term="PHPUnit" scheme="http://oomusou.io/tags/PHPUnit/"/>
+    
+      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
+    
+      <category term="TDD" scheme="http://oomusou.io/tags/TDD/"/>
+    
+      <category term="Xdebug" scheme="http://oomusou.io/tags/Xdebug/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[如何使用 Null Object 模式?]]></title>
@@ -2161,39 +2224,6 @@
       <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
     
       <category term="PHP" scheme="http://oomusou.io/tags/PHP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[PHP 與 TypeScript 的 Template Literals]]></title>
-    <link href="http://oomusou.io/php/php-template-literals/"/>
-    <id>http://oomusou.io/php/php-template-literals/</id>
-    <published>2016-04-29T12:23:43.000Z</published>
-    <updated>2016-04-29T07:45:21.000Z</updated>
-    <content type="html"><![CDATA[<p>TypeScript 提供了 Template Literals，可以讓字串處理的可讀性更高，不再只是湊字串而已，事實上，PHP 也有這種機制。  </p>
-<a id="more"></a>
-<h2 id="Version">Version</h2><hr>
-<p>PHP 7.0.0<br>TypeScript 1.8.9</p>
-<h2 id="TypeScript">TypeScript</h2><hr>
-<figure class="highlight typescript"><figcaption><span>TypeScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name:<span class="built_in">string</span> = <span class="string">'Sam'</span>;</span><br><span class="line"><span class="keyword">var</span> sentence:<span class="built_in">string</span> = `Hello $&#123;name&#125;`;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(sentence);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Hello Sam</span></span><br></pre></td></tr></table></figure>
-<p>在 TypeScript，只要字串改用<code>反引號</code> ，再配合 <code>${}</code> 即可。</p>
-<h2 id="PHP">PHP</h2><hr>
-<figure class="highlight php"><figcaption><span>PHP</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$name</span> = <span class="string">'Sam'</span>;</span><br><span class="line"><span class="variable">$sentence</span> = <span class="string">"Hello &#123;$name&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span>(<span class="variable">$sentence</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Hello Sam</span></span><br></pre></td></tr></table></figure>
-<p>在 PHP，只要字串改用<code>雙引號</code>，再配合<code>{$}</code>即可。</p>
-<p>剛好與 TypeScript 相反。</p>
-<h2 id="Conclusion">Conclusion</h2><hr>
-<ul>
-<li>Template literals 方式湊字串，遠比傳統用 <code>+</code> 或 <code>.</code> 的方式可讀性高，最少可以先看到字串整體的全貌。</li>
-</ul>
-]]></content>
-    <summary type="html">
-    <![CDATA[PHP 也有支援如 TypeScript 的 Template Literal]]>
-    
-    </summary>
-    
-      <category term="PHP" scheme="http://oomusou.io/tags/PHP/"/>
-    
-      <category term="TypeScript" scheme="http://oomusou.io/tags/TypeScript/"/>
     
   </entry>
   
