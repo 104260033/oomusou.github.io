@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/laravel/laravel-repository/</loc>
+    <lastmod>2016-07-19T09:26:32.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/laravel/laravel-architecture/</loc>
+    <lastmod>2016-07-19T08:07:34.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/dp/dp-nullobject/</loc>
     <lastmod>2016-07-19T06:52:14.000Z</lastmod>
   </url>
@@ -207,11 +217,6 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-repository/</loc>
-    <lastmod>2016-04-16T07:44:44.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://oomusou.io/laravel/laravel-route-pass-parameter-to-controller/</loc>
     <lastmod>2016-04-12T23:02:29.000Z</lastmod>
   </url>
@@ -252,12 +257,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-service/</loc>
+    <loc>http://oomusou.io/laravel/laravel-service-provider/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-service-provider/</loc>
+    <loc>http://oomusou.io/laravel/laravel42/laravel-42-presenter/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -268,11 +273,6 @@
   
   <url>
     <loc>http://oomusou.io/osx/osx-symbol-html/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/php/php-bindTo/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -292,7 +292,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/php/php-cs/</loc>
+    <loc>http://oomusou.io/php/php-bindTo/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -307,7 +307,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-architecture/</loc>
+    <loc>http://oomusou.io/php/php-cs/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -352,7 +352,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel42/laravel-42-presenter/</loc>
+    <loc>http://oomusou.io/laravel/laravel-service/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   

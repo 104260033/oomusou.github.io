@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Laravel的中大型專案架構 | 點燈坊</title>
+  <title>Laravel 的中大型專案架構 | 點燈坊</title>
   <meta name="author" content="真 OO無双">
   
-  <meta name="description" content="只有MVC是不夠的，我們需要更完整的專案架構">
+  <meta name="description" content="只有 MVC 是不夠的，我們需要更完整的專案架構">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
- <meta name="description" content="只有MVC是不夠的，我們需要更完整的專案架構">
+ <meta name="description" content="只有 MVC 是不夠的，我們需要更完整的專案架構">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Laravel的中大型專案架構">
+<meta property="og:title" content="Laravel 的中大型專案架構">
 <meta property="og:url" content="http://oomusou.io/laravel/laravel-architecture/index.html">
 <meta property="og:site_name" content="點燈坊">
-<meta property="og:description" content="只有MVC是不夠的，我們需要更完整的專案架構">
+<meta property="og:description" content="只有 MVC 是不夠的，我們需要更完整的專案架構">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-03-22T14:03:51.000Z">
+<meta property="og:updated_time" content="2016-07-19T08:07:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Laravel的中大型專案架構">
-<meta name="twitter:description" content="只有MVC是不夠的，我們需要更完整的專案架構">
+<meta name="twitter:title" content="Laravel 的中大型專案架構">
+<meta name="twitter:description" content="只有 MVC 是不夠的，我們需要更完整的專案架構">
  
 
   
@@ -81,7 +81,7 @@
     	 
 	
 		<div class="page-header">		
-			<h1> Laravel的中大型專案架構</h1>
+			<h1> Laravel 的中大型專案架構</h1>
 		</div>		
 	
 
@@ -95,120 +95,83 @@
 
 	
 		 <div class="alert alert-success description">
-			<i class="fa fa-info-circle"></i> 只有MVC是不夠的，我們需要更完整的專案架構			
+			<i class="fa fa-info-circle"></i> 只有 MVC 是不夠的，我們需要更完整的專案架構			
 		</div> <!-- alert -->
 		
 
 	<!-- toc -->
 	<div id="postTOC">
 		<span class="tocHeading">Contents</span>
-		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#MVC是一個巨大的誤會"><span class="toc-article-text">MVC是一個巨大的誤會</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#HMVC是Poor_Design"><span class="toc-article-text">HMVC是Poor Design</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Bye,_Bye_Models"><span class="toc-article-text">Bye, Bye Models</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#中大型專案架構"><span class="toc-article-text">中大型專案架構</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#建立Domain目錄"><span class="toc-article-text">建立Domain目錄</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Repository"><span class="toc-article-text">Repository</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Service"><span class="toc-article-text">Service</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Presenter"><span class="toc-article-text">Presenter</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Unit_Test"><span class="toc-article-text">Unit Test</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#PHPUnit"><span class="toc-article-text">PHPUnit</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li></ol>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Controller_過於肥大"><span class="toc-article-text">Controller 過於肥大</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Model_過於肥大"><span class="toc-article-text">Model 過於肥大</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#中大型專案架構"><span class="toc-article-text">中大型專案架構</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Repository"><span class="toc-article-text">Repository</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Service"><span class="toc-article-text">Service</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Presenter"><span class="toc-article-text">Presenter</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#單元測試"><span class="toc-article-text">單元測試</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li></ol>
     </div>
 
 	<!-- content -->
 	<div class="mypage">		
-	    <p>初學者學習Laravel時分兩種，一種是乖乖的將程式填入MVC架構內，導致controller與model異常的肥大，日後一樣很難維護；一種是常常不知道程式該寫在哪一個class內而猶豫不決，畢竟傳統PHP都是一個頁面一個檔案。本文整理出最適合Laravel的中大型專案架構，兼具<strong>容易維護</strong>、<strong>容易擴充</strong>與<strong>容易重複使用</strong>的特點，並且<strong>容易測試</strong>。</p>
+	    <p>初學者學習 Laravel 時分兩種，一種是乖乖的將程式填入 MVC 架構內，導致 controller 與 model 異常的肥大，日後一樣很難維護；一種是常常不知道程式該寫在哪一個 class 內而猶豫不決，畢竟傳統 PHP 都是一個頁面一個檔案。本文整理出最適合 Laravel 的中大型專案架構，兼具<strong>容易維護</strong>、<strong>容易擴充</strong>與<strong>容易重複使用</strong>的特點，並且<strong>容易測試</strong>。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
 <p>Laravel 5.1.24</p>
-<h2 id="MVC是一個巨大的誤會">MVC是一個巨大的誤會</h2><hr>
-<p>受RoR的影響，初學者常認為MVC架構就是<code>model</code>, <code>view</code>, <code>controller</code> : </p>
+<h2 id="Controller_過於肥大">Controller 過於肥大</h2><hr>
+<p>受RoR的影響，初學者常認為 MVC 架構就是 <code>model</code>, <code>view</code>, <code>controller</code> : </p>
 <ul>
-<li>Model就是資料庫。</li>
-<li>Controller負責與HTTP溝通，調用model與view。</li>
-<li>View就是HTML。</li>
+<li>Model 就是資料庫。</li>
+<li>Controller 負責與 HTTP 溝通，調用 model 與 view。</li>
+<li>View 就是 HTML。</li>
 </ul>
 <p>假如依照這個定義，以下這些需求該寫在哪裡呢？</p>
 <ol>
-<li>發送Email，使用外部API。</li>
-<li>使用PHP寫的邏輯。</li>
-<li>牽涉到多個table的資料庫邏輯。</li>
+<li>發送 Email，使用外部 API。</li>
+<li>使用 PHP 寫的邏輯。</li>
+<li>牽涉到多個 table 的資料庫邏輯。</li>
 <li>依需求將顯示格式作轉換。</li>
 <li>依需求是否顯示某些資料。</li>
 <li>依需求顯示不同資料。</li>
 </ol>
-<p>其中1, 2屬於<strong>商業邏輯</strong>，3屬於<strong>資料庫邏輯</strong>，而4, 5，6屬於<strong>顯示邏輯</strong>，若依照一般人對MVC的定義，model是資料庫，而View又是HTML，除了第3項以外，以上這些需求都不能寫在model與view，只能<code>勉強</code>寫在controller。</p>
-<p>因此初學者開始將<code>大量程式</code>寫在controller，造成controller的肥大難以維護。</p>
-<h2 id="HMVC是Poor_Design">HMVC是Poor Design</h2><hr>
-<div class="alert alert-info"><i class="fa fa-info"></i>  某些邏輯我需要重複使用，我該如何從A controller的一個method去呼叫B controller的另外一個method？</div>
-<p>這也是初學者常問的問題，也就是HMVC (Hierarchical Model View Controller)，某個需求都有自己的MVC，所以一個專案裡面會有多個MVC，因此controller可以呼叫其他controller。</p>
-<p><img src="/images/laravel/laravel-architecture/arch000.gif" alt=""></p>
-<p>當controller會去呼叫其他controller時，通常代表這是一個poor design，表示在controller內已經塞太多<code>程式邏輯</code>，也違反了<strong>SOLID</strong>的<strong>單一職責原則</strong>。</p>
-<h2 id="Bye,_Bye_Models">Bye, Bye Models</h2><hr>
-<div class="alert alert-info"><i class="fa fa-info"></i>  既然邏輯寫在controller不方便重複使用，那我將邏輯都寫在model就好了？</div>
-<p>當你將邏輯從controller搬到model後，雖然controller變瘦了，但卻肥了model，model從原本代表資料庫，現在變成還要負擔<strong>商業邏輯</strong>與<strong>顯示邏輯</strong>，結果更慘。</p>
-<p>Model代表資料庫嗎？把它想成是<code>Eloquent class</code>就好，<code>資料庫邏輯</code>應該寫在repository裡，這也是為什麼Laravel 5已經沒有<code>models</code>目錄，<code>Eloquent class</code>僅僅是<code>暫時</code>存放在<code>app</code>目錄下而已，你應該將這些class移到你自己<code>domain</code>目錄下。</p>
-<div class="alert alert-info"><i class="fa fa-info"></i>  什麼是<b>domain</b>目錄？聽起來好玄。</div>
-<p>別擔心，稍後就會有實際範例解釋。</p>
+<p>其中 1, 2 屬於<strong>商業邏輯</strong>，3屬於<strong>資料庫邏輯</strong>，而 4, 5，6 屬於<strong>顯示邏輯</strong>，若依照一般人對  MVC 的定義，model 是資料庫，而 view 又是 HTML，除了第 3 項以外，以上這些需求都不能寫在 model 與 view，只能<strong>勉強</strong>寫在 controller。</p>
+<p>因此初學者開始將大量程式寫在 controller，造成 controller 的肥大難以維護。</p>
+<h2 id="Model_過於肥大">Model 過於肥大</h2><hr>
+<div class="alert alert-info"><i class="fa fa-info"></i>  既然邏輯寫在 controller 不方便維護，那我將邏輯都寫在 model 就好了？</div>
+<p>當你將邏輯從 controller 搬到 model 後，雖然 controller 變瘦了，但卻肥了 model，model 從原本代表資料庫，現在變成還要負擔<strong>商業邏輯</strong>與<strong>顯示邏輯</strong>，結果更慘。</p>
+<p>Model 代表資料庫嗎？把它想成是 <code>Eloquent class</code>就好，<code>資料庫邏輯</code>應該寫在 repository 裡，這也是為什麼 Laravel 5 已經沒有 <code>models</code>目錄，Eloquent class 僅僅是放在 <code>app</code> 根目錄下而已。</p>
 <h2 id="中大型專案架構">中大型專案架構</h2><hr>
-<p>那我們該怎麼寫呢？別將我們的思維侷限在MVC內 : </p>
+<p>那我們該怎麼寫呢？別將我們的思維侷限在 MVC 內 : </p>
 <ol>
-<li><strong>Model</strong> : 僅當成Eloquent class。</li>
-<li><strong>Repository</strong> : 輔助model，處理<strong>資料庫邏輯</strong>，然後注入到service或controller。</li>
-<li><strong>Service</strong> : 輔助controller，處理<strong>商業邏輯</strong>，然後注入到controller。</li>
-<li><strong>Controller</strong> : 接收HTTP request，調用其他class。</li>
-<li><strong>Presenter</strong> : 處理<strong>顯示邏輯</strong>，然後注入到view。</li>
-<li><strong>View</strong> : 使用blade將資料binding到HTML。</li>
+<li><strong>Model</strong> : 僅當成 Eloquent class。</li>
+<li><strong>Repository</strong> : 輔助 model，處理<strong>資料庫邏輯</strong>，然後注入到 service。</li>
+<li><strong>Service</strong> : 輔助 controller，處理<strong>商業邏輯</strong>，然後注入到 controller。</li>
+<li><strong>Controller</strong> : 接收 HTTP request，調用其他 service。</li>
+<li><strong>Presenter</strong> : 處理<strong>顯示邏輯</strong>，然後注入到 view。</li>
+<li><strong>View</strong> : 使用 blade 將資料 binding 到 HTML。</li>
 </ol>
 <img src="/images/laravel/laravel-architecture/arch002.svg" width="700">
-<p>其中藍色為原本的MVC，而紫色為本文要介紹的的重點 : <strong>Repository</strong>模式，<strong>Service</strong>模式與<strong>Presenter</strong>模式。</p>
-<p>箭頭表示物件<code>依賴注入</code>的方向。</p>
-<p>其中較特殊的是repository，可以直接注入到controller，也可以注入到service。</p>
-<ul>
-<li>若沒有商業邏輯，只有資料庫邏輯，可以直接注入controller，由controller直接調用repository。</li>
-<li>若有複雜的商業邏輯，則注入到service，由service調用repoistory，最後再將service注入controller，由controller調用service。</li>
-</ul>
-<p>我們可以發現MVC架構還在，由於<strong>SOLID</strong>的<strong>單一職責原則</strong> : </p>
+<p>其中藍色為原本的MVC，而紫色為本文要介紹的的重點 : <strong>Repository</strong> 模式，<strong>Service</strong> 模式與 <strong>Presenter</strong> 模式。</p>
+<p>箭頭表示物件<strong>依賴注入</strong>的方向。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>關於依賴注入，詳細請參考<a href="/tdd/tdd-di/">深入探討依賴注入</a></span></span></span></p>
+<p>我們可以發現 MVC 架構還在，由於 <strong>SOLID</strong> 的<strong>單一職責原則</strong>與<strong>依賴反轉原則</strong> : </p>
 <ol>
-<li>我們將<strong>資料庫邏輯</strong>從model分離出來，由repository輔助model。</li>
-<li>我們將<strong>商業邏輯</strong>從controller分離出來，由service輔助controller。</li>
-<li>我們將<strong>顯示邏輯</strong>從view分離出來，由presenter輔助view。</li>
+<li>我們將<strong>資料庫邏輯</strong>從 model 分離出來，由 repository 輔助 model，將 model 依賴注入進 repository。</li>
+<li>我們將<strong>商業邏輯</strong>從 controller 分離出來，由 service 輔助 controller，將 service 依賴注入進 controller。</li>
+<li>我們將<strong>顯示邏輯</strong>從 view 分離出來，由 presenter 輔助 view，將 presenter 依賴注入進 view。</li>
 </ol>
-<h3 id="建立Domain目錄">建立Domain目錄</h3><div class="alert alert-info"><i class="fa fa-info"></i>  我發現Jeffery Way在Laracast的教學，常會在<b>app</b>目錄下建立<b>Acme</b>子目錄，為什麼要建立這個目錄呢？</div>
-<blockquote><p>I never put views and controllers into the Acme folder. I put classes related to my domain in that folder. For demos, there isn’t any real domain, so I use a dummy name: Acme.</p>
-<footer><strong>Jeffery Way </strong><cite><a href="https://laracasts.com/forum/?p=1550-why-does-jeffrey-use-acme-namespace/0" target="_blank" rel="external">Why Does Jeffrey Use Acme/Namespace ?</a></cite></footer></blockquote>
-<p>簡單的說，<code>Acme</code>就是Jeffery Way放repository，service, presenter等domain knowledge的地方，也就是<strong>Domain目錄</strong>，或稱為<strong>Business Layer</strong>，因為Jeffery Way範例程式沒有什麼實際的domain knowledge，就隨便取了<code>Acme</code>為目錄名稱，實務上你可以取<code>公司名稱</code>，或者任何與domain knowledge相關的名稱。</p>
-<p><strong>建立目錄</strong><br>在<code>app</code>目錄下建立domain目錄，如<code>MyBlog</code>，並在domain目錄下建立<code>Repositories</code>，<code>Services</code>與<code>Presenters</code>目錄。<br><img src="/images/laravel/laravel-architecture/arch001.png" alt=""></p>
+<p><strong>建立目錄</strong><br>在 <code>app</code> 目錄下建立 <code>Repositories</code>，<code>Services</code> 與 <code>Presenters</code> 目錄。<br><img src="/images/laravel/laravel-architecture/arch001.png" alt=""></p>
 <div class="alert alert-info"><i class="fa fa-info"></i>  別害怕建立目錄！！</div>
-<p>別害怕建立Laravel預設目錄以外的<code>其他目錄</code>，根據<strong>SOLID</strong>的<strong>單一職責原則</strong> : <code>你應該且僅有一個原因引起類別/方法的變更</code>，class功能越多，責任也越多，因此越違反<strong>單一職責原則</strong>，所以你應該將你的程式分割成更小的部分，每個部分都有它專屬的功能，而不是一個class有包山包海的功能，所以整個專案不應該只有MVC三個部分，放手根據你的需求建立適當的目錄，並將適當的class放到該目錄下。</p>
-<p><strong>設定composer.json</strong><br>雖然<code>MyBlog</code>是建立在<code>app</code>目錄下，但我們並不希望namespace為<code>App\MyBlog</code>，而希望為<code>MyBlog</code>，因此我們要修改composer.json，讓PSR-4的auto-loading知道我們新的namespace : <code>MyBlog</code>。<br><figure class="highlight javascript"><figcaption><span>composer.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"name"</span>: <span class="string">"laravel/laravel"</span>,</span><br><span class="line">    <span class="string">"description"</span>: <span class="string">"The Laravel Framework."</span>,</span><br><span class="line">    <span class="string">"keywords"</span>: [<span class="string">"framework"</span>, <span class="string">"laravel"</span>],</span><br><span class="line">    (略)</span><br><span class="line">    <span class="string">"autoload"</span>: &#123;</span><br><span class="line">        <span class="string">"classmap"</span>: [</span><br><span class="line">            <span class="string">"database"</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="string">"psr-4"</span>: &#123;</span><br><span class="line">            <span class="string">"App\\"</span>: <span class="string">"app/"</span>,</span><br><span class="line">            <span class="string">"MyBlog\\"</span> : <span class="string">"app/MyBlog/"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    (略)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> </p>
-<p>12行</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"MyBlog\\"</span> : <span class="string">"app/MyBlog/"</span></span><br></pre></td></tr></table></figure>
-<p>加入新的namespace : <code>MyBlog</code>。</p>
-<p><strong>產生新的autoload檔案</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ composer dump-autoload</span><br></pre></td></tr></table></figure></p>
-<p><strong>移動並修改User.app</strong><br>Laravel 5預設將model建立在<code>app</code>目錄下，這只是一個<code>暫存目錄</code>，不是model該放的地方，我們應該將model放到自己的<code>domain目錄</code>下。</p>
-<p>將<code>User.php</code>從<code>app</code>目錄下移動到<code>app/MyBlog</code>目錄下，並修改其namespace。</p>
-<figure class="highlight php"><figcaption><span>myblog/User.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">MyBlog</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Auth</span>\<span class="title">Authenticatable</span>;</span><br><span class="line">(略)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">Model</span> <span class="keyword">implements</span> <span class="title">AuthenticatableContract</span>,</span><br><span class="line">                                    <span class="title">AuthorizableContract</span>,</span><br><span class="line">                                    <span class="title">CanResetPasswordContract</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    (略)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
-<p>第1行</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">MyBlog</span>;</span><br></pre></td></tr></table></figure>
-<p>將<code>App</code>改成<code>MyBlog</code>，以後使用<code>php artisan make:model</code>所產生在<code>app</code>目錄下的model，都要手動移動到<code>MyBlog</code>目錄下，並且修改namespace為<code>MyBlog</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>若使用PhpStorm，別忘了將<code>MyBlog</code>目錄加到namespace root，將來建立class時，會自動幫你加上namespace。</span></span></span></p>
-<h3 id="Repository">Repository</h3><p>由於篇幅的關係，將repository獨立成專文討論，請參考<a href="/laravel/laravel-repository/">如何使用Repository模式?</a></p>
-<h3 id="Service">Service</h3><p>由於篇幅的關係，將service獨立成專文討論，請參考<a href="/laravel/laravel-service/">如何使用Service模式?</a></p>
-<h3 id="Presenter">Presenter</h3><p>由於篇幅的關係，將presenter獨立成專文討論，請參考<a href="/laravel/laravel-presenter/">如何使用Presenter模式?</a></p>
-<h2 id="Unit_Test">Unit Test</h2><hr>
-<p>由於現在model、view、controller的相依物件都已經拆開，而拆開的repository、service與presenter也都使用DI + service container，所以每個部分都可以單獨的做unit test，如要測試service，就將repository做mock。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>唯獨要測試repository不能用mock，因為真的讀寫資料庫，詳細請參考<a href="/tdd/tdd-repository-testing/">如何對Repository模式測試？</a></span></span></span></p>
-<p>如要測試controller，就將service做mock。</p>
-<p>顯示邏輯也可以跑unit test，不用一定要跑integration test。</p>
-<h3 id="PHPUnit">PHPUnit</h3><p>PHPUnit沒有使用namespace，不過建議目錄架構與我們的Domain目錄架構一樣，方便維護。<br><img src="/images/laravel/laravel-architecture/arch003.png" alt=""></p>
+<p>別害怕在 Laravel 預設目錄以外建立的<strong>其他目錄</strong>，根據 <strong>SOLID</strong>的<strong>單一職責原則</strong> : <code>你應該且僅有一個原因引起類別/方法的變更</code>，class  功能越多，責任也越多，因此越違反<strong>單一職責原則</strong>，所以你應該將你的程式分割成更小的部分，每個部分都有它專屬的功能，而不是一個 class 功能包山包海，也就是所謂的<strong>萬能類別</strong>，所以整個專案不應該只有 MVC 三個部分，放手根據你的需求建立適當的目錄，並將適當的 class 放到該目錄下，只要我們的 class 有 namespace 幫我們分類即可。</p>
+<h3 id="Repository">Repository</h3><p>由於篇幅的關係，將 repository 獨立成專文討論，請參考<a href="/laravel/laravel-repository/">如何使用 Repository 模式?</a></p>
+<h3 id="Service">Service</h3><p>由於篇幅的關係，將 service 獨立成專文討論，請參考<a href="/laravel/laravel-service/">如何使用 Service 模式?</a></p>
+<h3 id="Presenter">Presenter</h3><p>由於篇幅的關係，將 presenter 獨立成專文討論，請參考<a href="/laravel/laravel-presenter/">如何使用 Presenter 模式?</a></p>
+<h2 id="單元測試">單元測試</h2><hr>
+<p>由於現在 model、view、controller 的相依物件都已經拆開，而拆開的 repository、service 與 presenter 也都使用依賴注入，因此每個部分都可以單獨的做單元測試，如要測試 service，就將 repository 加以 mock，也可以將其他 service 加以 mock。</p>
+<p>Presenter 也可以單獨跑單元測試，不用一定要跑驗收測試。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
-<li><p>若你的需求只是小型專案，可直接建立一個<code>models</code>目錄，將<code>Eloquent class</code>放在<code>models</code>目錄下 : </p>
+<li><p>本文談到的架構只是開始，你可以依照實際需求增加更多的目錄與 class，當你發現你的 MVC 違反 <strong>SOLID</strong> 原則時，就大膽的將 class 從 MVC 拆開重構，然後依照以下手法 : </p>
 <ol>
-<li>將<strong>資料庫邏輯</strong>寫在model內，搭配query scope。</li>
-<li>將<strong>商業邏輯</strong>寫在controller內。</li>
-<li>將<strong>顯示邏輯</strong>寫在view的blade內。</li>
+<li>建立新的 class 或 interface。</li>
+<li>將相依物件依賴注入到 class。</li>
+<li>在 class 內處理他的職責。</li>
+<li>將 class 或 interface 注入到 controller 或 view。</li>
 </ol>
-<p>本文所談的，是中大型專案所使用的架構。</p>
 </li>
-<li><p>你會發現在<a href="https://leanpub.com/laravel" target="_blank" rel="external">Laravel: From Apprentice To Artisan</a>中，整本書都是圍繞在<strong>SOLID</strong>與<strong>可測試性</strong>的角度學習Laravel。</p>
-</li>
-<li><p>本文談到的架構只是開始，你可以依照實際需求增加更多的目錄與class，當你發現你的MVC違反<strong>SOLID</strong>時，就大膽的將class從MVC拆開重構，然後依照以下手法 : </p>
-<ol>
-<li>將相依物件注入到class。</li>
-<li>在class內處理他的職責。</li>
-<li>將class注入到controller或view。</li>
-</ol>
-<p>最後搭配unit test，測試重構後的架構是否與原來的需求結果相同。</p>
+<li><p>最後搭配單元測試，測試重構後的架構是否與原來的需求結果相同。</p>
 </li>
 </ul>
 	  
