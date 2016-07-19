@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-18T14:56:04.000Z</updated>
+  <updated>2016-07-19T06:35:49.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/</id>
     <published>2016-07-18T12:23:43.000Z</published>
-    <updated>2016-07-18T14:56:04.000Z</updated>
-    <content type="html"><![CDATA[<p>Xdebug 是 PhpStorm debug 的必備工具，但是啟動 Xdebug 又會使 Composer 變慢，實務上很兩難，這個問題在 PhpStorm 2016.2 得到完美解決，平時不用開啟 Xdebug，PhpStorm 會在需要 debug 時才自動 Xdebug，不會影響 Composer 執行速度。</p>
+    <updated>2016-07-19T06:35:49.000Z</updated>
+    <content type="html"><![CDATA[<p>Xdebug 是 PhpStorm debug 的必備工具，但是啟動 Xdebug 又會使 Composer 變慢，實務上很兩難，這個問題在 PhpStorm 2016.2 得到完美解決，平時不用開啟 Xdebug，PhpStorm 會在需要 debug 時才自動啟動 Xdebug，不會影響 Composer 執行速度。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
 <p><img src="/images/phpstorm/phpstorm-xdebug-on-demand/demand000.png" alt=""></p>
@@ -50,7 +50,7 @@
 <p><img src="/images/phpstorm/phpstorm-xdebug-on-demand/demand005.png" alt=""></p>
 <p>在單元測試中設定中斷點，按熱鍵 &#8963; + &#8679; + D，程式碼依舊會在中斷點停止，所有變數也可以正常顯示。</p>
 <p><img src="/images/phpstorm/phpstorm-xdebug-on-demand/demand006.png" alt=""></p>
-<p>由於沒有在 <code>php.ini</code> 啟動 <code>xdebug.so</code>，composer 再也不會抱怨 Xdebug 已經啟動，可以全速執行。</p>
+<p>由於沒有在 <code>php.ini</code> 啟動 <code>xdebug.so</code>，Composer 再也不會抱怨 Xdebug 已經啟動，可以全速執行。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
 <li>Xdebug 與 Composer 一直是無解的問題，透過 PhpStorm 2016.2，我們終於可以兼顧 Xdebug 的便利與 Composer 的速度。</li>
