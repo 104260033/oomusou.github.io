@@ -2,8 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-code-completion/</loc>
+    <lastmod>2016-07-21T08:19:02.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/laravel/laravel-beanstalk-email/</loc>
-    <lastmod>2016-07-21T06:36:48.000Z</lastmod>
+    <lastmod>2016-07-21T07:02:39.000Z</lastmod>
   </url>
   
   <url>
