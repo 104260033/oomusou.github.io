@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>如何使用 Beanstalk 非同步寄 Email? | 點燈坊</title>
+  <meta name="author" content="真 OO無双">
+  
+  <meta name="description" content="使用非同步方式寄 Email">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+ <meta name="description" content="使用非同步方式寄 Email">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何使用 Beanstalk 非同步寄 Email?">
+<meta property="og:url" content="http://oomusou.io/laravel/laravel-beanstalk-email/index.html">
+<meta property="og:site_name" content="點燈坊">
+<meta property="og:description" content="使用非同步方式寄 Email">
+<meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
+<meta property="og:updated_time" content="2016-07-21T06:36:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何使用 Beanstalk 非同步寄 Email?">
+<meta name="twitter:description" content="使用非同步方式寄 Email">
+ 
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+     <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		<li><a  href="/">點燈坊</a></li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/atom.xml" title="Subscribe me.">
+			  <i class="fa fa-rss"></i>RSS
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+	
+		<div class="page-header">		
+			<h1> 如何使用 Beanstalk 非同步寄 Email?</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div class="col-md-9">
+	
+
+	
+		 <div class="alert alert-success description">
+			<i class="fa fa-info-circle"></i> 使用非同步方式寄 Email			
+		</div> <!-- alert -->
+		
+
+	<!-- toc -->
+	<div id="postTOC">
+		<span class="tocHeading">Contents</span>
+		<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Motivation"><span class="toc-article-text">Motivation</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Version"><span class="toc-article-text">Version</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#實際案例"><span class="toc-article-text">實際案例</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#安裝_Beanstalk_Package"><span class="toc-article-text">安裝 Beanstalk Package</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#修改_-env"><span class="toc-article-text">修改 .env</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#改用_Mail::queue()"><span class="toc-article-text">改用 Mail::queue()</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#自動執行_queue:listen"><span class="toc-article-text">自動執行 queue:listen</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Conclusion"><span class="toc-article-text">Conclusion</span></a></li></ol>
+    </div>
+
+	<!-- content -->
+	<div class="mypage">		
+	    <p>傳統在發送 email 時，必須以同步方式等待 email 寄送成功，才將控制權交還給使用者，須等待 1 到 2 秒，若使用非同步方式發送 email，則不需等待任何時間。</p>
+<a id="more"></a>
+<h2 id="Motivation">Motivation</h2><hr>
+<p>Laravel 支援了幾種常見的 Queue server，如 Beanstalk, Amazon SQS, IronMQ, Redis，其中 Homestead 已經內建 Beanstalk 與 Redis，可直接使用，不需安裝，Laravel 5.1 甚至支援了以資料庫當成 Queue server。不過一般來說，資料庫的負擔已經很重，且資料庫的速度還是比 Queue server 慢，所以建議直接使用 Queue server。</p>
+<h2 id="Version">Version</h2><hr>
+<p>PHP 5.6<br>Laravel 5.1<br>Homestead 0.2.7</p>
+<h2 id="實際案例">實際案例</h2><hr>
+<p>Queue server 最典型的應用就是寄 email，儘管已經使用了 Ajax post，但因為使用同步的方式寄 email，需要確認 email 成功寄出後，才會將控制權交給 JavaScript 的 Ajax post 的 success，所以使用者一樣會等待 1 到 2 秒鐘，若能搭配 Beanstalk server 使用非同步的方式寄 email，使用者將不會有任何等待時間。</p>
+<h2 id="安裝_Beanstalk_Package">安裝 Beanstalk Package</h2><hr>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ composer require pda/pheanstalk</span><br></pre></td></tr></table></figure>
+<h2 id="修改_-env">修改 .env</h2><hr>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">CACHE_DRIVER=<span class="value">file</span></span></span><br><span class="line"><span class="setting">SESSION_DRIVER=<span class="value">file</span></span></span><br><span class="line"><span class="setting">QUEUE_DRIVER=<span class="value">beanstalkd</span></span></span><br></pre></td></tr></table></figure>
+<p><code>QUEUE_DRIVER</code> 預設是 <code>sync</code>，也就是同步，這樣不會使用到任何 Queue server，因為我們要使用 Beanstalk server，所以改成 <code>beanstalkd</code>。</p>
+<h2 id="改用_Mail::queue()">改用 Mail::queue()</h2><hr>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Mail::queue(<span class="string">'email.index'</span>, <span class="variable">$request</span>, <span class="function"><span class="keyword">function</span> <span class="params">(Message <span class="variable">$message</span>)</span> </span>&#123;</span><br><span class="line">  <span class="variable">$message</span>-&gt;sender(env(<span class="string">'MAIL_USERNAME'</span>));</span><br><span class="line">  <span class="variable">$message</span>-&gt;subject(env(<span class="string">'MAIL_SUBJECT'</span>));</span><br><span class="line">  <span class="variable">$message</span>-&gt;to(env(<span class="string">'MAIL_TO_ADDR'</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>使用 <code>Mail::raw()</code> 或 <code>Mail::send()</code> 都只能使用同步方式寄送 email，只有使用 <code>Mail::queue()</code>，它才會自動使用你所設定的 Queue server 來寄信。</p>
+<h2 id="自動執行_queue:listen">自動執行 queue:listen</h2><hr>
+<p>Queue server 的機制除了不斷的由 <code>Mail:quene()</code> 塞 job 進 queue 外，還要有一個 listener 不斷執行 queue 內的 job，當然我們可以在 terminal 下 <code>php artisan queue:listen</code>，不過這只適合在開發階段，在正式上線主機我們必須另外開一個 process 執行 <code>php artisan queue:listen</code>，這就必須靠 <code>supervisor</code>，在 Homestead 已經內建 supervisor，可直接使用。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant@homestead:~$ cd /etc/supervisor/conf.d&#10;vagrant@homestead:~/etc/supervisor/conf.d$ sudo vim queue.conf</span><br></pre></td></tr></table></figure>
+<p>修改 supervisor 的設定檔。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">[program:queue]</span></span><br><span class="line"><span class="setting">command=<span class="value">php artisan queue:listen --tries=<span class="number">2</span></span></span></span><br><span class="line"><span class="setting">directory=<span class="value">/home/vagrant/officialwebsite</span></span></span><br><span class="line"><span class="setting">stdout_logfile=<span class="value">/home/vagrant/supervisor.log</span></span></span><br><span class="line"><span class="setting">redirect_stderr=<span class="value"><span class="keyword">true</span></span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>command</strong> ：我們要執行的 <code>artisan queue:listen</code> 指令。</li>
+<li><strong>directory</strong> ：專案在 Homestead 的實際目錄。</li>
+<li><strong>stdout_logfilre</strong> ：supervisor 的 log 檔位置。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant@homestead:~/etc/supervisor/conf.d$ sudo supervisorctl reread</span><br></pre></td></tr></table></figure>
+<p>重新讀取設定檔。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant@homestead:~/etc/supervisor/conf.d$ sudo supervisorctl add queue</span><br></pre></td></tr></table></figure>
+<p>將新的設定檔加入 queue。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vagrant@homestead:~/etc/supervisor/conf.d$ sudo supervisorctl</span><br></pre></td></tr></table></figure>
+<p>確認queue已經正常執行</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">supervisor&#62; exit</span><br></pre></td></tr></table></figure>
+<p>離開 supervisor。</p>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>非同步機制能大大改善使用者經驗，對於不需要即時的應用，如轉檔縮圖，長時間演算法運算，可以多多使用 Beanstalk queue server。</li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>Prev</a></li>
+        
+
+        <li><a href="/tags"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/phpstorm/phpstorm-xdebug-on-demand/" class="alignright next">Next<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+	
+	</div> <!-- col-md-9/col-md-12 -->
+	
+	
+		<div class="col-md-3"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2016-07-21 
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Homestead/">Homestead<span>5</span></a></li> <li><a href="/tags/Laravel/">Laravel<span>42</span></a></li>
+    </ul>
+	</div>
+		
+
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer>  </footer>
+</div> <!-- container-narrow -->
+  
+  <script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'hAXbiVYFC92XF16_EhCh','2.0.0');
+  </script>
+
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+</body>
+   </html>

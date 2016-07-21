@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="從可測試性角度探討依賴注入">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-07-08T01:45:06.000Z">
+<meta property="og:updated_time" content="2016-07-21T06:06:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入探討依賴注入">
 <meta name="twitter:description" content="從可測試性角度探討依賴注入">
@@ -133,13 +133,9 @@
 <p>目前我們是實際去 <code>new Blackcat()</code>、<code>new Hsinchu()</code> 與 <code>new PostOffice()</code>，也就是說<code>ShippingService</code>將直接<strong>相依</strong>於<code>BlackCat</code>、<code>Hshinchu</code> 與 <code>PostOffice</code> 3 個 class。</p>
 <p>物件導向就是希望達到<strong>高內聚，低耦合</strong>的設計。所謂的低耦合，就是希望能減少<strong>相依</strong>於外部的 class 的數量。</p>
 <div class="alert alert-success"><i class="fa fa-lightbulb-o"></i>  何謂<strong>相依</strong>?</div>
-<p>簡單的說，有 2 種寫法會產生相依 :</p>
-<ol>
-<li>去 new 其他 class。</li>
-<li>去 extends 其他 class。</li>
-</ol>
+<p>簡單的說，當你去使用一個物件的 property 或 method 時，就是相依了該物件。</p>
 <p>由於 PHP 不用編譯，所以可能較無法體會相依的嚴重性，但若是需要編譯的程式語言，若你相依的 class 的 property 或 method 改變，可能導致你的程式無法編譯成功，也就是你必須配合相依的 class 做相對應的修改才能通過編譯，因此我們希望降低對其他 class 的相依程度與數量。</p>
-<p>GoF 四人幫在設計模式曾說 : <strong>Program to an Interface, not an Implementation</strong>。也就是程式應該只相依於 interface，而不是相依於實際 class，目的就是要藉由 interface，降低對於實際 class 的相依程度。</p>
+<p>GoF 四人幫在設計模式曾說 : <strong>Program to an Interface, not an Implementation</strong>。其中的 <code>implementation</code> 指的就是 class，也就是程式應該只相依於 interface，而不是相依於實際 class，目的就是要藉由 interface，降低對於實際 class 的相依程度。</p>
 <p>若我們能將 <code>BlackCat</code>、 <code>Hshinchu</code> 與 <code>PostOffice</code> 3 個 class抽象化為 1 個 interface，則 <code>ShippingService</code>將從相依 3 個 class，降低成只相依於 1 個interface，將大大降低 <code>ShippingService</code> 與其他 class 的相依程度。</p>
 <p>若以編譯的角度，由於 <code>ShippingService</code> 只相依於 interface，因此 <code>BlackCat</code>、 <code>Hshinchu</code> 與 <code>PostOffice</code> 做任何修改都不會影響我 <code>ShippingService</code> 的編譯。</p>
 <p><strong>LogisticsInterface.php</strong><span class="margin-note-marker"><sup>8</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">8</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52DI_demo/commit/c627e8ad2e73df8f0631521eb8d66f416013c83d" target="_blank" rel="external">抽取出LogisticsInterface</a></span></span></span><br><figure class="highlight php"><figcaption><span>app/Services/LogisticsInterface.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Services</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">LogisticsInterface</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@param</span> int $weight</span><br><span class="line">     * <span class="doctag">@return</span> int</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">calculateFee</span><span class="params">(<span class="variable">$weight</span>)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> </p>
@@ -358,7 +354,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/LaraDiner/">LaraDiner<span>17</span></a></li> <li><a href="/tags/Laravel/">Laravel<span>41</span></a></li> <li><a href="/tags/Mockery/">Mockery<span>4</span></a></li> <li><a href="/tags/PHPUnit/">PHPUnit<span>12</span></a></li> <li><a href="/tags/TDD/">TDD<span>17</span></a></li>
+  <li><a href="/tags/LaraDiner/">LaraDiner<span>17</span></a></li> <li><a href="/tags/Laravel/">Laravel<span>42</span></a></li> <li><a href="/tags/Mockery/">Mockery<span>4</span></a></li> <li><a href="/tags/PHPUnit/">PHPUnit<span>12</span></a></li> <li><a href="/tags/TDD/">TDD<span>17</span></a></li>
     </ul>
 	</div>
 		

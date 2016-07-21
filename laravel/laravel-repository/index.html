@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="使用 Repository 輔助 Model">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-07-19T09:26:32.000Z">
+<meta property="og:updated_time" content="2016-07-20T06:57:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用 Repository 模式?">
 <meta name="twitter:description" content="使用 Repository 輔助 Model">
@@ -157,7 +157,7 @@
 <li>符合 <strong>SOLID</strong> 的<strong>單一職責原則</strong> : <strong>資料庫邏輯</strong>寫在 repository，沒寫在 controller。</li>
 <li>符合 <strong>SOLID</strong> 的<strong>依賴反轉原則</strong> : controller 並非直接相依於 repository，而是將 repository 依賴注入進 controller。</li>
 </ol>
-<div class="alert alert-warning"><i class="fa fa-bell"></i>  實務上建議 repository 僅依賴注入於 service，而不要直接注入在 controller，本範例因為還沒介紹到 servie 模式，為了簡化起見，所以直接注入於 controller。</div>
+<div class="alert alert-danger"><i class="fa fa-bug"></i>  實務上建議 repository 僅依賴注入於 service，而不要直接注入在 controller，本範例因為還沒介紹到 servie 模式，為了簡化起見，所以直接注入於 controller。</div>
 <div class="alert alert-info"><i class="fa fa-info"></i>  是否該建立 Repository Interface?</div>
 <p>理論上使用依賴注入時，基於<code>我們應該相依於 interface 設計，而不要相依於 class 設計</code>，是應該使用 interface，不過 interface 目的在於抽象化方便抽換，讓程式碼達到開放封閉的要求，但是實務上要抽換 repository 的機會不高，除非你有抽換資料庫的需求，如從 MySQL 抽換到 MongoDB，此時就該建立 repository interface。</p>
 <p>不過由於我們使用了依賴注入，將來要從 class 改成 interface 也很方便，只要在 constructor 的 type hint 改成 interface 即可，維護成本很低，所以在此大可使用 repository class 即可，不一定得用 interface 而造成 over design，等真正需求來時再重構成 interface 即可。</p>
@@ -230,7 +230,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/LaraDiner/">LaraDiner<span>17</span></a></li> <li><a href="/tags/Laravel/">Laravel<span>41</span></a></li>
+  <li><a href="/tags/LaraDiner/">LaraDiner<span>17</span></a></li> <li><a href="/tags/Laravel/">Laravel<span>42</span></a></li>
     </ul>
 	</div>
 		
