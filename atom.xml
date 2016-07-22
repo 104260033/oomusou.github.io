@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-21T08:28:45.000Z</updated>
+  <updated>2016-07-22T09:02:19.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-code-completion/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-code-completion/</id>
     <published>2016-07-21T12:23:43.000Z</published>
-    <updated>2016-07-21T08:28:45.000Z</updated>
+    <updated>2016-07-22T09:02:19.000Z</updated>
     <content type="html"><![CDATA[<p>你是否常常因為 method 參數要填什麼猶豫不決呢? 可能要去翻 API 文件? 要去 trace 其 source code? 知道參數填什麼後，還要去手動輸入該帶入什麼變數? 在 PhpStorm 2016.2，這些全部都可以自動化，讓你用完全不用打任何字，只要用選的就可以了。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -37,7 +37,7 @@
 <p><img src="/images/phpstorm/phpstorm-code-completion/code002.png" alt=""></p>
 <p>以後選擇 method 後，PhpStorm 還會幫你將原 method 的參數名稱複製過來，讓你可以更清楚要填什麼參數。</p>
 <p>除此之外，若你使用的 PHP 7 的 type hint，或使用 PHPDoc 的 <code>@param</code> 描述參數型別，PhpStorm 會幫你根據目前 scope 列出<strong>相同型別</strong>的變數讓你挑選，你也可以輸入變數名稱的前幾個字母來 filter。</p>
-<p>通常在傳入的變數就在 method 附近，PhpStorm 也會很聰明的將這些變數優先權放在最前面讓你選，大部分狀況下抓到都是對的變數，只要按 enter 即可。</p>
+<p>通常要傳入的變數就在 method 附近，PhpStorm 也會很聰明的將這些變數優先權放在最前面讓你選，大部分狀況下抓到都是對的變數，只要按 enter 即可。</p>
 <p><img src="/images/phpstorm/phpstorm-code-completion/code003.png" alt=""></p>
 <p>按 enter 選擇了變數後，PhpStorm 會自動跳到下一個參數，也讓你用選的。</p>
 <h2 id="params">params</h2><hr>
