@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/laravel/laravel-service/</loc>
+    <lastmod>2016-07-22T16:01:44.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/tdd/tdd-di/</loc>
     <lastmod>2016-07-22T14:51:32.000Z</lastmod>
   </url>
@@ -167,11 +172,6 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-repository-fk/</loc>
-    <lastmod>2016-06-06T05:06:39.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://oomusou.io/laravel/laravel-for-newbie/</loc>
     <lastmod>2016-05-04T09:24:11.000Z</lastmod>
   </url>
@@ -257,12 +257,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-file-header/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/laravel/laravel-service/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-git-rm-idea/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -277,7 +272,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/osx/iterm2-setup/</loc>
+    <loc>http://oomusou.io/mamp/mamp-setup/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -362,12 +357,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-service-provider/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-file-header/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-git-rm-idea/</loc>
+    <loc>http://oomusou.io/laravel/laravel-service-provider/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -467,7 +462,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/mamp/mamp-setup/</loc>
+    <loc>http://oomusou.io/osx/iterm2-setup/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
