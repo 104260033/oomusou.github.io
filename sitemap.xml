@@ -2,18 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/tdd/tdd-di/</loc>
+    <lastmod>2016-07-22T14:51:32.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-code-completion/</loc>
-    <lastmod>2016-07-22T09:02:19.000Z</lastmod>
+    <lastmod>2016-07-22T10:07:53.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/</loc>
+    <lastmod>2016-07-22T10:01:27.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://oomusou.io/laravel/laravel-beanstalk-email/</loc>
     <lastmod>2016-07-21T07:02:39.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/tdd/tdd-di/</loc>
-    <lastmod>2016-07-21T06:06:57.000Z</lastmod>
   </url>
   
   <url>
@@ -34,11 +39,6 @@
   <url>
     <loc>http://oomusou.io/tdd/tdd-factory-ocp/</loc>
     <lastmod>2016-07-19T06:51:00.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/</loc>
-    <lastmod>2016-07-19T06:35:49.000Z</lastmod>
   </url>
   
   <url>

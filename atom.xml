@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-22T09:02:19.000Z</updated>
+  <updated>2016-07-22T10:07:53.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -15,20 +15,20 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[PhpStorm 的 Auto Complete 再進化]]></title>
+    <title><![CDATA[PhpStorm 的 Code Completion 再進化]]></title>
     <link href="http://oomusou.io/phpstorm/phpstorm-code-completion/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-code-completion/</id>
     <published>2016-07-21T12:23:43.000Z</published>
-    <updated>2016-07-22T09:02:19.000Z</updated>
+    <updated>2016-07-22T10:07:53.000Z</updated>
     <content type="html"><![CDATA[<p>你是否常常因為 method 參數要填什麼猶豫不決呢? 可能要去翻 API 文件? 要去 trace 其 source code? 知道參數填什麼後，還要去手動輸入該帶入什麼變數? 在 PhpStorm 2016.2，這些全部都可以自動化，讓你用完全不用打任何字，只要用選的就可以了。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
 <p>PhpStorm 2016.2<br>PHP 7.0.0<br>Laravel 5.2.22</p>
 <h2 id="Auto_Complete">Auto Complete</h2><hr>
 <p><img src="/images/phpstorm/phpstorm-code-completion/code000.png" alt=""></p>
-<p>PhpStorm 2016.2 之前的 auto complete，讓你選擇可以選擇 method，並提供參數資訊，老實說這樣已經很好用了。</p>
+<p>PhpStorm 2016.2 之前的 code completion，讓你選擇可以選擇 method，並提供參數資訊，老實說這樣已經很好用了。</p>
 <h2 id="再進化">再進化</h2><hr>
-<p>PhpStorm 2016.2 對於參數的 auto complete 做了更強的支援，不過預設並沒有啟動。</p>
+<p>PhpStorm 2016.2 對於參數的 code completion 做了更強的支援，不過預設並沒有啟動。</p>
 <p><img src="/images/phpstorm/phpstorm-code-completion/code001.png" alt=""></p>
 <p><strong><em>PhpStorm -&gt; Preferences -&gt; Editor -&gt; General -&gt; Smart Keys</em></strong></p>
 <ul>
@@ -45,7 +45,7 @@
 <p>若你不想自動帶入參數，也可以在參數列下輸入 <code>params</code>，PhpStorm 會自動幫你將原 method 的參數名稱複製進來，之後一樣可以用選的。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>此圖為 <a href="https://blog.jetbrains.com/phpstorm/2016/07/parameter-code-completion-in-phpstorm-2016-2" target="_blank" rel="external">PhpStorm Code Completion in PhpStorm 2016.2</a> 所提供的 demo。</span></span></span></p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
-<li>要善用工具改善開發速度，將時間花在真正需要的地方，PhpStorm 2016.2 的 auto complete 讓我們可以打更少的字， 還可以避免 typo。</li>
+<li>要善用工具改善開發速度，將時間花在真正需要的地方，PhpStorm 2016.2 的 code completion 讓我們可以打更少的字， 還可以避免 typo。</li>
 </ul>
 <h2 id="Reference">Reference</h2><hr>
 <p>Gary Hockin, <a href="https://blog.jetbrains.com/phpstorm/2016/07/parameter-code-completion-in-phpstorm-2016-2" target="_blank" rel="external">PhpStorm Code Completion in PhpStorm 2016.2</a></p>
@@ -116,11 +116,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[如何在 PhpStorm 使用 Xdebug On Demand?]]></title>
+    <title><![CDATA[如何在 PhpStorm 使用 Xdebug on Demand?]]></title>
     <link href="http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/</id>
     <published>2016-07-18T12:23:43.000Z</published>
-    <updated>2016-07-19T06:35:49.000Z</updated>
+    <updated>2016-07-22T10:01:27.000Z</updated>
     <content type="html"><![CDATA[<p>Xdebug 是 PhpStorm debug 的必備工具，但是啟動 Xdebug 又會使 Composer 變慢，實務上很兩難，這個問題在 PhpStorm 2016.2 得到完美解決，平時不用開啟 Xdebug，PhpStorm 會在需要 debug 時才自動啟動 Xdebug，不會影響 Composer 執行速度。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
