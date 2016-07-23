@@ -2,8 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/laravel/laravel-presenter/</loc>
+    <lastmod>2016-07-23T01:57:08.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/laravel/laravel-repository/</loc>
+    <lastmod>2016-07-23T00:59:08.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/laravel/laravel-service/</loc>
-    <lastmod>2016-07-22T16:06:52.000Z</lastmod>
+    <lastmod>2016-07-23T00:40:47.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/laravel/laravel-architecture/</loc>
+    <lastmod>2016-07-23T00:30:54.000Z</lastmod>
   </url>
   
   <url>
@@ -24,16 +39,6 @@
   <url>
     <loc>http://oomusou.io/laravel/laravel-beanstalk-email/</loc>
     <lastmod>2016-07-21T07:02:39.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/laravel/laravel-repository/</loc>
-    <lastmod>2016-07-20T06:57:19.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/laravel/laravel-architecture/</loc>
-    <lastmod>2016-07-19T08:07:34.000Z</lastmod>
   </url>
   
   <url>
@@ -262,7 +267,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel42/laravel-42-phpunit/</loc>
+    <loc>http://oomusou.io/laravel/laravel-service-provider/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -273,11 +278,6 @@
   
   <url>
     <loc>http://oomusou.io/mamp/mamp-setup/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/laravel/laravel-presenter/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -362,7 +362,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-service-provider/</loc>
+    <loc>http://oomusou.io/laravel/laravel42/laravel-42-phpunit/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
