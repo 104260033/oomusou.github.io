@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-project-template/</loc>
+    <lastmod>2016-07-23T14:40:55.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-code-completion/</loc>
+    <lastmod>2016-07-23T02:55:02.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/laravel/laravel-presenter/</loc>
     <lastmod>2016-07-23T01:57:08.000Z</lastmod>
   </url>
@@ -24,11 +34,6 @@
   <url>
     <loc>http://oomusou.io/tdd/tdd-di/</loc>
     <lastmod>2016-07-22T14:51:32.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-code-completion/</loc>
-    <lastmod>2016-07-22T10:07:53.000Z</lastmod>
   </url>
   
   <url>
