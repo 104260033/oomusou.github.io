@@ -2,8 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-code-inspection/</loc>
+    <lastmod>2016-07-24T13:05:46.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-project-template/</loc>
-    <lastmod>2016-07-23T14:40:55.000Z</lastmod>
+    <lastmod>2016-07-24T00:21:58.000Z</lastmod>
   </url>
   
   <url>
@@ -297,7 +302,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/osx/osx-symbol-html/</loc>
+    <loc>http://oomusou.io/osx/iterm2-setup/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -467,7 +472,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/osx/iterm2-setup/</loc>
+    <loc>http://oomusou.io/osx/osx-symbol-html/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   

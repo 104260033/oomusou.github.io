@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-23T14:40:55.000Z</updated>
+  <updated>2016-07-24T13:05:46.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -15,11 +15,116 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[如何在 PhpStorm 使用 Code Inspection?]]></title>
+    <link href="http://oomusou.io/phpstorm/phpstorm-code-inspection/"/>
+    <id>http://oomusou.io/phpstorm/phpstorm-code-inspection/</id>
+    <published>2016-07-24T12:23:43.000Z</published>
+    <updated>2016-07-24T13:05:46.000Z</updated>
+    <content type="html"><![CDATA[<p>PHP 不需編譯，只要存檔就可執行，優點是很方便，缺點是很多程式語法上的錯誤必須在瀏覽器執行才能發現。PhpStorm 的 Code Inspection 就相當於編譯器，在程式開發階段就可檢查語法上的錯誤，再搭配單元測試檢查邏輯上的錯誤，如此雙重保障，就能提早發現錯誤加以解決，降低除錯成本。</p>
+<a id="more"></a>
+<h2 id="Version">Version</h2><hr>
+<p>PHP 7.0.8<br>Laravel 5.2.41<br>PhpStorm 2016.2</p>
+<h2 id="實際案例">實際案例</h2><hr>
+<p>初學者在使用 PhpStorm 時，第一個不習慣的就是原來在 Sublime Text 很漂亮的程式碼，在 PhpStorm 打開了以後，平白無故多了很多警告，覺得很礙眼。</p>
+<p><strong>Authenticate.php</strong><span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo/commit/350f66fde6c4a532424670478cf2f5b72fed9ba9" target="_blank" rel="external">將 Authenticate.php 改成 use Auth</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-inspection/inspect000.png" alt=""></p>
+<p>與 Sublime Text 不同的是 :</p>
+<ul>
+<li>右上角多了 <span class="label label-warning">咖啡色</span> 的方塊 : 表示 Code Inspection 偵測到錯誤。</li>
+<li>scroll bar 多了 <span class="label label-warning">咖啡色</span> 區塊 : 表示錯誤所在的相對位置。</li>
+<li><code>Auth::guard()</code>多了反白警告 : 表示錯誤所在的實際位置。 </li>
+</ul>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect001.png" alt=""></p>
+<p>右上角方塊的顏色，表示各種不同的嚴重層級。</p>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect002.png" alt=""></p>
+<p>將滑鼠 hover 到 scroll bar 的顏色區塊上，會顯示錯誤訊息。</p>
+<p>可用滑鼠直接點 scroll bar 的顏色區塊，快速跳到有錯誤的程式碼位置，或按熱鍵 F2 前進搜尋錯誤，&#8679; + F2 倒退搜尋錯誤。</p>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect003.png" alt=""></p>
+<p>將滑鼠游標放放到反白的 <code>Auth::guard()</code> 上，PhpStorm 顯示 <code>Method guard not found</code>。</p>
+<p>主要是因為 <code>Auth</code> 為 Facade，執行上沒有問題，但是 Code Inspection 找不到。</p>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect004.png" alt=""></p>
+<p>將 namespace 引用改成 IDE Helper 所提供的 <code>Auth</code> 後，Code Inspection 就可以找到 <code>Auth::guard()</code> 了，右上角會出現 <span class="label label-success">綠色</span> 勾勾，表示通過 Code Inspection 檢查。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>關於使用 IDE Helper 解決 Code Inspection 警告的問題，詳細請參考<a href="/phpstorm/phpstorm-ide-helper/">如何在 PhpStorm 活用 PHPDoc?</a></span></span></span></p>
+<div class="alert alert-info"><i class="fa fa-info"></i>  實務上對於 Laravel 或 package 的程式碼，我不會要求需通過 Code Inspection 檢查，但自己寫的程式碼，都必須通過 Code Inspection 的 <span class="label label-success">綠色</span> 勾勾。</div>
+<h2 id="調整_PhpStorm_檢查層級">調整 PhpStorm 檢查層級</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect005.png" alt=""></p>
+<p>若你覺得 Code Inspection 檢查太嚴格，希望 PhpStorm 只幫你檢查 PHP 語法就好，可以按右下角的<strong>哨兵</strong>符號，將 Code Inspection level 調到 <code>Syntax</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect006.png" alt=""></p>
+<p>調整完 Code Inspection level 後，不用改 <code>use Auth</code>，也可以達到右上角會出現 <span class="label label-success">綠色</span> 勾勾。</p>
+<div class="alert alert-info"><i class="fa fa-info"></i>  實務上建議除非是 legacy code 真的不容易修正，否則不建議修改 Code Inspection level，畢竟 PhpStorm 所有的檢查都是有意義的，可以讓你及早發現淺在錯誤，避免實際在瀏覽器測試才發現錯誤的窘境。</div>
+<h2 id="設定_Code_Inspection">設定 Code Inspection</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect007.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Editor -&gt; Inspections</em></strong></p>
+<p>假如你不想調整 Code Inspection level，只想將某個你認為不重要的警告拿掉，或降低層級，可以在 PhpStorm 的 preferences 設定。</p>
+<p>如之前 <code>Auth::guard()</code> 的錯誤，你也可以直接在讓 <code>undefined method</code> 不要被檢查。</p>
+<p>Code Inspection 所有的檢查規則都可以客製化，可以依照你的需求加以設定。</p>
+<h2 id="常見_Code_Inspection">常見 Code Inspection</h2><hr>
+<h3 id="使用未定義變數">使用未定義變數</h3><p><strong>PostService.php</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo/commit/3d187e1275e77b698b3d5487cc93e409a45511ae" target="_blank" rel="external">使用未定義變數</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-inspection/inspect010.png" alt=""></p>
+<p>直接使用一個未定義參數，Code Inspection 會加以警告。</p>
+<h3 id="Namespace_不存在">Namespace 不存在</h3><p><strong>PostService.php</strong><span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo/commit/2855120534815ea7e14f174079a4512b30db5c2e" target="_blank" rel="external">Namespace 不存在</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-inspection/inspect011.png" alt=""></p>
+<p>Namespace 因為打錯，而引用了一個不存在的 namespace，Code Inspection 會加以警告。</p>
+<h3 id="Class_不存在">Class 不存在</h3><p><strong>PostService.php</strong><span class="margin-note-marker"><sup>5</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">5</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo/commit/d73af1cd30f52375c62fcab8416c84f6c611397f" target="_blank" rel="external">Class 不存在</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-inspection/inspect012.png" alt=""></p>
+<p>依賴注入時 class 名稱打錯，注入了一個不存在的 class，Code Inspection 會加以警告。</p>
+<h3 id="Field_不存在">Field 不存在</h3><p><strong>PostIDPO.php</strong><span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo/commit/d389f473081f69e088073a5daa9c5c9e26cf3b47" target="_blank" rel="external">重構成 Parameter Object</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-inspection/inspect013.png" alt=""></p>
+<p>將原 <code>showTitle()</code> 的 <code>$id</code> 與 <code>$default</code> 透過重構的 <code>Introduce to Parameter Object</code> 重構成 <code>PostIDPO</code> class。</p>
+<p><strong>PostService.php</strong><span class="margin-note-marker"><sup>7</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">7</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo/commit/c7a50e8620653797d9041e406d51d2a21ee0e03b" target="_blank" rel="external">Field 不存在</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-inspection/inspect014.png" alt=""></p>
+<p><code>showTitle()</code> 改傳入 <code>PostIDPO</code> 物件。</p>
+<p>若將 <code>id</code> 打錯成 <code>ip</code>，使用了一個不存在的 field，Code Inspection 會加以警告。</p>
+<h3 id="Method_不存在">Method 不存在</h3><p><strong>PostService.php</strong><span class="margin-note-marker"><sup>8</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">8</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52DI_demo/commit/4862ffd79ac52e74a245010760662932839fb68d" target="_blank" rel="external">Method 不存在</a></span></span></span></p>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect015.png" alt=""></p>
+<p>若將 method 名稱打錯，呼叫一個物件不存在的 method，Code Inspection 會加以警告。</p>
+<h3 id="參數型別檢查">參數型別檢查</h3><p><strong>PostService.php</strong><span class="margin-note-marker"><sup>9</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">9</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo/blob/master/app/Services/PostService.php" target="_blank" rel="external">新增 PostService</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-inspection/inspect008.png" alt=""></p>
+<p>在 <code>showTitle()</code> 的參數與回傳值都使用了 PHP 7 的 scalar type hint。</p>
+<p><strong>PostServiceTest.php</strong><span class="margin-note-marker"><sup>10</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">10</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo/blob/master/tests/PostServiceTest.php" target="_blank" rel="external">新增 PostServiceTest</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-inspection/inspect009.png" alt=""></p>
+<p>若加上了 <code>declare(strict_type = 1);</code>，只要傳入的參數型別不對，Code Inspection 會提出警告。</p>
+<h3 id="Case_忘了加_break">Case 忘了加 break</h3><p><strong>PostService.php</strong><span class="margin-note-marker"><sup>11</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">11</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo/commit/4c015e7c250e0db86916f15789ae216745554ecb" target="_blank" rel="external">Case 忘了加上 break</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-inspection/inspect016.png" alt=""></p>
+<p>PHP 語法上允許 <code>switch case</code> 不加上 <code>break</code> 的寫法，但大多時候是忘了加上 <code>break</code>，而造成邏輯上的錯誤，Code Inspection 會提出警告，可是需求決定是否該加上 <code>break</code>。</p>
+<h3 id="沒有_PHPDoc">沒有 PHPDoc</h3><p><img src="/images/phpstorm/phpstorm-code-inspection/inspect017.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Editor -&gt; Inspections -&gt; PHPDoc</em></strong></p>
+<p>PhpStorm 預設並沒有將 <code>Missing PHPDoc comment</code> 打勾，但實務上建議將此選項打勾。</p>
+<p>PHP 7 因為有完整 type hint 與 return type，所以 PHPDoc 重要性不如以往，但 PHP 7 之前，則必須靠 PHPDoc 描述型別，PhpStorm 的 Code Inspection 才能發揮威力，所以建議開啟。</p>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect018.png" alt=""></p>
+<p><code>showTitle()</code> 沒有寫 PHPDoc，Code Inspection 會提出警告。</p>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect019.png" alt=""></p>
+<p>要補上 PHPDoc 也很簡單，將滑鼠游標放在 method 名稱上，按熱鍵 &#8997; + &#8617;，選擇 <code>Generate PHPDoc Comment</code> 或 <code>Generate PHPDoc for function</code> 皆可。</p>
+<p><strong>PostService.php</strong><span class="margin-note-marker"><sup>12</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">12</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo/commit/51b7adc049927b19bd87f25bf26116932b61abff" target="_blank" rel="external">加上 PHPDoc</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-inspection/inspect020.png" alt=""></p>
+<p>PhpStorm 會自動幫你加上 PHPDoc，只要再加上 method 功能的描述即可。</p>
+<h2 id="執行_Code_Inpection">執行 Code Inpection</h2><hr>
+<p>預設每個開啟的檔案都會自動執行 Code Inspection，此外你也可以自行選擇檔案，讓 Code Inspection 一次檢查多個檔案。</p>
+<h3 id="一次檢查多個檔案">一次檢查多個檔案</h3><p><img src="/images/phpstorm/phpstorm-code-inspection/inspect021.png" alt=""></p>
+<p>在 project windows 用 &#8984; 與滑鼠選擇多個檔案，按滑鼠右鍵，選擇 <code>Inspect Code...</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect022.png" alt=""></p>
+<p>選擇 <code>Selected files</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect023.png" alt=""></p>
+<p>Code Inspection 最後會顯示有哪些檔案違反了哪些檢查規則。</p>
+<h3 id="一次檢查整個專案">一次檢查整個專案</h3><p><img src="/images/phpstorm/phpstorm-code-inspection/inspect024.png" alt=""></p>
+<p><strong><em>Code -&gt; Inspect Code…</em></strong></p>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect025.png" alt=""></p>
+<p>選擇 <code>Whole project</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-code-inspection/inspect026.png" alt=""></p>
+<p>Code Inspection 將整個專案做檢查，會檢查出很多警告與錯誤，可視需求決定是否該修正。</p>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>為了使 Code Inspection 沒有出現任何警告，可能會對程式碼產生強迫症，不過提早發現淺在錯誤總是好事，可視自己需求決定是否修正，或者關閉 Code Inspection 某個檢查規則。</li>
+</ul>
+<h2 id="Sample_Code">Sample Code</h2><hr>
+<p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
+<h2 id="Reference">Reference</h2><hr>
+<p>PhpStorm Help, <a href="https://www.jetbrains.com/help/phpstorm/2016.2/code-inspection.html#phpCodeInspections" target="_blank" rel="external">Code Inspection</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[Code Inspection 相當於編譯器，讓我們提早發現語法錯誤]]>
+    
+    </summary>
+    
+      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[如何使用 PhpStorm 的 Project Template 建立 Laravel 專案?]]></title>
     <link href="http://oomusou.io/phpstorm/phpstorm-project-template/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-project-template/</id>
-    <published>2016-12-05T12:23:43.000Z</published>
-    <updated>2016-07-23T14:40:55.000Z</updated>
+    <published>2016-07-23T12:23:43.000Z</published>
+    <updated>2016-07-24T00:21:58.000Z</updated>
     <content type="html"><![CDATA[<p>PhpStorm 2016.2 提供一個新功能，可以將專案打包成 project template，以後新建專案時，可以選擇此 template 直接重建專案，如常用的 package 與 codebase 可以先打包好，將來要建立新專案就很方便。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -2003,62 +2108,6 @@
       <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
     
       <category term="Vue.js" scheme="http://oomusou.io/tags/Vue-js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[如何使用變數讀取 property?]]></title>
-    <link href="http://oomusou.io/javascript/javascript-variable-property/"/>
-    <id>http://oomusou.io/javascript/javascript-variable-property/</id>
-    <published>2016-06-07T12:23:43.000Z</published>
-    <updated>2016-06-07T03:27:04.000Z</updated>
-    <content type="html"><![CDATA[<p>傳統我們會使用 <code>if else</code> 判斷，讀取不同的 property，但由於 JavaScript 與 PHP 動態語言的特性，我們可以將要讀取的 property 名稱以<strong>變數</strong>表示，直接以該變數讀取 property。</p>
-<a id="more"></a>
-<h2 id="Version">Version</h2><hr>
-<p>ECMAScript 5<br>PHP 7.0</p>
-<h2 id="JavaScript">JavaScript</h2><hr>
-<h3 id="if_else">if else</h3><p>傳統若要根據不同的條件，讀取不同 property，我們會使用 <code>if else</code>方式 :<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>GitHub Commit : <a href="https://github.com/oomusou/VariableProperty/commit/b84e31b15722571402a379bd040090bfaf7c41f1" target="_blank" rel="external">JavaScript : 傳統使用 if else 切換讀取 property</a></span></span></span></p>
-<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">firstName, lastName</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">    <span class="keyword">this</span>.lastName = lastName;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> type = <span class="string">'first'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(<span class="string">'Sam'</span>, <span class="string">'Xiao'</span>);</span><br><span class="line"><span class="keyword">if</span> (type === <span class="string">'first'</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(user.firstName);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(user.lastName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第 9 行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (type === <span class="string">'first'</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(user.firstName);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(user.lastName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用 <code>if else</code> 去判斷變數值，讀取不同 property。</p>
-<h3 id="Variable">Variable</h3><p>若將 property 名稱使用變數表示，則不需使用 <code>if else</code> 判斷 :<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>GitHub Commit : <a href="https://github.com/oomusou/VariableProperty/commit/9e4288fc847a12f9aeef2d1af9240f0dee01a098" target="_blank" rel="external">JavaScript : 動態使用變數切換讀取 property</a></span></span></span></p>
-<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">firstName, lastName</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">    <span class="keyword">this</span>.lastName = lastName;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> type = <span class="string">'first'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(<span class="string">'Sam'</span>, <span class="string">'Xiao'</span>);</span><br><span class="line">propName = (type === <span class="string">'first'</span>) ? <span class="string">'firstName'</span> : <span class="string">'lastName'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(user[propName]);</span><br></pre></td></tr></table></figure>
-<p>第 9 行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">propName = (type === <span class="string">'first'</span>) ? <span class="string">'firstName'</span> : <span class="string">'lastName'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(user[propName]);</span><br></pre></td></tr></table></figure></p>
-<p>判斷 <code>type</code>，並將要讀取的 property 名稱存入 <code>propName</code> 變數。</p>
-<p>在 JavaScript，若要執行物件的 method，有以下3種方式 :</p>
-<ol>
-<li>object.property </li>
-<li>object[‘property’] : 其中 ‘property’ 是<strong>字串</strong>。</li>
-<li>object[property] : 其中 property 是<strong>變數</strong>。</li>
-</ol>
-<p>因為第 3 種方式，我們可以將 property 名稱以變數方式傳入 <code>[]</code>。</p>
-<h2 id="PHP">PHP</h2><hr>
-<p>PHP 也可以達到類似 JavaScript 的功能。</p>
-<h3 id="if_else-1">if else</h3><p>傳統若要根據不同的條件，讀取不同 property，我們會使用 <code>if else</code>方式 :<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/VariableProperty/commit/df7bb5fd3c633902f0fe2b86a53700ab7e5e5f2d" target="_blank" rel="external">PHP : 傳統使用 if else 切換讀取 property</a></span></span></span></p>
-<figure class="highlight php"><figcaption><span>PHP</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/** <span class="doctag">@var</span> string */</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$firstName</span>;</span><br><span class="line">    <span class="comment">/** <span class="doctag">@var</span> string */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$lastName</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * User constructor.</span><br><span class="line">     * <span class="doctag">@param</span> string $firstName</span><br><span class="line">     * <span class="doctag">@param</span> string $lastName</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(string <span class="variable">$firstName</span>, string <span class="variable">$lastName</span>)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;firstName = <span class="variable">$firstName</span>;</span><br><span class="line">        <span class="variable">$this</span>-&gt;lastName = <span class="variable">$lastName</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$type</span> = <span class="string">'first'</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$user</span> = <span class="keyword">new</span> User(<span class="string">'Sam'</span>, <span class="string">'Xiao'</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$type</span> === <span class="string">'first'</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;firstName);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;lastName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第 23 行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$type</span> === <span class="string">'first'</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;firstName);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;lastName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用 <code>if else</code> 去判斷變數值，讀取不同 property。</p>
-<h3 id="Variable-1">Variable</h3><p>若將 property 名稱使用變數表示，則不需使用 <code>if else</code>判斷 :<span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>GitHub Commit : <a href="https://github.com/oomusou/VariableProperty/commit/4d69a38b81ce41e654b3041c66c9005bddea3492" target="_blank" rel="external">PHP : 動態使用變數切換讀取 property</a></span></span></span></p>
-<figure class="highlight php"><figcaption><span>PHP</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/** <span class="doctag">@var</span> string */</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$firstName</span>;</span><br><span class="line">    <span class="comment">/** <span class="doctag">@var</span> string */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$lastName</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * User constructor.</span><br><span class="line">     * <span class="doctag">@param</span> string $firstName</span><br><span class="line">     * <span class="doctag">@param</span> string $lastName</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(string <span class="variable">$firstName</span>, string <span class="variable">$lastName</span>)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;firstName = <span class="variable">$firstName</span>;</span><br><span class="line">        <span class="variable">$this</span>-&gt;lastName = <span class="variable">$lastName</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$type</span> = <span class="string">'first'</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$user</span> = <span class="keyword">new</span> User(<span class="string">'Sam'</span>, <span class="string">'Xiao'</span>);</span><br><span class="line"><span class="variable">$propName</span> = (<span class="variable">$type</span> === <span class="string">'first'</span>) ? <span class="string">'firstName'</span> : <span class="string">'lastName'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;<span class="variable">$propName</span>);</span><br></pre></td></tr></table></figure>
-<p>第 23 行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$propName</span> = (<span class="variable">$type</span> === <span class="string">'first'</span>) ? <span class="string">'firstName'</span> : <span class="string">'lastName'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;<span class="variable">$propName</span>);</span><br></pre></td></tr></table></figure></p>
-<p>判斷 <code>$type</code>，並將要讀取的 property 名稱存入 <code>$propName</code> 變數。</p>
-<p>在 PHP，允許我們在 <code>-&gt;</code> 之後直接加上<strong>變數</strong>，代表要執行的 property。</p>
-<h2 id="Conclusion">Conclusion</h2><hr>
-<ul>
-<li>JavaScript 與 PHP 都允許我們將欲讀取的 propety 名稱以變數表示。</li>
-<li>因為 property 名稱是<strong>字串</strong>，所以我們可以將 property 名稱存在<strong>設定檔</strong>內，如 <code>config/app.php</code>，將來若因為需求改變，須改變讀取的 property 時，只需修改設定檔即可，並透過 <code>config::get()</code> 讀取 property 名稱，原來程式碼完全不用修改，達到<strong>開放封閉原則</strong>的要求。</li>
-</ul>
-<h2 id="Sample_Code">Sample Code</h2><hr>
-<p>完整的範例可以在我的 <a href="https://github.com/oomusou/VariableProperty" target="_blank" rel="external">GitHub</a> 上找到。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[使用變數讀取 property 取代 if else]]>
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://oomusou.io/tags/JavaScript/"/>
-    
-      <category term="PHP" scheme="http://oomusou.io/tags/PHP/"/>
     
   </entry>
   
