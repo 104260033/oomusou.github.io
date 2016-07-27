@@ -2,18 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/dp/dp-nullobject/</loc>
+    <lastmod>2016-07-25T09:06:29.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-code-inspection/</loc>
-    <lastmod>2016-07-24T13:05:46.000Z</lastmod>
+    <lastmod>2016-07-24T13:10:40.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-project-template/</loc>
     <lastmod>2016-07-24T00:21:58.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-code-completion/</loc>
-    <lastmod>2016-07-23T02:55:02.000Z</lastmod>
   </url>
   
   <url>
@@ -44,16 +44,6 @@
   <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/</loc>
     <lastmod>2016-07-22T10:01:27.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/laravel/laravel-beanstalk-email/</loc>
-    <lastmod>2016-07-21T07:02:39.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/dp/dp-nullobject/</loc>
-    <lastmod>2016-07-19T06:52:14.000Z</lastmod>
   </url>
   
   <url>
@@ -277,7 +267,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-service-provider/</loc>
+    <loc>http://oomusou.io/laravel/laravel42/laravel-42-phpunit/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -292,6 +282,11 @@
   </url>
   
   <url>
+    <loc>http://oomusou.io/osx/iterm2-setup/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/laravel/laravel-present-dateformat/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
@@ -302,7 +297,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/osx/iterm2-setup/</loc>
+    <loc>http://oomusou.io/php/php-bindTo/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -313,11 +308,6 @@
   
   <url>
     <loc>http://oomusou.io/laravel/laravel-clone-from-github/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/php/php-bindTo/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -372,7 +362,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel42/laravel-42-phpunit/</loc>
+    <loc>http://oomusou.io/laravel/laravel-service-provider/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
