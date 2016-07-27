@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-code-completion/</loc>
+    <lastmod>2016-07-27T13:52:44.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/dp/dp-nullobject/</loc>
     <lastmod>2016-07-25T09:06:29.000Z</lastmod>
   </url>
