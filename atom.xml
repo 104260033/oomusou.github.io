@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-27T13:52:44.000Z</updated>
+  <updated>2016-07-28T15:52:16.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -15,11 +15,194 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[如何在 PhpStorm 使用 Code Generation?]]></title>
+    <link href="http://oomusou.io/phpstorm/phpstorm-code-generation/"/>
+    <id>http://oomusou.io/phpstorm/phpstorm-code-generation/</id>
+    <published>2016-12-05T12:23:43.000Z</published>
+    <updated>2016-07-28T15:52:16.000Z</updated>
+    <content type="html"><![CDATA[<p>實務上開發專案時，有一些程式碼會不斷的出現，這時可靠 PhpStorm 的 Code Generation 幫我們產生這些 code snippet，除此之外，我們也可以將自己的 code snippet 加入 Live Template，可加快發開速度，並減少 typo。<br><a id="more"></a></p>
+<h2 id="Version">Version</h2><hr>
+<p>PHP 7.0.8<br>Laravel 5.2.41<br>PhpStorm 2016.2</p>
+<h2 id="Namespace">Namespace</h2><hr>
+<p>Laravel 5 的 <code>app</code> 目錄下都遵循 PSR-4，也就是每個在 <code>app</code> 目錄下的 class 都要有 namespace，且 Laravel 與 package 都有自己的 namespace，實務上我們不可能記得了這麼長的 namespace，Code Generation 可以幫我們自動引入相對應的 namespace，若 namespace 名稱相同，會讓我們用選的。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen009.png" alt=""></p>
+<p><code>return</code> type 為 <code>Collection</code>，這是 Laravel 擴充的型別，輸入 <code>Col</code> 之後，Code Completion 會顯示 <code>Collection</code>，後面為其完整的 namespace。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen010.png" alt=""></p>
+<p>Code Generation 自動幫我們 <code>use</code> 了正確的 namespace，不用我們操心。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen011.png" alt=""></p>
+<p><code>Post</code> 出現反白，Code Inspection 抱怨找不到 <code>Post</code> class。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen012.png" alt=""></p>
+<p>將滑鼠游標放在反白的 <code>Post</code> 上，按熱鍵 &#8997; + &#8617;，選擇 <code>Import class</code>。</p>
+<p><strong>PostRepository.php</strong><span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeGeneration_demo/commit/e9e14ebc547c7a805d78b4c880c6112172aaa31e" target="_blank" rel="external">PostRepository 自動 use namespace</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-generation/codegen013.png" alt=""></p>
+<p>Code Generation 自動幫我們 <code>use</code> 了 model 的 namespace，不用我們操心。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen014.png" alt=""></p>
+<p>實務上我們常常只會維護程式碼，但不會去維護 namespace，造成沒用到的 namespace 越來越多。</p>
+<p>如我們將 <code>return Post::all()</code> 刪除後，因為沒使用到 <code>Post</code>，所以在 PhpStorm 的 <code>use App\Post</code> 會反灰警告你此 namspace 目前沒人使用。</p>
+<p><strong>PostRepository.php</strong><span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeGeneration_demo/commit/79745623c4cbc82c7759e30d4cb8bdcda4cc8890" target="_blank" rel="external">PostRepository 自動刪除沒用的 namespace</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-generation/codegen015.png" alt=""></p>
+<p>按熱鍵 &#8963; + &#8997; + O，PhpStorm 會自動幫你將沒用到的 namespace 刪除。</p>
+<h2 id="Constructor">Constructor</h2><hr>
+<p>使用<strong>依賴注入</strong>後，必須建立 constructor 並注入相依物件，在每天的開發過程中需要不斷發生，Code Generation 可以幫我們自動完成 constructor injection。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen000.png" alt=""></p>
+<p>按熱鍵 &#8963; + N，出現 <code>Generate</code> 選單，選擇 <code>Constructor...</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen001.png" alt=""></p>
+<p>在 constructor 參數列輸入要依賴注入的 class 名稱，輸入前幾個字母即可，Code Completion 會啟動讓你挑選 class 名稱。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen002.png" alt=""></p>
+<p>Code Generation 自動幫我們 <code>use</code> 了 <code>PostRepository</code> 的 namespace。</p>
+<p>輸入 <code>$</code>，Code Completion 會自動顯示建議的參數名稱，選擇你喜歡的命名方式。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen003.png" alt=""></p>
+<p>Code Inspection 會出現警告，因為還沒產生 constructor 的 PHPDoc。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen004.png" alt=""></p>
+<p>按熱鍵 &#8997; + &#8617;，選擇 <code>Update PHPDoc Comment</code>，由 PhpStorm 來幫我們產生 PHPDoc。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen005.png" alt=""></p>
+<p>PhpStorm 自動幫我們產生 PHPDoc。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen006.png" alt=""></p>
+<p>繼續按熱鍵 &#8997; + &#8617;，選擇 <code>Initialize fields</code>，由 PhpStorm 來幫我們產生其他程式碼。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen007.png" alt=""></p>
+<p>選擇要由 Code Generation 要產生 field 的程式碼。</p>
+<p><strong>PostService.php</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeGeneration_demo/blob/master/app/Services/PostService.php" target="_blank" rel="external">新增 PostService</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-generation/codegen008.png" alt=""></p>
+<p>Code Generation 一氣呵成幫我們產生了 field，在 constructor 產生了指定 field 相對應的程式碼，另外也 <code>use</code> 相對應的 namespace。</p>
+<h2 id="Getter/Setter">Getter/Setter</h2><hr>
+<p>實務上常常需要對 private field 加上 getter 與 setter，如<strong>重構</strong>的 <strong>Self Encapculate Field</strong> 也會用到，Code Generation 可以幫我們自動產生 getter 與 setter。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen016.png" alt=""></p>
+<p>新建立一個 <code>$postId</code> field，按熱鍵 &#8997; + &#8617;，會出現各種 getter 與 setter 產生方式。</p>
+<p><strong>PostService.php</strong><span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeGeneration_demo/commit/d4da6261ee4bed2d0bf916d6ffd22b1c5c364237" target="_blank" rel="external">支援 PHP 7 type hint 與 return type 的 getter 與 setter</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-generation/codegen017.png" alt=""></p>
+<p>若選擇 <code>Add getter and setter</code>，Code Generation 會幫我們自動產生支援 PHP 7 type hint 與 return type 的 getter 與 setter。</p>
+<p><strong>PostService.php</strong><span class="margin-note-marker"><sup>5</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">5</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeGeneration_demo/commit/d27d4e15a740666c9ad0f1be71048c91970da567" target="_blank" rel="external">支援 fluent setter</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-generation/codegen018.png" alt=""></p>
+<p>若選擇 <code>Add fluent setter</code>，Code Generation 甚至會幫我們自動產生 fluent 風格的 setter。</p>
+<h2 id="Implement_Method">Implement Method</h2><hr>
+<p>在物件導向中，實踐抽象化最重要的就是 interface，所以常常有 implement interface 的需求，Code Generation 提供兩種方式讓我們快速實作 interface。</p>
+<p><strong>SMSInterface.php</strong><span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeGeneration_demo/commit/42fcc908afef8c8d937ff84d1fd1ae981e882b30" target="_blank" rel="external">新增 SMSInterface</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-generation/codegen019.png" alt=""></p>
+<p>定義了 <code>SMSInterface</code>，準備對簡訊的發送加以抽象化。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen020.png" alt=""></p>
+<p>建立了 <code>AzureSMSService</code>，實作 <code>SMSInterface</code>，Code Inspection 馬上提出 <code>尚未實作 SMSInterface</code> 警告。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen021.png" alt=""></p>
+<p>按熱鍵 &#8997; + &#8617;，選擇 <code>Add method stubs</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen022.png" alt=""></p>
+<p>Code Generation 會自動幫我們根據 interface 產生了 method 框架，連 PHPDoc 也會幫我們產生。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen023.png" alt=""></p>
+<p>另外一種方式，按熱鍵 &#8963; + I，出現 <code>Choose methods to implement</code> 視窗，選擇你要 implement 的 method。</p>
+<p><strong>AzureSMSService.php</strong><span class="margin-note-marker"><sup>7</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">7</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeGeneration_demo/commit/9db85e766750a619ba89ce75987b3d3d718f0503" target="_blank" rel="external">自動實現 interface 的 method</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-generation/codegen022.png" alt=""></p>
+<h2 id="Override_Method">Override Method</h2><hr>
+<p>繼承是實現物件導向抽象化的另一種方式，當子類別可 override 父類別的 method。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen024.png" alt=""></p>
+<p><code>AzurePostService</code> 繼承了 <code>PostService</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen025.png" alt=""></p>
+<p>若我們想 override 父類別 <code>PostService</code> 的 <code>showTitle()</code>，可按熱鍵 &#8963; + O，出現 <code>Choose method to override</code> 視窗，選擇你要 override 的 method。</p>
+<p><strong>AzurePostService.php</strong><span class="margin-note-marker"><sup>7</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">7</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeGeneration_demo/commit/0766384172f9df83539dfb17600e401b2ff96686" target="_blank" rel="external">自動複寫 class 的 method</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-generation/codegen026.png" alt=""></p>
+<p>Code Generation 會自動幫我們根據父類別產生 method 框架，連 PHPDoc 也會幫我們產生。</p>
+<div class="alert alert-info"><i class="fa fa-info"></i>  AzurePostService 去繼承 PostService 可能不是實務上使用繼承的一個好例子，這裡只是為了示範 Code Generation 的功能，實務上應該為了抽象化的多型來使用繼承，並遵守 SOLID 原則的<strong>里氏替換</strong>原則，而不是為了 code reuse 去使用繼承。</div>
+<h2 id="Postfix_Completion">Postfix Completion</h2><hr>
+<p>很羨慕 fluent API 的好用嗎? Postfix Completion 讓我們可以類似 fluent API 的方式寫 PHP。</p>
+<h3 id="not">not</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen039.png" alt=""></p>
+<p>輸入 <code>$title.not</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen040.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>!</code> 區塊。</p>
+<h3 id="par">par</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen041.png" alt=""></p>
+<p>輸入 <code>$title.par</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen042.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>( )</code> 區塊。</p>
+<h3 id="if">if</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen029.png" alt=""></p>
+<p>輸入 <code>$title.if</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen030.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>if ( )</code> 區塊。</p>
+<h3 id="else">else</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen031.png" alt=""></p>
+<p>輸入 <code>$title.else</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen032.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>if (! )</code> 區塊。</p>
+<h3 id="fe">fe</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen033.png" alt=""></p>
+<p>輸入 <code>$title.fe</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen034.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>foreach( )</code> 區塊。</p>
+<h3 id="null">null</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen035.png" alt=""></p>
+<p>輸入 <code>$title.null</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen036.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>if ( === null)</code> 區塊。</p>
+<h3 id="nn">nn</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen037.png" alt=""></p>
+<p>輸入 <code>$title.nn</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen038.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>if ( !== null)</code> 區塊。</p>
+<h3 id="return">return</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen043.png" alt=""></p>
+<p>輸入 <code>$title.return</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen044.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>return</code>。</p>
+<h3 id="echo">echo</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen027.png" alt=""></p>
+<p>輸入 <code>$title.echo</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen028.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>echo $title;</code>。</p>
+<h3 id="var_dump">var_dump</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen045.png" alt=""></p>
+<p>輸入 <code>$title.var_dump</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen046.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>var_dump()</code>。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen047.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Editor -&gt; General -&gt; Postfix Completion</em></strong></p>
+<p>在 <strong><em>Preferences</em></strong> 設定底下，可以看到所有 PhpStorm 支援的 Postfix Completion，包含 JavaScript 與 PHP。</p>
+<p>可惜 Postfix Completion 無法擴充，就只能用 PhpStorm 所提供的 postfix。</p>
+<h2 id="Live_Template">Live Template</h2><hr>
+<p>除了 Postfix Completion 外，PhpStorm 另外提供 Live Template，這是可以自行擴充的。</p>
+<h3 id="fore">fore</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen049.png" alt=""></p>
+<p>輸入 <code>fore</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen050.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>foreach( )</code> 區塊。</p>
+<h3 id="forek">forek</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen051.png" alt=""></p>
+<p>輸入 <code>forek</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen052.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>foreach( )</code> 區塊，並包含 key 與 value。</p>
+<h3 id="thr">thr</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen053.png" alt=""></p>
+<p>輸入 <code>thr</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen054.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>throw new</code> 區塊。</p>
+<h3 id="prif">prif</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen055.png" alt=""></p>
+<p>輸入 <code>prif</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen056.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>private function</code> 區塊。</p>
+<h3 id="prof">prof</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen057.png" alt=""></p>
+<p>輸入 <code>prof</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen058.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>protected function</code> 區塊。</p>
+<h3 id="pubf">pubf</h3><p><img src="/images/phpstorm/phpstorm-code-generation/codegen059.png" alt=""></p>
+<p>輸入 <code>pubf</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen060.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>public function</code> 區塊。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen048.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Editor -&gt; Live Templates</em></strong></p>
+<p>在 <strong><em>Preferences</em></strong> 設定底下，可以看到所有 PhpStorm 支援的 Live Template，還包含各種其通語言，甚至包含 Angular 2。</p>
+<h2 id="自訂_Live_Template">自訂 Live Template</h2><hr>
+<p>你也可以自己將常用的 code snippet，存成自己的 Live Template。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen061.png" alt=""></p>
+<p>如在寫單元測試時，<code>$this-&gt;assertEquals()</code> 常常使用，所以我們想將它存成 Live Template。</p>
+<p>選擇你的 code snippet，<strong><em>Tools-&gt; Save as Live Template</em></strong>。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen062.png" alt=""></p>
+<p>輸入你自己的想要的縮寫，並在滑鼠游標停止處加上 <code>$END$</code>，將來 PhpStorm 會將游標停在此方便你輸入。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen063.png" alt=""></p>
+<p>輸入 <code>pubf</code>，按熱鍵 &#8677;。</p>
+<p><img src="/images/phpstorm/phpstorm-code-generation/codegen064.png" alt=""></p>
+<p>Code Generation 會自動幫我們產生 <code>$this-&gt;assertEquals()</code>，並將游標放在 <code>( )</code> 中，方便你後續輸入。</p>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>Post Completion 無法自行擴充，不過 Live Template 可以自行擴充。</li>
+<li>Post Completion 與 Live Template 有些是重複的，可視需求決定用哪一種，只要能提高開發效率即可。</li>
+<li>要善用工具改善開發速度，將時間花在真正需要的地方，Code Generation 讓我們可以打更少的字， 還可以避免 typo。</li>
+</ul>
+<h2 id="Sample_Code">Sample Code</h2><hr>
+<p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52PhpStormCodeGeneration_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
+<h2 id="Reference">Reference</h2><hr>
+<p>PhpStorm Online Help, <a href="https://www.jetbrains.com/help/phpstorm/2016.2/generating-code.html" target="_blank" rel="external">Generating Code</a><br>PhpStorm Online Help, <a href="https://www.jetbrains.com/help/phpstorm/2016.2/live-templates.html" target="_blank" rel="external">Using Postfix Template</a><br>PhpStorm Online Help, <a href="https://www.jetbrains.com/help/phpstorm/2016.2/live-templates.html" target="_blank" rel="external">Live Template</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[讓我們打更少的字加快開發速度]]>
+    
+    </summary>
+    
+      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[如何在 PhpStorm 使用 Code Completion?]]></title>
     <link href="http://oomusou.io/phpstorm/phpstorm-code-completion/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-code-completion/</id>
     <published>2016-07-25T12:23:43.000Z</published>
-    <updated>2016-07-27T13:52:44.000Z</updated>
+    <updated>2016-07-28T15:43:59.000Z</updated>
     <content type="html"><![CDATA[<p>PHP 進入了物件導向與 framework 時代之後，出現了大量的 namespace、class、interface 與 method，基本上這些東西已經很難用記憶的方式來寫程式，必須靠工具輔助。PhpStorm 的 Code Completion 幫我們處理了大部分的東西，讓我們只要用選的就可以開發程式，一來開發速度變快，二來也可以減少 typo，是 modern PHP 的關鍵。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -32,16 +215,17 @@
 <p><img src="/images/phpstorm/phpstorm-code-completion/code005.png" alt=""></p>
 <p>當任何地方需要使用 Code Completion 時，且希望 Code Completion 能根據型別自動選擇適當的變數，就可以按熱鍵 &#8963; + &#8679; + &#9251;。</p>
 <p>如 <code>getTitle()</code> 需要輸入變數時，不知道要輸入的變數名稱，可以按熱鍵 &#8963; + &#8679; + &#9251;，Smart Type Code Completion 會根據 <code>getType()</code> 的 scalar type hint 或 PHPDoc 的 <code>@param</code> 列出目前 scope 最適合的變數讓你挑選。</p>
-<h2 id="語法提示">語法提示</h2><hr>
-<p>Code Completion 提供 PHP 與 Laravel 各種語法提示，讓你只要用挑選的就可以完成程式碼。</p>
-<h3 id="Class">Class</h3><p><img src="/images/phpstorm/phpstorm-code-completion/code006.png" alt=""></p>
+<h2 id="Class">Class</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-code-completion/code006.png" alt=""></p>
 <p>一般我們都會取將物件變數名稱以 class 名稱的 camelCase 命名，當 <code>new</code> 時，Code Completion 會自動依照變數名稱抓到 class 名稱讓你選擇。</p>
-<h3 id="Field">Field</h3><p><img src="/images/phpstorm/phpstorm-code-completion/code007.png" alt=""></p>
+<h2 id="Field">Field</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-code-completion/code007.png" alt=""></p>
 <ul>
 <li>若是一般 class，Code Completion 可以直接抓到 public field。</li>
 <li>若是 model，則必須透過 IDE Helper 幫 model 加上 PHPDoc 註解，Code Completion 才能抓到。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>關於 IDE Helper 的安裝與執行，詳細請參考<a href="/phpstorm/phpstorm-ide-helper/">如何在 PhpStorm 活用 PHPDoc?</a></span></span></span></li>
 </ul>
-<h3 id="Method">Method</h3><p><img src="/images/phpstorm/phpstorm-code-completion/code000.png" alt=""></p>
+<h2 id="Method">Method</h2><hr>
+<p><img src="/images/phpstorm/phpstorm-code-completion/code000.png" alt=""></p>
 <p>PhpStorm 2016.2 之前的 Code Completion，讓你選擇可以選擇 method，並提供參數資訊，老實說這樣已經很好用了。</p>
 <p><img src="/images/phpstorm/phpstorm-code-completion/code001.png" alt=""></p>
 <p>PhpStorm 2016.2 對於參數的 Code Completion 做了更強的支援，不過預設並沒有啟動。</p>
@@ -54,34 +238,41 @@
 <p>除此之外，若你使用的 PHP 7 的 type hint，或使用 PHPDoc 的 <code>@param</code> 描述參數型別，PhpStorm 會自動將相同型別的參數列在前面讓你挑選。</p>
 <p><img src="/images/phpstorm/phpstorm-code-completion/code003.png" alt=""></p>
 <p>按 enter 選擇了變數後，PhpStorm 會自動跳到下一個參數，也讓你用選的。</p>
-<h3 id="Collection">Collection</h3><p>Collection 並非 PHP 原生型別，是由 Laravel 所擴充，由於其實踐了 <code>ArrayAccess</code> 、 <code>Countable</code> 與 <code>IteratorAggregate</code> interface，因此 <code>Collection</code> 使用起來很像 array，若要描述 <code>Collection</code> 元素的型別，可搭配 PHPDoc。</p>
+<h2 id="Collection">Collection</h2><hr>
+<p>Collection 並非 PHP 原生型別，是由 Laravel 所擴充，由於其實踐了 <code>ArrayAccess</code> 、 <code>Countable</code> 與 <code>IteratorAggregate</code> interface，因此 <code>Collection</code> 使用起來很像 array，若要描述 <code>Collection</code> 元素的型別，可搭配 PHPDoc。</p>
 <p><strong>PostRepository.php</strong><span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/33f673dcbde4a935e04364c4ce4d064c9371a3cc" target="_blank" rel="external">PostRepository 新增 getAllPosts()</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code008.png" alt=""></p>
 <p><code>getAllPosts()</code> 回傳的是 <code>Collection</code> 型別，若由 PhpStorm 的熱鍵 &#8997; + &#8617;，只會有 <code>@return Collection</code>，如此 <code>foreach</code> 時將無法顯示其元素的 field 與 method，必須加上 <code>|Post[]</code>，表示回傳值除了是 <code>Collection</code> 外，也是 <code>Post</code> 型別的 array。</p>
 <p><strong>PostService.php</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/70964d9bf2013ebc4b092f0f7699d42f40b26568" target="_blank" rel="external">PostService 新增 showAllPosts()</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code009.png" alt=""></p>
 <p>如此在 <code>foreach</code> 時，就可以顯示 <code>$post</code> 的屬性 <code>title</code>。</p>
-<h3 id="Service_Container">Service Container</h3><p><strong>PostServiceUnitTest.php</strong><span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3b9d185307e4a64258fd8790439b820b44766931" target="_blank" rel="external">PostServiceUnitTest 使用 app::make()</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code010.png" alt=""></p>
+<h2 id="Service_Container">Service Container</h2><hr>
+<p><strong>PostServiceUnitTest.php</strong><span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3b9d185307e4a64258fd8790439b820b44766931" target="_blank" rel="external">PostServiceUnitTest 使用 app::make()</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code010.png" alt=""></p>
 <p>使用 <code>App::make()</code> 或 <code>app()</code> 透過 service container 建立物件時，PhpStorm 也可以抓到該物件的 method。</p>
-<h3 id="Controller">Controller</h3><p><strong>routes.php</strong><span class="margin-note-marker"><sup>5</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">5</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/09fe8b7a36bc12bf355b7b85e0d49b96a1412789" target="_blank" rel="external">routes.php 有 controller 提示</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code011.png" alt=""></p>
+<h2 id="Controller">Controller</h2><hr>
+<p><strong>routes.php</strong><br><img src="/images/phpstorm/phpstorm-code-completion/code011.png" alt=""></p>
 <p>在 <code>routes.php</code> 的 <code>uses</code>，可以抓到 controller 與其 method。</p>
-<h3 id="Route">Route</h3><p><strong>index.blade.php</strong><span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/988652b299d7bb6f2e17e91ca175b58e5f7cb325" target="_blank" rel="external">Blade 有 route 別名</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code012.png" alt=""></p>
+<h2 id="Route">Route</h2><hr>
+<p><strong>index.blade.php</strong><span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/988652b299d7bb6f2e17e91ca175b58e5f7cb325" target="_blank" rel="external">Blade 有 route 別名</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code012.png" alt=""></p>
 <p>Blade 的 <code>route()</code> 可以抓到 <code>routes.php</code> 所定義的 route 別名。</p>
-<h3 id="View">View</h3><p><strong>PostController.php</strong><span class="margin-note-marker"><sup>7</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">7</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/ee4f0fc1673c491e176bcf5858ce35afee38e465" target="_blank" rel="external">view() 可抓到 view</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code013.png" alt=""></p>
+<h2 id="View">View</h2><hr>
+<p><strong>PostController.php</strong><span class="margin-note-marker"><sup>7</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">7</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/ee4f0fc1673c491e176bcf5858ce35afee38e465" target="_blank" rel="external">view() 可抓到 view</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code013.png" alt=""></p>
 <p>在 controller 內的 <code>return view()</code> 可以抓到 view 的名稱。</p>
-<h3 id="config::get()">config::get()</h3><p><strong>PostController.php</strong><span class="margin-note-marker"><sup>8</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">8</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/a6efc5f5bba41a79eab09abeeb7384c808d06653" target="_blank" rel="external">Config::get() 可抓到設定</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code014.png" alt=""></p>
+<h2 id="config::get()">config::get()</h2><hr>
+<p><strong>PostController.php</strong><span class="margin-note-marker"><sup>8</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">8</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/a6efc5f5bba41a79eab09abeeb7384c808d06653" target="_blank" rel="external">Config::get() 可抓到設定</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code014.png" alt=""></p>
 <p><code>Config::get()</code> 可以抓到 array 的 key 值.</p>
-<h3 id="DIR"><strong>DIR</strong></h3><p><strong>PostServiceUnitTest.php</strong><span class="margin-note-marker"><sup>9</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">9</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external"><strong>DIR</strong> 可抓到目前目錄的檔案</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code015.png" alt=""></p>
+<h2 id="DIR"><strong>DIR</strong></h2><hr>
+<p><strong>PostServiceUnitTest.php</strong><span class="margin-note-marker"><sup>9</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">9</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external"><strong>DIR</strong> 可抓到目前目錄的檔案</a></span></span></span><br><img src="/images/phpstorm/phpstorm-code-completion/code015.png" alt=""></p>
 <p><code>__DIR__</code> 可抓到目前目錄的檔案，這在寫測試時特別好用，可以將測試案例檔案(如 Excel 檔)放在目前單元測試下，<code>__DIR</code> 會抓到 Excel 檔。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
-<li>要善用工具改善開發速度，將時間花在真正需要的地方，Code Completion 讓我們可以打更少的字， 還可以避免 typo。</li>
+<li>寫程式重點不是在記憶力，而是在抽象化思考，Code Completion 讓我們從 namespace、class 與 method 解放，將注意力放在解決需求上。</li>
 </ul>
 <h2 id="Sample_Code">Sample Code</h2><hr>
 <p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
 <h2 id="Reference">Reference</h2><hr>
-<p>Gary Hockin, <a href="https://blog.jetbrains.com/phpstorm/2016/07/parameter-code-completion-in-phpstorm-2016-2" target="_blank" rel="external">PhpStorm Code Completion in PhpStorm 2016.2</a><br>PhpStorm Help, <a href="https://www.jetbrains.com/help/phpstorm/2016.2/auto-completing-code.html" target="_blank" rel="external">Auto-Completing Code</a></p>
+<p>Gary Hockin, <a href="https://blog.jetbrains.com/phpstorm/2016/07/parameter-code-completion-in-phpstorm-2016-2" target="_blank" rel="external">PhpStorm Code Completion in PhpStorm 2016.2</a><br>PhpStorm Online Help, <a href="https://www.jetbrains.com/help/phpstorm/2016.2/auto-completing-code.html" target="_blank" rel="external">Auto-Completing Code</a></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[讓我們打更少的字加快開發速度]]>
+    <![CDATA[讓我們忘記 Namespace，Class 與 Method]]>
     
     </summary>
     
@@ -94,7 +285,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-code-inspection/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-code-inspection/</id>
     <published>2016-07-24T12:23:43.000Z</published>
-    <updated>2016-07-24T13:10:40.000Z</updated>
+    <updated>2016-07-28T07:55:22.000Z</updated>
     <content type="html"><![CDATA[<p>PHP 不需編譯，只要存檔就可執行，優點是很方便，缺點是很多程式語法上的錯誤必須在瀏覽器執行才能發現。PhpStorm 的 Code Inspection 就相當於編譯器，在程式開發階段就可檢查語法上的錯誤，再搭配單元測試檢查邏輯上的錯誤，如此雙重保障，就能提早發現錯誤加以解決，降低除錯成本。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -183,7 +374,7 @@
 <h2 id="Sample_Code">Sample Code</h2><hr>
 <p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52PhpStormCodeInspection_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
 <h2 id="Reference">Reference</h2><hr>
-<p>PhpStorm Help, <a href="https://www.jetbrains.com/help/phpstorm/2016.2/code-inspection.html#phpCodeInspections" target="_blank" rel="external">Code Inspection</a></p>
+<p>PhpStorm Online Help, <a href="https://www.jetbrains.com/help/phpstorm/2016.2/code-inspection.html#phpCodeInspections" target="_blank" rel="external">Code Inspection</a></p>
 ]]></content>
     <summary type="html">
     <![CDATA[讓我們提早發現語法錯誤]]>
@@ -2082,62 +2273,6 @@
       <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
     
       <category term="Vue.js" scheme="http://oomusou.io/tags/Vue-js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[如何使用變數讀取 property?]]></title>
-    <link href="http://oomusou.io/javascript/javascript-variable-property/"/>
-    <id>http://oomusou.io/javascript/javascript-variable-property/</id>
-    <published>2016-06-07T12:23:43.000Z</published>
-    <updated>2016-06-07T03:27:04.000Z</updated>
-    <content type="html"><![CDATA[<p>傳統我們會使用 <code>if else</code> 判斷，讀取不同的 property，但由於 JavaScript 與 PHP 動態語言的特性，我們可以將要讀取的 property 名稱以<strong>變數</strong>表示，直接以該變數讀取 property。</p>
-<a id="more"></a>
-<h2 id="Version">Version</h2><hr>
-<p>ECMAScript 5<br>PHP 7.0</p>
-<h2 id="JavaScript">JavaScript</h2><hr>
-<h3 id="if_else">if else</h3><p>傳統若要根據不同的條件，讀取不同 property，我們會使用 <code>if else</code>方式 :<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>GitHub Commit : <a href="https://github.com/oomusou/VariableProperty/commit/b84e31b15722571402a379bd040090bfaf7c41f1" target="_blank" rel="external">JavaScript : 傳統使用 if else 切換讀取 property</a></span></span></span></p>
-<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">firstName, lastName</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">    <span class="keyword">this</span>.lastName = lastName;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> type = <span class="string">'first'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(<span class="string">'Sam'</span>, <span class="string">'Xiao'</span>);</span><br><span class="line"><span class="keyword">if</span> (type === <span class="string">'first'</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(user.firstName);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(user.lastName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第 9 行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (type === <span class="string">'first'</span>) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(user.firstName);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(user.lastName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用 <code>if else</code> 去判斷變數值，讀取不同 property。</p>
-<h3 id="Variable">Variable</h3><p>若將 property 名稱使用變數表示，則不需使用 <code>if else</code> 判斷 :<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>GitHub Commit : <a href="https://github.com/oomusou/VariableProperty/commit/9e4288fc847a12f9aeef2d1af9240f0dee01a098" target="_blank" rel="external">JavaScript : 動態使用變數切換讀取 property</a></span></span></span></p>
-<figure class="highlight javascript"><figcaption><span>JavaScript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span>(<span class="params">firstName, lastName</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">    <span class="keyword">this</span>.lastName = lastName;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> type = <span class="string">'first'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> user = <span class="keyword">new</span> User(<span class="string">'Sam'</span>, <span class="string">'Xiao'</span>);</span><br><span class="line">propName = (type === <span class="string">'first'</span>) ? <span class="string">'firstName'</span> : <span class="string">'lastName'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(user[propName]);</span><br></pre></td></tr></table></figure>
-<p>第 9 行<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">propName = (type === <span class="string">'first'</span>) ? <span class="string">'firstName'</span> : <span class="string">'lastName'</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(user[propName]);</span><br></pre></td></tr></table></figure></p>
-<p>判斷 <code>type</code>，並將要讀取的 property 名稱存入 <code>propName</code> 變數。</p>
-<p>在 JavaScript，若要執行物件的 method，有以下3種方式 :</p>
-<ol>
-<li>object.property </li>
-<li>object[‘property’] : 其中 ‘property’ 是<strong>字串</strong>。</li>
-<li>object[property] : 其中 property 是<strong>變數</strong>。</li>
-</ol>
-<p>因為第 3 種方式，我們可以將 property 名稱以變數方式傳入 <code>[]</code>。</p>
-<h2 id="PHP">PHP</h2><hr>
-<p>PHP 也可以達到類似 JavaScript 的功能。</p>
-<h3 id="if_else-1">if else</h3><p>傳統若要根據不同的條件，讀取不同 property，我們會使用 <code>if else</code>方式 :<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/VariableProperty/commit/df7bb5fd3c633902f0fe2b86a53700ab7e5e5f2d" target="_blank" rel="external">PHP : 傳統使用 if else 切換讀取 property</a></span></span></span></p>
-<figure class="highlight php"><figcaption><span>PHP</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/** <span class="doctag">@var</span> string */</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$firstName</span>;</span><br><span class="line">    <span class="comment">/** <span class="doctag">@var</span> string */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$lastName</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * User constructor.</span><br><span class="line">     * <span class="doctag">@param</span> string $firstName</span><br><span class="line">     * <span class="doctag">@param</span> string $lastName</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(string <span class="variable">$firstName</span>, string <span class="variable">$lastName</span>)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;firstName = <span class="variable">$firstName</span>;</span><br><span class="line">        <span class="variable">$this</span>-&gt;lastName = <span class="variable">$lastName</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$type</span> = <span class="string">'first'</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$user</span> = <span class="keyword">new</span> User(<span class="string">'Sam'</span>, <span class="string">'Xiao'</span>);</span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$type</span> === <span class="string">'first'</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;firstName);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;lastName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>第 23 行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable">$type</span> === <span class="string">'first'</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;firstName);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;lastName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>使用 <code>if else</code> 去判斷變數值，讀取不同 property。</p>
-<h3 id="Variable-1">Variable</h3><p>若將 property 名稱使用變數表示，則不需使用 <code>if else</code>判斷 :<span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>GitHub Commit : <a href="https://github.com/oomusou/VariableProperty/commit/4d69a38b81ce41e654b3041c66c9005bddea3492" target="_blank" rel="external">PHP : 動態使用變數切換讀取 property</a></span></span></span></p>
-<figure class="highlight php"><figcaption><span>PHP</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="comment">/** <span class="doctag">@var</span> string */</span>  </span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$firstName</span>;</span><br><span class="line">    <span class="comment">/** <span class="doctag">@var</span> string */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$lastName</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * User constructor.</span><br><span class="line">     * <span class="doctag">@param</span> string $firstName</span><br><span class="line">     * <span class="doctag">@param</span> string $lastName</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(string <span class="variable">$firstName</span>, string <span class="variable">$lastName</span>)</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="variable">$this</span>-&gt;firstName = <span class="variable">$firstName</span>;</span><br><span class="line">        <span class="variable">$this</span>-&gt;lastName = <span class="variable">$lastName</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$type</span> = <span class="string">'first'</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$user</span> = <span class="keyword">new</span> User(<span class="string">'Sam'</span>, <span class="string">'Xiao'</span>);</span><br><span class="line"><span class="variable">$propName</span> = (<span class="variable">$type</span> === <span class="string">'first'</span>) ? <span class="string">'firstName'</span> : <span class="string">'lastName'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;<span class="variable">$propName</span>);</span><br></pre></td></tr></table></figure>
-<p>第 23 行<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$propName</span> = (<span class="variable">$type</span> === <span class="string">'first'</span>) ? <span class="string">'firstName'</span> : <span class="string">'lastName'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span>(<span class="variable">$user</span>-&gt;<span class="variable">$propName</span>);</span><br></pre></td></tr></table></figure></p>
-<p>判斷 <code>$type</code>，並將要讀取的 property 名稱存入 <code>$propName</code> 變數。</p>
-<p>在 PHP，允許我們在 <code>-&gt;</code> 之後直接加上<strong>變數</strong>，代表要執行的 property。</p>
-<h2 id="Conclusion">Conclusion</h2><hr>
-<ul>
-<li>JavaScript 與 PHP 都允許我們將欲讀取的 propety 名稱以變數表示。</li>
-<li>因為 property 名稱是<strong>字串</strong>，所以我們可以將 property 名稱存在<strong>設定檔</strong>內，如 <code>config/app.php</code>，將來若因為需求改變，須改變讀取的 property 時，只需修改設定檔即可，並透過 <code>config::get()</code> 讀取 property 名稱，原來程式碼完全不用修改，達到<strong>開放封閉原則</strong>的要求。</li>
-</ul>
-<h2 id="Sample_Code">Sample Code</h2><hr>
-<p>完整的範例可以在我的 <a href="https://github.com/oomusou/VariableProperty" target="_blank" rel="external">GitHub</a> 上找到。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[使用變數讀取 property 取代 if else]]>
-    
-    </summary>
-    
-      <category term="JavaScript" scheme="http://oomusou.io/tags/JavaScript/"/>
-    
-      <category term="PHP" scheme="http://oomusou.io/tags/PHP/"/>
     
   </entry>
   
