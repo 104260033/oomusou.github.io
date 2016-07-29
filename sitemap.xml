@@ -2,8 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-tdd-refactor/</loc>
+    <lastmod>2016-07-29T07:02:36.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/dp/dp-nullobject/</loc>
+    <lastmod>2016-07-29T00:24:58.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-code-generation/</loc>
-    <lastmod>2016-07-28T15:52:16.000Z</lastmod>
+    <lastmod>2016-07-28T23:02:55.000Z</lastmod>
   </url>
   
   <url>
@@ -14,11 +24,6 @@
   <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-code-inspection/</loc>
     <lastmod>2016-07-28T07:55:22.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/dp/dp-nullobject/</loc>
-    <lastmod>2016-07-25T09:06:29.000Z</lastmod>
   </url>
   
   <url>
@@ -254,11 +259,6 @@
   <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-ide-helper/</loc>
     <lastmod>2016-04-04T07:58:33.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-tdd-refactor/</loc>
-    <lastmod>2016-03-22T14:31:42.000Z</lastmod>
   </url>
   
   <url>
