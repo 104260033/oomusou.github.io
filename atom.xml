@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-29T06:54:05.000Z</updated>
+  <updated>2016-07-28T23:02:55.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -13,170 +13,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title><![CDATA[如何在 PhpStorm 使用重構?]]></title>
-    <link href="http://oomusou.io/phpstorm/phpstorm-refactor/"/>
-    <id>http://oomusou.io/phpstorm/phpstorm-refactor/</id>
-    <published>2016-07-29T12:23:43.000Z</published>
-    <updated>2016-07-29T06:54:05.000Z</updated>
-    <content type="html"><![CDATA[<p>重構是 TDD 開發流程的重頭戲，當第一次 <span class="label label-success">綠燈</span> 之後，就是不斷的重構，一直維持 <span class="label label-success">綠燈</span>，讓程式碼架構更好，卻又不違背原來的需求，而PhpStorm 提供強悍的重構功能，讓我們在重構時不需要 copy and paste，可直接快速重構，提升開發效率。</p>
-<a id="more"></a>
-<h2 id="Motivation">Motivation</h2><hr>
-<p>在<a href="/phpstorm/phpstorm-tdd-refactor/">如何使用 PhpStorm 實現 TDD、重構與偵錯?</a>，曾經以<a href="http://www.tenlong.com.tw/items/9861547533?item_id=45657" target="_blank" rel="external">重構–改善既有程式的設計</a>第一章的範例，實際以 TDD 與重構的方式，完全在 PhpStorm 執行，不過當時並沒有使用到 PhpStorm 所有的重構功能，本文則實際深入探討 PhpStorm 全部的重構功能。</p>
-<h2 id="Version">Version</h2><hr>
-<p>PHP 7.0.8<br>Laravel 5.2.41<br>PhpStorm 2016.2</p>
-<h2 id="Extract_Variable">Extract Variable</h2><hr>
-<p>實務上我們可能會想將 hard code 的字串或數字，重構稱變數，方便其他程式碼使用。</p>
-<p><strong>PostController.php</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">使用 Magic Number</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor005.png" alt=""></p>
-<p>直接將 <code>no title</code> hard code 在程式碼內。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor028.png" alt=""></p>
-<p>將滑鼠游標放在 <code>no title</code>，按熱鍵 &#8963; + T，選擇 <code>Variable...</code>。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor029.png" alt=""></p>
-<p>PhpStorm 提供兩種重構 field 方式 :</p>
-<ul>
-<li>將<strong>值</strong>或<strong>變數</strong>重構成 field。</li>
-<li>將<strong>expression</strong>重構成 field。</li>
-</ul>
-<p>這裡我們是想將 <code>no title</code> 這個<strong>值</strong>重構成 value，而不是將 expression 重構成 field。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor030.png" alt=""></p>
-<p>輸入 variable 名稱。</p>
-<p><strong>PostController.php</strong><span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">重構成 constant</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor031.png" alt=""></p>
-<p>PhpStorm 會自動幫我們重構成 <code>$defaultTitle</code>，並在使用端使用 <code>$defaultTitle</code>。</p>
-<h2 id="Extract_Constant">Extract Constant</h2><hr>
-<p>實務上不建議直接在程式碼裡 hard code 字串或數字，一來將來維護不方便，二來程式碼的語意也不清楚，應該將這類 magic number 重構成 constant。</p>
-<p><strong>PostController.php</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">使用 Magic Number</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor005.png" alt=""></p>
-<p>直接將 <code>no title</code> hard code 在程式碼內。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor006.png" alt=""></p>
-<p>將滑鼠游標放在 <code>no title</code>，按熱鍵 &#8963; + T，選擇 <code>Constant...</code>。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor007.png" alt=""></p>
-<p>輸入 constant 名稱。</p>
-<p><strong>PostController.php</strong><span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">重構成 constant</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor008.png" alt=""></p>
-<p>PhpStorm 會自動幫我們重構成 <code>const DEFAULT_TITLE = &#39;no title&#39;</code>，並在使用端使用 <code>self::DEFAULT_TITLE</code>，如此程式碼語意將更為清楚。</p>
-<h2 id="Extract_Parameter">Extract Parameter</h2><hr>
-<p>除了將 hard code 字串或數字重構成 constant 外，若這些數值可能會變動，也可以考慮重構成 parameter。</p>
-<p><strong>PostController.php</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">使用 Magic Number</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor005.png" alt=""></p>
-<p>直接將 <code>no title</code> hard code 在程式碼內。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor023.png" alt=""></p>
-<p>將滑鼠游標放在 <code>no title</code>，按熱鍵 &#8963; + T，選擇 <code>Parameter...</code>。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor024.png" alt=""></p>
-<p>輸入 parameter 名稱。</p>
-<p><strong>PostController.php</strong><span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">重構成 parameter</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor025.png" alt=""></p>
-<p>PhpStorm 會自動幫我們重構成參數 <code>$defaultParameter</code>，並在使用端使用參數 <code>$defaultParameter</code>。</p>
-<h2 id="Extract_Field">Extract Field</h2><hr>
-<p>除了將 hard code 字串或數字重構成 constant 外，若這些數值可能會變動，也可以考慮重構成 field。</p>
-<p><strong>PostController.php</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">使用 Magic Number</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor005.png" alt=""></p>
-<p>直接將 <code>no title</code> hard code 在程式碼內。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor009.png" alt=""></p>
-<p>將滑鼠游標放在 <code>no title</code>，按熱鍵 &#8963; + T，選擇 <code>Field...</code>。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor010.png" alt=""></p>
-<p>PhpStorm 提供兩種重構 field 方式 :</p>
-<ul>
-<li>將<strong>值</strong>或<strong>變數</strong>重構成 field。</li>
-<li>將<strong>expression</strong>重構成 field。</li>
-</ul>
-<p>這裡我們是想將 <code>no title</code> 這個<strong>值</strong>重構成 field，而不是將 <code>$this-&gt;showTitle()</code> 重構成 field。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor011.png" alt=""></p>
-<ul>
-<li><strong>Name</strong> : 輸入 field 名稱為 <code>defaultTitle</code>。</li>
-<li><strong>Initialize in</strong> : 選擇初始化 field 的方法，這裡選擇 <code>Field declaration</code>，</li>
-<li><strong>Visibility</strong> : 這裡選擇 <code>private</code>。</li>
-</ul>
-<p><strong>PostController.php</strong><span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">重構成 Field</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor012.png" alt=""></p>
-<p>PhpStorm 會自動幫我們重構成 <code>private $defaultTitle = &#39;no title&#39;</code>，並在使用端使用 <code>$this-&gt;defaultTitle</code>。<span class="margin-note-marker"><sup>7</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">7</span>若要替 field 提供 getter 與 setter，詳細請參考<a href="/phpstorm/phpstorm-code-generation/#Getter/Setter">如何在 PhpStorm 使用 Code Generation?</a></span></span></span></p>
-<h2 id="Extract_Method">Extract Method</h2><hr>
-<p>在 TDD 第一個 <span class="label label-success">綠燈</span> 之後，為了，實務上我們會使用 Extract Method 重構，讓程式碼可讀性更高，語意更清楚。</p>
-<p><strong>PostService.php</strong><span class="margin-note-marker"><sup>12</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">12</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">顯示所有有 Description 的 Title</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor019.png" alt=""></p>
-<p>為了顯示全部有 <code>description</code> 的 <code>title</code>，需要在 <code>foreach</code> 內對 <code>description</code> 做判斷，並新增至 <code>$titles</code> 陣列。</p>
-<p>其中 <code>if ()</code> 這段程式碼，包含了底層的 <code>if()</code> 判斷，還包含了新增至陣列的實作，看起來比較突兀，也就是我們應該 <code>把抽象出來的方法放在一起，而不要把底層程式碼和抽象出來的方法放在一起</code> 的概念。</p>
-<p>所謂 <code>抽象出來的方法</code>是指 Extract Method 後的產物，它代表著這段程式碼的意圖。</p>
-<p>每一階程式碼都有它放在這裡的意義，千萬不要將高階和低階的方法混雜在一起，這樣讀程式碼時會很突兀。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor020.png" alt=""></p>
-<p>選擇要 Extract Method 的程式碼，按熱鍵 &#8963; + T，選擇 <code>Method...</code>。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor021.png" alt=""></p>
-<ul>
-<li><strong>Name</strong> : 輸入 Extract Method 後新的 method 名稱，輸入 <code>filterTitlesWithDescription</code>。</li>
-<li><strong>Visibility</strong> : 選擇 <code>Private</code>。</li>
-<li><strong>Return output variable(s) through</strong> : 選擇 <code>Return statement</code>。</li>
-</ul>
-<p><strong>PostService.php</strong><span class="margin-note-marker"><sup>13</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">13</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">重構成 filterTitlesWithDescription</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor022.png" alt=""></p>
-<p>PhpStorm 會自動幫我們建立了 <code>filterTitlesWithDescription()</code>，並且自動幫我們修改了呼叫 <code>filterTitlesWithDescription()</code> 的方式。</p>
-<p>對於 <code>showTitlesWithDescription()</code> 來說，其職責在於 <code>foreach()</code> 去<code>顯示資料</code>，而 <code>filterTitlesWithDescription()</code> 的職責在於<code>過濾資料</code>，如此程式碼的可讀性更高，語意也更明顯，也符合 SOLID 的<strong>單一職責</strong>原則。 </p>
-<p>Extract Method 是重構當中，最常用的手法，而 PhpStorm 的 Extract Method 功能非常強大。</p>
-<h2 id="Change_Signature">Change Signature</h2><hr>
-<p>包含了以下多項重構功能 :</p>
-<ul>
-<li>改變 method 名稱</li>
-<li>新增參數</li>
-<li>刪除參數</li>
-<li>更改參數的預設值</li>
-<li>調整參數順序</li>
-<li>修改參數名稱</li>
-<li>新增一系列 function call 的參數</li>
-</ul>
-<p>當使用 Change Signature 時，PhpStorm 會搜尋所有使用此 method 之處，並做相對應的修改。</p>
-<p><strong>PostRepository.php</strong><br><img src="/images/phpstorm/phpstorm-refactor/refactor000.png" alt=""></p>
-<p><code>PostRepository</code> 的 <code>getTitle()</code> 目前參數為 <code>$id</code> 與 <code>$default</code>，想新增一個參數為 <code>$content</code>。</p>
-<p>目前 <code>PostController</code> 呼叫 <code>PostSerive</code>，而 <code>PostService</code> 呼叫 <code>PostRepository</code>，若 <code>PostRepository</code> 的 <code>getTitle()</code> 增加參數，勢必 <code>PostService</code> 與 <code>PostController</code> 也必須修改。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor004.png" alt=""></p>
-<p>將滑鼠游標放在 <code>getTitle()</code>，按熱鍵 &#8963; + T，選擇 <code>Change Signature...</code>。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor001.png" alt=""></p>
-<ul>
-<li><strong>Name</strong> : 重構成新的 method 名稱，若不改變可不修改。</li>
-<li><strong>新增參數</strong> : 按熱鍵 &#8984; + N 新增參數 <code>$content</code>，後面的 Default 表示其他相依的 method，該新增什麼變數名稱。</li>
-</ul>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor002.png" alt=""></p>
-<ul>
-<li><strong>Propagate 參數</strong> : 按熱鍵 &#8997; + G。</li>
-<li><strong>選擇 Method</strong> : 選擇要 propagate 參數的 method。</li>
-</ul>
-<p><strong>PostRepository.php</strong><span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">新增 $content 參數</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor003.png" alt=""></p>
-<p>PhpStorm 會自動幫我們在 <code>PostRepository</code> 的 <code>getTitle()</code> 重構加上新的參數 <code>$content</code>。</p>
-<p><strong>PostService.php</strong><span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">新增 $content 參數</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor026.png" alt=""></p>
-<p>PhpStorm 會自動幫我們在 <code>PostService</code> 的 <code>showTitle()</code> 重構加上新的參數 <code>$content</code>。</p>
-<p><strong>PostController.php</strong><span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">新增 $content 參數</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor027.png" alt=""></p>
-<p>PhpStorm 會自動幫我們在 <code>PostController</code> 的 <code>index()</code> 重構加上新的參數 <code>$content</code>。</p>
-<h2 id="Extract_Interface">Extract Interface</h2><hr>
-<p>TDD 要求我們在設計階段，先根據當前的需求 <span class="label label-success">綠燈</span> 就好，避免因為 over design 而墊出一堆 interface，而讓架構提早複雜化，但真的需求來時，有必要墊 interface 還是要墊，此時我們可以使用 Extract Interface 將目前原有的 class 抽出 interface。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor013.png" alt=""></p>
-<p>原本 <code>PostRepository</code> 並沒有墊 interface，但因為有切換 MySQL 與 MongoDB 的需求，只好將 repository 加以抽象化，因此想定義 <code>PostRepositoryInterface</code>。 </p>
-<p>將滑鼠游標放在 <code>PostRepository</code>，按熱鍵 &#8963; + T，選擇 <code>Interface...</code>。</p>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor014.png" alt=""></p>
-<ul>
-<li><strong>Interface Name</strong> : 輸入你想要使用的 interface 名稱，輸入 <code>PostRepositoryInterface</code>。</li>
-<li><strong>所有依賴注入都改成 Interface</strong> : 將 <code>Replace class references with interface where possible</code> 打勾。</li>
-<li><strong>Namespace</strong> : 若你想一併改變 interface 的 namespace，可在此修改，如有人可能會把所有 interface 專門放在一個 namespace 下。</li>
-<li><strong> Target destination directories</strong> : 為了符合 PSR-4，namespace 與 directories 會一致。</li>
-<li><strong>Members to form interface </strong> : 選擇你要抽出成為 interface 的 method。</li>
-</ul>
-<div class="alert alert-info"><i class="fa fa-info"></i>  實務上不建議將 class 的所有 method 原封不動抽成 interface，應該以需求的觀點去考量 interface，並遵守 SOLID 的 ISP 的介面隔離原則，如此才能符合 SRP 單一職責原則與 DIP 依賴反轉原則的要求，最後達成 OCP 開放封閉原則的目標。<span class="margin-note-marker"><sup>8</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">8</span>關於 SOLID 原則，詳細請參考大澤木小鐵的<a href="http://slides.com/jaceju/design-patterns-by-examples#/" target="_blank" rel="external">從實例學習設計模式 威力加強版 使用PHP</a></span></span></span></div>
-<p><img src="/images/phpstorm/phpstorm-refactor/refactor015.png" alt=""></p>
-<p>PhpStorm 會讓你預覽即將重構的變更，按 <code>Do Refactor</code> 繼續。</p>
-<p><strong>PostRepositoryInterface.php</strong><span class="margin-note-marker"><sup>9</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">9</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">重構新增 PostRepositoryInterface</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor016.png" alt=""></p>
-<p>PhpStorm 會自動幫我們建立了 <code>PostRepositoryInterface.php</code>。</p>
-<p><strong>PostRepository.php</strong><span class="margin-note-marker"><sup>10</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">10</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">實現 PostRepositoryInterface</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor017.png" alt=""></p>
-<p><code>PostRepository</code> 也實現了 <code>PostRepositoryInterface</code>。</p>
-<p><strong>PostService.php</strong><span class="margin-note-marker"><sup>11</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">11</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52PhpStormCodeCompletion_demo/commit/3227a9b15a1f441433758becf7e294bbab8a7f4e" target="_blank" rel="external">依賴注入改成 PostRepositoryInterface</a></span></span></span><br><img src="/images/phpstorm/phpstorm-refactor/refactor018.png" alt=""></p>
-<p>PhpStorm 會自動幫我們將所有依賴注入都改成用 interface 方式。</p>
-<h2 id="Move_Refactorings">Move Refactorings</h2><hr>
-<h2 id="Pull_Members_Up">Pull Members Up</h2><hr>
-<h2 id="Push_Members_Down">Push Members Down</h2><hr>
-<h2 id="Rename_Refactoring">Rename Refactoring</h2><hr>
-<h2 id="Safe_Delete">Safe Delete</h2><hr>
-<h2 id="Conclusion">Conclusion</h2><hr>
-<h2 id="Sample_Code">Sample Code</h2><hr>
-<p>完整的範例可以在我的 <a href="https://github.com/oomusou/" target="_blank" rel="external">GitHub</a> 上找到。</p>
-<h2 id="Reference">Reference</h2><hr>
-<p>PhpStorm Online Help, <a href="https://www.jetbrains.com/help/phpstorm/2016.2/refactoring-source-code.html" target="_blank" rel="external">Refactoring Source Code</a><br>Mukund Chaudhary, Ankur Kumar, <a href="https://www.packtpub.com/web-development/phpstorm-cookbook" target="_blank" rel="external">PhpStorm Cookbook</a> </p>
-]]></content>
-    <summary type="html">
-    <![CDATA[加快重構速度，讓我們可以持續地重構]]>
-    
-    </summary>
-    
-      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
-    
-  </entry>
   
   <entry>
     <title><![CDATA[如何在 PhpStorm 使用 Code Generation?]]></title>
@@ -2328,6 +2164,113 @@
       <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
     
       <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[如何在 PhpStorm 打造 Vue.js 開發環境?]]></title>
+    <link href="http://oomusou.io/vuejs/vuejs-on-phpstorm/"/>
+    <id>http://oomusou.io/vuejs/vuejs-on-phpstorm/</id>
+    <published>2016-06-08T15:33:02.000Z</published>
+    <updated>2016-06-12T10:58:09.000Z</updated>
+    <content type="html"><![CDATA[<p>我是一個很依賴語法提示才能寫程式的人，一來我記憶力很差，我記不了很多API，二來我很容易 typo，所以只能依賴語法提示用選的，所以寫 Vue.js 的第一件事情，就是在 PhpStorm 先把開發環境弄好。</p>
+<a id="more"></a>
+<h2 id="Version">Version</h2><hr>
+<p>Vue.js 1.0.24<br>PhpStorm 2016.1.2<br>Plugin : vue-for-idea 1.0.6<br>Plugin : Vue.js 1.1.0</p>
+<h2 id="Vue-js_on_PhpStorm">Vue.js on PhpStorm</h2><hr>
+<p>PhpStorm 要支援 Vue.js，主要有 3 個重點 :</p>
+<ol>
+<li><strong>Directive</strong> : 支援由 <code>v-</code> 開頭的 directive，如 <code>v-model</code>，以及其 shorthand，如 <code>@click</code>，<code>:href</code>。</li>
+<li><strong>API</strong> : 支援 Vue.js 的 API，如 <code>Vue.component()</code>。</li>
+<li><strong>vue 元件</strong> : 支援 Vue.js 自創的 component 格式，在 PhpStorm 正常顯示，沒有警告。</li>
+</ol>
+<h2 id="安裝_Vue-js_外掛">安裝 Vue.js 外掛</h2><hr>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps000.png" alt=""></p>
+<p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin </em></strong></p>
+<ul>
+<li>輸入 <code>vue</code>，按 <code>Search in repositories</code>。</li>
+</ul>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps001.png" alt=""></p>
+<p>會搜尋到 2 個 Vue.js 外掛 : <code>vue-for-idea</code> 與 <code>Vue.js</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>這兩個外掛並非 JetBrains 官方所出，而是由 open source 社群所維護，目前這兩個外掛仍在開發中，各自實現了一些功能，如 <code>Vue.js</code> 外掛支援 directive，卻不支援 shorthand，而 <code>vue-for-idea</code> 外掛支援 shorthand，卻不支援 directive，所以必須兩個外掛都裝，功能才會比較齊全。</span></span></span></p>
+<p>將這兩個外掛全部安裝。  </p>
+<p>先安裝 <code>vue-for-idea</code> 外掛。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps002.png" alt=""></p>
+<p>安裝完 <code>vue-for-idea</code> 外掛之後，需重新啟動 PhpStorm。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps003.png" alt=""></p>
+<p>安裝 <code>Vue.js</code> 外掛。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps004.png" alt=""></p>
+<p>安裝完 <code>Vue.js</code> 外掛之後，需重新啟動 PhpStorm。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps005.png" alt=""></p>
+<p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin </em></strong></p>
+<ul>
+<li>重新啟動後，確認 <code>vue-for-idea</code> 與 <code>Vue.js</code> 兩個外掛都已經安裝成功。</li>
+</ul>
+<h2 id="第一次執行_Vue-js">第一次執行 Vue.js</h2><hr>
+<p>Vue.js 提供很多方式安裝</p>
+<ol>
+<li>直接下載</li>
+<li>CDN</li>
+<li>NPM</li>
+<li>Vue-CLI</li>
+</ol>
+<p>本文先以最簡單的 CDN 方式安裝 Vue.js。</p>
+<p><strong>welcome.blade.php</strong><span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Vue10_demo/commit/888b8d71bd9792e2447a7c750e1c1ce89b7b99f3" target="_blank" rel="external">在 blade 載入 Vue.js</a></span></span></span><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">title</span>&gt;</span>Laravel<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"https://fonts.googleapis.com/css?family=Lato:100"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">            <span class="tag">html</span>, <span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100%</span></span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">display</span>:<span class="value"> table</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> <span class="number">100</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">'Lato'</span></span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">display</span>:<span class="value"> table-cell</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> middle</span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="class">.content</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="class">.title</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">96px</span></span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line">        </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"app"</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"title"</span>&gt;</span>Laravel 5<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">div</span>&gt;</span>@&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>45 行<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>直接以 CDN 載入 Vue.js。</p>
+<p>46 行<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>將 Vue.js 的程式碼寫在 <code>js/app.js</code>。</p>
+<p>42 行<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span>&gt;</span>@&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用 Vue.js 顯示 <code>message</code> 變數。</p>
+<p>加上 <code>@</code> 是為了告訴 Laravel 的 Blade 不要處理，交給 Vue.js 處理。</p>
+<p><strong>app.js</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Vue10_demo/commit/62fd031bf31125e1b7c9570c57017ab861b3c0fb" target="_blank" rel="external">新增 app.js</a></span></span></span><br><figure class="highlight javascript"><figcaption><span>public/js/app.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vue = &#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: <span class="string">'Vue.js 1'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(vue);</span><br></pre></td></tr></table></figure></p>
+<p>建立 <code>Vue</code> 物件，<code>vue</code> 為其 constructor，設定了 <code>el</code> 與 <code>data</code> 屬性。</p>
+<p>要將變數 <code>message</code> 為 <code>Vue.js 1</code> 的值，透過 data binding 顯示在 <code>welcome.blade.php</code>。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps010.png" alt=""></p>
+<p>若能看到 <code>Vue.js 1</code>，表示 Vue.js 已經正常啟動。</p>
+<h2 id="安裝_Vue-js_Library">安裝 Vue.js Library</h2><hr>
+<p>目前為止雖然可以正常執行 Vue.js，不過那僅代表瀏覽器執行正常，並不代表 PhpStorm 認識 Vue.js，PhpStorm 目前也還無法對 Vue.js 做語法提示。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps006.png" alt=""></p>
+<p>對於 Vue.js 的 CDN，PhpStorm 提出了警告，表示沒有本機版本，因此無法提供語法提示。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps007.png" alt=""></p>
+<p>將滑鼠放在反白的 CDN 上，按熱鍵 &#8997; + &#8617;，選擇 <code>Download library</code>。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps008.png" alt=""></p>
+<p>下載成功後，CDN 上的反白警告會消失。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps009.png" alt=""></p>
+<p><strong><em>PhpStorm -&gt; Preferences -&gt; Languages &amp; Frameworks -&gt; JavaScript -&gt; Libraries</em></strong></p>
+<ul>
+<li>會出現 <code>vue</code>，表示 Vue.js 的 external library 已經安裝成功，從此 PhpStorm 可以為 Vue.js 的 API 做語法提示。</li>
+</ul>
+<h2 id="Directive">Directive</h2><hr>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps011.png" alt=""></p>
+<p>只要輸入 <code>v</code>，就會顯示 Vue.js 專屬的 directive 了。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps015.png" alt=""></p>
+<p>也支援 <code>@</code> 開頭的 shorthand。</p>
+<h2 id="API">API</h2><hr>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps012.png" alt=""></p>
+<p>PhpStorm 的語法提示可以自動顯示 Vue.js 的 API 了。</p>
+<p>若為 Vue.js 的 API，會加上 <code>(vue)</code>。</p>
+<h2 id="Vue_元件">Vue 元件</h2><hr>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps013.png" alt=""></p>
+<p>按熱鍵 &#8963; + N 時，會出現 <code>Vue File</code>，可以讓我們直接新增 Vue 元件。</p>
+<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps014.png" alt=""></p>
+<p>自動產生預設的 Vue 元件框架。</p>
+<p>PhpStorm 可以認出 Vue 元件，且程式碼也不再出現任何錯誤警告。</p>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>PhpStorm 包含 WebStorm，所以也可以拿來開發 JavaScript，並對 JavaScript 加以測試、重構與偵錯，在 PhpStorm 打造好 Vue.js 的開發環境後，就可以開心的學習 Vue.js 了。</li>
+<li>目前 <code>vue-for-idea</code> 與 <code>Vue.js</code> 這兩個外掛仍在持續開發中，功能還不夠完整，希望 JetBrains 能趕快針對 Vue.js 開發出專屬套件，讓 PhpStorm 開發 Vue.js 更有效率。</li>
+</ul>
+<h2 id="Sample_Code">Sample Code</h2><hr>
+<p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52Vue10_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[在 PhpStorm 對 Vue.js 語法提示與語法變色]]>
+    
+    </summary>
+    
+      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
+    
+      <category term="Vue.js" scheme="http://oomusou.io/tags/Vue-js/"/>
     
   </entry>
   
