@@ -2,8 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/azure/azure_phpstorm_deploy/</loc>
+    <lastmod>2016-08-02T12:57:11.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-tdd-refactor/</loc>
     <lastmod>2016-07-29T07:02:36.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/phpstorm/phpstorm-refactor/</loc>
+    <lastmod>2016-07-29T06:54:05.000Z</lastmod>
   </url>
   
   <url>
@@ -129,11 +139,6 @@
   <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-github/</loc>
     <lastmod>2016-06-30T07:46:05.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/azure/azure_phpstorm_deploy/</loc>
-    <lastmod>2016-06-29T04:01:38.000Z</lastmod>
   </url>
   
   <url>
