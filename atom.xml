@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-07-28T23:02:55.000Z</updated>
+  <updated>2016-08-05T09:20:39.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -13,6 +13,112 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[如何在 Azure 使用 Laravel + MySQL?]]></title>
+    <link href="http://oomusou.io/azure/azure-phpstorm-mysql/"/>
+    <id>http://oomusou.io/azure/azure-phpstorm-mysql/</id>
+    <published>2016-08-02T12:23:43.000Z</published>
+    <updated>2016-08-05T09:20:39.000Z</updated>
+    <content type="html"><![CDATA[<p>Azure 是微軟的雲端平台，除了可以跑 PHP 與 Laravel 外，更可以跑我們喜愛的 MySQL 資料庫。本文將實際在 Azure 建立 MySQL 資料庫，透過 <code>.env</code> 的設定，讓 Laravel 可以連上 MySQL，並透過 PhpStorm 直接管理 Azure 雲端的 MySQL 資料庫。</p>
+<a id="more"></a>
+<h2 id="Motivation">Motivation</h2><hr>
+<p>在 <a href="/azure/azure-phpstorm-deploy/">如何使用 PhpStorm 部署 Laravel 到 Azure</a> 一文中，我們已經可以順利在 Azure 跑 PHP 7.0 與 Laravel，唯一就是 MySQL 還沒連上，本文將以前一篇為基礎，繼續設定 MySQL 部分。</p>
+<h2 id="Version">Version</h2><hr>
+<p>PHP 7.0.0<br>Laravel 5.2.41<br>PhpStorm 2016.2</p>
+<h2 id="建立_Laravel_專案">建立 Laravel 專案</h2><hr>
+<p>請參考 <a href="/azure/azure-phpstorm-deploy/">如何使用 PhpStorm 部署 Laravel 到 Azure</a>，將本機的 Laravel 專案部署到 Azure。</p>
+<h2 id="在_Azure_建立_MySQL_資料庫">在 Azure 建立 MySQL 資料庫</h2><hr>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql000.png" alt=""></p>
+<p><strong><em>New -&gt; Data + Analytics</em></strong>，選擇 <code>See all</code>。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql001.png" alt=""></p>
+<p>在 <code>Data services</code> 下選擇 <code>More</code>。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql002.png" alt=""></p>
+<p>選擇 <code>ClearDB</code> 的 <code>MySQL Database</code>。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql003.png" alt=""></p>
+<p>按 <code>Create</code> 建立 MySQL 資料庫。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql004.png" alt=""></p>
+<ul>
+<li><strong>Database Name</strong> : 輸入資料庫名稱。</li>
+<li><strong>Resource group</strong> : 可以新建 group，也可以使用目前既有 group，使用 group 的優點是方便管理，若要刪除可以整個 group 一起刪除。</li>
+<li><strong>Location</strong> : 選擇離我們最近的 <code>East Asia</code>。</li>
+</ul>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql005.png" alt=""></p>
+<ul>
+<li><strong>Pricing Tier</strong> : 選擇免費的 <code>Mercury</code>。</li>
+</ul>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql006.png" alt=""></p>
+<ul>
+<li><strong>Legal Terms</strong> : 確認是 <code>0.00 TWD/month</code>，按 <code>Purchases</code>。</li>
+</ul>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql007.png" alt=""></p>
+<p>建議將 <code>Pin to dashboard</code> 打勾，方便我們管理。</p>
+<p>按 <code>Create</code> 開始建立 MySQL 資料庫。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql008.png" alt=""></p>
+<p>MySQL 資料庫建立完成，會顯示 <code>Healthy</code>。</p>
+<h2 id="設定本機_-env">設定本機 .env</h2><hr>
+<p>MySQL 資料庫建立完成後，馬上來測試資料庫是否建立成功。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql009.png" alt=""></p>
+<p><strong><em>Settings -&gt; General -&gt; Properties</em></strong></p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql010.png" alt=""></p>
+<p>注意其 <code>HOSTNAME</code>、<code>POST</code>、<code>USERNAME</code>、<code>PASSWORD</code> 與 <code>CONNECTION STRING</code> 欄位。</p>
+<p>其中 <code>CONNECTION STRING</code> 的 <code>Database</code>，即為我們剛剛建立的資料庫。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql011.png" alt=""></p>
+<p>將本機 <code>.env</code> 的設定與 Azure 的設定一致。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql012.png" alt=""></p>
+<p>執行 <code>php artisan migrate</code>，若能成功執行 migration，表示 MySQL 資料庫已經順利建立成功。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql016.png" alt=""></p>
+<p>執行 seeding，將預設資料寫入 Azure 的 MySQL 資料庫。</p>
+<h2 id="設定_PhpStorm_Database">設定 PhpStorm Database</h2><hr>
+<p>目前為止，我們已經將資料 seeding 到 Azure 的 MySQL，不過還無法確定資料是否真的已經寫入成功，因此要設定 PhpStorm 的 Database 工具連到 Azure 查看資料。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql013.png" alt=""></p>
+<p>點選右側的 <code>Database</code>，按 <code>+</code> 新增資料庫連線。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql014.png" alt=""></p>
+<p><strong><em>Data Source -&gt; MySQL</em></strong>。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql015.png" alt=""></p>
+<p>將之前的 Azure 的 <code>Host</code>、<code>Database</code>、<code>User</code> 與 <code>Password</code> 設定填過來。</p>
+<p>按 <code>Test Connection</code> 測試是否可連線成功。</p>
+<p>若第一次在 PhpStorm 連接 MySQL，需安裝 MySQL 的 Java driver。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql017.png" alt=""></p>
+<p>PhpStorm 的 Database 工具可以看到 Azure MySQL 上所有的 table，也能看到 <code>posts</code> 上剛剛 seeding 的三筆資料。</p>
+<h2 id="設定_Azure_-env">設定 Azure .env</h2><p>資料已經上 Azure 的 MySQL了，不過在 Azure 上的 Laravel 還不認識我們剛剛建立的 MySQL 資料庫。</p>
+<p>Laravel 雖然提供了 <code>.env</code>，可以設定些敏感資訊，如資料庫連線。但預設 <code>.gitignore</code> 有排除 <code>.env</code>，所以並沒有上 GitHub，因此也不會上 Azure。</p>
+<p>我們須在 Azure 的 <code>Application settings</code> 設定資料庫連線資訊。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql019.png" alt=""></p>
+<p>選擇我們的 Laravel Web App。</p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql020.png" alt=""></p>
+<p><strong><em>Settings -&gt; General -&gt; Application Settings</em></strong></p>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql021.png" alt=""></p>
+<p>建立 <code>DB_CONNECTION</code>、<code>DB_HOST</code>、<code>DB_DATABASE</code>、<code>DB_USERNAME</code> 與 <code>DB_PASSWORD</code> 這些 key，並將 <code>.env</code> 的這些值設定在這裡。</p>
+<h2 id="在_Azure_執行_Laravel">在 Azure 執行 Laravel</h2><hr>
+<p><img src="/images/azure/azure-phpstorm-mysql/mysql018.png" alt=""></p>
+<p>Azure 上的 Laravel 已經能順利讀取到 Azure 上的 MySQL 了。</p>
+<h2 id="Conclusion">Conclusion</h2><hr>
+<ul>
+<li>Azure 雖然沒有原生支援 MySQL，但透過 ClearDB 所提供的 MySQL 服務，我們依然可以在 Azure 上使用 PHP + Laravel + MySQL。</li>
+</ul>
+<h2 id="Sample_Code">Sample Code</h2><hr>
+<p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52PhpStormAzureMySQL_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
+<h2 id="Reference">Reference</h2><hr>
+<ul>
+<li>Cephas Lin, <a href="https://azure.microsoft.com/zh-tw/documentation/articles/store-php-create-mysql-database/" target="_blank" rel="external">在 Azure 中建立 MySQL 資料庫並連接到此資料庫</a></li>
+<li>Mikhail Vink, <a href="https://confluence.jetbrains.com/display/PhpStorm/Working+with+Windows+Azure+SQL+Database+in+PhpStorm" target="_blank" rel="external">Working with Windows Azure SQL Database in PhpStorm</a></li>
+</ul>
+]]></content>
+    <summary type="html">
+    <![CDATA[在 Azure 一樣可以使用我們喜愛的 MySQL]]>
+    
+    </summary>
+    
+      <category term="Azure" scheme="http://oomusou.io/tags/Azure/"/>
+    
+      <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
+    
+      <category term="MySQL" scheme="http://oomusou.io/tags/MySQL/"/>
+    
+      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[如何在 PhpStorm 使用 Code Generation?]]></title>
@@ -1462,110 +1568,111 @@
   
   <entry>
     <title><![CDATA[如何使用 PhpStorm 部署 Laravel 到 Azure?]]></title>
-    <link href="http://oomusou.io/azure/azure_phpstorm_deploy/"/>
-    <id>http://oomusou.io/azure/azure_phpstorm_deploy/</id>
+    <link href="http://oomusou.io/azure/azure-phpstorm-deploy/"/>
+    <id>http://oomusou.io/azure/azure-phpstorm-deploy/</id>
     <published>2016-06-28T12:23:43.000Z</published>
-    <updated>2016-08-02T12:57:11.000Z</updated>
+    <updated>2016-08-05T06:19:26.000Z</updated>
     <content type="html"><![CDATA[<p>Azure 是微軟的雲端平台，也可以跑 PHP 與 Laravel，本文將以 PhpStorm 為工具，與 GitHub 結合，將來程式有任何變更，只要 push 到 GitHub，就會自動更新到 Azure，還可透過 PhpStorm 內建的工具管理 Azure。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
 <p>PHP 7.0<br>Laravel 5.2.39<br>PhpStorm 2016.1.2</p>
 <h2 id="建立_Laravel_專案">建立 Laravel 專案</h2><hr>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure000.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure000.png" alt=""></p>
 <p>啟動 PhpStorm，選擇 <code>Create New Project</code> 建立新專案。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure001.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure001.png" alt=""></p>
 <ul>
 <li><strong>專案類型</strong> :  <code>Composer Project</code>。</li>
 <li><strong>Location</strong> : Laravel 專案路徑與專案名稱</li>
 <li><strong>composer.phar</strong> : 選擇 <code>Use existing composer.phar</code>，輸入 <code>/usr/local/bin/composer</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>選擇 <code>Download composer.phar from getcomposer.org</code> 亦可，這種方式在 OS X 本機並不需要事先安裝 Composer，PhpStorm 會自動將 Composer 下載到目錄專案跟目錄下，唯此種方式安裝 package 將無法使用到 cache，必須從網路上下載，安裝時間較長，所以實務上建議使用 <code>Use existing composer.phar</code>。</span></span></span></li>
 <li><strong>Filter packages</strong> : 輸入 <code>laravel/laravel</code>，此為 Laravel 專案的 package 名稱。</li>
 </ul>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure002.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure002.png" alt=""></p>
 <p>將畫面向下卷，還有其他設定。</p>
 <ul>
 <li><strong>Version to install</strong> : 選擇 Laravel 版本，<code>&lt;default&gt;</code> 為 Laravel 最新版本。</li>
 <li><strong>Path to PHP executable</strong> : 指定 PHP 執行檔路徑，主要為了執行 Composer。</li>
 <li><strong>Command line parameters</strong> : Composer 參數，輸入 <code>prefer-dist</code>。</li>
 </ul>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure003.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure003.png" alt=""></p>
 <p>建立 Laravel 專案中，由於 Composer 需解析 package 相依性，需要一些時間。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure004.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure004.png" alt=""></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan serve</span><br></pre></td></tr></table></figure>
 <p>執行 PHP 內建 Http Server。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure005.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure005.png" alt=""></p>
 <p>Laravel 已經順利在 OS X 本機執行。</p>
 <h2 id="建立_Local_Git_Repository">建立 Local Git Repository</h2><hr>
 <p>實務上開發 Laravel 會搭配 Git 做版本控制，先在本機建立 local repository。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure006.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure006.png" alt=""></p>
 <p><strong><em>VCS -&gt; Import ino Version Control -&gt; Create Git Repository</em></strong></p>
 <p>建立 Git repository。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>相當於 <code>git init</code>。</span></span></span></p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure007.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure007.png" alt=""></p>
 <p>選擇 local repository 目錄，也就是目前專案目錄。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure008.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure008.png" alt=""></p>
 <p>下方出現 <code>Version Control</code>，並顯示有檔案尚未受 Git 管理，按 <code>browse</code> 顯示檔案。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure009.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure009.png" alt=""></p>
 <p>選擇專案目錄，按 <code>+</code> (Add to VCS) 將檔案加入 stage。<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>相當於 <code>git add .</code>。</span></span></span></p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure010.png" alt=""></p>
-<p>綠色檔案為加入 stage 的檔案，按 <code>VCS</code> (Commit Changes)。<br><img src="/images/azure/azure_phpstorm_deploy/azure011.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure010.png" alt=""></p>
+<p>綠色檔案為加入 stage 的檔案，按 <code>VCS</code> (Commit Changes)。<br><img src="/images/azure/azure-phpstorm-deploy/azure011.png" alt=""></p>
 <ul>
 <li>不要選擇 <code>Perform code analysis</code>。</li>
 <li><strong>Commit Message</strong> : Initial commit。</li>
 </ul>
 <p>按 <code>Commit</code> 寫檔案寫入 local repository。<span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>相當於 <code>git commit -m &quot;Initial commit&quot;</code>。</span></span></span></p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure012.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure012.png" alt=""></p>
 <p>Commit 成功後，下方會顯示 <code>xx files committed : initial commit</code>。</p>
 <h2 id="建立_Remote_GitHub_Repository">建立 Remote GitHub Repository</h2><hr>
 <p>將 local repository 上傳至 GitHub 建立 remote repository。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure017.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure017.png" alt=""></p>
 <p><strong><em>PhpStorm -&gt; Preferences -&gt; Version Control -&gt; GitHub</em></strong></p>
 <p>設定 GitHub 帳號。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure013.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure013.png" alt=""></p>
 <p><strong><em>VCS -&gt; Import into Version Control -&gt; Share Project on GitHub</em></strong></p>
 <p>將專案發佈到 GitHub。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure014.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure014.png" alt=""></p>
 <p>預設會使用專案名稱為 remote GitHub repository 名稱。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure015.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure015.png" alt=""></p>
 <p>在 GitHub 建立成功。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure016.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure016.png" alt=""></p>
 <p>在 GitHub 已經看到剛剛上傳的專案。</p>
 <h2 id="建立_Azure_Web_App">建立 Azure Web App</h2><hr>
-<p>之前都在 PhpStorm 操作，現在開始要在 <a href="http://protal.azure.com" target="_blank" rel="external">Azure portal</a> 操作了。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure018.png" alt=""></p>
+<p>之前都在 PhpStorm 操作，現在開始要在 <a href="https://portal.azure.com" target="_blank" rel="external">Azure portal</a> 操作了。</p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure018.png" alt=""></p>
 <p><strong><em>New -&gt; Web + Mobile -&gt; Web App</em></strong></p>
 <p>在 Azure 建立 Web App。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure019.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure019.png" alt=""></p>
 <ul>
 <li><strong>App name</strong> : 將來可以使用網址 <code>https://appname.azurewebsites.net</code> 連過來。</li>
 <li><strong>Resource Group</strong> : 可以新建 group，也可以使用目前既有 group，使用 group 的優點是方便管理，若要刪除可以整個 group 一起刪除。</li>
 </ul>
 <p>按 <code>App Service plan/location</code> 繼續設定。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure020.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure020.png" alt=""></p>
 <p>預設的 App Service plan 是在美國，並不適合我們，我們應該選離我們最近的主機，所以選擇 <code>Create New</code> 建立新的 App Service plan。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure021.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure021.png" alt=""></p>
 <ul>
 <li><strong>App Service plan</strong> : 替 App Service plan 選個名稱。</li>
 <li><strong>Location</strong> : 選擇主機位置，離我們最近的是 <code>East Asia</code>，位在香港。</li>
 <li><strong>Pricing tier</strong> : 預設為 <code>D1 Shared</code>，需要收費，由於我們只是測試用，可以選擇 <code>0</code> 元的方案。</li>
 </ul>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure022.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure022.png" alt=""></p>
 <p>預設只會顯示 <code>Recommended</code> 方案，按 <code>View all</code> 顯示全部方案。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure023.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure023.png" alt=""></p>
 <p>選擇 <code>0</code> 元的 <code>F1 Free</code> 方案。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure024.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure024.png" alt=""></p>
 <p>Pricing tier 改成 <code>F1 Free</code>，按 <code>OK</code> 繼續。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure025.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure025.png" alt=""></p>
 <p>App Service plan/location 改成我們想要的 <code>Laravel (East Asia)</code>。</p>
+<p>建議將 <code>Pin to dashboard</code> 打勾，方便我們管理。</p>
 <p>按 <code>Create</code> 開始建立 Web App。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure026.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure026.png" alt=""></p>
 <p>Azure 正在建立 Web App 中，需要一點時間。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure027.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure027.png" alt=""></p>
 <p>Web App 建立完成，會顯示 <code>Running</code>。</p>
 <h2 id="設定_PHP_版本">設定 PHP 版本</h2><hr>
 <p>Web App 預設的版本為 PHP 5.4，無法執行 Laravel，必須另外設定。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure028.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure028.png" alt=""></p>
 <p>選擇剛剛建立的 <code>Laravel52PhpStormAzure</code> Web App。</p>
 <p><strong><em>Settings -&gt; Application settings</em></strong>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure029.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure029.png" alt=""></p>
 <ul>
 <li><strong>PHP version</strong> : 選擇 <code>5.6</code> 或 <code>7.0</code>。</li>
 </ul>
@@ -1573,88 +1680,89 @@
 <h2 id="安裝_Composer">安裝 Composer</h2><hr>
 <p>Laravel 預設的 <code>.gitignore</code> 有排除 <code>vendor</code> 目錄，使得上傳到 GitHub 不包含 <code>vendor</code> ，所以將來 Azure 從 GitHub 所抓下來的檔也沒有 <code>vendor</code> 目錄。</p>
 <p>這使得 Azure 要自己下 <code>composer install</code> 安裝 <code>vendor</code> 下的 package，因此必須另外在 Azure 安裝 Composer。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure030.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure030.png" alt=""></p>
 <p><strong><em>Tools -&gt; Extensions</em></strong>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure031.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure031.png" alt=""></p>
 <p>按 <code>Add</code> 新增 extension。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure032.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure032.png" alt=""></p>
 <p>選 <code>Choose Extension</code> 與 <code>Composer</code>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure033.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure033.png" alt=""></p>
 <p>成功安裝 Composer。</p>
 <h2 id="設定_Deployment_Source">設定 Deployment Source</h2><hr>
 <p>設定 Azure 從 GitHub 抓資料，只要有任何 push 到 GitHub，Azure 都會自動更新。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure034.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure034.png" alt=""></p>
 <p><strong><em>Setting -&gt; Deployment source</em></strong>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure035.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure035.png" alt=""></p>
 <p> <strong><em>Choose Source -&gt; GitHub</em></strong></p>
 <p>Azure 支援多種 deployment source，本文以 GitHub 為例。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure036.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure036.png" alt=""></p>
 <p>選擇 GitHub 上的 <code>project</code> 與 <code>branch</code>。<span class="margin-note-marker"><sup>5</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">5</span>第一次連上 GitHub，會需要設定 authentication。</span></span></span></p>
 <p>按 <code>OK</code> 後，開始第一次從 GitHub 部署到 Azure。</p>
 <p>由於第一次部署，<code>composer install</code> 要重新安裝 <code>vendor</code> 目錄，需要一點時間。</p>
 <h2 id="設定_Remote_Host">設定 Remote Host</h2><hr>
 <p>設定 Web App 一定得設定虛擬目錄，但是之前的部署皆由 Azure 自動完成，到底 Azure 將我們的專案下載到什麼目錄下呢?</p>
 <p>讓我們再回到 PhpStorm。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure037.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure037.png" alt=""></p>
 <p><strong><em>PhpStorm -&gt; Preferences -&gt; Build, Execution Development -&gt; Deployment</em></strong></p>
 <p>按 <code>+</code> 新增。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure038.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure038.png" alt=""></p>
 <p>輸入自訂 server 名稱，選擇 type 為 <code>FTP</code>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure039.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure039.png" alt=""></p>
 <p>需要輸入 <code>FTP host</code>、<code>User name</code> 與 <code>Web server root url</code>。</p>
 <p>但此時我們還不知道該輸入什麼。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure040.png" alt=""></p>
-<p>回到 <a href="http://protal.azure.com" target="_blank" rel="external">Azure portal</a>。</p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure040.png" alt=""></p>
+<p>回到 <a href="https://portal.azure.com" target="_blank" rel="external">Azure portal</a>。</p>
 <p><strong><em>Settings -&gt; Properties</em></strong>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure044.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure044.png" alt=""></p>
 <ul>
 <li><code>URL</code> 為 <code>Web server root url</code>。</li>
 </ul>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure041.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure041.png" alt=""></p>
 <ul>
 <li><code>FTP/DEPLOYMENT USER</code> 為 <code>User name</code>。</li>
 <li><code>FTP HOST NAME</code> 為 <code>FTP host</code>。</li>
 </ul>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure042.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure042.png" alt=""></p>
 <p>再回到 PhpStorm，將 <code>FTP host</code>、<code>User name</code> 與 <code>Web server root url</code> 補上。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure043.png" alt=""></p>
+<div class="alert alert-info"><i class="fa fa-info"></i>  FTP host 不包含 <strong>ftp://</strong></div>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure043.png" alt=""></p>
 <p><strong><em>Tools -&gt; Deployment -&gt; Browse Remote Host</em></strong></p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure045.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure045.png" alt=""></p>
 <p>由 <code>Remote Host</code> 視窗，我們發現 Laravel 專案是放在 <code>site/wwwroot</code> 底下，所以 virtual root 應該設定在 <code>site/wwwroot/public</code>。</p>
 <h2 id="設定_Virtual_Root">設定 Virtual Root</h2><hr>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure046.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure046.png" alt=""></p>
 <p>再回到 <a href="http://protal.azure.com" target="_blank" rel="external">Azure portal</a>。</p>
 <p><strong><em>Settings -&gt; Application settings</em></strong>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure047.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure047.png" alt=""></p>
 <p>在 <code>Virtual application and directories</code> 下，將 virtual root 改成 <code>site\wwwroot\public</code>。</p>
 <p>最後記得按上方的 <code>Save</code> 存檔。</p>
 <h2 id="設定_-env">設定 .env</h2><hr>
 <p>Laravel 提供了 <code>.env</code>，可以設定些敏感資訊，如資料庫連線。預設 <code>.gitignore</code>有排除 <code>.env</code>，所以並沒有上 GitHub，因此也不會上 Azure。</p>
 <p>但 <code>.env</code> 的 <code>APP_KEY</code> 又是 Laravel 執行時所必要資訊，必須加以補上。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure046.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure046.png" alt=""></p>
 <p><strong><em>Settings -&gt; Application settings</em></strong>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure048.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure048.png" alt=""></p>
 <p>將本機的 <code>.env</code> 的 <code>APP_KEY</code> 內容加以複製。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure049.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure049.png" alt=""></p>
 <p>在 <code>App settings</code> 下新增 <code>APP_KEY</code>，將 <code>.env</code> 的 <code>APP_KEY</code> 值貼上。<span class="margin-note-marker"><sup>6</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">6</span>實務上 <code>.env</code> 的設定，都可以改設定在 Azure 的 <code>App settings</code>。</span></span></span></p>
 <p>最後記得按上方的 <code>Save</code> 存檔。</p>
 <h2 id="第一次在_Azure_執行_Laravel">第一次在 Azure 執行 Laravel</h2><hr>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure050.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure050.png" alt=""></p>
 <p>點擊 <code>URL</code>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure051.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure051.png" alt=""></p>
 <p>在 Azure 的網址上正確執行 Laravel。</p>
 <h2 id="修改並_Push_到_GitHub">修改並 Push 到 GitHub</h2><hr>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure052.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure052.png" alt=""></p>
 <p>將 <code>welcome.blade.php</code> 加以修改，由 <code>Laravel 5</code> 改成 <code>Hello Laravel</code>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure053.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure053.png" alt=""></p>
 <p>點擊下方的 <code>Version control</code> 標籤，按 <code>VCS</code> 將此次變更加以 commit。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure054.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure054.png" alt=""></p>
 <p>填入 commit message 後，按 <code>Commit and Push</code>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure055.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure055.png" alt=""></p>
 <p>按 <code>Push</code> 將直接 push 到 GitHub。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure056.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure056.png" alt=""></p>
 <p>Push 到 GitHub 成功。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure057.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure057.png" alt=""></p>
 <p>Azure 會自動從 GitHub 更新。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
@@ -2164,113 +2272,6 @@
       <category term="Laravel" scheme="http://oomusou.io/tags/Laravel/"/>
     
       <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[如何在 PhpStorm 打造 Vue.js 開發環境?]]></title>
-    <link href="http://oomusou.io/vuejs/vuejs-on-phpstorm/"/>
-    <id>http://oomusou.io/vuejs/vuejs-on-phpstorm/</id>
-    <published>2016-06-08T15:33:02.000Z</published>
-    <updated>2016-06-12T10:58:09.000Z</updated>
-    <content type="html"><![CDATA[<p>我是一個很依賴語法提示才能寫程式的人，一來我記憶力很差，我記不了很多API，二來我很容易 typo，所以只能依賴語法提示用選的，所以寫 Vue.js 的第一件事情，就是在 PhpStorm 先把開發環境弄好。</p>
-<a id="more"></a>
-<h2 id="Version">Version</h2><hr>
-<p>Vue.js 1.0.24<br>PhpStorm 2016.1.2<br>Plugin : vue-for-idea 1.0.6<br>Plugin : Vue.js 1.1.0</p>
-<h2 id="Vue-js_on_PhpStorm">Vue.js on PhpStorm</h2><hr>
-<p>PhpStorm 要支援 Vue.js，主要有 3 個重點 :</p>
-<ol>
-<li><strong>Directive</strong> : 支援由 <code>v-</code> 開頭的 directive，如 <code>v-model</code>，以及其 shorthand，如 <code>@click</code>，<code>:href</code>。</li>
-<li><strong>API</strong> : 支援 Vue.js 的 API，如 <code>Vue.component()</code>。</li>
-<li><strong>vue 元件</strong> : 支援 Vue.js 自創的 component 格式，在 PhpStorm 正常顯示，沒有警告。</li>
-</ol>
-<h2 id="安裝_Vue-js_外掛">安裝 Vue.js 外掛</h2><hr>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps000.png" alt=""></p>
-<p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin </em></strong></p>
-<ul>
-<li>輸入 <code>vue</code>，按 <code>Search in repositories</code>。</li>
-</ul>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps001.png" alt=""></p>
-<p>會搜尋到 2 個 Vue.js 外掛 : <code>vue-for-idea</code> 與 <code>Vue.js</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>這兩個外掛並非 JetBrains 官方所出，而是由 open source 社群所維護，目前這兩個外掛仍在開發中，各自實現了一些功能，如 <code>Vue.js</code> 外掛支援 directive，卻不支援 shorthand，而 <code>vue-for-idea</code> 外掛支援 shorthand，卻不支援 directive，所以必須兩個外掛都裝，功能才會比較齊全。</span></span></span></p>
-<p>將這兩個外掛全部安裝。  </p>
-<p>先安裝 <code>vue-for-idea</code> 外掛。</p>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps002.png" alt=""></p>
-<p>安裝完 <code>vue-for-idea</code> 外掛之後，需重新啟動 PhpStorm。</p>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps003.png" alt=""></p>
-<p>安裝 <code>Vue.js</code> 外掛。</p>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps004.png" alt=""></p>
-<p>安裝完 <code>Vue.js</code> 外掛之後，需重新啟動 PhpStorm。</p>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps005.png" alt=""></p>
-<p><strong><em> PhpStorm -&gt; Preferences -&gt; Plugin </em></strong></p>
-<ul>
-<li>重新啟動後，確認 <code>vue-for-idea</code> 與 <code>Vue.js</code> 兩個外掛都已經安裝成功。</li>
-</ul>
-<h2 id="第一次執行_Vue-js">第一次執行 Vue.js</h2><hr>
-<p>Vue.js 提供很多方式安裝</p>
-<ol>
-<li>直接下載</li>
-<li>CDN</li>
-<li>NPM</li>
-<li>Vue-CLI</li>
-</ol>
-<p>本文先以最簡單的 CDN 方式安裝 Vue.js。</p>
-<p><strong>welcome.blade.php</strong><span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Vue10_demo/commit/888b8d71bd9792e2447a7c750e1c1ce89b7b99f3" target="_blank" rel="external">在 blade 載入 Vue.js</a></span></span></span><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="doctype">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">title</span>&gt;</span>Laravel<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">link</span> <span class="attribute">href</span>=<span class="value">"https://fonts.googleapis.com/css?family=Lato:100"</span> <span class="attribute">rel</span>=<span class="value">"stylesheet"</span> <span class="attribute">type</span>=<span class="value">"text/css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="title">style</span>&gt;</span><span class="css"></span><br><span class="line">            <span class="tag">html</span>, <span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">100%</span></span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="tag">body</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">0</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100%</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">display</span>:<span class="value"> table</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> <span class="number">100</span></span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">font-family</span>:<span class="value"> <span class="string">'Lato'</span></span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="class">.container</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">display</span>:<span class="value"> table-cell</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">vertical-align</span>:<span class="value"> middle</span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="class">.content</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center</span></span>;</span><br><span class="line">                <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block</span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line"></span><br><span class="line">            <span class="class">.title</span> <span class="rules">&#123;</span><br><span class="line">                <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">96px</span></span></span>;</span><br><span class="line">            &#125;</span></span><br><span class="line">        </span><span class="tag">&lt;/<span class="title">style</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"app"</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"title"</span>&gt;</span>Laravel 5<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="title">div</span>&gt;</span>@&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>45 行<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>直接以 CDN 載入 Vue.js。</p>
-<p>46 行<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"js/app.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>將 Vue.js 的程式碼寫在 <code>js/app.js</code>。</p>
-<p>42 行<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span>&gt;</span>@&#123;&#123; message &#125;&#125;<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>使用 Vue.js 顯示 <code>message</code> 變數。</p>
-<p>加上 <code>@</code> 是為了告訴 Laravel 的 Blade 不要處理，交給 Vue.js 處理。</p>
-<p><strong>app.js</strong><span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>GitHub Commit : <a href="https://github.com/oomusou/Laravel52Vue10_demo/commit/62fd031bf31125e1b7c9570c57017ab861b3c0fb" target="_blank" rel="external">新增 app.js</a></span></span></span><br><figure class="highlight javascript"><figcaption><span>public/js/app.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vue = &#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        message: <span class="string">'Vue.js 1'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(vue);</span><br></pre></td></tr></table></figure></p>
-<p>建立 <code>Vue</code> 物件，<code>vue</code> 為其 constructor，設定了 <code>el</code> 與 <code>data</code> 屬性。</p>
-<p>要將變數 <code>message</code> 為 <code>Vue.js 1</code> 的值，透過 data binding 顯示在 <code>welcome.blade.php</code>。</p>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps010.png" alt=""></p>
-<p>若能看到 <code>Vue.js 1</code>，表示 Vue.js 已經正常啟動。</p>
-<h2 id="安裝_Vue-js_Library">安裝 Vue.js Library</h2><hr>
-<p>目前為止雖然可以正常執行 Vue.js，不過那僅代表瀏覽器執行正常，並不代表 PhpStorm 認識 Vue.js，PhpStorm 目前也還無法對 Vue.js 做語法提示。</p>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps006.png" alt=""></p>
-<p>對於 Vue.js 的 CDN，PhpStorm 提出了警告，表示沒有本機版本，因此無法提供語法提示。</p>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps007.png" alt=""></p>
-<p>將滑鼠放在反白的 CDN 上，按熱鍵 &#8997; + &#8617;，選擇 <code>Download library</code>。</p>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps008.png" alt=""></p>
-<p>下載成功後，CDN 上的反白警告會消失。</p>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps009.png" alt=""></p>
-<p><strong><em>PhpStorm -&gt; Preferences -&gt; Languages &amp; Frameworks -&gt; JavaScript -&gt; Libraries</em></strong></p>
-<ul>
-<li>會出現 <code>vue</code>，表示 Vue.js 的 external library 已經安裝成功，從此 PhpStorm 可以為 Vue.js 的 API 做語法提示。</li>
-</ul>
-<h2 id="Directive">Directive</h2><hr>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps011.png" alt=""></p>
-<p>只要輸入 <code>v</code>，就會顯示 Vue.js 專屬的 directive 了。</p>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps015.png" alt=""></p>
-<p>也支援 <code>@</code> 開頭的 shorthand。</p>
-<h2 id="API">API</h2><hr>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps012.png" alt=""></p>
-<p>PhpStorm 的語法提示可以自動顯示 Vue.js 的 API 了。</p>
-<p>若為 Vue.js 的 API，會加上 <code>(vue)</code>。</p>
-<h2 id="Vue_元件">Vue 元件</h2><hr>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps013.png" alt=""></p>
-<p>按熱鍵 &#8963; + N 時，會出現 <code>Vue File</code>，可以讓我們直接新增 Vue 元件。</p>
-<p><img src="/images/vuejs/vuejs-on-phpstorm/vueps014.png" alt=""></p>
-<p>自動產生預設的 Vue 元件框架。</p>
-<p>PhpStorm 可以認出 Vue 元件，且程式碼也不再出現任何錯誤警告。</p>
-<h2 id="Conclusion">Conclusion</h2><hr>
-<ul>
-<li>PhpStorm 包含 WebStorm，所以也可以拿來開發 JavaScript，並對 JavaScript 加以測試、重構與偵錯，在 PhpStorm 打造好 Vue.js 的開發環境後，就可以開心的學習 Vue.js 了。</li>
-<li>目前 <code>vue-for-idea</code> 與 <code>Vue.js</code> 這兩個外掛仍在持續開發中，功能還不夠完整，希望 JetBrains 能趕快針對 Vue.js 開發出專屬套件，讓 PhpStorm 開發 Vue.js 更有效率。</li>
-</ul>
-<h2 id="Sample_Code">Sample Code</h2><hr>
-<p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52Vue10_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[在 PhpStorm 對 Vue.js 語法提示與語法變色]]>
-    
-    </summary>
-    
-      <category term="PhpStorm" scheme="http://oomusou.io/tags/PhpStorm/"/>
-    
-      <category term="Vue.js" scheme="http://oomusou.io/tags/Vue-js/"/>
     
   </entry>
   

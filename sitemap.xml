@@ -2,8 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://oomusou.io/azure/azure_phpstorm_deploy/</loc>
-    <lastmod>2016-08-02T12:57:11.000Z</lastmod>
+    <loc>http://oomusou.io/azure/azure-phpstorm-mysql/</loc>
+    <lastmod>2016-08-05T09:20:39.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/hexo/freemind-tag-overview/</loc>
+    <lastmod>2016-08-05T06:33:26.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/azure/azure-phpstorm-deploy/</loc>
+    <lastmod>2016-08-05T06:19:26.000Z</lastmod>
   </url>
   
   <url>
@@ -277,22 +287,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel42/laravel-42-phpunit/</loc>
+    <loc>http://oomusou.io/laravel/laravel-service-provider/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://oomusou.io/laravel/laravel42/laravel-42-presenter/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/mamp/mamp-setup/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/osx/iterm2-setup/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -307,7 +307,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/osx/osx-symbol-html/</loc>
+    <loc>http://oomusou.io/mamp/mamp-setup/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -322,7 +322,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/php/php-cs/</loc>
+    <loc>http://oomusou.io/osx/iterm2-setup/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -333,6 +333,16 @@
   
   <url>
     <loc>http://oomusou.io/laravel/homestead/homestead-osx/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/php/php-bindTo/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/php/php-cs/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -372,7 +382,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-service-provider/</loc>
+    <loc>http://oomusou.io/laravel/laravel42/laravel-42-phpunit/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -393,16 +403,6 @@
   
   <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-phpdoc/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/phpstorm/phpstorm-spellcheck/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/refactor/refactor-remove-assignments-to-parameters/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -432,7 +432,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/hexo/freemind-tag-overview/</loc>
+    <loc>http://oomusou.io/phpstorm/phpstorm-spellcheck/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -442,7 +442,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-91/</loc>
+    <loc>http://oomusou.io/refactor/refactor-remove-assignments-to-parameters/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -453,6 +453,11 @@
   
   <url>
     <loc>http://oomusou.io/ci/travis-ci-setup/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/tdd/tdd-91/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -472,7 +477,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/php/php-bindTo/</loc>
+    <loc>http://oomusou.io/osx/osx-symbol-html/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
