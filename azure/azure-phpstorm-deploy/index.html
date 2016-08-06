@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="使用有效率的工具部署 Laravel">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-08-06T03:16:12.000Z">
+<meta property="og:updated_time" content="2016-08-06T12:01:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用 PhpStorm 部署 Laravel 到 Azure?">
 <meta name="twitter:description" content="使用有效率的工具部署 Laravel">
@@ -206,7 +206,7 @@
 <p>Web App 預設的版本為 PHP 5.4，無法執行 Laravel，必須另外設定。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure028.png" alt=""></p>
 <p>選擇剛剛建立的 <code>Laravel52PhpStormAzure</code> Web App。</p>
-<p><strong><em>Settings -&gt; Application settings</em></strong>。</p>
+<p><strong><em>Settings -&gt; General -&gt; Application settings</em></strong>。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure029.png" alt=""></p>
 <ul>
 <li><strong>PHP version</strong> : 選擇 <code>5.6</code> 或 <code>7.0</code>。</li>
@@ -216,7 +216,7 @@
 <p>Laravel 預設的 <code>.gitignore</code> 有排除 <code>vendor</code> 目錄，使得上傳到 GitHub 不包含 <code>vendor</code> ，所以將來 Azure 從 GitHub 所抓下來的檔也沒有 <code>vendor</code> 目錄。</p>
 <p>這使得 Azure 要自己下 <code>composer install</code> 安裝 <code>vendor</code> 下的 package，因此必須另外在 Azure 安裝 Composer。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure030.png" alt=""></p>
-<p><strong><em>Tools -&gt; Extensions</em></strong>。</p>
+<p><strong><em>Tools -&gt; Develop -&gt; Extensions</em></strong>。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure031.png" alt=""></p>
 <p>按 <code>Add</code> 新增 extension。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure032.png" alt=""></p>
@@ -226,7 +226,7 @@
 <h2 id="設定_Deployment_Source">設定 Deployment Source</h2><hr>
 <p>設定 Azure 從 GitHub 抓資料，只要有任何 push 到 GitHub，Azure 都會自動更新。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure034.png" alt=""></p>
-<p><strong><em>Setting -&gt; Deployment source</em></strong>。</p>
+<p><strong><em>Setting -&gt; Publishing -&gt; Deployment source</em></strong>。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure035.png" alt=""></p>
 <p> <strong><em>Choose Source -&gt; GitHub</em></strong></p>
 <p>Azure 支援多種 deployment source，本文以 GitHub 為例。</p>
@@ -247,7 +247,7 @@
 <p>但此時我們還不知道該輸入什麼。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure040.png" alt=""></p>
 <p>回到 <a href="https://portal.azure.com" target="_blank" rel="external">Azure portal</a>。</p>
-<p><strong><em>Settings -&gt; Properties</em></strong>。</p>
+<p><strong><em>Settings -&gt; General -&gt; Properties</em></strong>。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure044.png" alt=""></p>
 <ul>
 <li><code>URL</code> 為 <code>Web server root url</code>。</li>
@@ -267,7 +267,7 @@
 <h2 id="設定_Virtual_Root">設定 Virtual Root</h2><hr>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure046.png" alt=""></p>
 <p>再回到 <a href="http://protal.azure.com" target="_blank" rel="external">Azure portal</a>。</p>
-<p><strong><em>Settings -&gt; Application settings</em></strong>。</p>
+<p><strong><em>Settings -&gt; General -&gt; Application settings</em></strong>。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure047.png" alt=""></p>
 <p>在 <code>Virtual application and directories</code> 下，將 virtual root 改成 <code>site\wwwroot\public</code>。</p>
 <p>最後記得按上方的 <code>Save</code> 存檔。</p>
@@ -275,7 +275,7 @@
 <p>Laravel 提供了 <code>.env</code>，可以設定些敏感資訊，如資料庫連線。預設 <code>.gitignore</code>有排除 <code>.env</code>，所以並沒有上 GitHub，因此也不會上 Azure。</p>
 <p>但 <code>.env</code> 的 <code>APP_KEY</code> 又是 Laravel 執行時所必要資訊，必須加以補上。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure046.png" alt=""></p>
-<p><strong><em>Settings -&gt; Application settings</em></strong>。</p>
+<p><strong><em>Settings -&gt; General -&gt; Application settings</em></strong>。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure048.png" alt=""></p>
 <p>將本機的 <code>.env</code> 的 <code>APP_KEY</code> 內容加以複製。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure049.png" alt=""></p>
