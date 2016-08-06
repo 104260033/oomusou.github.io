@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-08-05T09:37:10.000Z</updated>
+  <updated>2016-08-06T03:11:22.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/azure/azure-phpstorm-mysql/"/>
     <id>http://oomusou.io/azure/azure-phpstorm-mysql/</id>
     <published>2016-08-02T12:23:43.000Z</published>
-    <updated>2016-08-05T09:37:10.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>Azure 是微軟的雲端平台，除了可以跑 PHP 與 Laravel 外，更可以跑我們喜愛的 MySQL 資料庫。本文將實際在 Azure 建立 MySQL 資料庫，透過 <code>.env</code> 的設定，讓 Laravel 可以連上 MySQL，並透過 PhpStorm 直接管理 Azure 雲端的 MySQL 資料庫。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -125,7 +125,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-code-generation/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-code-generation/</id>
     <published>2016-07-28T12:23:43.000Z</published>
-    <updated>2016-07-28T23:02:55.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>實務上開發專案時，有一些程式碼會不斷的出現，這時可靠 PhpStorm 的 Code Generation 幫我們產生這些 code snippet，除此之外，我們也可以將自己的 code snippet 加入 Live Template，可加快發開速度，並減少 typo。<br><a id="more"></a></p>
 <h2 id="Version">Version</h2><hr>
 <p>PHP 7.0.8<br>Laravel 5.2.41<br>PhpStorm 2016.2</p>
@@ -308,7 +308,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-code-completion/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-code-completion/</id>
     <published>2016-07-25T12:23:43.000Z</published>
-    <updated>2016-07-28T15:43:59.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>PHP 進入了物件導向與 framework 時代之後，出現了大量的 namespace、class、interface 與 method，基本上這些東西已經很難用記憶的方式來寫程式，必須靠工具輔助。PhpStorm 的 Code Completion 幫我們處理了大部分的東西，讓我們只要用選的就可以開發程式，一來開發速度變快，二來也可以減少 typo，是 modern PHP 的關鍵。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -391,7 +391,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-code-inspection/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-code-inspection/</id>
     <published>2016-07-24T12:23:43.000Z</published>
-    <updated>2016-07-28T07:55:22.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>PHP 不需編譯，只要存檔就可執行，優點是很方便，缺點是很多程式語法上的錯誤必須在瀏覽器執行才能發現。PhpStorm 的 Code Inspection 就相當於編譯器，在程式開發階段就可檢查語法上的錯誤，再搭配單元測試檢查邏輯上的錯誤，如此雙重保障，就能提早發現錯誤加以解決，降低除錯成本。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -496,7 +496,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-project-template/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-project-template/</id>
     <published>2016-07-23T12:23:43.000Z</published>
-    <updated>2016-07-24T00:21:58.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>PhpStorm 2016.2 提供一個新功能，可以將專案打包成 project template，以後新建專案時，可以選擇此 template 直接重建專案，如常用的 package 與 codebase 可以先打包好，將來要建立新專案就很方便。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -572,7 +572,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/</id>
     <published>2016-07-18T12:23:43.000Z</published>
-    <updated>2016-07-22T10:01:27.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>Xdebug 是 PhpStorm debug 的必備工具，但是啟動 Xdebug 又會使 Composer 變慢，實務上很兩難，這個問題在 PhpStorm 2016.2 得到完美解決，平時不用開啟 Xdebug，PhpStorm 會在需要 debug 時才自動啟動 Xdebug，不會影響 Composer 執行速度。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -635,7 +635,7 @@
     <link href="http://oomusou.io/dp/dp-nullobject/"/>
     <id>http://oomusou.io/dp/dp-nullobject/</id>
     <published>2016-07-15T12:23:43.000Z</published>
-    <updated>2016-07-29T00:24:58.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>當我們透過 Eloquent 對資料庫抓資料時，由於 <code>where()</code> 的條件可能撈不到資料，導致 <code>first()</code> 傳會 <code>null</code>，若再對 <code>null</code> 物件的欄位屬性做存取，會出現 <code>Trying to get property of non-object</code> 的錯誤訊息，當然有各種方法避開這個錯誤，但比較理想的方式是引入 <code>Null Object</code> 模式。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -713,7 +713,7 @@
     <link href="http://oomusou.io/tdd/tdd-collection-assertion/"/>
     <id>http://oomusou.io/tdd/tdd-collection-assertion/</id>
     <published>2016-07-09T12:23:43.000Z</published>
-    <updated>2016-07-11T01:34:38.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p><code>Collection</code> 並非 PHP 原生的型別，是 Laravel 所擴充，因此 PHPUnit 並無法直接對其做 assertion，本文介紹兩種方式，一種是使用 PHPUnit 的 <code>assertArraySubset()</code>，一種是自己寫 Collection Macro，各有其優缺點，可視需求決定要使用哪種方法。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -784,7 +784,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-refactor-di/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-refactor-di/</id>
     <published>2016-07-08T12:23:43.000Z</published>
-    <updated>2016-07-08T14:46:38.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>為了可測試性與低耦合，我們會使用<code>依賴注入</code>取代 <code>new</code> 建立物件，對於 legacy code，當然可以使用手動的方式重構，透過 PhpStorm，我們可以使用更簡單的方式將 <code>new</code> 重構成 <code>依賴注入</code>。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -857,7 +857,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-refactor-closure/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-refactor-closure/</id>
     <published>2016-07-07T12:23:43.000Z</published>
-    <updated>2016-07-08T12:42:54.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>在實務上，我們常常會遇到將重複程式碼重構成 closure 的需求，PhpStorm 沒辦法直接重構，需透過一些技巧。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -941,7 +941,7 @@
     <link href="http://oomusou.io/ip/ip-motivation/"/>
     <id>http://oomusou.io/ip/ip-motivation/</id>
     <published>2016-07-04T12:23:43.000Z</published>
-    <updated>2016-07-10T03:17:31.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>以軟體成本的角度，闡明使用模式除了可以增加程式可讀性，還可大幅降低維護成本。<br><a id="more"></a></p>
 <h2 id="Motivation">Motivation</h2><hr>
 <p>本文為 Kent Beck 的 <a href="https://www.amazon.com/Implementation-Patterns-Kent-Beck/dp/0321413091" target="_blank" rel="external">Implementation Patterns</a> 一書的讀書筆記，主要是整理給自己複習用，並加上自己的腦補。</p>
@@ -992,7 +992,7 @@
     <link href="http://oomusou.io/ip/ip-theory/"/>
     <id>http://oomusou.io/ip/ip-theory/</id>
     <published>2016-07-01T12:23:43.000Z</published>
-    <updated>2016-07-13T00:59:21.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>此章討論<code>程式設計理論</code>，提出了 3 條<code>程式設計價值觀</code>與 6 條<code>程式設計原則</code>，這些都是所有程式語言都能使用的普世價值觀與原則，當我們遇到一個全新的問題，沒有模式可以使用時，可以轉而思考這些價值觀與原則；當我們學習新的程式語言時，也可以藉由這些價值觀與原則為起點，一樣可以寫出優秀的程式碼。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -1276,7 +1276,7 @@
     <link href="http://oomusou.io/ip/ip-patterns/"/>
     <id>http://oomusou.io/ip/ip-patterns/</id>
     <published>2016-06-30T12:23:43.000Z</published>
-    <updated>2016-07-10T03:17:43.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>將<strong>模式</strong>做更深入的探討，包含其起源、特性與影響，讓我們更能接受模式這個概念。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -1360,7 +1360,7 @@
     <link href="http://oomusou.io/ip/ip-intro/"/>
     <id>http://oomusou.io/ip/ip-intro/</id>
     <published>2016-06-29T12:23:43.000Z</published>
-    <updated>2016-07-10T03:16:51.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>介紹本書主要的目標、章節安排，心法與學習方式，並對<strong>模式</strong>一詞下了定義，也針對實作模式與設計模式的差異加以討論。</p>
 <a id="more"></a>
 <h2 id="Motivation">Motivation</h2><hr>
@@ -1465,7 +1465,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-github/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-github/</id>
     <published>2016-06-29T04:23:43.000Z</published>
-    <updated>2016-06-30T07:46:05.000Z</updated>
+    <updated>2016-08-06T03:14:31.000Z</updated>
     <content type="html"><![CDATA[<p>若要將專案發佈到 GitHub，實務上除了先在本機建立 local git repository 外，還要在 GitHub 建立 remote git repository，然後建立 remote branch，最後才能 push 到 GitHub，這些動作都可以在 PhpStorm 內簡單的完成。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -1473,73 +1473,73 @@
 <h2 id="Motivation">Motivation</h2><hr>
 <p>之前要將專案發佈到 GitHub，都是乖乖的下指令，但指令實在記不起來，只能複製貼上，在<a href="/azure/azure_phpstorm_deploy/">如何使用 PhpStorm 部署 Laravel 到 Azure?</a> 一文中，發現 PhpStorm 亦提供完整的圖形介面支援 Git 與 GitHub，讓我們可以使用更直覺的方式完成。</p>
 <h2 id="建立_Laravel_專案">建立 Laravel 專案</h2><hr>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure000.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure000.png" alt=""></p>
 <p>啟動 PhpStorm，選擇 <code>Create New Project</code> 建立新專案。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure001.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure001.png" alt=""></p>
 <ul>
 <li><strong>專案類型</strong> :  <code>Composer Project</code>。</li>
 <li><strong>Location</strong> : Laravel 專案路徑與專案名稱</li>
 <li><strong>composer.phar</strong> : 選擇 <code>Use existing composer.phar</code>，輸入 <code>/usr/local/bin/composer</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>選擇 <code>Download composer.phar from getcomposer.org</code> 亦可，這種方式在 OS X 本機並不需要事先安裝 Composer，PhpStorm 會自動將 Composer 下載到目錄專案跟目錄下，唯此種方式安裝 package 將無法使用到 cache，必須從網路上下載，安裝時間較長，所以實務上建議使用 <code>Use existing composer.phar</code>。</span></span></span></li>
 <li><strong>Filter packages</strong> : 輸入 <code>laravel/laravel</code>，此為 Laravel 專案的 package 名稱。</li>
 </ul>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure002.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure002.png" alt=""></p>
 <p>將畫面向下卷，還有其他設定。</p>
 <ul>
 <li><strong>Version to install</strong> : 選擇 Laravel 版本，<code>&lt;default&gt;</code> 為 Laravel 最新版本。</li>
 <li><strong>Path to PHP executable</strong> : 指定 PHP 執行檔路徑，主要為了執行 Composer。</li>
 <li><strong>Command line parameters</strong> : Composer 參數，輸入 <code>prefer-dist</code>。</li>
 </ul>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure003.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure003.png" alt=""></p>
 <p>建立 Laravel 專案中，由於 Composer 需解析 package 相依性，需要一些時間。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure004.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure004.png" alt=""></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan serve</span><br></pre></td></tr></table></figure>
 <p>執行 PHP 內建 Http Server。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure005.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure005.png" alt=""></p>
 <p>Laravel 已經順利在 OS X 本機執行。</p>
 <h2 id="建立_Local_Git_Repository">建立 Local Git Repository</h2><hr>
 <p>實務上開發 Laravel 會搭配 Git 做版本控制，先在本機建立 local repository。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure006.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure006.png" alt=""></p>
 <p><strong><em>VCS -&gt; Import ino Version Control -&gt; Create Git Repository</em></strong></p>
 <p>建立 Git repository。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>相當於 <code>git init</code>。</span></span></span></p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure007.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure007.png" alt=""></p>
 <p>選擇 local repository 目錄，也就是目前專案目錄。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure008.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure008.png" alt=""></p>
 <p>下方出現 <code>Version Control</code>，並顯示有檔案尚未受 Git 管理，按 <code>browse</code> 顯示檔案。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure009.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure009.png" alt=""></p>
 <p>選擇專案目錄，按 <code>+</code> (Add to VCS) 將檔案加入 stage。<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>相當於 <code>git add .</code>。</span></span></span></p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure010.png" alt=""></p>
-<p>綠色檔案為加入 stage 的檔案，按 <code>VCS</code> (Commit Changes)。<br><img src="/images/azure/azure_phpstorm_deploy/azure011.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure010.png" alt=""></p>
+<p>綠色檔案為加入 stage 的檔案，按 <code>VCS</code> (Commit Changes)。<br><img src="/images/azure/azure-phpstorm-deploy/azure011.png" alt=""></p>
 <ul>
 <li>不要選擇 <code>Perform code analysis</code>。</li>
 <li><strong>Commit Message</strong> : Initial commit。</li>
 </ul>
 <p>按 <code>Commit</code> 寫檔案寫入 local repository。<span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>相當於 <code>git commit -m &quot;Initial commit&quot;</code>。</span></span></span></p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure012.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure012.png" alt=""></p>
 <p>Commit 成功後，下方會顯示 <code>xx files committed : initial commit</code>。</p>
 <h2 id="建立_Remote_GitHub_Repository">建立 Remote GitHub Repository</h2><hr>
 <p>將 local repository 上傳至 GitHub 建立 remote repository。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure017.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure017.png" alt=""></p>
 <p><strong><em>PhpStorm -&gt; Preferences -&gt; Version Control -&gt; GitHub</em></strong></p>
 <p>設定 GitHub 帳號。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure013.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure013.png" alt=""></p>
 <p><strong><em>VCS -&gt; Import into Version Control -&gt; Share Project on GitHub</em></strong></p>
 <p>將專案發佈到 GitHub。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure014.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure014.png" alt=""></p>
 <p>預設會使用專案名稱為 remote GitHub repository 名稱。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure015.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure015.png" alt=""></p>
 <p>在 GitHub 建立成功。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure016.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure016.png" alt=""></p>
 <p>在 GitHub 已經看到剛剛上傳的專案。</p>
 <h2 id="修改並_Push_到_GitHub">修改並 Push 到 GitHub</h2><hr>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure052.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure052.png" alt=""></p>
 <p>將 <code>welcome.blade.php</code> 加以修改，由 <code>Laravel 5</code> 改成 <code>Hello Laravel</code>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure053.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure053.png" alt=""></p>
 <p>點擊下方的 <code>Version control</code> 標籤，按 <code>VCS</code> 將此次變更加以 commit。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure054.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure054.png" alt=""></p>
 <p>填入 commit message 後，按 <code>Commit and Push</code>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure055.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure055.png" alt=""></p>
 <p>按 <code>Push</code> 將直接 push 到 GitHub。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure056.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure056.png" alt=""></p>
 <p>Push 到 GitHub 成功。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
@@ -1571,7 +1571,7 @@
     <link href="http://oomusou.io/azure/azure-phpstorm-deploy/"/>
     <id>http://oomusou.io/azure/azure-phpstorm-deploy/</id>
     <published>2016-06-28T12:23:43.000Z</published>
-    <updated>2016-08-05T06:19:26.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>Azure 是微軟的雲端平台，也可以跑 PHP 與 Laravel，本文將以 PhpStorm 為工具，與 GitHub 結合，將來程式有任何變更，只要 push 到 GitHub，就會自動更新到 Azure，還可透過 PhpStorm 內建的工具管理 Azure。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -1801,7 +1801,7 @@
     <link href="http://oomusou.io/phpstorm/phpstorm-collection-debug/"/>
     <id>http://oomusou.io/phpstorm/phpstorm-collection-debug/</id>
     <published>2016-06-19T12:23:43.000Z</published>
-    <updated>2016-07-11T01:34:20.000Z</updated>
+    <updated>2016-08-06T03:11:22.000Z</updated>
     <content type="html"><![CDATA[<p>Laravel 的 <code>Collection</code> 在實務上非常好用，除了 Eloquent 直接回傳 <code>Collection</code> 外，還擴充了很多 method，讓我們可以使用 higher order function 與 fluent 風格開發，讓程式可讀性更高。不過 <code>Collection</code> 的除錯就比較麻煩，本文使用 PhpStorm 內建的 <strong>Watches</strong>，讓我們可以在不用修改程式碼的前提下，快速對 <code>Collection</code> 除錯。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>

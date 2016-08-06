@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="直接在 PhpStorm 內 push 到 GitHub">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-06-30T07:46:05.000Z">
+<meta property="og:updated_time" content="2016-08-06T03:14:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用 PhpStorm 將專案發佈到 GitHub?">
 <meta name="twitter:description" content="直接在 PhpStorm 內 push 到 GitHub">
@@ -114,73 +114,73 @@
 <h2 id="Motivation">Motivation</h2><hr>
 <p>之前要將專案發佈到 GitHub，都是乖乖的下指令，但指令實在記不起來，只能複製貼上，在<a href="/azure/azure_phpstorm_deploy/">如何使用 PhpStorm 部署 Laravel 到 Azure?</a> 一文中，發現 PhpStorm 亦提供完整的圖形介面支援 Git 與 GitHub，讓我們可以使用更直覺的方式完成。</p>
 <h2 id="建立_Laravel_專案">建立 Laravel 專案</h2><hr>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure000.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure000.png" alt=""></p>
 <p>啟動 PhpStorm，選擇 <code>Create New Project</code> 建立新專案。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure001.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure001.png" alt=""></p>
 <ul>
 <li><strong>專案類型</strong> :  <code>Composer Project</code>。</li>
 <li><strong>Location</strong> : Laravel 專案路徑與專案名稱</li>
 <li><strong>composer.phar</strong> : 選擇 <code>Use existing composer.phar</code>，輸入 <code>/usr/local/bin/composer</code>。<span class="margin-note-marker"><sup>1</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">1</span>選擇 <code>Download composer.phar from getcomposer.org</code> 亦可，這種方式在 OS X 本機並不需要事先安裝 Composer，PhpStorm 會自動將 Composer 下載到目錄專案跟目錄下，唯此種方式安裝 package 將無法使用到 cache，必須從網路上下載，安裝時間較長，所以實務上建議使用 <code>Use existing composer.phar</code>。</span></span></span></li>
 <li><strong>Filter packages</strong> : 輸入 <code>laravel/laravel</code>，此為 Laravel 專案的 package 名稱。</li>
 </ul>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure002.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure002.png" alt=""></p>
 <p>將畫面向下卷，還有其他設定。</p>
 <ul>
 <li><strong>Version to install</strong> : 選擇 Laravel 版本，<code>&lt;default&gt;</code> 為 Laravel 最新版本。</li>
 <li><strong>Path to PHP executable</strong> : 指定 PHP 執行檔路徑，主要為了執行 Composer。</li>
 <li><strong>Command line parameters</strong> : Composer 參數，輸入 <code>prefer-dist</code>。</li>
 </ul>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure003.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure003.png" alt=""></p>
 <p>建立 Laravel 專案中，由於 Composer 需解析 package 相依性，需要一些時間。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure004.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure004.png" alt=""></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan serve</span><br></pre></td></tr></table></figure>
 <p>執行 PHP 內建 Http Server。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure005.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure005.png" alt=""></p>
 <p>Laravel 已經順利在 OS X 本機執行。</p>
 <h2 id="建立_Local_Git_Repository">建立 Local Git Repository</h2><hr>
 <p>實務上開發 Laravel 會搭配 Git 做版本控制，先在本機建立 local repository。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure006.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure006.png" alt=""></p>
 <p><strong><em>VCS -&gt; Import ino Version Control -&gt; Create Git Repository</em></strong></p>
 <p>建立 Git repository。<span class="margin-note-marker"><sup>2</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">2</span>相當於 <code>git init</code>。</span></span></span></p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure007.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure007.png" alt=""></p>
 <p>選擇 local repository 目錄，也就是目前專案目錄。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure008.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure008.png" alt=""></p>
 <p>下方出現 <code>Version Control</code>，並顯示有檔案尚未受 Git 管理，按 <code>browse</code> 顯示檔案。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure009.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure009.png" alt=""></p>
 <p>選擇專案目錄，按 <code>+</code> (Add to VCS) 將檔案加入 stage。<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>相當於 <code>git add .</code>。</span></span></span></p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure010.png" alt=""></p>
-<p>綠色檔案為加入 stage 的檔案，按 <code>VCS</code> (Commit Changes)。<br><img src="/images/azure/azure_phpstorm_deploy/azure011.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure010.png" alt=""></p>
+<p>綠色檔案為加入 stage 的檔案，按 <code>VCS</code> (Commit Changes)。<br><img src="/images/azure/azure-phpstorm-deploy/azure011.png" alt=""></p>
 <ul>
 <li>不要選擇 <code>Perform code analysis</code>。</li>
 <li><strong>Commit Message</strong> : Initial commit。</li>
 </ul>
 <p>按 <code>Commit</code> 寫檔案寫入 local repository。<span class="margin-note-marker"><sup>4</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">4</span>相當於 <code>git commit -m &quot;Initial commit&quot;</code>。</span></span></span></p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure012.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure012.png" alt=""></p>
 <p>Commit 成功後，下方會顯示 <code>xx files committed : initial commit</code>。</p>
 <h2 id="建立_Remote_GitHub_Repository">建立 Remote GitHub Repository</h2><hr>
 <p>將 local repository 上傳至 GitHub 建立 remote repository。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure017.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure017.png" alt=""></p>
 <p><strong><em>PhpStorm -&gt; Preferences -&gt; Version Control -&gt; GitHub</em></strong></p>
 <p>設定 GitHub 帳號。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure013.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure013.png" alt=""></p>
 <p><strong><em>VCS -&gt; Import into Version Control -&gt; Share Project on GitHub</em></strong></p>
 <p>將專案發佈到 GitHub。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure014.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure014.png" alt=""></p>
 <p>預設會使用專案名稱為 remote GitHub repository 名稱。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure015.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure015.png" alt=""></p>
 <p>在 GitHub 建立成功。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure016.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure016.png" alt=""></p>
 <p>在 GitHub 已經看到剛剛上傳的專案。</p>
 <h2 id="修改並_Push_到_GitHub">修改並 Push 到 GitHub</h2><hr>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure052.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure052.png" alt=""></p>
 <p>將 <code>welcome.blade.php</code> 加以修改，由 <code>Laravel 5</code> 改成 <code>Hello Laravel</code>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure053.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure053.png" alt=""></p>
 <p>點擊下方的 <code>Version control</code> 標籤，按 <code>VCS</code> 將此次變更加以 commit。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure054.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure054.png" alt=""></p>
 <p>填入 commit message 後，按 <code>Commit and Push</code>。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure055.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure055.png" alt=""></p>
 <p>按 <code>Push</code> 將直接 push 到 GitHub。</p>
-<p><img src="/images/azure/azure_phpstorm_deploy/azure056.png" alt=""></p>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure056.png" alt=""></p>
 <p>Push 到 GitHub 成功。</p>
 <h2 id="Conclusion">Conclusion</h2><hr>
 <ul>
