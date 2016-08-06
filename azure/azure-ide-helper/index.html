@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="將 IDE Helper 安裝在 require-dev 將造成 Azure 部署失敗">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-08-06T14:21:41.000Z">
+<meta property="og:updated_time" content="2016-08-06T14:24:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何解決安裝 IDE Helper 造成 Laravel 在 Azure 部署失敗?">
 <meta name="twitter:description" content="將 IDE Helper 安裝在 require-dev 將造成 Azure 部署失敗">
@@ -122,7 +122,7 @@
 <p><img src="/images/azure/azure-ide-helper/ide002.png" alt=""></p>
 <p>繼續往下按 <code>View Log</code>，按錯誤訊息。</p>
 <p><img src="/images/azure/azure-ide-helper/ide003.png" alt=""></p>
-<p>錯誤訊息出現在 <code>composer install</code> 之後，在執行 <code>php artisan optimize</code> 時，出現 <code>Class Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider</code> 找不到的錯誤。</p>
+<p>錯誤訊息出現在 <code>composer install</code> 之後，在執行 <code>php artisan optimize</code> 時，出現找不到 <code>Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider</code> 的錯誤。</p>
 <h2 id="Root_Cause">Root Cause</h2><hr>
 <p><img src="/images/azure/azure-ide-helper/ide008.png" alt=""></p>
 <p>觀察 <code>composer.json</code>，會發現當 Azure 在執行完 <code>composer install</code> 後，會觸發 <code>post-install-cmd</code> 事件，並執行 <code>php artisan optimize</code>。</p>
