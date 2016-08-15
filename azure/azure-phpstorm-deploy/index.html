@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="點燈坊">
 <meta property="og:description" content="使用有效率的工具部署 Laravel">
 <meta property="og:image" content="http://oomusou.io/images/feature/logo.png">
-<meta property="og:updated_time" content="2016-08-06T12:01:37.000Z">
+<meta property="og:updated_time" content="2016-08-14T15:56:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何使用 PhpStorm 部署 Laravel 到 Azure?">
 <meta name="twitter:description" content="使用有效率的工具部署 Laravel">
@@ -130,8 +130,8 @@
 </ul>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure003.png" alt=""></p>
 <p>建立 Laravel 專案中，由於 Composer 需解析 package 相依性，需要一些時間。</p>
-<p><img src="/images/azure/azure-phpstorm-deploy/azure004.png" alt=""></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">oomusou@mac:~/MyProject$ php artisan serve</span><br></pre></td></tr></table></figure>
+<p><img src="/images/azure/azure-phpstorm-deploy/azure004.png" alt=""></p>
 <p>執行 PHP 內建 Http Server。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure005.png" alt=""></p>
 <p>Laravel 已經順利在 OS X 本機執行。</p>
@@ -231,7 +231,7 @@
 <p> <strong><em>Choose Source -&gt; GitHub</em></strong></p>
 <p>Azure 支援多種 deployment source，本文以 GitHub 為例。</p>
 <p><img src="/images/azure/azure-phpstorm-deploy/azure036.png" alt=""></p>
-<p>選擇 GitHub 上的 <code>project</code> 與 <code>branch</code>。<span class="margin-note-marker"><sup>5</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">5</span>第一次連上 GitHub，會需要設定 authentication。</span></span></span></p>
+<p>選擇 GitHub 上的 <code>project</code> 與 <code>branch</code>。</p>
 <p>按 <code>OK</code> 後，開始第一次從 GitHub 部署到 Azure。</p>
 <p>由於第一次部署，<code>composer install</code> 要重新安裝 <code>vendor</code> 目錄，需要一點時間。</p>
 <h2 id="設定_Remote_Host">設定 Remote Host</h2><hr>
@@ -308,8 +308,8 @@
 <p>完整的範例可以在我的 <a href="https://github.com/oomusou/Laravel52PhpStormAzure_demo" target="_blank" rel="external">GitHub</a> 上找到。</p>
 <h2 id="Reference">Reference</h2><hr>
 <ul>
-<li>Cephas, <a href="https://azure.microsoft.com/zh-tw/documentation/articles/app-service-web-php-get-started/" target="_blank" rel="external">建立、設定和部署 PHP Web 應用程式至 Azure</a></li>
-<li>Robert McMurray, <a href="https://azure.microsoft.com/zh-tw/documentation/articles/web-sites-php-configure/" target="_blank" rel="external">在 Azure App Service Web Apps 中設定 PHP</a></li>
+<li>Cephas Lin, <a href="https://azure.microsoft.com/en-us/documentation/articles/app-service-web-php-get-started/" target="_blank" rel="external">Create, configure, and deploy a PHP web app to Azure</a></li>
+<li>Robert McMurray, <a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-php-configure/" target="_blank" rel="external">Configure PHP in Azure App Service Web Apps</a></li>
 <li>Mikhail Vink, <a href="https://confluence.jetbrains.com/display/PhpStorm/Working+with+Windows+Azure+from+within+PhpStorm" target="_blank" rel="external">Working with Windows Azure from within PhpStorm</a></li>
 <li>KevinAtStout, <a href="https://www.youtube.com/watch?v=48moauj0KtE" target="_blank" rel="external">Connecting PhpStorm to Your Azure Web Server</a></li>
 </ul>
@@ -359,7 +359,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Azure/">Azure<span>3</span></a></li> <li><a href="/tags/Git/">Git<span>5</span></a></li> <li><a href="/tags/GitHub/">GitHub<span>4</span></a></li> <li><a href="/tags/Laravel/">Laravel<span>43</span></a></li> <li><a href="/tags/PhpStorm/">PhpStorm<span>35</span></a></li>
+  <li><a href="/tags/Azure/">Azure<span>4</span></a></li> <li><a href="/tags/Git/">Git<span>5</span></a></li> <li><a href="/tags/GitHub/">GitHub<span>4</span></a></li> <li><a href="/tags/Laravel/">Laravel<span>44</span></a></li> <li><a href="/tags/PhpStorm/">PhpStorm<span>35</span></a></li>
     </ul>
 	</div>
 		
