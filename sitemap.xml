@@ -2,8 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://oomusou.io/laravel/homestead/homestead-per-project/</loc>
+    <lastmod>2016-08-18T01:50:36.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/azure/azure-blob-storage/</loc>
-    <lastmod>2016-08-15T08:47:44.000Z</lastmod>
+    <lastmod>2016-08-16T07:08:26.000Z</lastmod>
   </url>
   
   <url>
@@ -37,22 +42,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/ip/ip-patterns/</loc>
-    <lastmod>2016-08-06T03:11:22.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/tdd/tdd-di/</loc>
+    <loc>http://oomusou.io/ip/ip-theory/</loc>
     <lastmod>2016-08-06T03:11:22.000Z</lastmod>
   </url>
   
   <url>
     <loc>http://oomusou.io/tdd/tdd-collection-assertion/</loc>
-    <lastmod>2016-08-06T03:11:22.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/laravel/laravel-presenter/</loc>
     <lastmod>2016-08-06T03:11:22.000Z</lastmod>
   </url>
   
@@ -67,12 +62,17 @@
   </url>
   
   <url>
+    <loc>http://oomusou.io/laravel/eloquent/eloquent-where-and-or/</loc>
+    <lastmod>2016-08-06T03:11:22.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-xdebug-on-demand/</loc>
     <lastmod>2016-08-06T03:11:22.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/eloquent/eloquent-relation-one-to-one/</loc>
+    <loc>http://oomusou.io/laravel/laravel-presenter/</loc>
     <lastmod>2016-08-06T03:11:22.000Z</lastmod>
   </url>
   
@@ -82,12 +82,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/eloquent/eloquent-model-factory-relation/</loc>
+    <loc>http://oomusou.io/laravel/eloquent/eloquent-relation-one-to-one/</loc>
     <lastmod>2016-08-06T03:11:22.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/eloquent/eloquent-where-and-or/</loc>
+    <loc>http://oomusou.io/laravel/eloquent/eloquent-model-factory-relation/</loc>
     <lastmod>2016-08-06T03:11:22.000Z</lastmod>
   </url>
   
@@ -127,7 +127,22 @@
   </url>
   
   <url>
+    <loc>http://oomusou.io/tdd/tdd-factory-ocp/</loc>
+    <lastmod>2016-08-06T03:11:22.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/laravel/collection/collection-duplicated/</loc>
+    <lastmod>2016-08-06T03:11:22.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/tdd/tdd-di/</loc>
+    <lastmod>2016-08-06T03:11:22.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://oomusou.io/ip/ip-patterns/</loc>
     <lastmod>2016-08-06T03:11:22.000Z</lastmod>
   </url>
   
@@ -137,17 +152,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/tdd/tdd-factory-ocp/</loc>
-    <lastmod>2016-08-06T03:11:22.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://oomusou.io/phpstorm/phpstorm-code-generation/</loc>
-    <lastmod>2016-08-06T03:11:22.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/ip/ip-theory/</loc>
     <lastmod>2016-08-06T03:11:22.000Z</lastmod>
   </url>
   
@@ -297,17 +302,12 @@
   </url>
   
   <url>
+    <loc>http://oomusou.io/laravel/laravel-present-dateformat/</loc>
+    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://oomusou.io/laravel/laravel-service-provider/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/laravel/laravel-package-hello-world/</loc>
-    <lastmod>2016-03-22T14:03:51.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://oomusou.io/laravel/laravel42/laravel-42-phpunit/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -322,12 +322,12 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel42/laravel-42-presenter/</loc>
+    <loc>http://oomusou.io/laravel/laravel42/laravel-42-phpunit/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/homestead/homestead-per-project/</loc>
+    <loc>http://oomusou.io/laravel/laravel42/laravel-42-presenter/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   
@@ -392,7 +392,7 @@
   </url>
   
   <url>
-    <loc>http://oomusou.io/laravel/laravel-present-dateformat/</loc>
+    <loc>http://oomusou.io/laravel/laravel-package-hello-world/</loc>
     <lastmod>2016-03-22T14:03:51.000Z</lastmod>
   </url>
   

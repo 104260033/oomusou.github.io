@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://oomusou.io/"/>
-  <updated>2016-08-15T08:47:44.000Z</updated>
+  <updated>2016-08-16T07:08:26.000Z</updated>
   <id>http://oomusou.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://oomusou.io/azure/azure-blob-storage/"/>
     <id>http://oomusou.io/azure/azure-blob-storage/</id>
     <published>2016-08-13T12:23:43.000Z</published>
-    <updated>2016-08-15T08:47:44.000Z</updated>
+    <updated>2016-08-16T07:08:26.000Z</updated>
     <content type="html"><![CDATA[<p>除了關聯式資料庫外，實務上我們常需要將<strong>文字檔</strong>或<strong>二進位檔</strong> (圖片檔或影音檔) 上傳到雲端，並提供下載，此時我們可以使用 Azure 的 Blob Storage 儲存這類型的檔案。</p>
 <a id="more"></a>
 <h2 id="Version">Version</h2><hr>
@@ -67,13 +67,13 @@
 </ul>
 <div class="alert alert-info"><i class="fa fa-info"></i>  Replication 快速整理</div>
 <ul>
-<li>Azure 會自動為 storage account 的資料都會進行 replication，確保資料的持久性與高可用性。</li>
+<li>Azure 會自動為 storage account 的資料進行 replication，確保資料的持久性與高可用性。</li>
 <li><p>提供了 4 種 replication 機制 :<span class="margin-note-marker"><sup>3</sup></span> <span class="block margin-div-outer"><span class="block margin-div-inner"><span class="block margin-note"><span class="margin-note-marker">3</span>關於 replication，詳細請參考 Tamra Myers, <a href="https://azure.microsoft.com/en-us/documentation/articles/storage-redundancy/#locally-redundant-storage" target="_blank" rel="external">Azure Storage replication</a></span></span></span></p>
 <ol>
-<li><strong>Locally redundant storage (LRS)</strong> : 提供本機備援。</li>
-<li><strong>Zone-redundant storage (ZRS)</strong> : 提供區域備援。</li>
-<li><strong>Geo-redundant storage (GRS)</strong> : 提供異地備援。</li>
-<li><strong>Read-access geo-redundant storage (RA-GRS)</strong> : 提供讀取權限的異地備援。</li>
+<li><strong>Locally Redundant Storage (LRS)</strong> : 提供本機備援。</li>
+<li><strong>Zone-redundant Storage (ZRS)</strong> : 提供區域備援。</li>
+<li><strong>Geo-redundant Storage (GRS)</strong> : 提供異地備援。</li>
+<li><strong>Read-access Geo-redundant Storage (RA-GRS)</strong> : 提供讀取權限的異地備援。</li>
 </ol>
 </li>
 </ul>
